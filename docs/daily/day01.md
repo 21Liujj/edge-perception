@@ -362,3 +362,20 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
   - Alternative (simpler): set `--model` / `--model_name` to a local path holding the same resolved files, but the official baseline id is `google/owlvit-base-patch32`.
 - Integrity: NanoOWL source NOT modified; torch/torchvision/numpy/TensorRT/transformers/Pillow/CUDA NOT upgraded or downgraded; no NanoOWL package installed (it would only fail at `from_pretrained`); no TensorRT plugins installed/compiled; no OWL-ViT weights downloaded (impossible); no engine built; no NanoSAM, no INT8, no ROS2, no camera, no tree detection; no remote/push/GitHub upload.
 - Stage 1J status: FAIL (NETWORK_BLOCKED — missing offline OWL-ViT checkpoint). No engine path, no inference result. Retry once the `google/owlvit-base-patch32` checkpoint is staged into `/home/nvidia/.cache/huggingface/hub`.
+
+## Day 1 / Stage 1J-Fallback-1 - Verify Offline OWL-ViT HF Cache Package
+
+- Offline package: `/home/nvidia/owlvit-base-patch32-hf-cache.tar.gz`
+- Size: 1136958029 bytes (~1.06 GiB); non-empty; `tar tzf` listing OK (integrity verified).
+- Top-level directory: `models--google--owlvit-base-patch32` (single repo cache dir, as required).
+- Required HF cache structure: `blobs/`, `snapshots/`, `refs/` all PRESENT (plus `trees/`).
+- `refs/main` -> `cbc355fb364588351c5d51c7f74465e8e7ec6f72`; matching snapshot dir and `trees/<rev>.json` present; 9 blob files.
+- Snapshot files for revision `cbc355fb364588351c5d51c7f74465e8e7ec6f72`:
+  - model config: `config.json` PRESENT
+  - preprocessor config: `preprocessor_config.json` PRESENT
+  - weights: `pytorch_model.bin` AND `model.safetensors` both PRESENT
+  - tokenizer: `tokenizer_config.json`, `special_tokens_map.json`, `merges.txt`, `vocab.json` all PRESENT
+  - also: `README.md`, `.gitattributes`
+- Key model files complete: config + preprocessor + weights + tokenizer齐全 (PASS).
+- Constraints honored: NOT extracted to the real cache (`/home/nvidia/.cache/huggingface/hub`); only listed / small refs file read to stdout. No TensorRT engine built. No NanoOWL inference run. No Python/CUDA/TensorRT environment modification. No remote/push/GitHub upload.
+- Stage 1J-Fallback-1 status: PASS — package is a valid, complete offline HF cache for `google/owlvit-base-patch32`, ready to stage in a later step.
