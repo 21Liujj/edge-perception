@@ -1,0 +1,6 @@
+{
+  "model_load_ms": 745.799,
+  "set_image_ms": 98.882,
+  "prompt_decode_ms": 31.576,
+  "full_segmentation_ms": 130.458
+}

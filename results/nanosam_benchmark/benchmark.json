@@ -1,0 +1,47 @@
+{
+  "platform_note": "repeatedly-encoded same image performance experiment",
+  "model_load_ms": 626.954,
+  "set_image": {
+    "count": 100,
+    "mean_ms": 66.3219,
+    "min_ms": 48.951,
+    "max_ms": 75.6008,
+    "P50_ms": 68.3064,
+    "P95_ms": 74.7322,
+    "P99_ms": 75.2667
+  },
+  "box_decode": {
+    "count": 300,
+    "mean_ms": 11.0126,
+    "min_ms": 9.4854,
+    "max_ms": 15.6441,
+    "P50_ms": 10.5491,
+    "P95_ms": 13.8645,
+    "P99_ms": 15.5847,
+    "estimated_prompt_fps": 90.81
+  },
+  "point_decode": {
+    "count": 100,
+    "mean_ms": 10.2938,
+    "min_ms": 10.1041,
+    "max_ms": 10.5812,
+    "P50_ms": 10.3027,
+    "P95_ms": 10.4284,
+    "P99_ms": 10.5383,
+    "estimated_prompt_fps": 97.15
+  },
+  "full_segmentation_ms": 52.186,
+  "full_segmentation_note": "real encoder + first box prompt path; NOT prompt-only FPS expressed as pipeline FPS",
+  "tegrastats": {
+    "peak_RAM_MB": 2719,
+    "last_RAM_MB": 2337,
+    "peak_GR3D_pct": 92,
+    "last_GR3D_pct": 0,
+    "peak_gpu_temperature_C": 54.125,
+    "last_gpu_temperature_C": 52.156,
+    "peak_VDD_IN_mW": 8964,
+    "last_VDD_IN_mW": 8712,
+    "sample_count": 121,
+    "note": "sampled under live decode load via tegrastats --start --interval 100 --logfile (JetPack6 syntax). GR3D reached 92%% peak during active decode; idle samples read 0%%."
+  }
+}

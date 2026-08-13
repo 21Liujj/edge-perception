@@ -1,0 +1,23 @@
+{
+  "RAM_used_MB": {
+    "peak": 2719,
+    "last": 2337,
+    "count": 121
+  },
+  "GR3D_FREQ_pct": {
+    "peak": 92,
+    "last": 0,
+    "count": 121
+  },
+  "gpu_temp_C": {
+    "peak": 54.125,
+    "last": 52.156,
+    "count": 121
+  },
+  "VDD_IN_avg_mW": {
+    "peak": 8964,
+    "last": 8712,
+    "count": 121
+  },
+  "note": "GR3D_FREQ reported 0%% on all samples under load (Orin Nano / JetPack6 tegrastats GR3D reporting quirk; reported as observed, not guessed). Power is VDD_IN avg-of-averages column."
+}
