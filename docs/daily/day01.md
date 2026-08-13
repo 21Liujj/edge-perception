@@ -90,3 +90,57 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 ### Parent repository
 
 - Parent commit created: `chore: pin NanoOWL upstream`.
+
+## Day 1 / Stage 1D - NanoOWL Dependency Compatibility Audit
+
+- Audit time: 2026-08-13 10:08 CST
+- Scope: read-only. Probe interpreter: `/home/nvidia/jetson-deploy-lab/.venv/bin/python` (Python 3.10.12). No package installed/upgraded/downgraded. No NanoOWL source edit. No weights downloaded. No TensorRT engine built.
+- NanoOWL pinned commit: `fb553dee4c58f8c53ec2bf01f355a54648e67dbd` (`main`).
+
+### Dependency declaration sources (read-only)
+
+- `setup.py`: declares package `nanoowl` v0.0.0; **no `install_requires`** — i.e. NanoOWL pins no dependency versions itself.
+- No `requirements.txt`, `pyproject.toml`, or `setup.cfg`.
+- README "Setup" instructions: (1) Install PyTorch; (2) Install torch2trt from `https://github.com/NVIDIA-AI-IOT/torch2trt`; (3) Install NVIDIA TensorRT; (4) `pip install transformers`; (5) optional NanoSAM.
+- Reference `docker/23-01/Dockerfile` (base `nvcr.io/nvidia/pytorch:23.01-py3`): `pip install pillow --upgrade`; `pip install git+https://github.com/NVIDIA-AI-IOT/torch2trt.git`; `pip install transformers timm accelerate`; `pip install git+https://github.com/openai/CLIP.git`.
+- Imports in the `nanoowl/` package: `argparse, clip, cv2, dataclasses, enum, json, matplotlib, numpy, os, PIL, subprocess, tempfile, time, torch, torchvision, transformers, typing`.
+  - `clip` is used only in `nanoowl/clip_predictor.py` (tree-detection path), not the core `owl_predictor`.
+  - `timm` / `accelerate` are not imported by the `nanoowl/` package itself but are pulled in by the reference Dockerfile as transformers companions.
+
+### Audit results (.venv actual)
+
+| Package | Import name | Status | Version | Note |
+|---|---|---|---|---|
+| torch | torch | AVAILABLE | 2.5.0a0+872d972e41.nv24.08 | Jetson nv build (system site-packages). Pre-built wheels only; no version pin from NanoOWL. |
+| torchvision | torchvision | AVAILABLE | 0.20.0a0+afc54f7 | Matches torch 2.5 nv build. |
+| tensorrt | tensorrt | AVAILABLE | 10.3.0 | System `/usr/lib/python3.10/dist-packages`. Newer than Dockerfile era; torch2trt must target this. |
+| numpy | numpy | AVAILABLE | 1.23.5 | system site. |
+| cv2 | cv2 | AVAILABLE | 4.10.0 | system site. |
+| matplotlib | matplotlib | AVAILABLE | 3.10.3 | system site. |
+| Pillow | PIL | VERSION_RISK | 9.0.1 | NanoOWL Dockerfile explicitly `pip install pillow --upgrade` to fix `UnidentifiedImageError`; .venv still on old 9.0.1 = the version the upstream upgrade targets. Image-decode failures possible at runtime. |
+| transformers | transformers | MISSING | — | Required (imported by package + README). NanoOWL gives no version pin; OWL-ViT model support demands a sufficiently recent transformers (~4.x with OwlViT). Unspecified version = install-time risk. |
+| torch2trt | torch2trt | MISSING | — | Required for engine build/inference (README step 2). Must be built from upstream git against the local torch 2.5.0a nv build and TensorRT 10.3 — Jetson-version-coupled, no wheel. |
+| clip | clip | MISSING | — | Only needed by `clip_predictor.py` (tree detection). OpenAI CLIP, install via git per Dockerfile. Not required for the core `owl_predict` path. |
+| timm | timm | MISSING | — | Not imported by `nanoowl/` package; Dockerfile companion to transformers. Risk only if selected transformers version needs it. |
+| accelerate | accelerate | MISSING | — | Not imported by `nanoowl/` package; Dockerfile companion to transformers. Risk only if selected transformers version needs it. |
+
+### Summary
+
+- AVAILABLE (6): torch 2.5.0a0+872d972e41.nv24.08, torchvision 0.20.0a0+afc54f7, tensorrt 10.3.0, numpy 1.23.5, cv2 4.10.0, matplotlib 3.10.3
+- MISSING (5): transformers, torch2trt, clip (tree path only), timm, accelerate
+- VERSION_RISK (1): Pillow/PIL 9.0.1 (upstream Dockerfile upgrades it to fix UnidentifiedImageError)
+
+### NanoOWL explicit version / install constraints
+
+- NanoOWL **declares no pinned dependency versions** (`setup.py` has no `install_requires`; no requirements/pyproject files).
+- Hard install-method constraints (README + Dockerfile), all unsatisfied-locally items must follow these:
+  - torch2trt: install from git `https://github.com/NVIDIA-AI-IOT/torch2trt.git` (not a PyPI wheel) — must match local torch 2.5.0a nv build + TensorRT 10.3.
+  - transformers: `pip install transformers` (version unpinned by NanoOWL; choose one with OWL-ViT support).
+  - clip: `pip install git+https://github.com/openai/CLIP.git`.
+  - pillow: upstream explicitly upgrades to avoid `UnidentifiedImageError` (current .venv 9.0.1 is the flagged-old line).
+  - torch / torchvision: Jetson pre-built nv wheels only; do not replace with stock PyPI wheels.
+- Reference container is `nvcr.io/nvidia/pytorch:23.01-py3` (much older stack) — treat as install-method reference only, not a version requirement.
+
+### Environment integrity
+
+- No package install/upgrade/downgrade, no source edit, no weights download, no TensorRT engine build, no remote/push performed. Only `docs/daily/day01.md` was appended and a local commit created.
