@@ -145,3 +145,186 @@ Stage 4A：PASS — NanoOWL → NanoSAM 首次自动联合 Pipeline 正确性验
 ## 结论
 
 Stage 4B：PASS — NanoOWL → NanoSAM joint pipeline 正式稳定态 E2E Benchmark 完成，module-level latency 分解与 system resource 采集齐全，300/300 正确性通过，owl/NO_DETECTION 回归 PASS。
+
+---
+
+## Stage 4C — Day 4 工程收口（仅整理已有结果，不新增功能 / 不重新 Benchmark）
+
+本阶段不产生新的测量、不新增功能、不重建 Engine、不运行新 benchmark。仅对已有 Stage 4A/4B 结果做收口与口径固化。
+
+### Latency Budget 小结
+
+基于 n=300 稳定态 E2E Benchmark（mean ms）：
+
+| component | mean ms | 占 E2E mean 比例 |
+|---|---|---|
+| NanoSAM Image Encoder (set_image) | 60.7769 | ~51.9% |
+| NanoOWL (detect + postprocess + selected box) | 38.6133 | ~33.0% |
+| NanoSAM Decoder | 17.2227 | ~14.7% |
+| coordinate bridge | 0.1046 | ~0.09% |
+| unaccounted overhead | 0.3176 | ~0.27% |
+| **pipeline_e2e mean** | **117.0351** | 100% |
+
+明确结论（基于真实 Benchmark，非推测）：
+
+- NanoSAM Image Encoder 是当前最大 latency component，约占整线一半（~51.9%）。
+- NanoOWL 是第二大 component（~33.0%）。
+- NanoSAM Decoder 次之（~14.7%）。
+- coordinate bridge 成本可忽略（~0.09%，mean 0.1046 ms）。
+
+边界声明：当前仅证明了 latency component distribution（各模块在 E2E 中的耗时占比）。
+尚未通过 Nsight / kernel-level profiling 证明 compute / memory / kernel 层根因，
+因此不在此写为“硬件底层瓶颈”结论。Latency distribution 是事实陈述，
+root cause（如是否 EMC 带宽 / SM 占用 / 显存拷贝主导）留待 Nsight 阶段验证。
+
+### 性能口径区别（Day 2 vs Day 4）
+
+- Day 2 NanoOWL ~22.49 ms：属于较窄的 core inference benchmark（owl 单模型推理层面，
+  timing boundary = 纯 OwlPredictor core inference）。
+- Day 4 NanoOWL ~38.61 ms：属于 Joint Pipeline 中包含 detection / postprocess / selected-box
+  路径的 stage latency（timing boundary = ready input → selected box，含 selection / 后处理）。
+
+两者 timing boundary 不同，不直接互相替代，不能解释为“Day4 比 Day2 慢”或“回归劣化”。
+Day4 的 38.61 ms 是更宽边界的 pipeline-stage 耗时，Day2 的 22.49 ms 是更窄边界的 core inference 耗时。
+
+### Cached Embedding 实验结论
+
+- cached-image / reused-embedding scenario：mean 34.0178 / P50 33.5994 / P95 36.3087 / P99 40.0005 ms（n=100）。
+- 明确标记：这是 cached-image / reused-embedding scenario，不是完整 E2E Pipeline FPS（已省去每轮 ~61 ms 的 NanoSAM Image Encoder）。
+- 它证明：同一图像多 Prompt 场景可以复用 NanoSAM image embedding，
+  避免对同一图像重复执行 NanoSAM Image Encoder；
+  每 prompt-update 约 34 ms（≈29 FPS 量级），主要成分为 NanoOWL 检测 + NanoSAM decoder。
+- 不作为正式 E2E baseline，仅作为“embedding 可复用性”的量化记录。
+
+### Day 4 Evidence 路径
+
+- results/joint_pipeline/ — owl / owl_regression / no_detection / no_detection_regression joint pipeline 产物
+- results/joint_benchmark/ — benchmark.json / e2e_latencies.csv / module_latencies.csv / cached_embedding_latencies.csv / tegrastats.log / tegrastats_parsed.json / summary.md
+
+### Day 4 Final Result
+
+PASS — NanoOWL and NanoSAM have been integrated into a reproducible
+open-vocabulary detection-to-segmentation TensorRT pipeline on Jetson,
+with stable E2E latency and module-level performance characterized.
+
+### 当前仍未做
+
+- precision / FP32-FP16 quality-performance ablation
+- COCO accuracy / mIoU
+- INT8
+- MP4 realtime pipeline
+- ROS2
+- long-run stability
+- Nsight profiling（compute/memory/kernel 层根因尚未验证）
+
+### Day 5 起点（确定）
+
+基于当前 Benchmark，Day 5 起点确定为：Precision / Quality / Performance Ablation。
+
+重点：
+
+- 保持当前 FP16 / mixed-precision baseline 不变（作为对照基准）。
+- 建立可比较的精度 / 性能实验。
+- 优先关注 NanoSAM Image Encoder 和 NanoOWL（当前第一 / 第二 latency component）。
+- 开始引入正式数据集 / COCO 评测口径。
+- 不盲目优化 coordinate bridge 或 Mask Decoder（成本可忽略 / 次之）。
+
+明确：Day 4 不提前执行 Day 5 内容。
+
+### Stage 4C 约束遵守
+
+- 仅整理已有结果，未新增功能、未重新 Benchmark、未重建 Engine、未下载数据集。
+- 未 remote / push / GitHub 上传。
+- 核心环境版本未变（见 Stage 4A/4B 记录）。
+
+
+---
+
+## Stage 4C — Day 4 工程收口（仅整理已有结果，不新增功能 / 不重新 Benchmark）
+
+本阶段不产生新的测量、不新增功能、不重建 Engine、不运行新 benchmark。仅对已有 Stage 4A/4B 结果做收口与口径固化。
+
+### Latency Budget 小结
+
+基于 n=300 稳定态 E2E Benchmark（mean ms）：
+
+| component | mean ms | 占 E2E mean 比例 |
+|---|---|---|
+| NanoSAM Image Encoder (set_image) | 60.7769 | ~51.9% |
+| NanoOWL (detect + postprocess + selected box) | 38.6133 | ~33.0% |
+| NanoSAM Decoder | 17.2227 | ~14.7% |
+| coordinate bridge | 0.1046 | ~0.09% |
+| unaccounted overhead | 0.3176 | ~0.27% |
+| **pipeline_e2e mean** | **117.0351** | 100% |
+
+明确结论（基于真实 Benchmark，非推测）：
+
+- NanoSAM Image Encoder 是当前最大 latency component，约占整线一半（~51.9%）。
+- NanoOWL 是第二大 component（~33.0%）。
+- NanoSAM Decoder 次之（~14.7%）。
+- coordinate bridge 成本可忽略（~0.09%，mean 0.1046 ms）。
+
+边界声明：当前仅证明了 latency component distribution（各模块在 E2E 中的耗时占比）。
+尚未通过 Nsight / kernel-level profiling 证明 compute / memory / kernel 层根因，
+因此不在此写为“硬件底层瓶颈”结论。Latency distribution 是事实陈述，
+root cause（如是否 EMC 带宽 / SM 占用 / 显存拷贝主导）留待 Nsight 阶段验证。
+
+### 性能口径区别（Day 2 vs Day 4）
+
+- Day 2 NanoOWL ~22.49 ms：属于较窄的 core inference benchmark（owl 单模型推理层面，
+  timing boundary = 纯 OwlPredictor core inference）。
+- Day 4 NanoOWL ~38.61 ms：属于 Joint Pipeline 中包含 detection / postprocess / selected-box
+  路径的 stage latency（timing boundary = ready input → selected box，含 selection / 后处理）。
+
+两者 timing boundary 不同，不直接互相替代，不能解释为“Day4 比 Day2 慢”或“回归劣化”。
+Day4 的 38.61 ms 是更宽边界的 pipeline-stage 耗时，Day2 的 22.49 ms 是更窄边界的 core inference 耗时。
+
+### Cached Embedding 实验结论
+
+- cached-image / reused-embedding scenario：mean 34.0178 / P50 33.5994 / P95 36.3087 / P99 40.0005 ms（n=100）。
+- 明确标记：这是 cached-image / reused-embedding scenario，不是完整 E2E Pipeline FPS（已省去每轮 ~61 ms 的 NanoSAM Image Encoder）。
+- 它证明：同一图像多 Prompt 场景可以复用 NanoSAM image embedding，
+  避免对同一图像重复执行 NanoSAM Image Encoder；
+  每 prompt-update 约 34 ms（≈29 FPS 量级），主要成分为 NanoOWL 检测 + NanoSAM decoder。
+- 不作为正式 E2E baseline，仅作为“embedding 可复用性”的量化记录。
+
+### Day 4 Evidence 路径
+
+- results/joint_pipeline/ — owl / owl_regression / no_detection / no_detection_regression joint pipeline 产物
+- results/joint_benchmark/ — benchmark.json / e2e_latencies.csv / module_latencies.csv / cached_embedding_latencies.csv / tegrastats.log / tegrastats_parsed.json / summary.md
+
+### Day 4 Final Result
+
+PASS — NanoOWL and NanoSAM have been integrated into a reproducible
+open-vocabulary detection-to-segmentation TensorRT pipeline on Jetson,
+with stable E2E latency and module-level performance characterized.
+
+### 当前仍未做
+
+- precision / FP32-FP16 quality-performance ablation
+- COCO accuracy / mIoU
+- INT8
+- MP4 realtime pipeline
+- ROS2
+- long-run stability
+- Nsight profiling（compute/memory/kernel 层根因尚未验证）
+
+### Day 5 起点（确定）
+
+基于当前 Benchmark，Day 5 起点确定为：Precision / Quality / Performance Ablation。
+
+重点：
+
+- 保持当前 FP16 / mixed-precision baseline 不变（作为对照基准）。
+- 建立可比较的精度 / 性能实验。
+- 优先关注 NanoSAM Image Encoder 和 NanoOWL（当前第一 / 第二 latency component）。
+- 开始引入正式数据集 / COCO 评测口径。
+- 不盲目优化 coordinate bridge 或 Mask Decoder（成本可忽略 / 次之）。
+
+明确：Day 4 不提前执行 Day 5 内容。
+
+### Stage 4C 约束遵守
+
+- 仅整理已有结果，未新增功能、未重新 Benchmark、未重建 Engine、未下载数据集。
+- 未 remote / push / GitHub 上传。
+- 核心环境版本未变（见 Stage 4A/4B 记录）。
