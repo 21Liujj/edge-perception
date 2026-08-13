@@ -1,0 +1,22 @@
+{"Layers": [{
+  "Name": "__myl_Mov_myl0_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "input",
+    "Dimensions": [1,3,8,8],
+    "Format/Datatype": "Float"
+  }],
+  "Outputs": [
+  {
+    "Name": "output",
+    "Dimensions": [1,3,8,8],
+    "Format/Datatype": "Float"
+  }],
+  "TacticName": "__myl_Mov_0x44f97cd21565d84d5f102124ec55637b",
+  "StreamId": 0,
+  "Metadata": ""
+}],
+"Bindings": ["input"
+,"output"
+]}

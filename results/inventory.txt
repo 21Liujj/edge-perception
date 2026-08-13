@@ -1,0 +1,283 @@
+collected_at=2026-08-05T13:35:06+08:00
+hostname=nvidia-desktop
+model=NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super
+
+=== L4T ===
+# R36 (release), REVISION: 4.3, GCID: 38968081, BOARD: generic, EABI: aarch64, DATE: Wed Jan  8 01:49:37 UTC 2025
+# KERNEL_VARIANT: oot
+TARGET_USERSPACE_LIB_DIR=nvidia
+TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+
+=== OS ===
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+VERSION_ID="22.04"
+
+=== KERNEL ===
+Linux nvidia-desktop 5.15.148-tegra #1 SMP PREEMPT Tue Jan 7 17:14:38 PST 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+=== CUDA_TOOLKIT ===
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Wed_Aug_14_10:14:07_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.68
+Build cuda_12.6.r12.6/compiler.34714021_0
+
+=== CUDA_LINK ===
+/usr/local/cuda-12.6
+
+=== TENSORRT_PACKAGES ===
+libnvinfer10	10.3.0.30-1+cuda12.5
+python3-libnvinfer	10.3.0.30-1+cuda12.5
+tensorrt	10.3.0.30-1+cuda12.5
+
+=== CUDNN_PACKAGES ===
+libcudnn9-cuda-12	9.3.0.75-1
+libcudnn9-dev-cuda-12	9.3.0.75-1
+
+=== PYTHON ===
+Python 3.10.12
+
+=== PYTHON_PACKAGES ===
+tensorrt	10.3.0
+torch	2.5.0a0+872d972e41.nv24.08
+torch.cuda_available	True
+torch.cuda_version	12.6
+torch.cudnn_version	90300
+onnx	1.17.0
+onnxruntime	1.20.0
+onnxruntime.providers	['TensorrtExecutionProvider', 'CUDAExecutionProvider', 'CPUExecutionProvider']
+cv2	4.10.0
+numpy	1.23.5
+
+=== POWER_MODE ===
+NV Power Mode: 25W
+1
+
+=== MEMORY ===
+               total        used        free      shared  buff/cache   available
+Mem:      7989960704  1850982400  3928420352    22286336  2210557952  5873295360
+Swap:     3994951680           0  3994951680
+
+=== STORAGE ===
+Filesystem        1B-blocks        Used    Available Use% Mounted on
+/dev/nvme0n1p1 250173190144 40344694784 199030661120  17% /
+
+=== BLOCK_DEVICES ===
+NAME                 SIZE TYPE FSTYPE   MOUNTPOINTS
+loop0                4096 loop          /snap/bare/5
+loop1            72204288 loop          /snap/core22/2012
+loop2           190271488 loop          /snap/chromium/3175
+loop3            72224768 loop          /snap/core22/2134
+loop4           517431296 loop          /snap/gnome-42-2204/201
+loop5            69791744 loop          /snap/cups/1102
+loop6           527577088 loop          /snap/gnome-42-2204/264
+loop7            96141312 loop          /snap/gtk-common-themes/1535
+loop8            46362624 loop squashfs /snap/snapd/25205
+loop9            45477888 loop squashfs /snap/snapd/27595
+loop10           16777216 loop          
+zram0           665829376 disk          [SWAP]
+zram1           665829376 disk          [SWAP]
+zram2           665829376 disk          [SWAP]
+zram3           665829376 disk          [SWAP]
+zram4           665829376 disk          [SWAP]
+zram5           665829376 disk          [SWAP]
+nvme0n1      256060514304 disk          
+├─nvme0n1p1  254498869248 part ext4     /
+├─nvme0n1p2     134217728 part          
+├─nvme0n1p3        786432 part          
+├─nvme0n1p4      33161216 part          
+├─nvme0n1p5     134217728 part          
+├─nvme0n1p6        786432 part          
+├─nvme0n1p7      33161216 part          
+├─nvme0n1p8      83886080 part          
+├─nvme0n1p9        524288 part          
+├─nvme0n1p10     67108864 part vfat     /boot/efi
+├─nvme0n1p11     83886080 part          
+├─nvme0n1p12       524288 part          
+├─nvme0n1p13     67108864 part          
+├─nvme0n1p14    419430400 part          
+└─nvme0n1p15    502792192 part          
+
+=== PROFILERS ===
+/usr/bin/tegrastats
+/usr/local/bin/nsys
+/usr/local/cuda/bin/ncu
+
+=== DOCKER ===
+bash: line 1: docker: command not found
+inactive
+
+=== CAMERA_DEVICES ===
+crw-rw----+ 1 root video 505, 0 Jun  4  2025 /dev/media0
+
+=== CAMERA_PLUGIN ===
+Factory Details:
+  Rank                     primary (256)
+  Long-name                NvArgusCameraSrc
+  Klass                    Video/Capture
+  Description              nVidia ARGUS Camera Source
+  Author                   Viranjan Pagar <vpagar@nvidia.com>, Amit Pandya <apandya@nvidia.com>
+
+Plugin Details:
+  Name                     nvarguscamerasrc
+  Description              nVidia ARGUS Source Component
+  Filename                 /usr/lib/aarch64-linux-gnu/gstreamer-1.0/libgstnvarguscamerasrc.so
+  Version                  1.0.0
+  License                  Proprietary
+  Source module            nvarguscamerasrc
+  Binary package           NvARGUSCameraSrc
+  Origin URL               http://nvidia.com/
+
+GObject
+ +----GInitiallyUnowned
+       +----GstObject
+             +----GstElement
+                   +----GstBaseSrc
+                         +----GstNvArgusCameraSrc
+
+Pad Templates:
+  SRC template: 'src'
+    Availability: Always
+    Capabilities:
+      video/x-raw(memory:NVMM)
+                  width: [ 1, 2147483647 ]
+                 height: [ 1, 2147483647 ]
+                 format: { (string)NV12 }
+              framerate: [ 0/1, 2147483647/1 ]
+
+Element has no clocking capabilities.
+Element has no URI handling capabilities.
+
+Pads:
+  SRC: 'src'
+    Pad Template: 'src'
+
+Element Properties:
+  acquire-wait        : Set the waiting time for the acquireFrame before timeout. Default 5000000000 (in nanosec)
+                        flags: readable, writable
+                        Unsigned Integer64. Range: 5000000000 - 18446744073709551615 Default: 5000000000 
+  aeantibanding       : property to set the auto exposure antibanding mode
+                        flags: readable, writable
+                        Enum "GstNvArgusCamAeAntiBandingMode" Default: 1, "AeAntibandingMode_Auto"
+                           (0): AeAntibandingMode_Off - GST_NVCAM_AEANTIBANDING_OFF
+                           (1): AeAntibandingMode_Auto - GST_NVCAM_AEANTIBANDING_AUTO
+                           (2): AeAntibandingMode_50HZ - GST_NVCAM_AEANTIBANDING_50HZ
+                           (3): AeAntibandingMode_60HZ - GST_NVCAM_AEANTIBANDING_60HZ
+  aelock              : set or unset the auto exposure lock
+                        flags: readable, writable
+                        Boolean. Default: false
+  aeregion            : Property to set region of interest for auto exposure
+			with values of ROI coordinates (left, top, right, bottom)
+			and weight (float number) in that order, to set the property
+			use for example: aeregion="0 0 256 256 1"
+                        flags: readable, writable
+                        String. Default: null
+  awblock             : set or unset the auto white balance lock
+                        flags: readable, writable
+                        Boolean. Default: false
+  blocksize           : Size in bytes to read per buffer (-1 = default)
+                        flags: readable, writable
+                        Unsigned Integer. Range: 0 - 4294967295 Default: 4096 
+  do-timestamp        : Apply current stream time to buffers
+                        flags: readable, writable
+                        Boolean. Default: true
+  ee-mode             : property to select edge enhnacement mode
+                        flags: readable, writable
+                        Enum "GstNvArgusCamEEMode" Default: 1, "EdgeEnhancement_Fast"
+                           (0): EdgeEnhancement_Off - GST_NVCAM_EE_OFF
+                           (1): EdgeEnhancement_Fast - GST_NVCAM_EE_FAST
+                           (2): EdgeEnhancement_HighQuality - GST_NVCAM_EE_HIGHQUALITY
+  ee-strength         : property to adjust edge enhancement strength
+                        flags: readable, writable
+                        Float. Range:              -1 -               1 Default:              -1 
+  event-wait          : Set the waiting time for the event before timeout. Default 3000000000 (in nanosec)
+                        flags: readable, writable
+                        Unsigned Integer64. Range: 3000000000 - 18446744073709551615 Default: 3000000000 
+  exposurecompensation: property to adjust exposure compensation
+                        flags: readable, writable
+                        Float. Range:              -2 -               2 Default:               0 
+  exposuretimerange   : Property to adjust exposure time range in nanoseconds
+			Use string with values of Exposure Time Range (low, high)
+			in that order, to set the property.
+			eg: exposuretimerange="34000 358733000"
+                        flags: readable, writable
+                        String. Default: null
+  gainrange           : Property to adjust gain range
+			Use string with values of Gain Time Range (low, high)
+			in that order, to set the property.
+			eg: gainrange="1 16"
+                        flags: readable, writable
+                        String. Default: null
+  ispdigitalgainrange : Property to adjust digital gain range
+			Use string with values of ISP Digital Gain Range (low, high)
+			in that order, to set the property.
+			eg: ispdigitalgainrange="1 8"
+                        flags: readable, writable
+                        String. Default: null
+  name                : The name of the object
+                        flags: readable, writable, 0x2000
+                        String. Default: "nvarguscamerasrc0"
+  num-buffers         : Number of buffers to output before sending EOS (-1 = unlimited)
+                        flags: readable, writable
+                        Integer. Range: -1 - 2147483647 Default: -1 
+  parent              : The parent of the object
+                        flags: readable, writable, 0x2000
+                        Object of type "GstObject"
+  saturation          : Property to adjust saturation value
+                        flags: readable, writable
+                        Float. Range:               0 -               2 Default:               1 
+  sensor-id           : Set the id of camera sensor to use. Default 0.
+                        flags: readable, writable
+                        Integer. Range: 0 - 255 Default: 0 
+  sensor-mode         : Set the camera sensor mode to use. Default -1 (Select the best match)
+                        flags: readable, writable
+                        Integer. Range: -1 - 255 Default: -1 
+  show-latency        : Show capture latency between start of frame and GstBuffer push
+                        flags: readable, writable
+                        Boolean. Default: false
+  silent              : Produce verbose output ?
+                        flags: readable, writable
+                        Boolean. Default: true
+  timeout             : timeout to capture in seconds (Either specify timeout or num-buffers, not both)
+                        flags: readable, writable
+                        Unsigned Integer. Range: 0 - 2147483647 Default: 0 
+  tnr-mode            : property to select temporal noise reduction mode
+                        flags: readable, writable
+                        Enum "GstNvArgusCamTNRMode" Default: 1, "NoiseReduction_Fast"
+                           (0): NoiseReduction_Off - GST_NVCAM_NR_OFF
+                           (1): NoiseReduction_Fast - GST_NVCAM_NR_FAST
+                           (2): NoiseReduction_HighQuality - GST_NVCAM_NR_HIGHQUALITY
+  tnr-strength        : property to adjust temporal noise reduction strength
+                        flags: readable, writable
+                        Float. Range:              -1 -               1 Default:              -1 
+  total-sensor-modes  : Query the number of sensor modes available. Default 0
+                        flags: readable
+                        Integer. Range: 0 - 255 Default: 0 
+  typefind            : Run typefind before negotiating (deprecated, non-functional)
+                        flags: readable, writable, deprecated
+                        Boolean. Default: false
+  wbmode              : White balance affects the color temperature of the photo
+                        flags: readable, writable
+                        Enum "GstNvArgusCamWBMode" Default: 1, "auto"
+                           (0): off              - GST_NVCAM_WB_MODE_OFF
+                           (1): auto             - GST_NVCAM_WB_MODE_AUTO
+                           (2): incandescent     - GST_NVCAM_WB_MODE_INCANDESCENT
+                           (3): fluorescent      - GST_NVCAM_WB_MODE_FLUORESCENT
+                           (4): warm-fluorescent - GST_NVCAM_WB_MODE_WARM_FLUORESCENT
+                           (5): daylight         - GST_NVCAM_WB_MODE_DAYLIGHT
+                           (6): cloudy-daylight  - GST_NVCAM_WB_MODE_CLOUDY_DAYLIGHT
+                           (7): twilight         - GST_NVCAM_WB_MODE_TWILIGHT
+                           (8): shade            - GST_NVCAM_WB_MODE_SHADE
+                           (9): manual           - GST_NVCAM_WB_MODE_MANUAL
+
+=== TOOLCHAIN ===
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+cmake version 3.22.1
+git version 2.34.1
+
+=== TEGRASTATS ===
+08-05-2026 13:35:12 RAM 1875/7620MB (lfb 6x4MB) SWAP 0/3810MB (cached 0MB) CPU [0%@729,0%@729,1%@729,1%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@50.531C soc2@49.656C soc0@50.812C gpu@51.843C tj@51.843C soc1@51.187C VDD_IN 4589mW/4589mW VDD_CPU_GPU_CV 522mW/522mW VDD_SOC 1567mW/1567mW
+08-05-2026 13:35:13 RAM 1875/7620MB (lfb 6x4MB) SWAP 0/3810MB (cached 0MB) CPU [0%@729,1%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@50.656C soc2@49.687C soc0@50.843C gpu@51.625C tj@51.625C soc1@51.031C VDD_IN 4548mW/4569mW VDD_CPU_GPU_CV 482mW/502mW VDD_SOC 1569mW/1568mW
+08-05-2026 13:35:14 RAM 1875/7620MB (lfb 6x4MB) SWAP 0/3810MB (cached 0MB) CPU [0%@729,0%@1344,0%@1344,0%@1344,0%@729,0%@729] GR3D_FREQ 0% cpu@50.687C soc2@49.625C soc0@50.968C gpu@51.687C tj@51.687C soc1@51.093C VDD_IN 4548mW/4562mW VDD_CPU_GPU_CV 482mW/495mW VDD_SOC 1569mW/1568mW
+08-05-2026 13:35:15 RAM 1875/7620MB (lfb 6x4MB) SWAP 0/3810MB (cached 0MB) CPU [0%@729,0%@729,0%@1344,0%@1344,0%@729,0%@729] GR3D_FREQ 0% cpu@50.531C soc2@49.656C soc0@50.812C gpu@51.656C tj@51.656C soc1@51.156C VDD_IN 4548mW/4558mW VDD_CPU_GPU_CV 482mW/492mW VDD_SOC 1569mW/1569mW

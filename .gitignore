@@ -1,0 +1,37 @@
+# Python environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Native and Python build output
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# TensorRT engines and model weights
+*.engine
+*.plan
+*.pt
+*.pth
+*.safetensors
+
+# Model and dataset download caches
+.cache/
+cache/
+models/cache/
+models/downloads/
+checkpoints/
+huggingface/
+torch/hub/
+
+# Temporary and editor files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
