@@ -144,3 +144,83 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 ### Environment integrity
 
 - No package install/upgrade/downgrade, no source edit, no weights download, no TensorRT engine build, no remote/push performed. Only `docs/daily/day01.md` was appended and a local commit created.
+
+## Day 1 / Stage 1E - NanoOWL Dependency Install Rehearsal (dry-run)
+
+- Rehearsal time: 2026-08-13 10:15 CST
+- Probe interpreter: `/home/nvidia/jetson-deploy-lab/.venv/bin/python` (pip 26.2.1). `.venv` has `include-system-site-packages = true`; torch/torchvision/numpy live in `/usr/local/lib/python3.10/dist-packages`, PIL in `/usr/lib/python3/dist-packages`, tensorrt in `/usr/lib/python3.10/dist-packages` — all system-wide, shared by the whole Jetson image.
+- Method: `pip install --dry-run` only. **No package installed, upgraded, downgraded, or replaced.** `.venv` untouched. No model download. No engine build.
+- Based on Stage 1D verdict: MISSING transformers, torch2trt, clip (tree-only), timm, accelerate; VERSION_RISK PIL 9.0.1.
+
+### Dry-run results
+
+| Command (dry-run) | Would install (new) | Touches torch / torchvision / numpy / tensorrt? |
+|---|---|---|
+| `pip install transformers` | transformers-5.15.0, tokenizers-0.22.2, huggingface_hub-1.27.0, safetensors-0.8.0, hf-xet-1.6.0, regex, typer, click, httpx, httpcore, h11, anyio, etc. | **No.** numpy stays 1.23.5 (already satisfied); torch/torchvision/tensorrt not in install set. |
+| `pip install transformers timm accelerate` | above + timm-1.0.28, accelerate-1.14.0 | **No.** timm/accelerate see torch 2.5.0a0 nv, torchvision 0.20.0a0, numpy 1.23.5, PIL 9.0.1 — all "already satisfied". No change. |
+| `pip install transformers Pillow --upgrade` | above + pillow-12.3.0 | **No** to torch stack; **Yes to Pillow** (system PIL 9.0.1 → 12.3.0, installed into user/venv). |
+| `pip install "transformers==4.46.3"` | transformers-4.46.3, tokenizers-0.20.3, huggingface_hub-0.36.2, safetensors, regex, hf-xet | **No.** Same stack untouched. Fewer companion packages than the unpinned v5 line. |
+
+#### Key finding on transformers version
+
+- Unpinned `pip install transformers` pulls **transformers 5.15.0** (a major v5 jump) with tokenizers 0.22 + huggingface_hub 1.27. This is much newer than the NanoOWL reference Dockerfile era (~4.x). OWL-ViT model coverage in v5 is unverified and the API surface drifts across majors.
+- Recommendation: **pin transformers to a known OWL-ViT-supporting 4.x** (e.g. `transformers==4.46.3`) rather than accept the resolvers default v5. Dry-run confirms 4.46.3 also leaves the torch stack untouched.
+
+## Day 1 / Stage 1E - NanoOWL Dependency Install Rehearsal (dry-run)
+
+- Rehearsal time: 2026-08-13 10:15 CST
+- Probe interpreter: `/home/nvidia/jetson-deploy-lab/.venv/bin/python` (pip 26.2.1). `.venv` has `include-system-site-packages = true`; torch/torchvision/numpy live in `/usr/local/lib/python3.10/dist-packages`, PIL in `/usr/lib/python3/dist-packages`, tensorrt in `/usr/lib/python3.10/dist-packages` — all system-wide, shared by the whole Jetson image.
+- Method: `pip install --dry-run` only. **No package installed, upgraded, downgraded, or replaced.** `.venv` untouched. No model download. No engine build.
+- Based on Stage 1D verdict: MISSING transformers, torch2trt, clip (tree-only), timm, accelerate; VERSION_RISK PIL 9.0.1.
+
+### Dry-run results
+
+| Command (dry-run) | Would install (new) | Touches torch / torchvision / numpy / tensorrt? |
+|---|---|---|
+| `pip install transformers` | transformers-5.15.0, tokenizers-0.22.2, huggingface_hub-1.27.0, safetensors-0.8.0, hf-xet-1.6.0, regex, typer, click, httpx, httpcore, h11, anyio, annotated-doc, shellingham, exceptiongroup | **No.** numpy stays 1.23.5 (already satisfied); torch/torchvision/tensorrt not in install set. |
+| `pip install transformers timm accelerate` | above + timm-1.0.28, accelerate-1.14.0 | **No.** timm/accelerate see torch 2.5.0a0 nv, torchvision 0.20.0a0, numpy 1.23.5, PIL 9.0.1 — all "already satisfied". No change. |
+| `pip install transformers Pillow --upgrade` | above + pillow-12.3.0 | **No** to torch stack; **Yes to Pillow** (system PIL 9.0.1 → 12.3.0, installed into user/venv overlay). |
+| `pip install "transformers==4.46.3"` | transformers-4.46.3, tokenizers-0.20.3, huggingface_hub-0.36.2, safetensors, regex, hf-xet | **No.** Same stack untouched. Fewer companion packages than the unpinned v5 line. |
+
+#### Key finding on transformers version
+
+- Unpinned `pip install transformers` pulls **transformers 5.15.0** (a major v5 jump) with tokenizers 0.22 + huggingface_hub 1.27. This is much newer than the NanoOWL reference Dockerfile era (~4.x). OWL-ViT model coverage in v5 is unverified and the API surface drifts across majors.
+- Recommendation: **pin transformers to a known OWL-ViT-supporting 4.x** (e.g. `transformers==4.46.3`) rather than accept the resolver's default v5. Dry-run confirms 4.46.3 also leaves the torch stack untouched.
+
+#### Pillow upgrade
+
+- NanoOWL Dockerfile runs `pip install pillow --upgrade` to fix `UnidentifiedImageError`. Dry-run shows it would replace system PIL 9.0.1 with Pillow 12.3.0.
+- Because `.venv` has `include-system-site-packages=true` and PIL sits in system dirs, an upgrade installs the newer Pillow into the venv/user overlay **without removing the system file**; import precedence then resolves to the newer copy. Net effect on the shared Jetson image is low (system package stays) but the venv's effective Pillow changes 9.0.1 → 12.3.0. Treat as: optional, isolate to venv, verify image decode after.
+
+### torch2trt analysis (NOT installed)
+
+- Reference install: `pip install git+https://github.com/NVIDIA-AI-IOT/torch2trt.git`.
+- Dry-run (`--dry-run git+...torch2trt.git`) cloned the repo but produced **no "Would install" line** — its `setup.py` builds a C++/CUDA extension against the locally-linked torch + TensorRT and resolves deps at build time rather than via declared `install_requires`. Build-time, not declarative.
+- Risk conclusion (from build nature + locality; a standalone repo re-clone for setup.py inspection timed out on this pass, so deps inferred from dry-run behavior):
+  1. **Will not declaratively change torch / torchvision / numpy / tensorrt** — torch2trt depends on the existing torch+CUDA+TensorRT it is compiled against; it does not list them as installable requirements.
+  2. **Build-time coupling risk is real but confined**: torch2trt compiles against the present Jetson `torch 2.5.0a0+872d972e41.nv24.08` + `tensorrt 10.3`. Must be built on this exact image; a stock PyPI torch would be incompatible but is **not** being pulled here.
+  3. It may emit `torch.utils.cpp_extension` build artifacts / `~/.cache/torch_extensions` — environment cache only, not a torch version change.
+  4. Recommendation: build torch2trt only when reaching the engine-build stage; keep it out of the Python-only minimal set now. Pre-flight a real install with `--dry-run` again right before, and confirm `torch.cuda.is_available()` and the TensorRT Python binding version first.
+
+### Would pip modify torch / torchvision / numpy / tensorrt?
+
+- **No** for every dry-run variant above (transformers alone, transformers+timm+accelerate, pinned 4.46.3, +Pillow upgrade). torch 2.5.0a0 nv, torchvision 0.20.0a0, numpy 1.23.5, tensorrt 10.3 all report "already satisfied" or are absent from install sets.
+- **Pillow** is the only existing package a dry-run plans to change (9.0.1 → 12.3.0), and only when explicitly upgraded.
+
+### Minimum install set
+
+**NanoOWL main-line required (install in this order):**
+1. `pip install "transformers==4.46.3"` — pin to OWL-ViT-supporting 4.x (avoid v5 default).
+2. (optional, only if chosen transformers demands it) `pip install timm accelerate` — dry-run shows both currently pull in cleanly; defer unless transformers 4.46.3 import errors.
+3. `pip install Pillow --upgrade` — apply the upstream UnidentifiedImageError fix into the venv overlay; verify `PIL.__version__` after.
+
+**Tree Detection optional (NOT main-line, defer):**
+- `pip install git+https://github.com/openai/CLIP.git` — only for `nanoowl/clip_predictor.py`.
+
+**Not needed now:**
+- timm / accelerate unless a transformers import fails.
+- torch2trt — defer to engine-build stage (Jetson build-time component, not a pure Python dep). Engine build later will require it.
+
+### Integrity
+
+- `.venv` not modified; no install/upgrade/downgrade executed. No model weights. No engine. No remote/push. Only `docs/daily/day01.md` appended + one local commit.
