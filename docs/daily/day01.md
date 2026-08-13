@@ -292,3 +292,15 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 
 - Only `Pillow` changed in `.venv` (9.0.1 -> 12.3.0). No other package install/upgrade/downgrade, no weights, no NanoOWL engine, no remote/push. `docs/daily/day01.md` updated + regenerated `results/smoke/` regression artifacts committed under one local commit.
 - Stage 1G status: PASS.
+
+## Day 1 / Stage 1H - Pin torch2trt Upstream
+
+- Attempt time: 2026-08-13 10:57 CST
+- Input upstream: `https://github.com/NVIDIA-AI-IOT/torch2trt`
+- Intended output: Git submodule at `third_party/torch2trt` with the official upstream commit pinned by the parent repository; record upstream URL / branch / HEAD commit / latest commit date / LICENSE, and read README/setup.py for install method + plugin optionality + version pin (record only, no build/install).
+- Result: **FAIL - network**. `git submodule add https://github.com/NVIDIA-AI-IOT/torch2trt third_party/torch2trt` failed: `Failed to connect to github.com port 443 after ~131s: Connection timed out`. A standalone `git clone --depth 1` (Stage 1E inspection pass) and the retry here both timed out; `curl --max-time 40 https://github.com/NVIDIA-AI-IOT/torch2trt` returned http_code=000 (timeout) on 3 consecutive attempts.
+- Per Stage 1H rule, no mirror or alternate source was used. The upstream URL was not changed.
+- Upstream commit hash / branch / latest commit date / LICENSE / README/setup.py install method / plugin optionality / version pin: **unavailable** — the official repository could not be cloned/read from this host at this time.
+- Parent repository commit: created only this failure record (commensurate with the Stage 1C network-failure handling); no submodule pin commit was possible because the clone did not succeed.
+- Environment integrity: no torch2trt installed, no plugins compiled, no `.venv` change, no torch/torchvision/numpy/TensorRT/CUDA modification, no OWL-ViT weights, no NanoOWL package install, no TensorRT engine built, no remote/push. Parent working tree is clean; `.gitmodules` still contains only the `third_party/nanoowl` entry (no torch2trt partial registration); no `third_party/torch2trt` directory exists.
+- Stage 1H status: FAIL (network). Retry when GitHub is reachable again; the submodule-add command is unchanged.
