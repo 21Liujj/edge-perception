@@ -293,7 +293,7 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 - Only `Pillow` changed in `.venv` (9.0.1 -> 12.3.0). No other package install/upgrade/downgrade, no weights, no NanoOWL engine, no remote/push. `docs/daily/day01.md` updated + regenerated `results/smoke/` regression artifacts committed under one local commit.
 - Stage 1G status: PASS.
 
-## Day 1 / Stage 1H - Pin torch2trt Upstream
+## Day 1 / Stage 1H - Pin torch2trt Upstream (NETWORK_BLOCKED)
 
 - Attempt time: 2026-08-13 10:57 CST
 - Input upstream: `https://github.com/NVIDIA-AI-IOT/torch2trt`
@@ -303,4 +303,24 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 - Upstream commit hash / branch / latest commit date / LICENSE / README/setup.py install method / plugin optionality / version pin: **unavailable** — the official repository could not be cloned/read from this host at this time.
 - Parent repository commit: created only this failure record (commensurate with the Stage 1C network-failure handling); no submodule pin commit was possible because the clone did not succeed.
 - Environment integrity: no torch2trt installed, no plugins compiled, no `.venv` change, no torch/torchvision/numpy/TensorRT/CUDA modification, no OWL-ViT weights, no NanoOWL package install, no TensorRT engine built, no remote/push. Parent working tree is clean; `.gitmodules` still contains only the `third_party/nanoowl` entry (no torch2trt partial registration); no `third_party/torch2trt` directory exists.
-- Stage 1H status: FAIL (network). Retry when GitHub is reachable again; the submodule-add command is unchanged.
+- Stage 1H status: NETWORK_BLOCKED - GitHub clone timed out (network). Resolved offline via Stage 1H-Fallback below; the submodule-add command was NOT attempted again (no network used).
+
+## Day 1 / Stage 1H-Fallback - Pin Offline torch2trt Upstream
+
+- Fallback time: 2026-08-13, triggered by Stage 1H NETWORK_BLOCKED (GitHub port 443 timed out; no mirror/alternate used in 1H).
+- Offline source: `/home/nvidia/torch2trt.tar.gz` — the official torch2trt Git repository pre-staged offline as a full Git archive (includes the complete `.git/` directory).
+- Placement: extracted into `third_party/torch2trt`. The `.git` metadata directory was **preserved** (not deleted) so the upstream identity can be verified locally without any network access.
+- Pre-extraction state: the prior `third_party/torch2trt` was only an empty gitlink shell — a 74-byte `.git` file pointing at a nonexistent `…/modules/third_party/torch2trt`; no working-tree files, and torch2trt was never registered in `.gitmodules` (which still lists only `third_party/nanoowl`). The shell carried no content and was removed cleanly before extraction.
+- Verification (local Git only, **no network used**):
+  - origin remote: `https://github.com/NVIDIA-AI-IOT/torch2trt.git` (matches the intended official upstream).
+  - HEAD commit hash: `4e820ae31b4e35d59685935223b05b2e11d47b03`
+  - branch: `master`
+  - latest commit date: `2024-05-03 14:28:37 -0700` (subject: "Merge pull request #922 from jaybdub/dev_trt_10_refactor")
+  - working tree clean; 140 tracked files.
+- Upstream dependency pinning: the nested repository is kept as a **nested Git repo** (NOT converted to a standard submodule). Standard submodule registration/re-fetch would require network, and per the stage rules no network operation or repository-breaking action is permitted. The upstream is therefore pinned for this parent project by the **recorded commit hash** `4e820ae31b4e35d59685935223b05b2e11d47b03`. `.gitmodules` is left unchanged (still only the `third_party/nanoowl` entry).
+- README/setup.py inspection (record only — no install/build):
+  - Python library install method: `python setup.py install` (README, Setup Step 1).
+  - Plugins: **optional**. README labels plugins "Step 2 (optional)" — built independently via CMake (`cmake -B build . && cmake --build build --target install && ldconfig`). The `--plugins` flag in `setup.py` is deprecated-only and still requires a CUDA/nvinfer compile; it was NOT used.
+  - Version pin: `setup.py` declares `version='0.5.0'`; there is no git tag pin and no requirements.txt pin, so the effective version lock for this parent project is the recorded commit hash above.
+- Environment integrity: no `pip install`, no torch2trt install, no plugin compilation, no `.venv` modification, no CUDA/TensorRT/PyTorch modification, no model download, no TensorRT engine build, no `git push`, no GitHub upload. Only local extraction, local Git verification, this documentation update, and one local parent commit were performed.
+- Stage 1H-Fallback status: PASS.
