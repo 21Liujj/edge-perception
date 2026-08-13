@@ -1,0 +1,21 @@
+{
+  "input": "third_party/nanoowl/assets/camera.jpg",
+  "prompts": [
+    "a camera",
+    "a hand",
+    "a person"
+  ],
+  "threshold": 0.1,
+  "target_label": null,
+  "image_width": 640,
+  "image_height": 480,
+  "nanoowl": {
+    "num_detections": 0,
+    "detections": [],
+    "selected_detection": null,
+    "selection_rule": "no detections"
+  },
+  "bridge": null,
+  "nanosam": null,
+  "status": "NO_DETECTION"
+}

@@ -1,0 +1,7 @@
+{
+  "nanoowl_load_ms": 1568.386,
+  "nanoowl_ms": 462.748,
+  "nanosam_set_image_ms": 700.932,
+  "nanosam_decode_ms": 28.003,
+  "pipeline_total_ms": 1191.683
+}
