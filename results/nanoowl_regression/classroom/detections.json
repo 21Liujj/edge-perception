@@ -1,0 +1,36 @@
+{
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/class.jpg",
+  "prompts": [
+    "a person",
+    "a backpack",
+    "a chair"
+  ],
+  "threshold": 0.1,
+  "num_detections": 2,
+  "detections": [
+    {
+      "label_index": 2,
+      "label": "a chair",
+      "score": 0.12014468759298325,
+      "box": [
+        1035.673828125,
+        563.291015625,
+        1127.431640625,
+        834.8828125
+      ]
+    },
+    {
+      "label_index": 0,
+      "label": "a person",
+      "score": 0.10958289355039597,
+      "box": [
+        0.0,
+        7.36328125,
+        759.9755859375,
+        1157.16796875
+      ]
+    }
+  ]
+}

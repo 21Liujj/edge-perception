@@ -1,0 +1,13 @@
+{
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/camera.jpg",
+  "prompts": [
+    "a camera",
+    "a hand",
+    "a person"
+  ],
+  "threshold": 0.1,
+  "num_detections": 0,
+  "detections": []
+}

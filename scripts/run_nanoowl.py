@@ -40,7 +40,7 @@ def parse_args():
     ap = argparse.ArgumentParser(description="NanoOWL open-vocabulary detection CLI")
     ap.add_argument("--image", default=DEFAULT_IMAGE, help="path to input image")
     ap.add_argument("--prompts", default="an owl,a glove,a finger",
-                    help="comma-separated text prompts, e.g. an owl,a glove")
+                    help="comma-separated text prompts, e.g. 'an owl,a glove'")
     ap.add_argument("--threshold", type=float, default=0.10, help="detection score threshold")
     ap.add_argument("--engine", default=DEFAULT_ENGINE, help="TensorRT image encoder engine path")
     ap.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="directory for outputs")
@@ -49,40 +49,41 @@ def parse_args():
     return ap.parse_args()
 
 
-def main():
-    args = parse_args()
-    os.makedirs(args.output_dir, exist_ok=True)
-    text = [t.strip() for t in args.prompts.split(",") if t.strip()]
-
-    t_start = time.perf_counter()
-
-    # --- model load (predictor + engine) ---
+def load_predictor(model, engine):
+    """Load OwlPredictor once (timed), for batch reuse via run_once()."""
     t0 = time.perf_counter()
-    predictor = OwlPredictor(args.model, image_encoder_engine=args.engine)
+    predictor = OwlPredictor(model, image_encoder_engine=engine)
     if torch.cuda.is_available():
         torch.cuda.synchronize()
     model_load_ms = (time.perf_counter() - t0) * 1000.0
+    return predictor, model_load_ms
 
-    image = PIL.Image.open(args.image).convert("RGB")
 
-    # text encoding counted as part of inference (per-query work)
+def run_once(predictor, image_path, prompts_text, threshold, output_dir,
+             pad_square=False, model=None, engine=None):
+    """Reuse entry: run detection + save detections.json/result.jpg/timing.json.
+
+    `predictor` is assumed already loaded (load NOT timed here, to allow batch
+    reuse); model_load_ms is reported as 0.0 when reusing a predictor.
+    Returns (detections_doc, timing_doc).
+    """
+    os.makedirs(output_dir, exist_ok=True)
+    text = [t.strip() for t in prompts_text.split(",") if t.strip()]
+    image = PIL.Image.open(image_path).convert("RGB")
+
     t1 = time.perf_counter()
     text_encodings = predictor.encode_text(text)
     output = predictor.predict(
         image=image, text=text, text_encodings=text_encodings,
-        threshold=args.threshold, pad_square=args.pad_square,
+        threshold=threshold, pad_square=pad_square,
     )
     if torch.cuda.is_available():
         torch.cuda.synchronize()
     inference_ms = (time.perf_counter() - t1) * 1000.0
 
-    total_ms = (time.perf_counter() - t_start) * 1000.0
-
-    # --- build detections.json ---
     labels = output.labels.detach().cpu().tolist()
     scores = output.scores.detach().cpu().tolist()
     boxes = [[float(v) for v in b] for b in output.boxes.detach().cpu().tolist()]
-
     detections = []
     for lab, sc, bx in zip(labels, scores, boxes):
         li = int(lab)
@@ -95,28 +96,47 @@ def main():
     detections.sort(key=lambda d: d["score"], reverse=True)
 
     detections_doc = {
-        "model": args.model,
-        "engine": args.engine,
-        "image": args.image,
+        "model": model,
+        "engine": engine,
+        "image": image_path,
         "prompts": text,
-        "threshold": args.threshold,
+        "threshold": threshold,
         "num_detections": len(detections),
         "detections": detections,
     }
-    with open(os.path.join(args.output_dir, "detections.json"), "w") as f:
+    with open(os.path.join(output_dir, "detections.json"), "w") as f:
         json.dump(detections_doc, f, indent=2)
 
-    # --- visualization (OpenCV readonly-array compat handled in our own script) ---
-    vis_arr = np.array(image).copy()  # writable copy; draw_owl_output -> cv2 needs writable
+    # Visualization: writable copy (OpenCV 4.x rejects read-only PIL->numpy arrays).
+    vis_arr = np.array(image).copy()
     _ = draw_owl_output(vis_arr, output, text=text, draw_text=True)
-    _Image.fromarray(vis_arr).save(os.path.join(args.output_dir, "result.jpg"))
+    _Image.fromarray(vis_arr).save(os.path.join(output_dir, "result.jpg"))
 
-    # --- timing.json (no formal benchmark stats) ---
     timing_doc = {
-        "model_load_ms": model_load_ms,
+        "model_load_ms": 0.0,
         "inference_ms": inference_ms,
-        "total_ms": total_ms,
+        "total_ms": inference_ms,
     }
+    with open(os.path.join(output_dir, "timing.json"), "w") as f:
+        json.dump(timing_doc, f, indent=2)
+    return detections_doc, timing_doc
+
+
+def main():
+    args = parse_args()
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    t_start = time.perf_counter()
+    predictor, model_load_ms = load_predictor(args.model, args.engine)
+
+    detections_doc, timing_doc = run_once(
+        predictor, args.image, args.prompts, args.threshold,
+        args.output_dir, pad_square=args.pad_square,
+        model=args.model, engine=args.engine,
+    )
+    # restore load timing for the single-shot CLI view
+    timing_doc["model_load_ms"] = model_load_ms
+    timing_doc["total_ms"] = (time.perf_counter() - t_start) * 1000.0
     with open(os.path.join(args.output_dir, "timing.json"), "w") as f:
         json.dump(timing_doc, f, indent=2)
 

@@ -1,0 +1,24 @@
+{
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove.jpg",
+  "prompts": [
+    "an owl",
+    "a glove"
+  ],
+  "threshold": 0.1,
+  "num_detections": 1,
+  "detections": [
+    {
+      "label_index": 0,
+      "label": "an owl",
+      "score": 0.3648817539215088,
+      "box": [
+        1107.421875,
+        324.38232421875,
+        1853.0859375,
+        1596.05859375
+      ]
+    }
+  ]
+}

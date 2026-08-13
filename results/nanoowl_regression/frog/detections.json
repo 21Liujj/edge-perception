@@ -1,0 +1,25 @@
+{
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/frog.jpg",
+  "prompts": [
+    "a frog",
+    "a leaf",
+    "a hand"
+  ],
+  "threshold": 0.1,
+  "num_detections": 1,
+  "detections": [
+    {
+      "label_index": 0,
+      "label": "a frog",
+      "score": 0.4308895766735077,
+      "box": [
+        31.085205078125,
+        33.7763671875,
+        216.455078125,
+        158.337890625
+      ]
+    }
+  ]
+}
