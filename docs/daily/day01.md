@@ -39,3 +39,13 @@
 - Initial commit: PASS - `e97b98276a71283836cfd86407e96e7f03d4c07b` (`baseline: validated Stage 0 ONNX-TensorRT pipeline`).
 - Stage 1B status: PASS; repository baseline completed and protected environment/model artifacts remain ignored.
 - No NanoOWL installation or Stage 1C work was performed, and the validated software environment was not changed.
+
+## Day 1 / Stage 1C - Pin NanoOWL Upstream
+
+- Attempt time: 2026-08-13 09:58:46 CST
+- Input upstream: `https://github.com/NVIDIA-AI-IOT/nanoowl`
+- Intended output: Git submodule at `third_party/nanoowl` with the official upstream commit pinned by the parent repository.
+- Result: FAIL - the Jetson resolved GitHub but both HTTPS clone attempts timed out connecting to `github.com:443`; no NanoOWL source, model weights, dependencies, or TensorRT engines were downloaded.
+- Upstream commit, branch, commit date, license, and dependency metadata: unavailable because the official repository could not be cloned/read from this host.
+- Parent repository commit: not created because Stage 1C did not complete.
+- Environment integrity: no dependency installation, environment modification, upstream source edit, remote configuration, push, or later-stage work was performed.
