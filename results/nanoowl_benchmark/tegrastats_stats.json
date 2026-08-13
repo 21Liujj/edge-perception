@@ -1,0 +1,29 @@
+{
+  "ram_used_mb": {
+    "min": 3116,
+    "max": 3124,
+    "mean": 3121
+  },
+  "gr3d_gpu_freq_pct": {
+    "min": 67,
+    "max": 94,
+    "mean": 79.57
+  },
+  "gpu_temp_c": {
+    "min": 54.812,
+    "max": 57.187,
+    "mean": 56.26
+  },
+  "cpu_temp_c": {
+    "min": 52.031,
+    "max": 54.031,
+    "mean": 53.24
+  },
+  "vdd_in_mw": {
+    "min": 14720,
+    "max": 16830,
+    "mean": 16148.71
+  },
+  "emc_pct": "not_reported_by_tegrastats",
+  "samples": 14
+}

@@ -1,0 +1,30 @@
+[08/13/2026-14:33:22] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+{
+  "stage": "2C",
+  "input_image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+  "prompts": [
+    "an owl",
+    "a glove",
+    "a finger"
+  ],
+  "threshold": 0.1,
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "model": "google/owlvit-base-patch32",
+  "model_load_ms": 1860.7992910001485,
+  "warmup_iters": 40,
+  "benchmark_iters": 300,
+  "latency_ms": {
+    "mean": 22.49088152333722,
+    "min": 20.578276999913214,
+    "max": 26.07131800004936,
+    "p50": 22.468228999969142,
+    "p95": 22.850723100054893,
+    "p99": 24.383865519939718
+  },
+  "estimated_fps": 44.46246355272334,
+  "validity": {
+    "inference_errors": 0,
+    "nan_detected": false,
+    "owl_detection_present_every_iter": true
+  }
+}

@@ -55,3 +55,21 @@
 - 证据目录：`results/nanoowl_regression/`（`summary.json` + 每个子目录 `detections.json`/`result.jpg`/`timing.json`/`status.json`）。
 - 完整性：不做正式 latency benchmark / mAP/mIoU / NanoSAM / INT8 / MP4；不装新依赖；不改模型/Engine；`third_party/nanoowl` 未改；无 remote/push/GitHub 上传。`scripts/run_nanoowl.py` 仅重构出 `load_predictor`/`run_once` 供复用，推理逻辑与 Day 1 一致（owl 基准 score 0.3419 复现）。
 - Stage 2B status: PASS。
+
+## Stage 2C — NanoOWL 稳定态性能 Benchmark
+
+- 目标：测量 NanoOWL TensorRT baseline 稳定态推理性能 + 同步 tegrastats 系统资源；不做优化、不解释未验证瓶颈。
+- 工具：`scripts/benchmark_nanoowl.py`（复用 `scripts/run_nanoowl.py` 的 `load_predictor`，单次模型加载后 warmup + 定时推理，无 per-iter 重载）。
+- 配置：owl_glove_small.jpg，prompts `an owl,a glove,a finger`，threshold 0.10；FP16 engine 固定。
+- 流程：warmup 40 次 -> 正式 300 次定时推理 -> tegrastats 在定时窗口内 500ms 采样。每轮校验：无异常 / 输出无 NaN / owl 检测仍存在。
+- 结果（真实测量）：
+  - model_load_ms: 1860.80
+  - latency(ms): mean 22.49 / min 20.58 / max 26.07 / p50 22.47 / p95 22.85 / p99 24.38
+  - estimated FPS: 44.46
+  - validity: inference_errors 0, NaN false, owl 每轮存在 true
+- 系统资源（tegrastats，14 样本）：RAM mean 3121MB(peak 3124/7620)；GR3D freq mean 79.57%(max 94%)；GPU temp mean 56.26C(max 57.19)；CPU temp mean 53.24C；VDD_IN mean 16148.71mW(max 16830)；EMC tegrastats 未上报（记为不可用）。
+- tegrastats 进程在 benchmark 结束后正常停止（仅本阶段进程，未动系统其他进程）。
+- 后置回归：owl baseline 重跑 PASS，检测 "an owl" score 0.3419（与 Day 1 一致）。
+- 证据目录：`results/nanoowl_benchmark/`（benchmark.json、latencies.csv、tegrastats.log、tegrastats_stats.json、summary.md、post_bench_regression/）。
+- 完整性：不改模型/Engine/源码/核心依赖；不做 NanoSAM/INT8/MP4/ROS2；不改 power mode、不跑 jetson_clocks；不重建 Engine；不装新依赖；无 remote/push。
+- Stage 2C status: PASS。
