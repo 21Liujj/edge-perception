@@ -2,7 +2,7 @@
 
 ## 今日目标
 
-将 Day 1 NanoOWL baseline 整理为可复用的工程化推理 CLI，固定 API 与现有 FP16 TensorRT Engine，保证回归与 Day 1 一致，为固定测试集 + 初步 Benchmark（Stage 2B）做铺垫。
+将 Day 1 NanoOWL baseline 工程化，并建立 correctness regression 与 performance benchmark。
 
 ## Stage 2A — 可复用 NanoOWL 推理 CLI
 
@@ -29,11 +29,6 @@
 - 证据目录：`results/nanoowl_cli/`（`detections.json`、`result.jpg`、`timing.json`）
 - 完整性：不修改模型/Engine/核心依赖；不做 NanoSAM；不做正式 Benchmark；不下载新模型；无 remote/push/GitHub 上传；`third_party/nanoowl` 未改。
 - Stage 2A status: PASS。
-
-## Day 2 后续（未做，见 Stage 2B 起）
-
-- 固定测试集
-- 初步性能 Benchmark（多轮统计）
 
 ## Stage 2B — 固定回归测试集与批量正确性验证
 
@@ -73,3 +68,55 @@
 - 证据目录：`results/nanoowl_benchmark/`（benchmark.json、latencies.csv、tegrastats.log、tegrastats_stats.json、summary.md、post_bench_regression/）。
 - 完整性：不改模型/Engine/源码/核心依赖；不做 NanoSAM/INT8/MP4/ROS2；不改 power mode、不跑 jetson_clocks；不重建 Engine；不装新依赖；无 remote/push。
 - Stage 2C status: PASS。
+
+---
+
+## Day 2 Evidence
+
+- `results/nanoowl_cli/` — Stage 2A reusable CLI run output（detections.json / result.jpg / timing.json）
+- `results/nanoowl_regression/` — Stage 2B regression suite（summary.json + 每 case 子目录 detections.json / result.jpg / timing.json / status.json）
+- `results/nanoowl_benchmark/` — Stage 2C benchmark（benchmark.json / latencies.csv / tegrastats.log / tegrastats_stats.json / summary.md / post_bench_regression/）
+
+### Stage 2C 关键数据（真实测量）
+
+- model_load_ms = 1860.80
+- warmup = 40，iterations = 300
+- mean = 22.49 ms / P50 = 22.47 ms / P95 = 22.85 ms / P99 = 24.38 ms / max = 26.07 ms
+- estimated inference-only FPS = 44.46
+- Peak RAM = 3124 MB
+- GR3D mean = 79.57% / GR3D max = 94%
+- GPU temp mean = 56.26 C / GPU temp max = 57.19 C
+- CPU temp mean = 53.24 C
+- VDD_IN mean = 16148.71 mW / VDD_IN max = 16830 mW
+- EMC = N/A（当前 L4T tegrastats 未上报）
+- post benchmark regression：an owl，score 0.3419，PASS
+
+### 性能口径说明
+
+44.46 FPS 当前属于 **steady-state inference-only estimate**，不是完整 image I/O / preprocessing / visualization / NanoSAM pipeline 的 end-to-end FPS。
+
+---
+
+## Day 2 Final Result
+
+**PASS — NanoOWL has been converted from an upstream baseline demo into a reusable, regression-tested and benchmarked Jetson inference module.**
+
+- CLI（Stage 2A）：PASS
+- Regression suite（Stage 2B）：PASS（5 cases / 5 images，owl 基准稳定复现）
+- Performance benchmark（Stage 2C）：PASS（mean 22.49ms，~44.46 inference-only FPS，0 异常 / 无 NaN / owl 每轮存在）
+
+### Day 2 仍未做（明确列出）
+
+- 正式 COCO accuracy benchmark
+- NanoSAM
+- NanoOWL + NanoSAM
+- INT8
+- MP4 realtime pipeline
+- ROS2
+- stability test
+
+---
+
+## Day 3 起点
+
+NanoSAM TensorRT baseline：Image + Box/Point Prompt -> Segmentation Mask。
