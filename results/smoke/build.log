@@ -1,135 +1,135 @@
 &&&& RUNNING TensorRT.trtexec [TensorRT v100300] # /usr/src/tensorrt/bin/trtexec --onnx=/home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx --saveEngine=/home/nvidia/jetson-deploy-lab/results/smoke/identity.engine --builderOptimizationLevel=3 --profilingVerbosity=detailed --skipInference
-[08/05/2026-12:55:51] [I] === Model Options ===
-[08/05/2026-12:55:51] [I] Format: ONNX
-[08/05/2026-12:55:51] [I] Model: /home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx
-[08/05/2026-12:55:51] [I] Output:
-[08/05/2026-12:55:51] [I] === Build Options ===
-[08/05/2026-12:55:51] [I] Memory Pools: workspace: default, dlaSRAM: default, dlaLocalDRAM: default, dlaGlobalDRAM: default, tacticSharedMem: default
-[08/05/2026-12:55:51] [I] avgTiming: 8
-[08/05/2026-12:55:51] [I] Precision: FP32
-[08/05/2026-12:55:51] [I] LayerPrecisions: 
-[08/05/2026-12:55:51] [I] Layer Device Types: 
-[08/05/2026-12:55:51] [I] Calibration: 
-[08/05/2026-12:55:51] [I] Refit: Disabled
-[08/05/2026-12:55:51] [I] Strip weights: Disabled
-[08/05/2026-12:55:51] [I] Version Compatible: Disabled
-[08/05/2026-12:55:51] [I] ONNX Plugin InstanceNorm: Disabled
-[08/05/2026-12:55:51] [I] TensorRT runtime: full
-[08/05/2026-12:55:51] [I] Lean DLL Path: 
-[08/05/2026-12:55:51] [I] Tempfile Controls: { in_memory: allow, temporary: allow }
-[08/05/2026-12:55:51] [I] Exclude Lean Runtime: Disabled
-[08/05/2026-12:55:51] [I] Sparsity: Disabled
-[08/05/2026-12:55:51] [I] Safe mode: Disabled
-[08/05/2026-12:55:51] [I] Build DLA standalone loadable: Disabled
-[08/05/2026-12:55:51] [I] Allow GPU fallback for DLA: Disabled
-[08/05/2026-12:55:51] [I] DirectIO mode: Disabled
-[08/05/2026-12:55:51] [I] Restricted mode: Disabled
-[08/05/2026-12:55:51] [I] Skip inference: Enabled
-[08/05/2026-12:55:51] [I] Save engine: /home/nvidia/jetson-deploy-lab/results/smoke/identity.engine
-[08/05/2026-12:55:51] [I] Load engine: 
-[08/05/2026-12:55:51] [I] Profiling verbosity: 2
-[08/05/2026-12:55:51] [I] Tactic sources: Using default tactic sources
-[08/05/2026-12:55:51] [I] timingCacheMode: local
-[08/05/2026-12:55:51] [I] timingCacheFile: 
-[08/05/2026-12:55:51] [I] Enable Compilation Cache: Enabled
-[08/05/2026-12:55:51] [I] errorOnTimingCacheMiss: Disabled
-[08/05/2026-12:55:51] [I] Preview Features: Use default preview flags.
-[08/05/2026-12:55:51] [I] MaxAuxStreams: -1
-[08/05/2026-12:55:51] [I] BuilderOptimizationLevel: 3
-[08/05/2026-12:55:51] [I] Calibration Profile Index: 0
-[08/05/2026-12:55:51] [I] Weight Streaming: Disabled
-[08/05/2026-12:55:51] [I] Runtime Platform: Same As Build
-[08/05/2026-12:55:51] [I] Debug Tensors: 
-[08/05/2026-12:55:51] [I] Input(s)s format: fp32:CHW
-[08/05/2026-12:55:51] [I] Output(s)s format: fp32:CHW
-[08/05/2026-12:55:51] [I] Input build shapes: model
-[08/05/2026-12:55:51] [I] Input calibration shapes: model
-[08/05/2026-12:55:51] [I] === System Options ===
-[08/05/2026-12:55:51] [I] Device: 0
-[08/05/2026-12:55:51] [I] DLACore: 
-[08/05/2026-12:55:51] [I] Plugins:
-[08/05/2026-12:55:51] [I] setPluginsToSerialize:
-[08/05/2026-12:55:51] [I] dynamicPlugins:
-[08/05/2026-12:55:51] [I] ignoreParsedPluginLibs: 0
-[08/05/2026-12:55:51] [I] 
-[08/05/2026-12:55:51] [I] === Inference Options ===
-[08/05/2026-12:55:51] [I] Batch: Explicit
-[08/05/2026-12:55:51] [I] Input inference shapes: model
-[08/05/2026-12:55:51] [I] Iterations: 10
-[08/05/2026-12:55:51] [I] Duration: 3s (+ 200ms warm up)
-[08/05/2026-12:55:51] [I] Sleep time: 0ms
-[08/05/2026-12:55:51] [I] Idle time: 0ms
-[08/05/2026-12:55:51] [I] Inference Streams: 1
-[08/05/2026-12:55:51] [I] ExposeDMA: Disabled
-[08/05/2026-12:55:51] [I] Data transfers: Enabled
-[08/05/2026-12:55:51] [I] Spin-wait: Disabled
-[08/05/2026-12:55:51] [I] Multithreading: Disabled
-[08/05/2026-12:55:51] [I] CUDA Graph: Disabled
-[08/05/2026-12:55:51] [I] Separate profiling: Disabled
-[08/05/2026-12:55:51] [I] Time Deserialize: Disabled
-[08/05/2026-12:55:51] [I] Time Refit: Disabled
-[08/05/2026-12:55:51] [I] NVTX verbosity: 2
-[08/05/2026-12:55:51] [I] Persistent Cache Ratio: 0
-[08/05/2026-12:55:51] [I] Optimization Profile Index: 0
-[08/05/2026-12:55:51] [I] Weight Streaming Budget: 100.000000%
-[08/05/2026-12:55:51] [I] Inputs:
-[08/05/2026-12:55:51] [I] Debug Tensor Save Destinations:
-[08/05/2026-12:55:51] [I] === Reporting Options ===
-[08/05/2026-12:55:51] [I] Verbose: Disabled
-[08/05/2026-12:55:51] [I] Averages: 10 inferences
-[08/05/2026-12:55:51] [I] Percentiles: 90,95,99
-[08/05/2026-12:55:51] [I] Dump refittable layers:Disabled
-[08/05/2026-12:55:51] [I] Dump output: Disabled
-[08/05/2026-12:55:51] [I] Profile: Disabled
-[08/05/2026-12:55:51] [I] Export timing to JSON file: 
-[08/05/2026-12:55:51] [I] Export output to JSON file: 
-[08/05/2026-12:55:51] [I] Export profile to JSON file: 
-[08/05/2026-12:55:51] [I] 
-[08/05/2026-12:55:51] [I] === Device Information ===
-[08/05/2026-12:55:51] [I] Available Devices: 
-[08/05/2026-12:55:51] [I]   Device 0: "Orin" UUID: GPU-af662878-cc13-54e2-aa45-ec33c4335a12
-[08/05/2026-12:55:51] [I] Selected Device: Orin
-[08/05/2026-12:55:51] [I] Selected Device ID: 0
-[08/05/2026-12:55:51] [I] Selected Device UUID: GPU-af662878-cc13-54e2-aa45-ec33c4335a12
-[08/05/2026-12:55:51] [I] Compute Capability: 8.7
-[08/05/2026-12:55:51] [I] SMs: 8
-[08/05/2026-12:55:51] [I] Device Global Memory: 7619 MiB
-[08/05/2026-12:55:51] [I] Shared Memory per SM: 164 KiB
-[08/05/2026-12:55:51] [I] Memory Bus Width: 128 bits (ECC disabled)
-[08/05/2026-12:55:51] [I] Application Compute Clock Rate: 1.02 GHz
-[08/05/2026-12:55:51] [I] Application Memory Clock Rate: 0.918 GHz
-[08/05/2026-12:55:51] [I] 
-[08/05/2026-12:55:51] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
-[08/05/2026-12:55:51] [I] 
-[08/05/2026-12:55:51] [I] TensorRT version: 10.3.0
-[08/05/2026-12:55:51] [I] Loading standard plugins
-[08/05/2026-12:55:51] [I] [TRT] [MemUsageChange] Init CUDA: CPU +2, GPU +0, now: CPU 31, GPU 2241 (MiB)
-[08/05/2026-12:55:53] [I] [TRT] [MemUsageChange] Init builder kernel library: CPU +928, GPU +747, now: CPU 1002, GPU 3033 (MiB)
-[08/05/2026-12:55:54] [I] Start parsing network model.
-[08/05/2026-12:55:54] [I] [TRT] ----------------------------------------------------------------
-[08/05/2026-12:55:54] [I] [TRT] Input filename:   /home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx
-[08/05/2026-12:55:54] [I] [TRT] ONNX IR version:  0.0.9
-[08/05/2026-12:55:54] [I] [TRT] Opset version:    17
-[08/05/2026-12:55:54] [I] [TRT] Producer name:    jetson-deploy-lab
-[08/05/2026-12:55:54] [I] [TRT] Producer version: 
-[08/05/2026-12:55:54] [I] [TRT] Domain:           
-[08/05/2026-12:55:54] [I] [TRT] Model version:    0
-[08/05/2026-12:55:54] [I] [TRT] Doc string:       
-[08/05/2026-12:55:54] [I] [TRT] ----------------------------------------------------------------
-[08/05/2026-12:55:54] [I] Finished parsing network model. Parse time: 0.00249276
-[08/05/2026-12:55:54] [I] [TRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
-[08/05/2026-12:55:54] [I] [TRT] Detected 1 inputs and 1 output network tensors.
-[08/05/2026-12:55:54] [I] [TRT] Total Host Persistent Memory: 32
-[08/05/2026-12:55:54] [I] [TRT] Total Device Persistent Memory: 0
-[08/05/2026-12:55:54] [I] [TRT] Total Scratch Memory: 0
-[08/05/2026-12:55:54] [I] [TRT] Total Activation Memory: 0
-[08/05/2026-12:55:54] [I] [TRT] Total Weights Memory: 0
-[08/05/2026-12:55:54] [I] [TRT] Engine generation completed in 0.166127 seconds.
-[08/05/2026-12:55:54] [I] [TRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 0 MiB
-[08/05/2026-12:55:54] [I] [TRT] [MemUsageStats] Peak memory usage during Engine building and serialization: CPU: 1402 MiB
-[08/05/2026-12:55:54] [I] Engine built in 0.168486 sec.
-[08/05/2026-12:55:54] [I] Created engine with size: 0.00828171 MiB
-[08/05/2026-12:55:54] [I] [TRT] Loaded engine size: 0 MiB
-[08/05/2026-12:55:54] [I] Engine deserialized in 0.000249686 sec.
-[08/05/2026-12:55:54] [I] Skipped inference phase since --skipInference is added.
+[08/13/2026-10:30:59] [I] === Model Options ===
+[08/13/2026-10:30:59] [I] Format: ONNX
+[08/13/2026-10:30:59] [I] Model: /home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx
+[08/13/2026-10:30:59] [I] Output:
+[08/13/2026-10:30:59] [I] === Build Options ===
+[08/13/2026-10:30:59] [I] Memory Pools: workspace: default, dlaSRAM: default, dlaLocalDRAM: default, dlaGlobalDRAM: default, tacticSharedMem: default
+[08/13/2026-10:30:59] [I] avgTiming: 8
+[08/13/2026-10:30:59] [I] Precision: FP32
+[08/13/2026-10:30:59] [I] LayerPrecisions: 
+[08/13/2026-10:30:59] [I] Layer Device Types: 
+[08/13/2026-10:30:59] [I] Calibration: 
+[08/13/2026-10:30:59] [I] Refit: Disabled
+[08/13/2026-10:30:59] [I] Strip weights: Disabled
+[08/13/2026-10:30:59] [I] Version Compatible: Disabled
+[08/13/2026-10:30:59] [I] ONNX Plugin InstanceNorm: Disabled
+[08/13/2026-10:30:59] [I] TensorRT runtime: full
+[08/13/2026-10:30:59] [I] Lean DLL Path: 
+[08/13/2026-10:30:59] [I] Tempfile Controls: { in_memory: allow, temporary: allow }
+[08/13/2026-10:30:59] [I] Exclude Lean Runtime: Disabled
+[08/13/2026-10:30:59] [I] Sparsity: Disabled
+[08/13/2026-10:30:59] [I] Safe mode: Disabled
+[08/13/2026-10:30:59] [I] Build DLA standalone loadable: Disabled
+[08/13/2026-10:30:59] [I] Allow GPU fallback for DLA: Disabled
+[08/13/2026-10:30:59] [I] DirectIO mode: Disabled
+[08/13/2026-10:30:59] [I] Restricted mode: Disabled
+[08/13/2026-10:30:59] [I] Skip inference: Enabled
+[08/13/2026-10:30:59] [I] Save engine: /home/nvidia/jetson-deploy-lab/results/smoke/identity.engine
+[08/13/2026-10:30:59] [I] Load engine: 
+[08/13/2026-10:30:59] [I] Profiling verbosity: 2
+[08/13/2026-10:30:59] [I] Tactic sources: Using default tactic sources
+[08/13/2026-10:30:59] [I] timingCacheMode: local
+[08/13/2026-10:30:59] [I] timingCacheFile: 
+[08/13/2026-10:30:59] [I] Enable Compilation Cache: Enabled
+[08/13/2026-10:30:59] [I] errorOnTimingCacheMiss: Disabled
+[08/13/2026-10:30:59] [I] Preview Features: Use default preview flags.
+[08/13/2026-10:30:59] [I] MaxAuxStreams: -1
+[08/13/2026-10:30:59] [I] BuilderOptimizationLevel: 3
+[08/13/2026-10:30:59] [I] Calibration Profile Index: 0
+[08/13/2026-10:30:59] [I] Weight Streaming: Disabled
+[08/13/2026-10:30:59] [I] Runtime Platform: Same As Build
+[08/13/2026-10:30:59] [I] Debug Tensors: 
+[08/13/2026-10:30:59] [I] Input(s)s format: fp32:CHW
+[08/13/2026-10:30:59] [I] Output(s)s format: fp32:CHW
+[08/13/2026-10:30:59] [I] Input build shapes: model
+[08/13/2026-10:30:59] [I] Input calibration shapes: model
+[08/13/2026-10:30:59] [I] === System Options ===
+[08/13/2026-10:30:59] [I] Device: 0
+[08/13/2026-10:30:59] [I] DLACore: 
+[08/13/2026-10:30:59] [I] Plugins:
+[08/13/2026-10:30:59] [I] setPluginsToSerialize:
+[08/13/2026-10:30:59] [I] dynamicPlugins:
+[08/13/2026-10:30:59] [I] ignoreParsedPluginLibs: 0
+[08/13/2026-10:30:59] [I] 
+[08/13/2026-10:30:59] [I] === Inference Options ===
+[08/13/2026-10:30:59] [I] Batch: Explicit
+[08/13/2026-10:30:59] [I] Input inference shapes: model
+[08/13/2026-10:30:59] [I] Iterations: 10
+[08/13/2026-10:30:59] [I] Duration: 3s (+ 200ms warm up)
+[08/13/2026-10:30:59] [I] Sleep time: 0ms
+[08/13/2026-10:30:59] [I] Idle time: 0ms
+[08/13/2026-10:30:59] [I] Inference Streams: 1
+[08/13/2026-10:30:59] [I] ExposeDMA: Disabled
+[08/13/2026-10:30:59] [I] Data transfers: Enabled
+[08/13/2026-10:30:59] [I] Spin-wait: Disabled
+[08/13/2026-10:30:59] [I] Multithreading: Disabled
+[08/13/2026-10:30:59] [I] CUDA Graph: Disabled
+[08/13/2026-10:30:59] [I] Separate profiling: Disabled
+[08/13/2026-10:30:59] [I] Time Deserialize: Disabled
+[08/13/2026-10:30:59] [I] Time Refit: Disabled
+[08/13/2026-10:30:59] [I] NVTX verbosity: 2
+[08/13/2026-10:30:59] [I] Persistent Cache Ratio: 0
+[08/13/2026-10:30:59] [I] Optimization Profile Index: 0
+[08/13/2026-10:30:59] [I] Weight Streaming Budget: 100.000000%
+[08/13/2026-10:30:59] [I] Inputs:
+[08/13/2026-10:30:59] [I] Debug Tensor Save Destinations:
+[08/13/2026-10:30:59] [I] === Reporting Options ===
+[08/13/2026-10:30:59] [I] Verbose: Disabled
+[08/13/2026-10:30:59] [I] Averages: 10 inferences
+[08/13/2026-10:30:59] [I] Percentiles: 90,95,99
+[08/13/2026-10:30:59] [I] Dump refittable layers:Disabled
+[08/13/2026-10:30:59] [I] Dump output: Disabled
+[08/13/2026-10:30:59] [I] Profile: Disabled
+[08/13/2026-10:30:59] [I] Export timing to JSON file: 
+[08/13/2026-10:30:59] [I] Export output to JSON file: 
+[08/13/2026-10:30:59] [I] Export profile to JSON file: 
+[08/13/2026-10:30:59] [I] 
+[08/13/2026-10:30:59] [I] === Device Information ===
+[08/13/2026-10:30:59] [I] Available Devices: 
+[08/13/2026-10:30:59] [I]   Device 0: "Orin" UUID: GPU-af662878-cc13-54e2-aa45-ec33c4335a12
+[08/13/2026-10:30:59] [I] Selected Device: Orin
+[08/13/2026-10:30:59] [I] Selected Device ID: 0
+[08/13/2026-10:30:59] [I] Selected Device UUID: GPU-af662878-cc13-54e2-aa45-ec33c4335a12
+[08/13/2026-10:30:59] [I] Compute Capability: 8.7
+[08/13/2026-10:30:59] [I] SMs: 8
+[08/13/2026-10:30:59] [I] Device Global Memory: 7619 MiB
+[08/13/2026-10:30:59] [I] Shared Memory per SM: 164 KiB
+[08/13/2026-10:30:59] [I] Memory Bus Width: 128 bits (ECC disabled)
+[08/13/2026-10:30:59] [I] Application Compute Clock Rate: 1.02 GHz
+[08/13/2026-10:30:59] [I] Application Memory Clock Rate: 0.918 GHz
+[08/13/2026-10:30:59] [I] 
+[08/13/2026-10:30:59] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[08/13/2026-10:30:59] [I] 
+[08/13/2026-10:30:59] [I] TensorRT version: 10.3.0
+[08/13/2026-10:30:59] [I] Loading standard plugins
+[08/13/2026-10:30:59] [I] [TRT] [MemUsageChange] Init CUDA: CPU +2, GPU +1, now: CPU 31, GPU 1897 (MiB)
+[08/13/2026-10:31:01] [I] [TRT] [MemUsageChange] Init builder kernel library: CPU +928, GPU +1098, now: CPU 1002, GPU 3039 (MiB)
+[08/13/2026-10:31:01] [I] Start parsing network model.
+[08/13/2026-10:31:01] [I] [TRT] ----------------------------------------------------------------
+[08/13/2026-10:31:01] [I] [TRT] Input filename:   /home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx
+[08/13/2026-10:31:01] [I] [TRT] ONNX IR version:  0.0.9
+[08/13/2026-10:31:01] [I] [TRT] Opset version:    17
+[08/13/2026-10:31:01] [I] [TRT] Producer name:    jetson-deploy-lab
+[08/13/2026-10:31:01] [I] [TRT] Producer version: 
+[08/13/2026-10:31:01] [I] [TRT] Domain:           
+[08/13/2026-10:31:01] [I] [TRT] Model version:    0
+[08/13/2026-10:31:01] [I] [TRT] Doc string:       
+[08/13/2026-10:31:01] [I] [TRT] ----------------------------------------------------------------
+[08/13/2026-10:31:01] [I] Finished parsing network model. Parse time: 0.00477826
+[08/13/2026-10:31:01] [I] [TRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[08/13/2026-10:31:02] [I] [TRT] Detected 1 inputs and 1 output network tensors.
+[08/13/2026-10:31:02] [I] [TRT] Total Host Persistent Memory: 0
+[08/13/2026-10:31:02] [I] [TRT] Total Device Persistent Memory: 0
+[08/13/2026-10:31:02] [I] [TRT] Total Scratch Memory: 0
+[08/13/2026-10:31:02] [I] [TRT] Total Activation Memory: 0
+[08/13/2026-10:31:02] [I] [TRT] Total Weights Memory: 0
+[08/13/2026-10:31:02] [I] [TRT] Engine generation completed in 0.26713 seconds.
+[08/13/2026-10:31:02] [I] [TRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 0 MiB
+[08/13/2026-10:31:02] [I] [TRT] [MemUsageStats] Peak memory usage during Engine building and serialization: CPU: 1401 MiB
+[08/13/2026-10:31:02] [I] Engine built in 0.273168 sec.
+[08/13/2026-10:31:02] [I] Created engine with size: 0.00244522 MiB
+[08/13/2026-10:31:02] [I] [TRT] Loaded engine size: 0 MiB
+[08/13/2026-10:31:02] [I] Engine deserialized in 0.000211157 sec.
+[08/13/2026-10:31:02] [I] Skipped inference phase since --skipInference is added.
 &&&& PASSED TensorRT.trtexec [TensorRT v100300] # /usr/src/tensorrt/bin/trtexec --onnx=/home/nvidia/jetson-deploy-lab/results/smoke/identity.onnx --saveEngine=/home/nvidia/jetson-deploy-lab/results/smoke/identity.engine --builderOptimizationLevel=3 --profilingVerbosity=detailed --skipInference

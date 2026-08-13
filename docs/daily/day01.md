@@ -224,3 +224,39 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 ### Integrity
 
 - `.venv` not modified; no install/upgrade/downgrade executed. No model weights. No engine. No remote/push. Only `docs/daily/day01.md` appended + one local commit.
+
+## Day 1 / Stage 1F - Install Pinned Transformers + Regression
+
+- Action time: 2026-08-13 10:30 CST
+- Installed into project `.venv` (`/home/nvidia/jetson-deploy-lab/.venv/bin/python`): `transformers==4.46.3` only.
+- Pulled companions (resolver-chosen, all new): tokenizers-0.20.3, safetensors-0.8.0, huggingface_hub-0.36.2, regex-2026.7.19, hf-xet-1.6.0.
+- NOT installed / NOT upgraded: timm, accelerate, torch2trt, clip. Pillow NOT upgraded (still 9.0.1). No model weights downloaded. No NanoOWL engine built. No torch2trt build.
+- Install result: `Successfully installed transformers-4.46.3` (exit 0).
+
+### Post-install version snapshot (vs. Stage 1D baseline)
+
+| Package | Baseline | Post-install | Changed? |
+|---|---|---|---|
+| transformers | NOT INSTALLED | 4.46.3 | added |
+| torch | 2.5.0a0+872d972e41.nv24.08 | 2.5.0a0+872d972e41.nv24.08 | no |
+| torchvision | 0.20.0a0+afc54f7 | 0.20.0a0+afc54f7 | no |
+| numpy | 1.23.5 | 1.23.5 | no |
+| tensorrt | 10.3.0 | 10.3.0 | no |
+| PIL | 9.0.1 | 9.0.1 | no |
+| torch.cuda.is_available() | True | True | no |
+
+### OWL-ViT / Transformers import check
+
+- `from transformers import OwlViTProcessor, OwlViTForObjectDetection, OwlViTImageProcessor` → OK (the OWL-ViT classes NanoOWL depends on import cleanly under transformers 4.46.3). No model weights fetched.
+
+### Stage 0 regression: ONNX -> TensorRT smoke test
+
+- Re-ran `scripts/smoke_onnx_trt.sh`. Result: **PASS** (exit 0).
+- Build log contained `&&&& PASSED TensorRT.trtexec [TensorRT v100300]`.
+- Run log contained `&&&& PASSED TensorRT.trtexec`; times.json / profile.json / layers.json emitted; `identity.engine` non-empty.
+- Conclusion: installing transformers 4.46.3 did not disturb the already-validated ONNX -> TensorRT deployment chain.
+
+### Integrity
+
+- Only `transformers==4.46.3` (plus resolver companions) added to `.venv`. No other package install/upgrade/downgrade, no weights, no engine for NanoOWL, no remote/push. `docs/daily/day01.md` updated + one local commit.
+- Stage 1F status: PASS.

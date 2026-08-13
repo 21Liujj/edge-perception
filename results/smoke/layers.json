@@ -1,19 +1,23 @@
 {"Layers": [{
-  "Name": "__myl_Mov_myl0_0",
-  "LayerType": "kgen",
+  "Name": "identity",
+  "LayerType": "Reformat",
   "Inputs": [
   {
     "Name": "input",
+    "Location": "Device",
     "Dimensions": [1,3,8,8],
-    "Format/Datatype": "Float"
+    "Format/Datatype": "Row major linear FP32"
   }],
   "Outputs": [
   {
     "Name": "output",
+    "Location": "Device",
     "Dimensions": [1,3,8,8],
-    "Format/Datatype": "Float"
+    "Format/Datatype": "Row major linear FP32"
   }],
-  "TacticName": "__myl_Mov_0x44f97cd21565d84d5f102124ec55637b",
+  "ParameterType": "Reformat",
+  "Origin": "CAST",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": ""
 }],
