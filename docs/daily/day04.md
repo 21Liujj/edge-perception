@@ -73,3 +73,75 @@ NO_DETECTION case：pipeline_total_ms 446.234（仅 NanoOWL，无 NanoSAM）。
 ## 结论
 
 Stage 4A：PASS — NanoOWL → NanoSAM 首次自动联合 Pipeline 正确性验证通过（owl 检测→分割正确、NO_DETECTION 优雅降级）。
+
+---
+
+## Stage 4B — Joint Pipeline 正式稳定态 E2E Benchmark（PASS）
+
+## Benchmark methodology
+
+- 单进程：`scripts/benchmark_edge_perception.py`，复用 `run_edge_perception.py` 的 detection / bridge / selection 逻辑（不 subprocess、不复制 third_party 核心）。
+- 模型只加载一次、Engines 只加载一次（NanoOWL OwlPredictor + NanoSAM Predictor 各一次）。
+- 固定输入：owl_glove_small.jpg（756×499）；prompts `an owl,a glove,a finger`；target-label `an owl`；threshold 0.10。
+- text encodings 在 warmup 前编码一次并复用（prompts 固定，符合稳定态推理）。
+- mask selection 保持官方 baseline：slot 0（非 IoU argmax）。未做 INT8 / 优化 / COCO / MP4 / ROS2 / stability。
+- 所有 GPU timing 在 `torch.cuda.synchronize()` 后记录；未用未同步 wall-clock 作 latency 结论。
+- timing 边界（每轮）：nanoowl（ready input→selected box）/ bridge（box→clip→box prompt）/ nanosam_set_image（preprocess+encoder→embedding）/ nanosam_decode（embedding+prompt→slot0 mask）/ pipeline_e2e（ready input→final mask）。不含 model load / 磁盘 I/O / JSON / 可视化。
+
+## warmup / iterations
+
+- warmup 30（不计入统计）；正式 test 300 轮。
+- 每轮强制正确性检查：selected label=an owl、box 有效、mask 非空、无 NaN/Inf。任一轮异常则记录并 Stage FAIL（不静默跳过）。本次 300/300 全通过，errors=0。
+- 额外 cached-embedding 实验 100 轮（set_image 仅一次，复用 embedding，每轮 = NanoOWL box→bridge→decoder）。
+
+## Module breakdown（mean ms，n=300）
+
+- nanoowl：mean **38.6133** / P50 37.7168 / P95 44.9096 / P99 45.1861
+- bridge：mean **0.1046** / P50 0.1035 / P95 0.1148 / P99 0.1457
+- nanosam_set_image：mean **60.7769** / P50 60.2287 / P95 70.437 / P99 72.9323
+- nanosam_decode：mean **17.2227** / P50 16.6307 / P95 20.0158 / P99 20.6568
+- module sum (mean)=116.7175；pipeline_e2e mean=117.0351；**unaccounted_overhead_ms=0.3176**（基本闭合，仅记录真实结果，未强行解释）。
+
+## E2E P50/P95/P99 与 FPS
+
+- pipeline_e2e：mean **117.0351** / min 87.8657 / max 139.8605 / P50 115.8755 / P95 132.4133 / P99 136.7383 ms。
+- steady-state E2E FPS = 1000/mean = **8.54**（inference pipeline FPS，不含磁盘 I/O / 可视化）。
+- model_load_ms（单独测量，不计入 E2E）= 2220.798（nanoowl 1594.971 + nanosam 625.831）。
+
+## Cached-embedding 实验
+
+- cached-embedding pipeline（set_image 一次，复用 embedding，每轮 NanoOWL+bridge+decoder）：mean **34.0178** / P50 33.5994 / P95 36.3087 / P99 40.0005 ms（n=100）。
+- 量化“image embedding 可复用”情况下的 prompt-update latency。**标记为 cached-image scenario，非完整 Pipeline FPS**。
+- 含义：当图像 embedding 缓存复用时，每 prompt-update 耗时约 34ms（≈29 FPS 量级），主要成分为 NanoOWL 检测 + NanoSAM decoder（已省去 ~61ms 的每轮 NanoSAM image encoder）。
+
+## System resource（tegrastats 300 轮 E2E 负载期间，n=190）
+
+- RAM used：mean 4139.795 / peak 4154 MB
+- GR3D FREQ：mean 51.542% / max 99%（min 0% 为采样间隙，按观测记录）
+- GPU temp：mean 56.204 / max 57.031 °C
+- CPU temp：mean 54.41 / max 55.375 °C
+- VDD_IN (avg)：mean 9749.558 / max 13067 mW
+- EMC FREQ：N/A（当前 L4T 未上报该字段）
+- benchmark 后 `tegrastats --stop`，确认无残留 daemon 进程。
+
+## Correctness regression
+
+- owl joint case：PASS — an owl score 0.3419（与 Day1/2/4A baseline 一致），box [275.19,82.35,463.64,399.35]（一致），mask slot 0、selected IoU 0.7206、nonzero 34065、无 NaN/Inf。
+- NO_DETECTION case：PASS — camera.jpg 0 detections → 结构化 NO_DETECTION（不调用 NanoSAM），正常退出。
+
+## evidence 路径
+
+- results/joint_benchmark/：benchmark.json、e2e_latencies.csv、module_latencies.csv、cached_embedding_latencies.csv、tegrastats.log、tegrastats_parsed.json、summary.md
+- 脚本：scripts/benchmark_edge_perception.py
+- regression：results/joint_pipeline/owl_regression/、results/joint_pipeline/no_detection_regression/
+
+## 约束遵守
+
+- 未修改 third_party/nanoowl、third_party/nanosam；未重建 Engine；未安装依赖。
+- 未做 INT8 / COCO / MP4 / ROS2 / stability / 性能优化 / IoU argmax；mask 仍 slot 0。
+- core env 保持不变：torch 2.5.0a0+872d972e41.nv24.08 / torchvision 0.20.0a0+afc54f7 / numpy 1.23.5 / tensorrt 10.3.0 / transformers 4.46.3 / Pillow 12.3.0 / OpenCV 4.10.0 / torch2trt importable / timm MISSING。
+- 未 remote / push / GitHub 上传；未继续 Stage 4C。
+
+## 结论
+
+Stage 4B：PASS — NanoOWL → NanoSAM joint pipeline 正式稳定态 E2E Benchmark 完成，module-level latency 分解与 system resource 采集齐全，300/300 正确性通过，owl/NO_DETECTION 回归 PASS。

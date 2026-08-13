@@ -1,0 +1,115 @@
+{
+  "model_load_ms": 2220.798,
+  "nanoowl_load_ms": 1594.971,
+  "nanosam_load_ms": 625.831,
+  "warmup": 30,
+  "iterations": 300,
+  "input_image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+  "prompts": [
+    "an owl",
+    "a glove",
+    "a finger"
+  ],
+  "target_label": "an owl",
+  "threshold": 0.1,
+  "mask_selection_rule": "fixed slot 0 (basic_usage.py), not IoU argmax",
+  "timing_units": "ms; all GPU timing after torch.cuda.synchronize()",
+  "nanoowl": {
+    "count": 300,
+    "mean_ms": 38.6133,
+    "min_ms": 23.9427,
+    "max_ms": 47.7285,
+    "P50_ms": 37.7168,
+    "P95_ms": 44.9096,
+    "P99_ms": 45.1861
+  },
+  "bridge": {
+    "count": 300,
+    "mean_ms": 0.1046,
+    "min_ms": 0.0853,
+    "max_ms": 0.1809,
+    "P50_ms": 0.1035,
+    "P95_ms": 0.1148,
+    "P99_ms": 0.1457
+  },
+  "nanosam_set_image": {
+    "count": 300,
+    "mean_ms": 60.7769,
+    "min_ms": 44.9064,
+    "max_ms": 74.3143,
+    "P50_ms": 60.2287,
+    "P95_ms": 70.437,
+    "P99_ms": 72.9323
+  },
+  "nanosam_decode": {
+    "count": 300,
+    "mean_ms": 17.2227,
+    "min_ms": 11.4751,
+    "max_ms": 22.0703,
+    "P50_ms": 16.6307,
+    "P95_ms": 20.0158,
+    "P99_ms": 20.6568
+  },
+  "pipeline_e2e": {
+    "count": 300,
+    "mean_ms": 117.0351,
+    "min_ms": 87.8657,
+    "max_ms": 139.8605,
+    "P50_ms": 115.8755,
+    "P95_ms": 132.4133,
+    "P99_ms": 136.7383
+  },
+  "steady_state_e2e_fps": 8.54,
+  "module_sum_mean_ms": 116.7175,
+  "unaccounted_overhead_ms": 0.3176,
+  "cached_embedding_experiment": {
+    "note": "cached-image / reused-embedding scenario (set_image ONCE); NOT full pipeline FPS",
+    "iterations": 100,
+    "count": 100,
+    "mean_ms": 34.0178,
+    "min_ms": 33.3161,
+    "max_ms": 40.7597,
+    "P50_ms": 33.5994,
+    "P95_ms": 36.3087,
+    "P99_ms": 40.0005
+  },
+  "tegrastats": {
+    "RAM_used_MB": {
+      "mean": 4139.795,
+      "min": 4133.0,
+      "max": 4154.0,
+      "count": 190
+    },
+    "GR3D_FREQ_pct": {
+      "mean": 51.542,
+      "min": 0.0,
+      "max": 99.0,
+      "count": 190
+    },
+    "GPU_temp_C": {
+      "mean": 56.204,
+      "min": 55.531,
+      "max": 57.031,
+      "count": 190
+    },
+    "CPU_temp_C": {
+      "mean": 54.41,
+      "min": 53.75,
+      "max": 55.375,
+      "count": 190
+    },
+    "VDD_IN_avg_mW": {
+      "mean": 9749.558,
+      "min": 9376.0,
+      "max": 13067.0,
+      "count": 190
+    },
+    "EMC_FREQ_pct": {
+      "mean": "N/A",
+      "min": "N/A",
+      "max": "N/A",
+      "count": 0
+    }
+  },
+  "errors": []
+}
