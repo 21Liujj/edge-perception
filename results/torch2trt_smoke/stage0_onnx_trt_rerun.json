@@ -1,0 +1,7 @@
+{
+  "stage0_onnx_trt_smoke": "PASS",
+  "stage0_engine": "results/smoke/identity.engine",
+  "stage0_trtexec": "PASSED TensorRT.trtexec [TensorRT v100300]",
+  "stage0_throughput_qps": 16404.4,
+  "stage0_mean_latency_ms": 0.040425
+}

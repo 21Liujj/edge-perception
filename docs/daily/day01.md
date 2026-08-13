@@ -324,3 +324,20 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
   - Version pin: `setup.py` declares `version='0.5.0'`; there is no git tag pin and no requirements.txt pin, so the effective version lock for this parent project is the recorded commit hash above.
 - Environment integrity: no `pip install`, no torch2trt install, no plugin compilation, no `.venv` modification, no CUDA/TensorRT/PyTorch modification, no model download, no TensorRT engine build, no `git push`, no GitHub upload. Only local extraction, local Git verification, this documentation update, and one local parent commit were performed.
 - Stage 1H-Fallback status: PASS.
+
+## Day 1 / Stage 1I - Install torch2trt + Minimal PyTorch->TensorRT Smoke
+
+- Python: `/home/nvidia/jetson-deploy-lab/.venv/bin/python` (venv includes system site-packages).
+- Source: `third_party/torch2trt` at fixed commit `4e820ae31b4e35d59685935223b05b2e11d47b03` (verified unchanged).
+- Install: `python setup.py install` from source, **no `--plugins`, no `--contrib`, no sudo**. Built as pure-Python egg (no CUDA extension compiled because `--plugins` was not passed). Installed `torch2trt-0.5.0-py3.10.egg` into `.venv/lib/python3.10/site-packages/` and added to `easy-install.pth`. Plugins NOT installed/compiled (optional per upstream; deferred).
+- Version integrity preserved: torch `2.5.0a0+872d972e41.nv24.08`, torchvision `0.20.0a0+afc54f7`, TensorRT `10.3.0`, CUDA available `True` (Orin). torch2trt import = PASS.
+- Smoke test `scripts/smoke_torch2trt.py`: Conv2d(3->16,3x3,pad1)->ReLU, seed=1234, FP32 only (fp16_mode=False, int8_mode=False, use_python=True). Flow: PyTorch forward -> torch2trt convert -> TensorRT forward -> compare.
+  - input shape: [1, 3, 64, 64]
+  - PyTorch output shape: [1, 16, 64, 64]
+  - TensorRT output shape: [1, 16, 64, 64]
+  - max_abs_error: 3.5762786865234375e-07 (FP32 numeric noise)
+  - conversion: PASS
+- Stage 0 ONNX->TensorRT smoke re-run (torch2trt smoke PASS gating): `scripts/smoke_onnx_trt.sh` EXIT=0, `PASSED TensorRT.trtexec [TensorRT v100300]`, throughput 16404.4 qps, mean latency 0.0404 ms. Regenerated `results/smoke/` artifacts committed.
+- Evidence: `results/torch2trt_smoke/smoke_torch2trt.json`, `smoke_torch2trt.txt`, `stage0_onnx_trt_rerun.json`.
+- Environment integrity: no torch2trt source modification, no plugins installed/compiled, no torch/TensorRT/CUDA/numpy/torchvision upgrade or downgrade, no OWL-ViT weights, no NanoOWL package install, no NanoOWL engine build, no remote/push/GitHub upload.
+- Stage 1I status: PASS.
