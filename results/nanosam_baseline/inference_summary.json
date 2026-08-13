@@ -1,0 +1,106 @@
+{
+  "image_path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/assets/dogs.jpg",
+  "image_size_W_H": [
+    1180,
+    760
+  ],
+  "image_embeddings_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "box_prompt": {
+    "prompt_type": "box",
+    "bbox_xyxy": [
+      100,
+      100,
+      850,
+      759
+    ],
+    "points": [
+      [
+        100,
+        100
+      ],
+      [
+        850,
+        759
+      ]
+    ],
+    "point_labels": [
+      2,
+      3
+    ],
+    "iou_predictions": [
+      0.6618869304656982,
+      0.6263411045074463,
+      0.758064866065979,
+      0.7128952741622925
+    ],
+    "low_res_mask_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "hi_res_mask_shape": [
+      1,
+      4,
+      760,
+      1180
+    ],
+    "has_nan_inf": {
+      "nan": false,
+      "inf": false
+    },
+    "nonzero_pixels": 242155,
+    "mask_area_ratio": 0.270021,
+    "mask_shape": [
+      760,
+      1180
+    ],
+    "mask_convention": "mask[0,0] > 0 ( NanoSAM basic_usage.py best-mask slot 0)"
+  },
+  "point_prompt": {
+    "prompt_type": "point",
+    "point_xy": [
+      [
+        475,
+        430
+      ]
+    ],
+    "point_labels": [
+      1
+    ],
+    "iou_predictions": [
+      0.6403317451477051,
+      0.6299819350242615,
+      0.7403109073638916,
+      0.7372490167617798
+    ],
+    "low_res_mask_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "hi_res_mask_shape": [
+      1,
+      4,
+      760,
+      1180
+    ],
+    "has_nan_inf": {
+      "nan": false,
+      "inf": false
+    },
+    "nonzero_pixels": 233325,
+    "mask_area_ratio": 0.260175,
+    "mask_shape": [
+      760,
+      1180
+    ],
+    "mask_convention": "mask[0,0] > 0 (best-mask slot 0)"
+  }
+}

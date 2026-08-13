@@ -1,0 +1,2 @@
+c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8  data/resnet18_image_encoder.engine
+afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2  data/mobile_sam_mask_decoder.engine

@@ -1,0 +1,52 @@
+{
+  "prompt_type": "box",
+  "bbox_xyxy": [
+    100,
+    100,
+    850,
+    759
+  ],
+  "points": [
+    [
+      100,
+      100
+    ],
+    [
+      850,
+      759
+    ]
+  ],
+  "point_labels": [
+    2,
+    3
+  ],
+  "iou_predictions": [
+    0.6618869304656982,
+    0.6263411045074463,
+    0.758064866065979,
+    0.7128952741622925
+  ],
+  "low_res_mask_shape": [
+    1,
+    4,
+    256,
+    256
+  ],
+  "hi_res_mask_shape": [
+    1,
+    4,
+    760,
+    1180
+  ],
+  "has_nan_inf": {
+    "nan": false,
+    "inf": false
+  },
+  "nonzero_pixels": 242155,
+  "mask_area_ratio": 0.270021,
+  "mask_shape": [
+    760,
+    1180
+  ],
+  "mask_convention": "mask[0,0] > 0 ( NanoSAM basic_usage.py best-mask slot 0)"
+}

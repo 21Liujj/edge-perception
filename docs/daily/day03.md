@@ -118,3 +118,59 @@ torch 2.5.0a0+872d972e41.nv24.08 / torchvision 0.20.0a0+afc54f7 / numpy 1.23.5 /
 ### Engine / 证据
 - 未产出 *.engine / *.onnx / mask 输出；third_party/nanosam/data/ 为空。
 - 证据目录：results/nanosam_baseline/blocker_report.md（含完整失败点、官方 Drive ID/目标路径/续行命令）。
+
+---
+
+## Day 3 / Stage 3B (Resume) - Reproduce NanoSAM TensorRT baseline - PASS
+
+恢复时间 2026-08-13。User 离线转存两个 ONNX（PC→Jetson），续行完成模型准备、Engine 构建、真实 Prompt Segmentation。
+
+### Failure Case 历史（真实、保留）
+1. 官方 README Google Drive 离线模型不可达：Jetson 访问 Google Drive (drive.google.com:443) 超时（port 443 timeout），`resnet18_image_encoder.onnx` / `mobile_sam_mask_decoder.onnx` 无法下载。官方 Drive ID：image encoder `14-SsvoaTl-esC3JOzomHDnI9OGgdO2OR`、mask decoder (alt) `1jYNvnseTL49SNRx9PDcbkZ9DwsY8up7n`。
+2. 本地导出 mask decoder ONNX 失败：`nanosam/mobile_sam/modeling/tiny_vit_sam.py` 需 `timm`，本机未安装 timm；按约束未安装 timm，未从 `mobile_sam.pt` 重新导出。
+3. Docker 镜像 CloudFront EOF 未使用：官方 `docker pull` 路径在源端 CloudFront 出现 EOF，未采用。
+4. 最终方案：User 离线转存官方提供的两个 ONNX 到 Jetson，PC→Jetson SHA256 一致后恢复 Stage 3B。
+
+### 模型来源（离线转存，非在线下载）
+- `resnet18_image_encoder.onnx` 63,321,621 B
+  - SHA256 (PC) `d266fcdc9e4f0182b59946cd3cf1be331641f1d0d1de2415c4fd94e7a1c9cf0a`
+  - SHA256 (Jetson) `d266fcdc9e4f0182b59946cd3cf1be331641f1d0d1de2415c4fd94e7a1c9cf0a` ✓ 一致
+- `mobile_sam_mask_decoder.onnx` 16,504,875 B
+  - SHA256 (PC) `41e49a298099048186ce109a4518286b8972959898a02577414405efa5c3b247`
+  - SHA256 (Jetson) `41e49a298099048186ce109a4518286b8972959898a02577414405efa5c3b247` ✓ 一致
+- onnx.checker.check_model：两个 ONNX 均 PASS；ONNX 形状解析正常（image encoder 1×3×1024×1024→[1,256,64,64]；mask decoder 输入 image_embeddings/point_coords/point_labels/mask_input/has_mask_input，输出 iou_predictions[1,4]+low_res_masks[1,4,256,256]）。
+
+### Engine 构建（README trtexec 参数，未改 ONNX / 未装插件 / 未升级 TensorRT）
+- Image Encoder（FP16）：
+  `trtexec --onnx=data/resnet18_image_encoder.onnx --saveEngine=data/resnet18_image_encoder.engine --fp16`
+  → `&&&& PASSED` (TensorRT 10.3.0)。size 34,766,700 B。SHA256 `c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8`。
+- Mask Decoder（FP32，min/opt/max point shapes）：
+  `trtexec --onnx=data/mobile_sam_mask_decoder.onnx --saveEngine=data/mobile_sam_mask_decoder.engine --minShapes=point_coords:1x1x2,point_labels:1x1 --optShapes=point_coords:1x1x2,point_labels:1x1 --maxShapes=point_coords:1x10x2,point_labels:1x10`
+  → `&&&& PASSED` (TensorRT 10.3.0)。size 18,891,924 B。SHA256 `afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2`。
+- 重载校验：`nanosam.utils.predictor.Predictor(ENC, DEC)` 加载两个 engine 成功（无异常），`set_image` 得到 image_embeddings `[1,256,64,64]`。
+
+### 真实 Prompt Segmentation（assets/dogs.jpg，原图 1180×760）
+- Box Prompt（bbox=[100,100,850,759]，points [[100,100],[850,759]]，labels [2,3]）：PASS
+  - iou_predictions [0.662, 0.626, 0.758, 0.713]；low_res_mask [1,4,256,256]；hi_res_mask [1,4,760,1180]
+  - best mask (mask[0,0]>0) 非零像素 242,155，mask_area_ratio 0.270021；NaN/Inf 无
+- Point Prompt（foreground [475,430]，label [1]，单点不调优）：PASS
+  - iou_predictions [0.640, 0.630, 0.740, 0.737]；low_res_mask [1,4,256,256]；hi_res_mask [1,4,760,1180]
+  - best mask 非零像素 233,325，mask_area_ratio 0.260175；NaN/Inf 无
+- 两类 prompt 均得到合法非空分割掩码，可视化确认掩码覆盖犬只区域。
+
+### 合规字段
+- 核心包版本未变：torch 2.5.0a0+872d972e41.nv24.08 / torchvision 0.20.0a0+afc54f7 / numpy 1.23.5 / tensorrt 10.3.0 / torch2trt importable / transformers 4.46.3 / Pillow 12.3.0 / OpenCV 4.10.0；timm 仍缺失（未安装）。
+- 未改 upstream（nanosam git status clean）；未装新依赖；未改 ONNX/源码；未装插件；未升级 TensorRT。
+- 未做 NanoOWL+NanoSAM 联合 / benchmark / INT8 / ROS2 / MP4 / 训练；未 remote/push/GitHub 上传；未继续 Stage 3C。
+- 第三方大文件已 gitignore（*.engine/*.onnx/*.pt 不入 git）。
+
+### 证据目录 results/nanosam_baseline/
+- onnx_sha256.txt、engine_sha256.txt
+- image_encoder_build.log、mask_decoder_build.log
+- inference.log、inference_summary.json
+- box_prompt_result.json、box_prompt_visualization.jpg
+- point_prompt_result.json、point_prompt_visualization.jpg
+
+### 状态
+- Stage 3B：PASS。
+- 本地提交：`feat: reproduce NanoSAM TensorRT baseline`（不 push）。
