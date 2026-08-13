@@ -36,5 +36,6 @@
 - Added `.gitignore` rules for `.venv`, Python caches, TensorRT engines, model weights, model download caches, build products, and temporary files.
 - `docs/`, `scripts/`, and Stage 0 evidence/configuration remain eligible for version control.
 - Git identity: repo-local `user.name` and `user.email` were configured from values supplied by the project owner; no global Git configuration was changed.
-- Initial commit: ready; Stage 0 baseline files are being committed with validated environment and artifact exclusions.
+- Initial commit: PASS - `e97b98276a71283836cfd86407e96e7f03d4c07b` (`baseline: validated Stage 0 ONNX-TensorRT pipeline`).
+- Stage 1B status: PASS; repository baseline completed and protected environment/model artifacts remain ignored.
 - No NanoOWL installation or Stage 1C work was performed, and the validated software environment was not changed.
