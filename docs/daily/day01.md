@@ -1,3 +1,53 @@
+# Day 1
+
+## 今日目标
+
+Day 1 目标：在 Jetson Orin Nano 上完成 EdgePerception 工程化基线——离线固定 NanoOWL / torch2trt 上游、安全安装依赖（不升级核心栈）、构建 torch2trt 桥接 smoke、构建 OWL-ViT patch32 Vision Encoder TensorRT engine，并完成首次开放词汇检测闭环。全程离线，不联网 GitHub/HuggingFace，不安装 NanoSAM / INT8 / ROS2 / 摄像头。
+
+文档导航（各 Stage 详细记录见下方对应章节）：
+
+- Stage 1A — 环境审计（含 Stage 0 audit）
+- Stage 1B — Git baseline
+- Stage 1C — NanoOWL upstream pin
+- Stage 1D–1G — 依赖审计与安全安装（transformers / Pillow pin + 回归）
+- Stage 1H — torch2trt upstream / network fallback
+- Stage 1I — torch2trt smoke
+- Stage 1J — NanoOWL baseline / offline checkpoint fallback（1J / 1J-Fallback-1 / 1J-Fallback-2）
+- Day 1 Final Result — 见文末
+
+---
+
+## Stage 1A 环境审计
+
+（详细记录见下方 ）
+
+## Stage 1B Git baseline
+
+（详细记录见下方 ）
+
+## Stage 1C NanoOWL upstream pin
+
+（详细记录见下方  / ）
+
+## Stage 1D–1G 依赖审计与安全安装
+
+（详细记录见下方 、、、）
+
+## Stage 1H torch2trt upstream / network fallback
+
+（详细记录见下方  与 ）
+
+## Stage 1I torch2trt smoke
+
+（详细记录见下方 ）
+
+## Stage 1J NanoOWL baseline / offline checkpoint fallback
+
+（详细记录见下方 、、）
+
+---
+
+## 详细 stage 日志
 
 ## Day 1 / Stage 1A - Environment and Stage 0 Audit
 
@@ -398,3 +448,47 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 - [14] Core versions unchanged: torch 2.5.0a0+872d972e41.nv24.08, torchvision 0.20.0a0+afc54f7, TensorRT 10.3.0, transformers 4.46.3, numpy 1.23.5.
 - Integrity: no NanoOWL or torch2trt source modification; no core dependency upgrade/downgrade; no TensorRT plugins installed/compiled; no NanoSAM, no CLIP, no Tree Detection, no INT8, no ROS2, no camera; no OWL-ViT weights downloaded over network (offline cache only); no remote/push/GitHub upload. `*.engine` ignored by `.gitignore` (binary not committed); its SHA256 is tracked as evidence.
 - Stage 1J-Fallback-2 status: PASS — offline OWL-ViT load + TensorRT engine build + open-vocabulary detection all succeeded.
+
+---
+
+## Day 1 Final Result
+
+**结论：PASS — NanoOWL open-vocabulary TensorRT baseline reproduced on Jetson Orin Nano.**
+
+真实数据：
+
+| Item | Value |
+|---|---|
+| NanoOWL commit | fb553dee4c58f8c53ec2bf01f355a54648e67dbd |
+| torch2trt commit | 4e820ae31b4e35d59685935223b05b2e11d47b03 (origin https://github.com/NVIDIA-AI-IOT/torch2trt.git) |
+| Model id | google/owlvit-base-patch32 (OWL-ViT ViT-B/32) |
+| HF snapshot revision | cbc355fb364588351c5d51c7f74465e8e7ec6f72 (offline cache, refs/main) |
+| TensorRT engine path | /home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine |
+| Engine size | 183,507,980 bytes (~175 MiB) |
+| Engine SHA256 | d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037 |
+| TensorRT precision | FP16 (--fp16, official baseline; no INT8) |
+| Sample image | third_party/nanoowl/assets/owl_glove_small.jpg |
+| Prompts | ["an owl", "a glove", "a finger"], threshold 0.10 |
+| Detection | label "an owl", score 0.3419235944747925, box_xyxy [275.19, 82.35, 463.64, 399.35] (1 detection) |
+| Evidence dir | results/nanoowl_baseline/ (detections.json, input_image.jpg, result_visualization.jpg, engine_build.log, inference.log, engine_sha256.txt) |
+| Core env versions | torch 2.5.0a0+872d972e41.nv24.08 / torchvision 0.20.0a0+afc54f7 / TensorRT 10.3.0 / transformers 4.46.3 / numpy 1.23.5 / Pillow 12.3.0 |
+| torch2trt FP32 smoke | PASS (max_abs_error 3.58e-07, Conv2d->ReLU) |
+| Stage 0 ONNX->TRT smoke (re-run) | PASS (trtexec PASSED, 16404.4 qps) |
+
+### 真实 Failure Case 记录
+
+- A. Jetson 无法直接访问 GitHub / Hugging Face。Stage 1H 与 Stage 1J 均因网络失败（git submodule add 超时；huggingface.co DNS 解析失败）。解决：官方资源（torch2trt full Git 仓库、OWL-ViT HF cache）由联网开发机离线传输到 Jetson，并在本机验证 torch2trt commit 4e820ae3... 与 HF snapshot revision cbc355fb... 一致，全程不换第三方镜像。
+- B. OpenCV 4.10 cv2.rectangle 与 readonly PIL->numpy 数组不兼容。nanoowl.owl_drawing.draw_owl_output 将只读 PIL->numpy 数组传入 cv2.rectangle，OpenCV 4.10 报 Bad argument ... NumPy array marked as readonly。按规则不修改 NanoOWL 上游源码，改在自有推理脚本 scripts/nanoowl_infer.py 中对图像做可写 .copy() 后绘制，问题解决。
+
+### Day 1 未做内容（明确列出）
+
+- NanoSAM（未安装、未集成）
+- NanoOWL / NanoSAM joint pipeline
+- 正式 benchmark（仅记录 smoke/trtexec 吞吐，非系统级 benchmark）
+- MP4 realtime pipeline
+- INT8 量化
+- ROS2 / 摄像头实时流
+
+### Day 2 起点
+
+NanoOWL 工程化推理脚本 + 固定测试集 + 初步性能 Benchmark。
