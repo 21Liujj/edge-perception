@@ -79,3 +79,42 @@ venv: /home/nvidia/jetson-deploy-lab/.venv (include-system-site-packages = true)
 - 本阶段只 clone 源码 + 只读审计 README/setup.py/examples/源码。
 
 - Stage 3A status: PASS。
+
+---
+
+## Stage 3B — NanoSAM TensorRT baseline (model prep + Engine + prompt segmentation)
+
+### 执行结果：OFFLINE_TRANSFER_REQUIRED（未构建 Engine、未做 inference）
+
+- Part 一 (nanosam package import): PASS — `python setup.py develop` 就地安装（editable egg-link，未改上游源码、未装新依赖）；`Predictor` 可 import。
+- Part 二 (image encoder ONNX): OFFLINE_TRANSFER_REQUIRED — 官方来源 Google Drive（file ID 14-SsvoaTl-esC3JOzomHDnI9OGgdO2OR），Jetson 不可达（port 443 超时），未下载、未用镜像。目标路径 third_party/nanosam/data/resnet18_image_encoder.onnx。
+- Part 三 (mask decoder ONNX): BLOCKED — 本地官方脚本导出失败 `ModuleNotFoundError: No module named timm`（vit_t 的 TinyViT image encoder 需要 timm）；按规则 8 不安装 timm。README 官方替代来源亦为 Google Drive（file ID 1jYNvnseTL49SNRx9PDcbkZ9DwsY8up7n），同样不可达。目标路径 third_party/nanosam/data/mobile_sam_mask_decoder.onnx。
+- Part 四 (Engine 构建): 未开始（按规则，无 ONNX 不继续 Engine Build）。
+- Part 五 (Box/Point Prompt inference): 未开始；Box Prompt 未运行，Point Prompt 未运行；无 NaN/Inf 可报。
+- Part 六 (合法性检查): N/A（无 inference）。
+
+### 需离线传入的官方文件（无镜像）
+1. resnet18_image_encoder.onnx — Google Drive ID 14-SsvoaTl-esC3JOzomHDnI9OGgdO2OR → third_party/nanosam/data/resnet18_image_encoder.onnx（image encoder ONNX，trtexec --fp16 输入）
+2. mobile_sam_mask_decoder.onnx — Google Drive ID 1jYNvnseTL49SNRx9PDcbkZ9DwsY8up7n → third_party/nanosam/data/mobile_sam_mask_decoder.onnx（mask decoder ONNX，trtexec FP32 输入；本地导出需 timm）
+   - 注：mobile_sam.pt 已在仓库（offline, ~40MB），但本地导出 mask decoder ONNX 需 timm；若允许 timm，文件2 可本地离线生成（免网络）。
+
+### 网络可达性（实测）
+- drive.google.com : http 000 (Connection timed out, port 443)
+- docs.google.com : http 000 (Connection timed out)
+- drive.usercontent.google.com : http 000 (Connection timed out)
+- (对比：GitHub / Hugging Face 在 Stage 3A 已确认可达；Google Drive 不可达)
+
+### 续行命令（ONNX 到位后）
+- image encoder:  trtexec --onnx=data/resnet18_image_encoder.onnx --saveEngine=data/resnet18_image_encoder.engine --fp16
+- mask decoder :  trtexec --onnx=data/mobile_sam_mask_decoder.onnx --saveEngine=data/mobile_sam_mask_decoder.engine --minShapes=point_coords:1x1x2,point_labels:1x1 --optShapes=point_coords:1x1x2,point_labels:1x1 --maxShapes=point_coords:1x10x2,point_labels:1x10
+- inference     :  python3 examples/basic_usage.py --image_encoder=data/resnet18_image_encoder.engine --mask_decoder=data/mobile_sam_mask_decoder.engine（assets/dogs.jpg, box [100,100,850,759]→points [[100,100],[850,759]] labels [2,3]）
+
+### 核心包版本（保持不变）
+torch 2.5.0a0+872d972e41.nv24.08 / torchvision 0.20.0a0+afc54f7 / numpy 1.23.5 / tensorrt 10.3.0 / torch2trt importable / transformers 4.46.3 / Pillow 12.3.0 / OpenCV 4.10.0 / timm MISSING(未安装)。
+
+### 约束遵守
+- 未做 NanoOWL+NanoSAM 联合 / benchmark / INT8 / ROS2 / MP4 / 训练；未改 upstream（nanosam git status clean）；未 remote/push/GitHub 上传；未升级/降级核心包；未安装新依赖（timm 未装）；未继续 Stage 3C。
+
+### Engine / 证据
+- 未产出 *.engine / *.onnx / mask 输出；third_party/nanosam/data/ 为空。
+- 证据目录：results/nanosam_baseline/blocker_report.md（含完整失败点、官方 Drive ID/目标路径/续行命令）。
