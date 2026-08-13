@@ -379,3 +379,22 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 - Key model files complete: config + preprocessor + weights + tokenizer齐全 (PASS).
 - Constraints honored: NOT extracted to the real cache (`/home/nvidia/.cache/huggingface/hub`); only listed / small refs file read to stdout. No TensorRT engine built. No NanoOWL inference run. No Python/CUDA/TensorRT environment modification. No remote/push/GitHub upload.
 - Stage 1J-Fallback-1 status: PASS — package is a valid, complete offline HF cache for `google/owlvit-base-patch32`, ready to stage in a later step.
+
+## Day 1 / Stage 1J-Fallback-2 - Offline NanoOWL OWL-ViT TensorRT Baseline (PASS)
+
+- Closed the first real Jetson inference loop offline: Image + Text Prompt -> NanoOWL/OWL-ViT -> TensorRT -> Box + Label + Score.
+- [1] Offline HF cache staged: extracted `/home/nvidia/owlvit-base-patch32-hf-cache.tar.gz` into `/home/nvidia/.cache/huggingface/hub/` preserving `models--google--owlvit-base-patch32/{refs,snapshots,blobs}` (ref `main` -> `cbc355fb364588351c5d51c7f74465e8e7ec6f72`; weights + config + preprocessor + tokenizer materialized).
+- [3] Offline load verified with `HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1`: `OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")` + `OwlViTProcessor.from_pretrained(...)` -> PASS (153,231,879 params). No network used.
+- [4] NanoOWL package installed per upstream (`python setup.py develop`) from fixed commit `fb553dee4c58f8c53ec2bf01f355a54648e67dbd`; import verified from neutral cwd. NOTE: README's `develop --user` raised `KeyError: 'unix_user'` (setuptools/venv incompatibility), so the venv-equivalent `develop` (no `--user`) was used — same source-linked install, no NanoOWL source modification.
+- [4][9] OWL-ViT patch32 Vision Encoder TensorRT engine built via official `python -m nanoowl.build_image_encoder_engine` (defaults: `--model_name google/owlvit-base-patch32`, `--fp16_mode True`, `--onnx_opset 16`; flow: ONNX export -> `trtexec --fp16 --shapes=image:1x3x768x768`).
+  - Engine path: `/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine`
+  - Size: 183,507,980 bytes (~175 MiB)
+  - SHA256: `d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037`
+  - Build log: `results/nanoowl_baseline/engine_build.log` (trtexec `PASSED [TensorRT v100300]`; engine re-deserialized by `load_image_encoder_engine`; build-time latency ~16ms mean).
+- [10][11][12] Open-vocabulary detection on official sample image `third_party/nanoowl/assets/owl_glove_small.jpg`, prompts `["an owl", "a glove", "a finger"]`, threshold 0.10 -> PASS (1 detection).
+  - Result: label `an owl`, score 0.3419235944747925, box_xyxy [275.19, 82.35, 463.64, 399.35]. (No "a glove" / "a finger" detections above threshold on this image.)
+  - Inference log: `results/nanoowl_baseline/inference.log`; detections JSON: `results/nanoowl_baseline/detections.json`; input image: `input_image.jpg`; visualization: `result_visualization.jpg`.
+  - Note on visualization: `nanoowl.owl_drawing.draw_owl_output` passes a read-only PIL->numpy array to `cv2.rectangle`, which OpenCV 4.10 rejects (`Bad argument ... NumPy array marked as readonly`). This is a drawing-helper/OpenCV incompatibility, NOT a detection/engine/inference failure. Per the no-NanoOWL-source-modification rule, the issue was worked around in our own `scripts/nanoowl_infer.py` by drawing on a writable `.copy()` of the image; NanoOWL source was not changed.
+- [14] Core versions unchanged: torch 2.5.0a0+872d972e41.nv24.08, torchvision 0.20.0a0+afc54f7, TensorRT 10.3.0, transformers 4.46.3, numpy 1.23.5.
+- Integrity: no NanoOWL or torch2trt source modification; no core dependency upgrade/downgrade; no TensorRT plugins installed/compiled; no NanoSAM, no CLIP, no Tree Detection, no INT8, no ROS2, no camera; no OWL-ViT weights downloaded over network (offline cache only); no remote/push/GitHub upload. `*.engine` ignored by `.gitignore` (binary not committed); its SHA256 is tracked as evidence.
+- Stage 1J-Fallback-2 status: PASS — offline OWL-ViT load + TensorRT engine build + open-vocabulary detection all succeeded.

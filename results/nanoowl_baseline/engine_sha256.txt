@@ -1,0 +1,1 @@
+d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037  third_party/nanoowl/data/owlvit_image_encoder_patch32.engine

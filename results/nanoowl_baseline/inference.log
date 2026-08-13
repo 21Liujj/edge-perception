@@ -1,0 +1,33 @@
+/usr/local/lib/python3.10/dist-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/usr/local/lib/python3.10/dist-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/native/TensorShape.cpp:3593.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/nvidia/jetson-deploy-lab/third_party/nanoowl/nanoowl/image_preprocessor.py:71: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /opt/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  image = torch.from_numpy(np.asarray(image))
+[08/13/2026-13:58:35] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+{
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+  "prompts": [
+    "an owl",
+    "a glove",
+    "a finger"
+  ],
+  "threshold": 0.1,
+  "num_detections": 1,
+  "detections": [
+    {
+      "label_index": 0,
+      "label": "an owl",
+      "score": 0.3419235944747925,
+      "box_xyxy": [
+        275.1943359375,
+        82.3544921875,
+        463.640625,
+        399.34619140625
+      ]
+    }
+  ]
+}
+VIS_SAVED
