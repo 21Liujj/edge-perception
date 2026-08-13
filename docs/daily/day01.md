@@ -260,3 +260,35 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 
 - Only `transformers==4.46.3` (plus resolver companions) added to `.venv`. No other package install/upgrade/downgrade, no weights, no engine for NanoOWL, no remote/push. `docs/daily/day01.md` updated + one local commit.
 - Stage 1F status: PASS.
+
+## Day 1 / Stage 1G - Isolate Pillow Upgrade + Regression
+
+- Action time: 2026-08-13 10:50 CST
+- Upgraded in project `.venv` only: `Pillow==12.3.0` (from 9.0.1). Command: `pip install --upgrade Pillow==12.3.0`.
+- Install behavior matched Stage 1E prediction: pip left the system `Pillow 9.0.1` at `/usr/lib/python3/dist-packages` untouched ("Can't uninstall 'Pillow'... outside environment") and installed 12.3.0 into the venv/user overlay; with `include-system-site-packages=true`, import precedence resolves to the newer 12.3.0 copy.
+- NOT installed / NOT modified: torch, torchvision, numpy, tensorrt, transformers, torch2trt, timm, accelerate, clip. No OWL-ViT weights downloaded. No torch2trt build. No NanoOWL engine built.
+
+### Post-upgrade verification
+
+| Check | Result |
+|---|---|
+| `PIL.__version__` | 12.3.0 (asserted == 12.3.0) |
+| PIL round-trip (create 16x16 RGB, save PNG+JPEG, reopen, load, size check) | PASS |
+| torch | 2.5.0a0+872d972e41.nv24.08 (unchanged from Stage 1F) |
+| torchvision | 0.20.0a0+afc54f7 (unchanged) |
+| numpy | 1.23.5 (unchanged) |
+| tensorrt | 10.3.0 (unchanged) |
+| transformers | 4.46.3 (unchanged) |
+| torch.cuda.is_available() | True |
+| OWL-ViT import (`OwlViTProcessor`, `OwlViTForObjectDetection`) | PASS |
+
+### Stage 0 regression: ONNX -> TensorRT smoke test
+
+- Re-ran `scripts/smoke_onnx_trt.sh`. Result: **PASS** (exit 0).
+- Both build and run logs contain `&&&& PASSED TensorRT.trtexec [TensorRT v100300]`; engine non-empty; times/profile/layers emitted.
+- Conclusion: the isolated Pillow 9.0.1 -> 12.3.0 upgrade (the upstream UnidentifiedImageError fix) did not disturb the validated ONNX -> TensorRT chain or the transformers 4.46.3 OWL-ViT import path.
+
+### Integrity
+
+- Only `Pillow` changed in `.venv` (9.0.1 -> 12.3.0). No other package install/upgrade/downgrade, no weights, no NanoOWL engine, no remote/push. `docs/daily/day01.md` updated + regenerated `results/smoke/` regression artifacts committed under one local commit.
+- Stage 1G status: PASS.
