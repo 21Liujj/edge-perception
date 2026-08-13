@@ -49,3 +49,44 @@
 - Upstream commit, branch, commit date, license, and dependency metadata: unavailable because the official repository could not be cloned/read from this host.
 - Parent repository commit: not created because Stage 1C did not complete.
 - Environment integrity: no dependency installation, environment modification, upstream source edit, remote configuration, push, or later-stage work was performed.
+
+## Day 1 / Stage 1C - Pin NanoOWL Upstream (retry)
+
+- Attempt time: 2026-08-13 10:02 CST
+- Input upstream: `https://github.com/NVIDIA-AI-IOT/nanoowl`
+- Action: added NanoOWL as a git submodule at `third_party/nanoowl` via `git submodule add` (no mirror or alternate source used).
+- Network: GitHub reachable (HTTP 200); clone succeeded.
+- Upstream code: not modified. No dependencies installed. No model weights downloaded. No TensorRT engine built. No `.venv`/CUDA/TensorRT/PyTorch changes. No GitHub remote configured, no push, no remote repository created.
+- Result: PASS.
+
+### NanoOWL pinned metadata (from local Git and file reads)
+
+| Item | Value |
+|---|---|
+| Upstream URL | `https://github.com/NVIDIA-AI-IOT/nanoowl` |
+| Submodule path | `third_party/nanoowl` |
+| HEAD commit hash | `fb553dee4c58f8c53ec2bf01f355a54648e67dbd` |
+| Current branch | `main` |
+| Latest commit date | 2025-02-05 17:01:22 -0800 |
+| LICENSE | Apache License 2.0 (`LICENSE.md`) |
+| `setup.py` | declares package `nanoowl`, version `0.0.0`; no `install_requires` |
+
+### Main dependency names
+
+Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/` package. No `requirements.txt` is present in the repo.
+
+- PyTorch (`torch`)
+- Transformers (`transformers`)
+- torch2trt (referenced in README Setup; external Jetson package)
+- NVIDIA TensorRT (runtime, via torch2trt)
+- torchvision
+- OpenCV (`cv2`)
+- numpy
+- Pillow (`PIL`)
+- matplotlib
+- CLIP (`clip`)
+- NanoSAM (optional, for instance segmentation example)
+
+### Parent repository
+
+- Parent commit created: `chore: pin NanoOWL upstream`.
