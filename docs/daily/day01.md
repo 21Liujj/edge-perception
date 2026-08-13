@@ -341,3 +341,24 @@ Sources: README "Setup" section and `import`/`from` statements in the `nanoowl/`
 - Evidence: `results/torch2trt_smoke/smoke_torch2trt.json`, `smoke_torch2trt.txt`, `stage0_onnx_trt_rerun.json`.
 - Environment integrity: no torch2trt source modification, no plugins installed/compiled, no torch/TensorRT/CUDA/numpy/torchvision upgrade or downgrade, no OWL-ViT weights, no NanoOWL package install, no NanoOWL engine build, no remote/push/GitHub upload.
 - Stage 1I status: PASS.
+
+## Day 1 / Stage 1J - NanoOWL OWL-ViT TensorRT Baseline (FAIL: NETWORK_BLOCKED)
+
+- Goal: first real Jetson inference loop — Image + Text Prompt -> NanoOWL/OWL-ViT -> TensorRT -> Box + Label + Score, using the official patch32 baseline.
+- Baseline resolved from local NanoOWL commit `fb553dee4c58f8c53ec2bf01f355a54648e67dbd` only (README + setup.py + source; no WebSearch/WebFetch):
+  - Model id (HF): `google/owlvit-base-patch32` (OWL-ViT ViT-B/32, image 768, patch 32). Hardcoded default in `examples/owl_predict.py`, `nanoowl/build_image_encoder_engine.py`, and `OwlPredictor.__init__`.
+  - Official engine build command: `python3 -m nanoowl.build_image_encoder_engine <output.engine>` (defaults: `--model_name google/owlvit-base-patch32`, `--fp16_mode True`, `--onnx_opset 16`). Internally: `OwlViTForObjectDetection.from_pretrained(model_name)` -> export ONNX -> `trtexec`.
+  - Official inference command: `examples/owl_predict.py --prompt="[an owl, a glove]" --threshold=0.1 --image_encoder_engine=../data/owl_image_encoder_patch32.engine`; sample image `assets/owl_glove_small.jpg`.
+  - NanoOWL install method (README): `python setup.py develop --user` (setup.py has no install_requires; pure find_packages).
+- Pre-flight core versions (unchanged baseline): torch 2.5.0a0+872d972e41.nv24.08, torchvision 0.20.0a0+afc54f7, TensorRT 10.3.0, numpy 1.23.5, Pillow 12.3.0, transformers 4.46.3.
+- Network check (rule 5): `curl https://huggingface.co` -> `Could not resolve host: huggingface.co` (DNS failure, exit 6); `HfApi().model_info("google/owlvit-base-patch32")` -> ConnectionError / NewConnectionError (`Failed to establish a new connection: [Errno -3] Temporary failure`). HuggingFace is **unreachable** from this host.
+- HF cache state: `/home/nvidia/.cache/huggingface/hub` contains only `version.txt`; NO `models--google--owlvit-base-patch32` snapshot present. The required checkpoint is absent and cannot be downloaded.
+- Blocker consequence: `OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")` is called in `OwlPredictor.__init__` for BOTH engine build (`build_image_encoder_engine.py`) and inference (`owl_predict.py`). With no checkpoint and no network, neither engine build nor inference can proceed. Per rule 10, stopped immediately.
+- Offline checkpoint transfer required (rule 5 — please stage these, do not switch mirrors):
+  - Model id: `google/owlvit-base-patch32`
+  - Target cache root: `/home/nvidia/.cache/huggingface/hub` (env `HF_HOME=/home/nvidia/.cache/huggingface`)
+  - Target repo cache dir: `/home/nvidia/.cache/huggingface/hub/models--google--owlvit-base-patch32/` with the standard `snapshots/<rev>/`, `refs/main`, and `blobs/<sha>` layout so `transformers` / `huggingface_hub` resolves it offline (`HF_HUB_OFFLINE=1`).
+  - Required files from the HF repo `google/owlvit-base-patch32`: `config.json`, `preprocessor_config.json`, `pytorch_model.bin` (model weights), `tokenizer.json` / `vocab.txt` / `tokenizer_config.json` / `special_tokens_map.json` (text tokenizer for `OwlViTProcessor`), plus `model.safetensors` if present (transformers will use whichever weight file exists). Recommend capturing the whole repo snapshot with `huggingface-cli download google/owlvit-base-patch32` on a connected machine and transferring the resulting cache dir.
+  - Alternative (simpler): set `--model` / `--model_name` to a local path holding the same resolved files, but the official baseline id is `google/owlvit-base-patch32`.
+- Integrity: NanoOWL source NOT modified; torch/torchvision/numpy/TensorRT/transformers/Pillow/CUDA NOT upgraded or downgraded; no NanoOWL package installed (it would only fail at `from_pretrained`); no TensorRT plugins installed/compiled; no OWL-ViT weights downloaded (impossible); no engine built; no NanoSAM, no INT8, no ROS2, no camera, no tree detection; no remote/push/GitHub upload.
+- Stage 1J status: FAIL (NETWORK_BLOCKED — missing offline OWL-ViT checkpoint). No engine path, no inference result. Retry once the `google/owlvit-base-patch32` checkpoint is staged into `/home/nvidia/.cache/huggingface/hub`.
