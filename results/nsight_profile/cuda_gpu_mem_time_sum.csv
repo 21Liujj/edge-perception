@@ -1,0 +1,8 @@
+Generating SQLite file edge_perception.sqlite from edge_perception.nsys-rep
+Processing [edge_perception.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_gpu_mem_time_sum.py]... 
+Time (%),Total Time (ns),Count,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Operation
+91.4,264498368,670,394773.7,3376.0,608,29670976,1655215.8,[CUDA memcpy Host-to-Device]
+5.8,16727520,154,108620.3,1472.0,448,5950496,697904.5,[CUDA memset]
+2.1,6105984,179,34111.6,9536.0,4640,123392,34206.0,[CUDA memcpy Device-to-Device]
+0.7,1915488,364,5262.3,2240.0,992,50464,9330.2,[CUDA memcpy Device-to-Host]
+

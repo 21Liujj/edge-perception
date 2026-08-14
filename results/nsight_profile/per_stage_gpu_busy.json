@@ -1,0 +1,32 @@
+{
+  "preprocess": {
+    "wall_ms": 1.76,
+    "gpu_busy_ms": 0.0,
+    "gpu_busy_pct": 0.0
+  },
+  "nanoowl": {
+    "wall_ms": 38.48,
+    "gpu_busy_ms": 30.49,
+    "gpu_busy_pct": 79.2
+  },
+  "nanoowl_postprocess": {
+    "wall_ms": 0.02,
+    "gpu_busy_ms": 0.0,
+    "gpu_busy_pct": 0.0
+  },
+  "bridge": {
+    "wall_ms": 0.08,
+    "gpu_busy_ms": 0.0,
+    "gpu_busy_pct": 0.0
+  },
+  "nanosam_set_image": {
+    "wall_ms": 55.7,
+    "gpu_busy_ms": 18.97,
+    "gpu_busy_pct": 34.1
+  },
+  "nanosam_decode": {
+    "wall_ms": 16.82,
+    "gpu_busy_ms": 13.1,
+    "gpu_busy_pct": 77.9
+  }
+}

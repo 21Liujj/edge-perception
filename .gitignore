@@ -41,3 +41,10 @@ data/coco/val2017/
 data/coco/downloads/
 data/coco/annotations/
 # eval manifests ARE version-controlled (kept)
+
+# Stage 6C Nsight Systems: keep nsys-rep (3MB) + summaries; ignore heavy/intermediate
+results/nsight_profile/*.sqlite
+results/nsight_profile/*.sqlite-shm
+results/nsight_profile/*.sqlite-wal
+results/nsight_profile/*.qdstrm
+results/nsight_profile/*.err

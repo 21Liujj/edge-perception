@@ -1,0 +1,38 @@
+{
+  "sequential": {
+    "n": 300,
+    "source_age_at_inference_start_ms": {
+      "mean": 4104.21,
+      "p50": 4013.7,
+      "p95": 7766.9,
+      "p99": 8072.9,
+      "max": 8104.0
+    },
+    "existing_frame_age_P95": 0.013,
+    "existing_live_e2e_lat_p95_hint": "see summary.json live_e2e_latency_ms.p95"
+  },
+  "fifo": {
+    "n": 300,
+    "source_age_at_inference_start_ms": {
+      "mean": 2664.488,
+      "p50": 2659.2,
+      "p95": 4926.6,
+      "p99": 5216.0,
+      "max": 5246.5
+    },
+    "existing_frame_age_P95": 1107.379,
+    "existing_live_e2e_lat_p95_hint": "see summary.json live_e2e_latency_ms.p95"
+  },
+  "latest": {
+    "n": 260,
+    "source_age_at_inference_start_ms": {
+      "mean": 172.749,
+      "p50": 173.7,
+      "p95": 218.1,
+      "p99": 222.0,
+      "max": 232.7
+    },
+    "existing_frame_age_P95": 95.809,
+    "existing_live_e2e_lat_p95_hint": "see summary.json live_e2e_latency_ms.p95"
+  }
+}

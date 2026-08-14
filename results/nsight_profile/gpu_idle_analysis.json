@@ -1,0 +1,14 @@
+{
+  "gpu_busy_pct": 53.9,
+  "gpu_idle_pct": 46.1,
+  "profile_phase_ms": 1755.5,
+  "max_idle_gap_ms": 40.44,
+  "top5_idle_gaps_ms": [
+    40.44,
+    37.1,
+    36.95,
+    36.09,
+    35.72
+  ],
+  "total_gaps_ms": 803.1
+}
