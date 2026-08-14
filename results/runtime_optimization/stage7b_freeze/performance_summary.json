@@ -1,0 +1,29 @@
+{
+  "stage": "7B-freeze",
+  "status": "PROVISIONAL performance, NOT accepted — see correctness gate",
+  "note": "Performance measured under identical same-stage workload (warmup>=30, iters>=300, owl_glove_small.jpg). COCO QUICK quality DOES NOT pass — see coco_quick_paired.json.",
+  "set_image": {
+    "baseline": {"mean": 64.3949, "p50": 66.4439, "p95": 70.7567, "p99": 74.192, "max": 76.8362},
+    "cuda": {"mean": 14.1098, "p50": 13.6167, "p95": 16.5463, "p99": 19.8492, "max": 22.3831},
+    "speedup_mean": 4.5707,
+    "speedup_p50": 4.8777
+  },
+  "joint_pipeline": {
+    "baseline": {"mean": 106.4419, "p50": 107.741, "p95": 114.1625, "p99": 119.5442, "max": 129.2274},
+    "cuda": {"mean": 46.7342, "p50": 46.6788, "p95": 47.375, "p99": 47.8803, "max": 48.9612},
+    "speedup_mean": 2.2769,
+    "speedup_p50": 2.3076,
+    "tail_improved": true,
+    "tail_note": "P95/P99 strictly better on CUDA (114.2->47.4, 119.5->47.9) — but quality drift invalidates the win"
+  },
+  "standalone_preprocess_boundary": {
+    "source": "preprocess_benchmark.json (owl, warmup50 iters500)",
+    "cpu_preprocess": {"mean": 26.7728, "p50": 26.6138, "p95": 27.9945, "p99": 29.9113, "max": 30.1472},
+    "cuda_preprocess": {"mean": 3.1194, "p50": 3.3366, "p95": 3.7091, "p99": 4.4239, "max": 4.9658},
+    "full_preprocess_speedup": 8.5828
+  },
+  "warmup": 30,
+  "iters": 300,
+  "image": "owl_glove_small.jpg",
+  "engines": {"encoder": "resnet18_image_encoder.engine (FP16 engine, FP32 input binding)", "decoder": "mobile_sam_mask_decoder.engine (FP32)"}
+}

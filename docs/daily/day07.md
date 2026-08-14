@@ -169,3 +169,115 @@ GPU 空闲持续存在的真正瓶颈，需 fused CUDA 前处理 kernel 才能�
   常驻内存与功耗代价。
 - **负收益工程结论**：依验收策略对 joint 路径给出 REJECTED，保留负结果证据并
   指出真正瓶颈（fused CUDA 前处理 kernel）为下一步方向。
+
+
+---
+
+# Stage 7B — Experimental Fused CUDA Preprocessing Prototype (FROZEN)
+
+## Motivation
+
+Stage 7A 证明 joint pipeline 的 GPU 空闲根源是 **主机前处理**：PIL.resize ≈15.5ms
++ normalize ≈4.9ms 在 CPU 串行执行，GPU 空闲；Stage 7A joint 变体 REJECTED。
+推荐下一步即 fused CUDA 前处理 kernel。Stage 7B 实现该 prototype 验证假设。
+
+## Implementation（当前真实融合的 operation）
+
+`csrc/cuda_preprocess/cuda_preprocess_kernel.cu`：单次 `__global__` 启动，
+一个 thread 对应一个 output pixel，融合：
+- bilinear resize（half-pixel center + 边界 clamp）
+- per-channel normalize（mean=[123.675,116.28,103.53]/std=[58.395,57.12,57.375]）
+- HWC→NCHW layout
+- uint8→FP32 dtype
+C++ binding `csrc/cuda_preprocess/cuda_preprocess.cpp`；Python wrapper
+`edge_perception/runtime/cuda_preprocess.py`（CudaPreprocessor + CudaPreprocessPredictor，
+复用 pinned staging + GPU buffer + 显式 stream，opt-in `--runtime cuda`）。
+`setup_cuda_preprocess.py`（torch CUDAExtension, nvcc 12.6）。`.so` 已 gitignore。
+
+## Performance（同 Stage benchmark，owl_glove_small.jpg，warmup≥30 / iters≥300）
+
+| metric | baseline | cuda | speedup |
+|---|---|---|---|
+| standalone 前处理 boundary | 26.8ms | 3.12ms | 8.58× |
+| set_image mean | 64.4 | 14.1 | 4.57× |
+| set_image P50/P95/P99 | 66.4/70.8/74.2 | 13.6/16.5/19.8 | — |
+| joint mean | 106.4 | 46.7 | 2.28× |
+| joint P50/P95/P99 | 107.7/114.2/119.5 | 46.7/47.4/47.9 | — |
+
+PIL.resize host gap 消除，tail latency（P95/P99）strict 更好。**这些是 PROVISIONAL 性能数字。**
+
+## Correctness（判定 gate）
+
+**状态：EXPERIMENTAL_CUDA_PROTOTYPE_NUMERICAL_DRIFT** —— CUDA path 能跑且快，
+但前处理数值变化导致可观察的 segmentation 退化。
+
+### Tensor comparison（baseline PIL-BICUBIC vs CUDA bilinear）
+owl: mean_abs 1.667 / max_abs 4.464 / RMSE 1.980 / P95_abs 3.799
+dogs: mean_abs 2.154 / max_abs 4.464 / RMSE 2.429 / P95_abs 4.041
+shape match True，dtype FP32，pad 区严格 0。根因：PIL 默认 = **BICUBIC**，kernel 用 bilinear，
+是 *语义* 重采样差异（非浮点噪声）。
+
+### Owl regression
+owl_PASS（非空、无 NaN/Inf）= true，但 **baseline-vs-CUDA mask IoU = 0.600**，mask area ratio 1.51（CUDA mask 大 51%）。
+
+### Dogs regression（box [100,100,850,759], slot 0）
+dogs_PASS（非空、无 NaN/Inf）= true，但 **baseline-vs-CUDA mask IoU = 0.538**，pred IoU 0.662→0.642。
+
+### COCO QUICK 100-instance（Day5 固定 manifest，slot 0，同 engine/evaluator）
+| | baseline | cuda |
+|---|---|---|
+| mIoU | 0.7213 | 0.4756 |
+| small/medium/large | 0.6598/0.7279/0.7925 | 0.3904/0.4923/0.5674 |
+| valid/failed | 100/0 | 100/0 |
+
+mean signed IoU delta = **−0.2458**；mean abs = 0.2562，max abs = 0.6575；
+91/100 实例漂移 >0.05，81/100 >0.10。**严重系统性质量下降（相对 −34% mIoU），非噪声。**
+
+## Decision
+
+**EXPERIMENTAL_CUDA_PROTOTYPE_NUMERICAL_DRIFT**。不放宽质量标准。CUDA path 保持
+**opt-in**（`--runtime cuda`），**不**成为 V1 默认 runtime。
+
+语言模板（合规措辞）：
+> CUDA prototype showed substantial latency potential (joint P50 107.7→46.7ms) but
+> was not accepted because of numerical / quality drift (COCO QUICK mIoU 0.7213→0.4756;
+> bilinear ≠ PIL BICUBIC resampling). Pil.image default resample is BICUBIC; a
+> PIL-faithful CUDA resample kernel is V2 work.
+
+## Freeze
+
+本阶段停止继续 CUDA 深挖。理由见 `results/runtime_optimization/stage7b_freeze/freeze_summary.md`。
+V1 目标是正确、稳定的 perception demo；prototype 已证明"主机前处理是瓶颈、GPU 融合可消除空闲"
+这一假设（真实有价值的发现），但正确性 gap 是重采样语义问题（bilinear≠PIL BICUBIC），
+属系统性 CUDA 工程任务，归 V2。不保留负漂移代码为默认。
+
+---
+
+# EdgePerception V1 / V2 Boundary
+
+## V1 已覆盖
+- NanoOWL / NanoSAM joint perception pipeline
+- ONNX / TensorRT engine
+- FP32 / FP16
+- COCO quality evaluation（QUICK 100-instance，slot 0，paired delta）
+- Joint Pipeline benchmark（P50/P95/P99）
+- MP4 离线推理 / Realtime runtime（producer-consumer，FIFO vs latest-frame）
+- Nsight Systems profiling（per-stage GPU busy/idle，H2D audit）
+- Stage 7A CUDA-aware runtime（buffer reuse / pinned / static cache / stream；诚实负收益）
+- Stage 7B Experimental fused CUDA preprocessing prototype（已验证、已冻结；NUMERICAL_DRIFT）
+
+## V1 接下来只做
+- Stability（稳定性验证）
+- Final Benchmark（最终基准汇总）
+- README / Architecture / Demo
+- Resume / Interview material（含 Stage 7B CUDA prototype 真实发现）
+
+## V2 后续再做
+- 系统性 CUDA learning
+- fused CUDA kernel optimization（PIL-faithful BICUBIC / area-resize，修复漂移）
+- Nsight Compute
+- INT8
+- C++ TensorRT Runtime
+- memory optimization
+- camera / GStreamer / zero-copy
+- advanced AI Infra optimization

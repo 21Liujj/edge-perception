@@ -1,11 +1,11 @@
 {
-  "runtime": "baseline",
+  "runtime": "cuda",
   "micro": "joint",
-  "warmup": 1,
-  "iters": 1,
+  "warmup": 2,
+  "iters": 2,
   "model_load_ms": {
-    "owl": 1451.106,
-    "nsam": 621.503
+    "owl": 1367.441,
+    "nsam": 653.691
   },
   "correctness": {
     "owl": {
@@ -18,7 +18,7 @@
         463.640625,
         399.34619140625
       ],
-      "mask_nonzero": 34065,
+      "mask_nonzero": 51434,
       "has_nan": false,
       "has_inf": false
     },
@@ -27,23 +27,24 @@
       "box": [
         100.0,
         100.0,
-        1000.0,
-        660.0
+        850.0,
+        759.0
       ],
-      "mask_nonzero": 204540,
+      "mask_nonzero": 239469,
       "has_nan": false,
       "has_inf": false
     }
   },
   "latency_ms": {
-    "mean": 116.2799,
-    "min": 116.2799,
-    "p50": 116.2799,
-    "p95": 116.2799,
-    "p99": 116.2799,
-    "max": 116.2799
+    "mean": 69.4877,
+    "min": 66.2499,
+    "p50": 69.4877,
+    "p95": 72.4018,
+    "p99": 72.6608,
+    "max": 72.7256
   },
   "per_iter_ms": [
-    116.28
+    72.726,
+    66.25
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "box": [
+    100.0,
+    100.0,
+    850.0,
+    759.0
+  ],
+  "mask_slot": 0,
+  "baseline": {
+    "pred_iou": 0.6618878245353699,
+    "low_res_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "has_nan": false,
+    "has_inf": false,
+    "mask_nonzero": 242157
+  },
+  "cuda": {
+    "pred_iou": 0.6423665285110474,
+    "low_res_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "has_nan": false,
+    "has_inf": false,
+    "mask_nonzero": 239469
+  },
+  "mask_iou_baseline_vs_cuda": 0.5384413900166422,
+  "mask_area_ratio": 0.9888997633766523,
+  "dogs_PASS": true
+}

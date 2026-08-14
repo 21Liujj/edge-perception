@@ -1,0 +1,44 @@
+{
+  "owl": {
+    "src_size": [
+      756,
+      499
+    ],
+    "rh": 675,
+    "rw": 1024,
+    "size": 1024,
+    "baseline_resample": "PIL_default_BICUBIC",
+    "cuda_resample": "bilinear_half_pixel",
+    "shape_match": true,
+    "dtype": "torch.float32",
+    "region_max_abs": 4.464285850524902,
+    "region_mean_abs": 1.666461706161499,
+    "region_rmse": 1.979905605316162,
+    "region_p50_abs": 1.4898536205291748,
+    "region_p95_abs": 3.7990198135375977,
+    "region_p99_abs": 4.332562446594238,
+    "full_max_abs": 4.464285850524902,
+    "pad_max_abs_cuda": 0.0
+  },
+  "dogs": {
+    "src_size": [
+      1180,
+      760
+    ],
+    "rh": 659,
+    "rw": 1024,
+    "size": 1024,
+    "baseline_resample": "PIL_default_BICUBIC",
+    "cuda_resample": "bilinear_half_pixel",
+    "shape_match": true,
+    "dtype": "torch.float32",
+    "region_max_abs": 4.464285850524902,
+    "region_mean_abs": 2.154357433319092,
+    "region_rmse": 2.4291439056396484,
+    "region_p50_abs": 2.123469352722168,
+    "region_p95_abs": 4.041441917419434,
+    "region_p99_abs": 4.298313140869141,
+    "full_max_abs": 4.464285850524902,
+    "pad_max_abs_cuda": 0.0
+  }
+}

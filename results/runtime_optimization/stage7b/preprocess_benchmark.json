@@ -1,0 +1,23 @@
+{
+  "image": "owl_glove_small.jpg",
+  "warmup": 50,
+  "iters": 500,
+  "boundary": "CPU image -> TRT-ready device tensor (full preprocess boundary)",
+  "cpu_preprocess": {
+    "mean": 26.77281858990318,
+    "min": 26.06473199921311,
+    "p50": 26.61384300154168,
+    "p95": 27.994455849329825,
+    "p99": 29.911336110599223,
+    "max": 30.147150999255246
+  },
+  "cuda_preprocess": {
+    "mean": 3.1193685740436194,
+    "min": 2.3327939998125657,
+    "p50": 3.336551499160123,
+    "p95": 3.709050148972892,
+    "p99": 4.4238782404499934,
+    "max": 4.965842999808956
+  },
+  "full_preprocess_speedup": 8.582768581013731
+}

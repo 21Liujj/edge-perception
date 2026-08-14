@@ -1,0 +1,37 @@
+{
+  "detected_label": "an owl",
+  "score": 0.341924,
+  "box_xyxy": [
+    275.1943359375,
+    82.3544921875,
+    463.640625,
+    399.34619140625
+  ],
+  "baseline": {
+    "pred_iou": 0.7205749750137329,
+    "low_res_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "has_nan": false,
+    "has_inf": false,
+    "mask_nonzero": 34065
+  },
+  "cuda": {
+    "pred_iou": 0.6321476697921753,
+    "low_res_shape": [
+      1,
+      4,
+      256,
+      256
+    ],
+    "has_nan": false,
+    "has_inf": false,
+    "mask_nonzero": 51434
+  },
+  "mask_iou_baseline_vs_cuda": 0.5996968959904204,
+  "mask_area_ratio": 1.5098781740789666,
+  "owl_PASS": true
+}

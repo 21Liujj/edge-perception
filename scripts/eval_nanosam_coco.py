@@ -432,7 +432,7 @@ def main():
     parser.add_argument("--mask-decoder-engine", required=False)
     parser.add_argument("--output-dir", default="results/nanosam_coco_eval")
     parser.add_argument("--max-instances", type=int, default=None)
-    parser.add_argument("--runtime", choices=["baseline", "optimized"], default="baseline", help="Stage7A: baseline (upstream) or optimized wrapper")
+    parser.add_argument("--runtime", choices=["baseline", "optimized", "cuda"], default="baseline", help="Stage7A: baseline (upstream) or optimized wrapper")
     args = parser.parse_args()
 
     # gate 1: dataset
@@ -470,8 +470,8 @@ def main():
             print("MANIFEST_EMPTY: no instances in manifest")
             sys.exit(4)
 
-    if args.runtime not in ("baseline", "optimized"):
-        print("RUNTIME_INVALID: --runtime must be baseline or optimized")
+    if args.runtime not in ("baseline", "optimized", "cuda"):
+        print("RUNTIME_INVALID")
         sys.exit(7)
     if args.max_instances is not None:
         instances = instances[: args.max_instances]
@@ -490,6 +490,13 @@ def main():
             _sys.path.insert(0, _root)
         from edge_perception.runtime.nanosam_optimized import OptimizedPredictor
         predictor = OptimizedPredictor(args.image_encoder_engine, args.mask_decoder_engine)
+    elif args.runtime == "cuda":
+        import sys as _sys
+        _root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        if _root not in _sys.path:
+            _sys.path.insert(0, _root)
+        from edge_perception.runtime.cuda_preprocess import CudaPreprocessPredictor
+        predictor = CudaPreprocessPredictor(args.image_encoder_engine, args.mask_decoder_engine)
     else:
         from nanosam.utils.predictor import Predictor
         predictor = Predictor(args.image_encoder_engine, args.mask_decoder_engine)

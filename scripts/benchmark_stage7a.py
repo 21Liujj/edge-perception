@@ -33,6 +33,7 @@ sys.path.insert(0, ROOT)  # for "from edge_perception.runtime..." import
 from nanoowl.owl_predictor import OwlPredictor  # noqa: E402
 from nanosam.utils.predictor import Predictor as BaselinePredictor  # noqa: E402
 from edge_perception.runtime.nanosam_optimized import OptimizedPredictor  # noqa: E402
+from edge_perception.runtime.cuda_preprocess import CudaPreprocessPredictor  # noqa: E402  (Stage 7B)
 
 DEFAULT_OWL_ENGINE = os.path.join(ROOT, "third_party/nanoowl/data/owlvit_image_encoder_patch32.engine")
 DEFAULT_NANOSAM_ENC = os.path.join(ROOT, "third_party/nanosam/data/resnet18_image_encoder.engine")
@@ -80,6 +81,8 @@ def select_detection(dets, target):
 def make_predictor(runtime, args):
     if runtime == "baseline":
         return BaselinePredictor(args.nanosam_enc, args.nanosam_dec)
+    if runtime == "cuda":
+        return CudaPreprocessPredictor(args.nanosam_enc, args.nanosam_dec)
     return OptimizedPredictor(args.nanosam_enc, args.nanosam_dec, use_stream=not args.no_stream)
 
 
@@ -199,7 +202,7 @@ def micro_joint(owl, nsam, pil, args, warmup, iters):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--runtime", required=True, choices=["baseline", "optimized"])
+    ap.add_argument("--runtime", required=True, choices=["baseline", "optimized", "cuda"])
     ap.add_argument("--micro", default="joint", choices=["set_image", "joint"])
     ap.add_argument("--warmup", type=int, default=30)
     ap.add_argument("--iters", type=int, default=200)

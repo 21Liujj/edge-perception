@@ -48,3 +48,14 @@ results/nsight_profile/*.sqlite-shm
 results/nsight_profile/*.sqlite-wal
 results/nsight_profile/*.qdstrm
 results/nsight_profile/*.err
+
+# Stage 7B: compiled CUDA extension + artifacts (do not commit)
+*.so
+*.o
+*.nsys-rep
+*.qdrep
+*.[nN]cu
+*.ncu-rep
+nsight_optimized/
+nsight_*/
+*.sqlite
