@@ -35,3 +35,9 @@ torch/hub/
 *.swo
 *~
 .DS_Store
+
+# COCO 2017 raw data (large, not version-controlled)
+data/coco/val2017/
+data/coco/downloads/
+data/coco/annotations/
+# eval manifests ARE version-controlled (kept)

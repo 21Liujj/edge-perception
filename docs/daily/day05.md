@@ -152,3 +152,126 @@ mask selection = slot 0。
 ## 结论
 
 Stage 5A：protocol/framework 就绪。COCO val2017 与 pycocotools 待准备（官方源可访问）。Day 5 后续 Stage 可在数据到位后执行 precision ablation（A/B/C/D）。
+
+---
+
+## Stage 5B — NanoSAM COCO Quality Baseline（执行）
+
+在 Stage 5A 协议冻结后，COCO val2017 数据与 pycocotools 已准备就绪。本阶段执行 NanoSAM box-prompt segmentation 质量基线评测，不修改协议、不重建 Engine、不跑 FULL、不继续 Stage 5C。
+
+### 1. COCO 数据校验
+
+PC→Jetson 传入两个官方 ZIP，SHA256 逐一确认（完全一致）：
+
+- `data/coco/downloads/val2017.zip` → `4f7e2ccb2866ec5041993c9cf2a952bbed69647b115d0f74da7ce8f4bef82f05`
+- `data/coco/downloads/annotations_trainval2017.zip` → `113a836d90195ee1f884e704da6304dfaaecff1f023f49b6ca93c4aaae470268`
+
+ZIP integrity test（`unzip -t`）：两个 ZIP 均无错误。
+
+### 2. 解压
+
+仅解压评测需要的数据（只保留 `instances_val2017.json`)：
+
+- `data/coco/val2017/`（5000 images）
+- `data/coco/annotations/instances_val2017.json`
+
+原始 val2017 图片 / downloads ZIP / 大型 annotation 不进入 Git（`.gitignore` 新增规则）；manifest 进入 Git。
+
+### 3. Dataset statistics
+
+- val2017 图片数量 = **5000**
+- pycocotools 版本 = **2.0.11**（可正常加载 instances_val2017.json）
+- categories = 80（id 1..90，80 类）
+- annotations = 36781（crowd 446，非 crowd 合法 36335）
+- 非crowd size buckets：small 15264 / medium 12392 / large 8679
+
+### 4. Manifests（seed=2027，Stage 5A protocol）
+
+生成于 `data/eval_manifests/`（deterministic，进入 Git）：
+
+| subset | instances | unique images | categories | small | medium | large |
+|---|---|---|---|---|---|---|
+| smoke   | 20   | 20  | 20 | 6   | 6   | 8   |
+| quick   | 100  | 99  | 80 | 40  | 28  | 32  |
+| standard| 500  | 455 | 80 | 175 | 166 | 159 |
+| full    | 36335| 4952| 80 | 15264| 12392| 8679 |
+
+FULL manifest 仅作为索引生成，**未用于推理**（不跑 FULL inference）。
+
+### 5. Evaluator 修复（不改协议）
+
+`scripts/eval_nanosam_coco.py` 在 Stage 5A 仅有框架，运行时发现两处实现缺陷并修复（均为 bug fix，非口径修改）：
+
+1. **`_materialize` 路径丢失**：manifest instance 携带 `bbox_xywh`+`image_path`（frozen schema），原代码据 `bbox_xyxy` 判定 pre-materialized → 落入 fallback 用空 `images_root` 重建，导致 `image_path` 退化为裸文件名，全部 `IMAGE_LOAD_FAILED`。修复：据 `image_path`+`annotation_id` 判定 manifest instance，从 `bbox_xywh` 推导 `bbox_xyxy`，保留 manifest `image_path`，并补 `status=OK`。
+2. **`mask_iou` 变量遮蔽**：`predictor.predict(...)` 解包出返回值命名为 `mask_iou`（iou_predictions 张量），遮蔽了同名 IoU 计算函数 → `TypeError: 'Tensor' object is not callable`。修复：返回值重命名为 `mask_iou_preds`。
+
+未修改 evaluation protocol（评测单位 / GT box 转换 / slot 0 / invalid 规则 / metric 定义均不变）。
+
+### 6. NanoSAM 配置（BASELINE LOCKED）
+
+| 模块 | 精度 |
+|---|---|
+| Image Encoder (ResNet18) | FP16 TRT |
+| Mask Decoder (MobileSAM) | FP32 TRT |
+| Prompt | COCO GT Bounding Box (xyxy, labels [2,3]) |
+| Mask selection | slot 0（固定，非 IoU argmax） |
+| Embedding reuse | 同一 image 多 instance 复用（仅首 instance set_image） |
+
+Engine SHA256 与 Day 3 构建一致，未重建：enc `c277e5ca...aaa6a8`（FP16）、dec `afb5ac49...ccb4f2`（FP32）。
+
+### 7. SMOKE (~20 instances)
+
+- **PASS**：valid=20，failed=0，mIoU=0.7555，wall=2.36s。
+- Gating：execution errors=0、valid>0、IoU 无 NaN/Inf。通过，继续。
+
+### 8. QUICK (~100 instances)
+
+- valid=100，failed=0，mIoU=0.7213，median=0.7602，P10=0.4487，P90=0.9208。
+- IoU>=0.50 = 0.880；IoU>=0.75 = 0.530。
+- mIoU by size：small 0.6598(40) / medium 0.7279(28) / large 0.7925(32)。
+- unique images=99，embedding reuse=1。
+
+执行稳定（0 failed），继续 STANDARD。
+
+### 9. STANDARD (~500 instances)
+
+- valid=500，failed=0，mIoU=0.7181，median=0.7839，P10=0.3791，P90=0.9192。
+- IoU>=0.50 = 0.846；IoU>=0.75 = 0.590。
+- mIoU by size：small 0.6053(175) / medium 0.7627(166) / large 0.7958(159)。
+- **unique images = 455**
+- **embedding reuse 数量 = 45**（500 instances − 455 set_image calls）
+- **evaluation wall time = 52.06 s**
+- **instances/sec = 9.604**（离线评测吞吐，非实时 NanoSAM FPS）
+
+### 10. Runtime / embedding reuse 备注
+
+- instances/sec 为离线评测吞吐（含图片加载 + set_image + predict + IoU 计算），非 NanoSAM 单图实时 FPS。
+- embedding reuse：同一 image 多 instance 仅首 instance 调 `set_image`，其余复用 embedding（与官方 eval_coco.py `set_image=(j==0)` 一致）。STANDARD 中 45 个 instance 复用了已缓存的 embedding。
+- 未将 prompt-only decode 误写为完整 NanoSAM FPS。
+
+### 11. Day 3 dogs.jpg Box Prompt regression（重新运行）
+
+- 输入：`third_party/nanosam/assets/dogs.jpg`（1180×760），box prompt [100,100,850,759] labels [2,3]，slot 0。
+- **PASS**：selected IoU 0.6619（与 Day 3 baseline 0.662 一致），mask 非空（242155 非零像素），无 NaN/Inf。
+
+### 12. Evidence 路径
+
+- SMOKE：`results/coco_nanosam_baseline/smoke/`（summary.json / per_instance.jsonl / failed_instances.json / run.log）
+- QUICK：`results/coco_nanosam_baseline/quick/`（同上）
+- STANDARD：`results/coco_nanosam_baseline/standard/`（同上）
+- 汇总：`results/coco_nanosam_baseline/baseline_summary.md`
+- Manifests：`data/eval_manifests/{smoke,quick,standard,full}_manifest.json`
+- dogs regression：`results/nanosam_baseline/box_result.json` / `box_mask.npy` / `box_visualization.jpg`
+
+### 13. Constraints 遵守
+
+- 未重建 Engine；未做 FP32 ablation；未跑 NanoOWL COCO AP；未做 INT8 / MP4 / ROS2 / stability。
+- 未修改 upstream；未 remote / push / GitHub 上传。
+- **未运行 FULL 推理**。
+- 未修改 evaluation protocol 改善结果。
+- **未继续 Stage 5C**。
+- 核心环境保持：torch 2.5.0a0+872d972e41.nv24.08 / tensorrt 10.3.0 / numpy 1.23.5 / torchvision 0.20.0a0+afc54f7 / pycocotools 2.0.11。无评测残留进程。
+
+## Stage 5B 结论
+
+NanoSAM COCO box-prompt 质量基线已建立：STANDARD mIoU=0.7181（500 instances，0 failed），small/medium/large mIoU = 0.6053 / 0.7627 / 0.7958，IoU>=0.50=0.846，IoU>=0.75=0.590。dogs.jpg 回归 PASS。基线可用于后续 precision ablation（A/B/C/D）对照。**不继续 Stage 5C。**

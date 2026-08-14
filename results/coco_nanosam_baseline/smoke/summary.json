@@ -1,0 +1,30 @@
+{
+  "subset": "smoke",
+  "mask_selection": "slot 0 (fixed, not IoU argmax)",
+  "total_instances_in_subset": 20,
+  "skipped": {
+    "CROWD": 0,
+    "INVALID_BOX": 0,
+    "INVALID_GT_MASK": 0
+  },
+  "valid": 20,
+  "failed": 0,
+  "mean_iou": 0.7554877804806334,
+  "median_iou": 0.7855995631672268,
+  "p10": 0.575330758799599,
+  "p50": 0.7855995631672268,
+  "p90": 0.884327229538379,
+  "iou_ge_050_ratio": 1.0,
+  "iou_ge_075_ratio": 0.7,
+  "mIoU_small": 0.640864846734945,
+  "mIoU_medium": 0.7320187528796901,
+  "mIoU_large": 0.8590567514906071,
+  "small_count": 6,
+  "medium_count": 6,
+  "large_count": 8,
+  "unique_images": 20,
+  "embedding_set_calls": 20,
+  "embedding_reuse_count": 0,
+  "wall_time_s": 2.3589027040002293,
+  "instances_per_sec_eval": 8.478518408615999
+}

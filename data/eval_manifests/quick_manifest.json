@@ -1,0 +1,1614 @@
+{
+  "subset": "quick",
+  "seed": 2027,
+  "target_instances": 100,
+  "num_instances": 100,
+  "num_categories": 80,
+  "size_bucket_counts": {
+    "small": 40,
+    "medium": 28,
+    "large": 32
+  },
+  "instances": [
+    {
+      "image_id": 281693,
+      "annotation_id": 156792,
+      "category_id": 5,
+      "category_name": "airplane",
+      "image_path": "data/coco/val2017/000000281693.jpg",
+      "bbox_xywh": [
+        60.79,
+        58.46,
+        544.06,
+        235.82
+      ],
+      "area": 50238.76144999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 303566,
+      "annotation_id": 1551555,
+      "category_id": 53,
+      "category_name": "apple",
+      "image_path": "data/coco/val2017/000000303566.jpg",
+      "bbox_xywh": [
+        388.36,
+        276.0,
+        99.8,
+        57.45
+      ],
+      "area": 3912.01425,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 569030,
+      "annotation_id": 1170444,
+      "category_id": 27,
+      "category_name": "backpack",
+      "image_path": "data/coco/val2017/000000569030.jpg",
+      "bbox_xywh": [
+        72.85,
+        96.92,
+        41.44,
+        37.83
+      ],
+      "area": 990.2634499999998,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 112378,
+      "annotation_id": 1044377,
+      "category_id": 52,
+      "category_name": "banana",
+      "image_path": "data/coco/val2017/000000112378.jpg",
+      "bbox_xywh": [
+        316.44,
+        330.18,
+        43.9,
+        22.6
+      ],
+      "area": 610.5449999999998,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 89296,
+      "annotation_id": 630974,
+      "category_id": 39,
+      "category_name": "baseball bat",
+      "image_path": "data/coco/val2017/000000089296.jpg",
+      "bbox_xywh": [
+        347.22,
+        35.18,
+        50.68,
+        97.28
+      ],
+      "area": 810.1271500000003,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 162415,
+      "annotation_id": 633486,
+      "category_id": 40,
+      "category_name": "baseball glove",
+      "image_path": "data/coco/val2017/000000162415.jpg",
+      "bbox_xywh": [
+        271.82,
+        292.83,
+        206.58,
+        234.04
+      ],
+      "area": 27912.616299999998,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 127955,
+      "annotation_id": 587644,
+      "category_id": 23,
+      "category_name": "bear",
+      "image_path": "data/coco/val2017/000000127955.jpg",
+      "bbox_xywh": [
+        4.78,
+        96.3,
+        356.23,
+        315.17
+      ],
+      "area": 66111.29329999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 483050,
+      "annotation_id": 319302,
+      "category_id": 65,
+      "category_name": "bed",
+      "image_path": "data/coco/val2017/000000483050.jpg",
+      "bbox_xywh": [
+        10.74,
+        208.21,
+        629.26,
+        264.24
+      ],
+      "area": 117955.30549999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 425221,
+      "annotation_id": 579787,
+      "category_id": 15,
+      "category_name": "bench",
+      "image_path": "data/coco/val2017/000000425221.jpg",
+      "bbox_xywh": [
+        59.32,
+        525.53,
+        53.51,
+        53.16
+      ],
+      "area": 1403.8617499999998,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 15597,
+      "annotation_id": 1765348,
+      "category_id": 2,
+      "category_name": "bicycle",
+      "image_path": "data/coco/val2017/000000015597.jpg",
+      "bbox_xywh": [
+        311.28,
+        420.74,
+        114.64,
+        42.15
+      ],
+      "area": 1896.0828,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 182441,
+      "annotation_id": 45954,
+      "category_id": 16,
+      "category_name": "bird",
+      "image_path": "data/coco/val2017/000000182441.jpg",
+      "bbox_xywh": [
+        105.03,
+        203.92,
+        24.22,
+        10.08
+      ],
+      "area": 95.20285,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 171611,
+      "annotation_id": 268488,
+      "category_id": 9,
+      "category_name": "boat",
+      "image_path": "data/coco/val2017/000000171611.jpg",
+      "bbox_xywh": [
+        345.01,
+        82.9,
+        57.52,
+        159.92
+      ],
+      "area": 1502.400600000001,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 26564,
+      "annotation_id": 1649194,
+      "category_id": 84,
+      "category_name": "book",
+      "image_path": "data/coco/val2017/000000026564.jpg",
+      "bbox_xywh": [
+        119.0,
+        192.1,
+        18.2,
+        76.92
+      ],
+      "area": 645.9521999999997,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 50811,
+      "annotation_id": 87068,
+      "category_id": 44,
+      "category_name": "bottle",
+      "image_path": "data/coco/val2017/000000050811.jpg",
+      "bbox_xywh": [
+        448.87,
+        314.95,
+        72.86,
+        261.51
+      ],
+      "area": 13213.053000000002,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 449190,
+      "annotation_id": 1535826,
+      "category_id": 51,
+      "category_name": "bowl",
+      "image_path": "data/coco/val2017/000000449190.jpg",
+      "bbox_xywh": [
+        342.94,
+        39.43,
+        138.94,
+        130.91
+      ],
+      "area": 13291.889899999998,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 61658,
+      "annotation_id": 1060490,
+      "category_id": 56,
+      "category_name": "broccoli",
+      "image_path": "data/coco/val2017/000000061658.jpg",
+      "bbox_xywh": [
+        92.61,
+        393.04,
+        163.77,
+        80.18
+      ],
+      "area": 10090.467949999997,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 344029,
+      "annotation_id": 164711,
+      "category_id": 6,
+      "category_name": "bus",
+      "image_path": "data/coco/val2017/000000344029.jpg",
+      "bbox_xywh": [
+        91.95,
+        112.22,
+        503.09,
+        291.83
+      ],
+      "area": 119550.3044,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 214720,
+      "annotation_id": 1089272,
+      "category_id": 61,
+      "category_name": "cake",
+      "image_path": "data/coco/val2017/000000214720.jpg",
+      "bbox_xywh": [
+        122.04,
+        321.66,
+        89.5,
+        60.16
+      ],
+      "area": 4310.319750000001,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 67213,
+      "annotation_id": 143398,
+      "category_id": 3,
+      "category_name": "car",
+      "image_path": "data/coco/val2017/000000067213.jpg",
+      "bbox_xywh": [
+        141.69,
+        324.6,
+        100.27,
+        80.66
+      ],
+      "area": 4283.5365,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 313562,
+      "annotation_id": 1566253,
+      "category_id": 57,
+      "category_name": "carrot",
+      "image_path": "data/coco/val2017/000000313562.jpg",
+      "bbox_xywh": [
+        74.45,
+        407.85,
+        73.72,
+        32.53
+      ],
+      "area": 625.9476000000001,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 174231,
+      "annotation_id": 50142,
+      "category_id": 17,
+      "category_name": "cat",
+      "image_path": "data/coco/val2017/000000174231.jpg",
+      "bbox_xywh": [
+        68.3,
+        180.42,
+        248.24,
+        105.62
+      ],
+      "area": 12245.759900000001,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 228214,
+      "annotation_id": 322876,
+      "category_id": 77,
+      "category_name": "cell phone",
+      "image_path": "data/coco/val2017/000000228214.jpg",
+      "bbox_xywh": [
+        194.72,
+        330.93,
+        57.23,
+        45.57
+      ],
+      "area": 1615.1211499999997,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 462614,
+      "annotation_id": 2192485,
+      "category_id": 62,
+      "category_name": "chair",
+      "image_path": "data/coco/val2017/000000462614.jpg",
+      "bbox_xywh": [
+        555.03,
+        344.28,
+        84.97,
+        109.33
+      ],
+      "area": 3618.289550000007,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 441247,
+      "annotation_id": 334990,
+      "category_id": 85,
+      "category_name": "clock",
+      "image_path": "data/coco/val2017/000000441247.jpg",
+      "bbox_xywh": [
+        34.99,
+        150.6,
+        19.35,
+        27.12
+      ],
+      "area": 408.74925000000013,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 494913,
+      "annotation_id": 117157,
+      "category_id": 63,
+      "category_name": "couch",
+      "image_path": "data/coco/val2017/000000494913.jpg",
+      "bbox_xywh": [
+        481.27,
+        243.94,
+        158.73,
+        180.02
+      ],
+      "area": 9714.308149999997,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 402992,
+      "annotation_id": 77123,
+      "category_id": 21,
+      "category_name": "cow",
+      "image_path": "data/coco/val2017/000000402992.jpg",
+      "bbox_xywh": [
+        182.2,
+        3.74,
+        68.45,
+        28.16
+      ],
+      "area": 959.5338499999999,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 357888,
+      "annotation_id": 1512592,
+      "category_id": 47,
+      "category_name": "cup",
+      "image_path": "data/coco/val2017/000000357888.jpg",
+      "bbox_xywh": [
+        620.68,
+        263.12,
+        12.75,
+        15.97
+      ],
+      "area": 163.63414999999935,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 405249,
+      "annotation_id": 393619,
+      "category_id": 67,
+      "category_name": "dining table",
+      "image_path": "data/coco/val2017/000000405249.jpg",
+      "bbox_xywh": [
+        0.84,
+        141.57,
+        456.74,
+        223.32
+      ],
+      "area": 64535.301849999996,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 324158,
+      "annotation_id": 10673,
+      "category_id": 18,
+      "category_name": "dog",
+      "image_path": "data/coco/val2017/000000324158.jpg",
+      "bbox_xywh": [
+        196.51,
+        183.36,
+        23.95,
+        53.02
+      ],
+      "area": 759.3375500000002,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 328117,
+      "annotation_id": 2118716,
+      "category_id": 60,
+      "category_name": "donut",
+      "image_path": "data/coco/val2017/000000328117.jpg",
+      "bbox_xywh": [
+        238.88,
+        426.43,
+        83.8,
+        73.8
+      ],
+      "area": 4766.455500000002,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 564133,
+      "annotation_id": 1409884,
+      "category_id": 22,
+      "category_name": "elephant",
+      "image_path": "data/coco/val2017/000000564133.jpg",
+      "bbox_xywh": [
+        410.66,
+        191.51,
+        46.69,
+        114.34
+      ],
+      "area": 3264.1904999999997,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 542625,
+      "annotation_id": 1387942,
+      "category_id": 11,
+      "category_name": "fire hydrant",
+      "image_path": "data/coco/val2017/000000542625.jpg",
+      "bbox_xywh": [
+        505.63,
+        131.72,
+        16.36,
+        26.92
+      ],
+      "area": 244.37465000000034,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 405691,
+      "annotation_id": 689908,
+      "category_id": 48,
+      "category_name": "fork",
+      "image_path": "data/coco/val2017/000000405691.jpg",
+      "bbox_xywh": [
+        439.41,
+        407.16,
+        35.3,
+        19.84
+      ],
+      "area": 248.44219999999888,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 153229,
+      "annotation_id": 1844836,
+      "category_id": 34,
+      "category_name": "frisbee",
+      "image_path": "data/coco/val2017/000000153229.jpg",
+      "bbox_xywh": [
+        523.69,
+        238.4,
+        17.02,
+        33.61
+      ],
+      "area": 322.70999999999975,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 525600,
+      "annotation_id": 599231,
+      "category_id": 25,
+      "category_name": "giraffe",
+      "image_path": "data/coco/val2017/000000525600.jpg",
+      "bbox_xywh": [
+        463.61,
+        70.46,
+        39.0,
+        50.78
+      ],
+      "area": 872.6023500000001,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 315219,
+      "annotation_id": 2197658,
+      "category_id": 89,
+      "category_name": "hair drier",
+      "image_path": "data/coco/val2017/000000315219.jpg",
+      "bbox_xywh": [
+        132.47,
+        2.6,
+        27.27,
+        102.59
+      ],
+      "area": 2383.0066000000006,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 138639,
+      "annotation_id": 1175293,
+      "category_id": 31,
+      "category_name": "handbag",
+      "image_path": "data/coco/val2017/000000138639.jpg",
+      "bbox_xywh": [
+        408.53,
+        344.6,
+        32.56,
+        69.14
+      ],
+      "area": 771.3246500000006,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 547886,
+      "annotation_id": 57507,
+      "category_id": 19,
+      "category_name": "horse",
+      "image_path": "data/coco/val2017/000000547886.jpg",
+      "bbox_xywh": [
+        150.87,
+        159.18,
+        134.41,
+        117.96
+      ],
+      "area": 6613.7352,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 538236,
+      "annotation_id": 2221433,
+      "category_id": 58,
+      "category_name": "hot dog",
+      "image_path": "data/coco/val2017/000000538236.jpg",
+      "bbox_xywh": [
+        0.0,
+        121.53,
+        230.38,
+        138.44
+      ],
+      "area": 22752.856650000005,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 68765,
+      "annotation_id": 1117998,
+      "category_id": 76,
+      "category_name": "keyboard",
+      "image_path": "data/coco/val2017/000000068765.jpg",
+      "bbox_xywh": [
+        1.08,
+        27.04,
+        573.84,
+        443.32
+      ],
+      "area": 108503.95019999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 186345,
+      "annotation_id": 1468275,
+      "category_id": 38,
+      "category_name": "kite",
+      "image_path": "data/coco/val2017/000000186345.jpg",
+      "bbox_xywh": [
+        243.0,
+        226.87,
+        37.75,
+        65.04
+      ],
+      "area": 1416.2614500000002,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 7991,
+      "annotation_id": 2105016,
+      "category_id": 49,
+      "category_name": "knife",
+      "image_path": "data/coco/val2017/000000007991.jpg",
+      "bbox_xywh": [
+        6.53,
+        115.63,
+        144.53,
+        43.82
+      ],
+      "area": 2016.1827499999993,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 32610,
+      "annotation_id": 1103586,
+      "category_id": 73,
+      "category_name": "laptop",
+      "image_path": "data/coco/val2017/000000032610.jpg",
+      "bbox_xywh": [
+        55.78,
+        80.3,
+        185.61,
+        179.84
+      ],
+      "area": 22421.98524999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 160556,
+      "annotation_id": 1119718,
+      "category_id": 78,
+      "category_name": "microwave",
+      "image_path": "data/coco/val2017/000000160556.jpg",
+      "bbox_xywh": [
+        0.96,
+        106.76,
+        348.17,
+        269.3
+      ],
+      "area": 76887.43595,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 78748,
+      "annotation_id": 148330,
+      "category_id": 4,
+      "category_name": "motorcycle",
+      "image_path": "data/coco/val2017/000000078748.jpg",
+      "bbox_xywh": [
+        192.0,
+        141.3,
+        258.88,
+        168.27
+      ],
+      "area": 24384.396949999995,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 571313,
+      "annotation_id": 1971896,
+      "category_id": 74,
+      "category_name": "mouse",
+      "image_path": "data/coco/val2017/000000571313.jpg",
+      "bbox_xywh": [
+        129.11,
+        335.25,
+        26.48,
+        21.01
+      ],
+      "area": 397.4797500000003,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 290081,
+      "annotation_id": 1050978,
+      "category_id": 55,
+      "category_name": "orange",
+      "image_path": "data/coco/val2017/000000290081.jpg",
+      "bbox_xywh": [
+        0.0,
+        31.61,
+        612.0,
+        489.88
+      ],
+      "area": 195016.08830000006,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 540502,
+      "annotation_id": 1123344,
+      "category_id": 79,
+      "category_name": "oven",
+      "image_path": "data/coco/val2017/000000540502.jpg",
+      "bbox_xywh": [
+        318.49,
+        203.72,
+        73.02,
+        25.9
+      ],
+      "area": 719.4058999999997,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 33114,
+      "annotation_id": 419232,
+      "category_id": 14,
+      "category_name": "parking meter",
+      "image_path": "data/coco/val2017/000000033114.jpg",
+      "bbox_xywh": [
+        556.92,
+        351.74,
+        25.04,
+        34.59
+      ],
+      "area": 653.7508999999997,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 406611,
+      "annotation_id": 1718972,
+      "category_id": 1,
+      "category_name": "person",
+      "image_path": "data/coco/val2017/000000406611.jpg",
+      "bbox_xywh": [
+        317.17,
+        290.41,
+        7.4,
+        14.69
+      ],
+      "area": 72.59184999999997,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 431568,
+      "annotation_id": 2117517,
+      "category_id": 59,
+      "category_name": "pizza",
+      "image_path": "data/coco/val2017/000000431568.jpg",
+      "bbox_xywh": [
+        2.21,
+        7.28,
+        636.79,
+        242.8
+      ],
+      "area": 77482.33750000002,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 279145,
+      "annotation_id": 28038,
+      "category_id": 64,
+      "category_name": "potted plant",
+      "image_path": "data/coco/val2017/000000279145.jpg",
+      "bbox_xywh": [
+        332.56,
+        71.03,
+        65.65,
+        66.73
+      ],
+      "area": 2429.55435,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 485844,
+      "annotation_id": 332450,
+      "category_id": 82,
+      "category_name": "refrigerator",
+      "image_path": "data/coco/val2017/000000485844.jpg",
+      "bbox_xywh": [
+        59.62,
+        54.28,
+        159.29,
+        178.87
+      ],
+      "area": 22066.905,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 348481,
+      "annotation_id": 1972467,
+      "category_id": 75,
+      "category_name": "remote",
+      "image_path": "data/coco/val2017/000000348481.jpg",
+      "bbox_xywh": [
+        9.24,
+        365.58,
+        68.58,
+        103.19
+      ],
+      "area": 6113.523449999998,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 551822,
+      "annotation_id": 308261,
+      "category_id": 54,
+      "category_name": "sandwich",
+      "image_path": "data/coco/val2017/000000551822.jpg",
+      "bbox_xywh": [
+        108.92,
+        254.32,
+        277.91,
+        145.58
+      ],
+      "area": 32310.03325,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 5001,
+      "annotation_id": 1158531,
+      "category_id": 87,
+      "category_name": "scissors",
+      "image_path": "data/coco/val2017/000000005001.jpg",
+      "bbox_xywh": [
+        173.66,
+        204.76,
+        107.87,
+        238.39
+      ],
+      "area": 5645.972500000001,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 364322,
+      "annotation_id": 1405047,
+      "category_id": 20,
+      "category_name": "sheep",
+      "image_path": "data/coco/val2017/000000364322.jpg",
+      "bbox_xywh": [
+        13.53,
+        36.45,
+        87.26,
+        87.82
+      ],
+      "area": 4766.3987,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 9772,
+      "annotation_id": 1133283,
+      "category_id": 81,
+      "category_name": "sink",
+      "image_path": "data/coco/val2017/000000009772.jpg",
+      "bbox_xywh": [
+        322.91,
+        378.26,
+        85.5,
+        19.06
+      ],
+      "area": 1181.5615500000015,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 404249,
+      "annotation_id": 644215,
+      "category_id": 41,
+      "category_name": "skateboard",
+      "image_path": "data/coco/val2017/000000404249.jpg",
+      "bbox_xywh": [
+        89.86,
+        480.91,
+        137.12,
+        78.06
+      ],
+      "area": 3279.0835500000007,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 343453,
+      "annotation_id": 608485,
+      "category_id": 35,
+      "category_name": "skis",
+      "image_path": "data/coco/val2017/000000343453.jpg",
+      "bbox_xywh": [
+        328.49,
+        396.86,
+        83.34,
+        66.93
+      ],
+      "area": 673.2929000000012,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 361919,
+      "annotation_id": 619390,
+      "category_id": 36,
+      "category_name": "snowboard",
+      "image_path": "data/coco/val2017/000000361919.jpg",
+      "bbox_xywh": [
+        484.27,
+        408.83,
+        46.94,
+        9.34
+      ],
+      "area": 82.9046500000008,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 349152,
+      "annotation_id": 2105442,
+      "category_id": 50,
+      "category_name": "spoon",
+      "image_path": "data/coco/val2017/000000349152.jpg",
+      "bbox_xywh": [
+        305.55,
+        0.97,
+        62.27,
+        23.23
+      ],
+      "area": 306.4262499999999,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 451879,
+      "annotation_id": 306508,
+      "category_id": 37,
+      "category_name": "sports ball",
+      "image_path": "data/coco/val2017/000000451879.jpg",
+      "bbox_xywh": [
+        239.85,
+        14.64,
+        30.14,
+        29.04
+      ],
+      "area": 693.4853499999999,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 95899,
+      "annotation_id": 270627,
+      "category_id": 13,
+      "category_name": "stop sign",
+      "image_path": "data/coco/val2017/000000095899.jpg",
+      "bbox_xywh": [
+        18.3,
+        78.51,
+        265.83,
+        233.54
+      ],
+      "area": 49032.071950000005,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 370478,
+      "annotation_id": 1183994,
+      "category_id": 33,
+      "category_name": "suitcase",
+      "image_path": "data/coco/val2017/000000370478.jpg",
+      "bbox_xywh": [
+        382.92,
+        156.4,
+        132.68,
+        244.86
+      ],
+      "area": 21972.45005,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 377882,
+      "annotation_id": 1862827,
+      "category_id": 42,
+      "category_name": "surfboard",
+      "image_path": "data/coco/val2017/000000377882.jpg",
+      "bbox_xywh": [
+        483.39,
+        331.51,
+        155.17,
+        67.37
+      ],
+      "area": 5419.857700000002,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 117492,
+      "annotation_id": 1161942,
+      "category_id": 88,
+      "category_name": "teddy bear",
+      "image_path": "data/coco/val2017/000000117492.jpg",
+      "bbox_xywh": [
+        415.13,
+        228.56,
+        35.55,
+        24.53
+      ],
+      "area": 356.3351000000001,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 39405,
+      "annotation_id": 659193,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "image_path": "data/coco/val2017/000000039405.jpg",
+      "bbox_xywh": [
+        186.59,
+        219.38,
+        27.18,
+        14.29
+      ],
+      "area": 167.0773499999999,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 206025,
+      "annotation_id": 298330,
+      "category_id": 32,
+      "category_name": "tie",
+      "image_path": "data/coco/val2017/000000206025.jpg",
+      "bbox_xywh": [
+        167.06,
+        373.48,
+        85.14,
+        266.52
+      ],
+      "area": 17264.459000000003,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 173008,
+      "annotation_id": 1128416,
+      "category_id": 80,
+      "category_name": "toaster",
+      "image_path": "data/coco/val2017/000000173008.jpg",
+      "bbox_xywh": [
+        0.0,
+        300.94,
+        67.96,
+        124.05
+      ],
+      "area": 7129.695450000002,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 157807,
+      "annotation_id": 1095852,
+      "category_id": 70,
+      "category_name": "toilet",
+      "image_path": "data/coco/val2017/000000157807.jpg",
+      "bbox_xywh": [
+        96.68,
+        292.09,
+        284.39,
+        134.91
+      ],
+      "area": 27179.69075,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 560474,
+      "annotation_id": 1999018,
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "image_path": "data/coco/val2017/000000560474.jpg",
+      "bbox_xywh": [
+        347.22,
+        156.59,
+        64.2,
+        63.03
+      ],
+      "area": 567.7927499999986,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 193717,
+      "annotation_id": 405241,
+      "category_id": 10,
+      "category_name": "traffic light",
+      "image_path": "data/coco/val2017/000000193717.jpg",
+      "bbox_xywh": [
+        314.72,
+        27.09,
+        14.38,
+        36.21
+      ],
+      "area": 382.87815000000006,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 363072,
+      "annotation_id": 174441,
+      "category_id": 7,
+      "category_name": "train",
+      "image_path": "data/coco/val2017/000000363072.jpg",
+      "bbox_xywh": [
+        0.42,
+        313.72,
+        441.34,
+        173.41
+      ],
+      "area": 42803.69279999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 200961,
+      "annotation_id": 2053376,
+      "category_id": 8,
+      "category_name": "truck",
+      "image_path": "data/coco/val2017/000000200961.jpg",
+      "bbox_xywh": [
+        435.23,
+        140.67,
+        30.52,
+        18.43
+      ],
+      "area": 355.82435000000027,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 453341,
+      "annotation_id": 1969074,
+      "category_id": 72,
+      "category_name": "tv",
+      "image_path": "data/coco/val2017/000000453341.jpg",
+      "bbox_xywh": [
+        513.94,
+        233.79,
+        21.21,
+        65.55
+      ],
+      "area": 1190.3608499999941,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 286553,
+      "annotation_id": 279736,
+      "category_id": 28,
+      "category_name": "umbrella",
+      "image_path": "data/coco/val2017/000000286553.jpg",
+      "bbox_xywh": [
+        11.76,
+        140.48,
+        36.2,
+        104.96
+      ],
+      "area": 1368.7752500000001,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 434230,
+      "annotation_id": 1994666,
+      "category_id": 86,
+      "category_name": "vase",
+      "image_path": "data/coco/val2017/000000434230.jpg",
+      "bbox_xywh": [
+        55.31,
+        251.94,
+        10.04,
+        33.62
+      ],
+      "area": 231.7941499999999,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 244750,
+      "annotation_id": 663162,
+      "category_id": 46,
+      "category_name": "wine glass",
+      "image_path": "data/coco/val2017/000000244750.jpg",
+      "bbox_xywh": [
+        126.85,
+        274.65,
+        43.98,
+        132.3
+      ],
+      "area": 3220.798050000002,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 473974,
+      "annotation_id": 589721,
+      "category_id": 24,
+      "category_name": "zebra",
+      "image_path": "data/coco/val2017/000000473974.jpg",
+      "bbox_xywh": [
+        67.17,
+        157.61,
+        304.18,
+        247.56
+      ],
+      "area": 31396.1923,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 161044,
+      "annotation_id": 160838,
+      "category_id": 5,
+      "category_name": "airplane",
+      "image_path": "data/coco/val2017/000000161044.jpg",
+      "bbox_xywh": [
+        361.11,
+        183.01,
+        22.18,
+        22.18
+      ],
+      "area": 183.36685000000006,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 530836,
+      "annotation_id": 1048810,
+      "category_id": 53,
+      "category_name": "apple",
+      "image_path": "data/coco/val2017/000000530836.jpg",
+      "bbox_xywh": [
+        306.47,
+        305.71,
+        9.24,
+        9.82
+      ],
+      "area": 79.54089999999997,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 503855,
+      "annotation_id": 1417573,
+      "category_id": 27,
+      "category_name": "backpack",
+      "image_path": "data/coco/val2017/000000503855.jpg",
+      "bbox_xywh": [
+        46.35,
+        179.81,
+        20.78,
+        17.35
+      ],
+      "area": 264.3286500000001,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 112378,
+      "annotation_id": 1541781,
+      "category_id": 52,
+      "category_name": "banana",
+      "image_path": "data/coco/val2017/000000112378.jpg",
+      "bbox_xywh": [
+        215.54,
+        395.75,
+        51.52,
+        30.96
+      ],
+      "area": 819.2605999999993,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 345466,
+      "annotation_id": 1475615,
+      "category_id": 39,
+      "category_name": "baseball bat",
+      "image_path": "data/coco/val2017/000000345466.jpg",
+      "bbox_xywh": [
+        354.51,
+        0.02,
+        8.45,
+        85.65
+      ],
+      "area": 461.53769999999855,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 257478,
+      "annotation_id": 633122,
+      "category_id": 40,
+      "category_name": "baseball glove",
+      "image_path": "data/coco/val2017/000000257478.jpg",
+      "bbox_xywh": [
+        372.19,
+        164.41,
+        45.0,
+        45.0
+      ],
+      "area": 1304.2504499999995,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 85478,
+      "annotation_id": 586735,
+      "category_id": 23,
+      "category_name": "bear",
+      "image_path": "data/coco/val2017/000000085478.jpg",
+      "bbox_xywh": [
+        313.24,
+        181.27,
+        212.73,
+        118.88
+      ],
+      "area": 14928.493499999993,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 170278,
+      "annotation_id": 1612390,
+      "category_id": 65,
+      "category_name": "bed",
+      "image_path": "data/coco/val2017/000000170278.jpg",
+      "bbox_xywh": [
+        4.52,
+        127.8,
+        634.63,
+        367.95
+      ],
+      "area": 209052.53239999997,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 98716,
+      "annotation_id": 574737,
+      "category_id": 15,
+      "category_name": "bench",
+      "image_path": "data/coco/val2017/000000098716.jpg",
+      "bbox_xywh": [
+        177.88,
+        176.67,
+        317.77,
+        142.31
+      ],
+      "area": 23016.37379999999,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 370208,
+      "annotation_id": 125303,
+      "category_id": 2,
+      "category_name": "bicycle",
+      "image_path": "data/coco/val2017/000000370208.jpg",
+      "bbox_xywh": [
+        62.9,
+        107.26,
+        380.65,
+        228.22
+      ],
+      "area": 49338.20665,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 147498,
+      "annotation_id": 37690,
+      "category_id": 16,
+      "category_name": "bird",
+      "image_path": "data/coco/val2017/000000147498.jpg",
+      "bbox_xywh": [
+        308.81,
+        282.6,
+        7.38,
+        5.95
+      ],
+      "area": 19.659099999999878,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 491725,
+      "annotation_id": 250943,
+      "category_id": 9,
+      "category_name": "boat",
+      "image_path": "data/coco/val2017/000000491725.jpg",
+      "bbox_xywh": [
+        450.53,
+        165.65,
+        49.38,
+        21.12
+      ],
+      "area": 789.7122000000008,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 58111,
+      "annotation_id": 1650117,
+      "category_id": 84,
+      "category_name": "book",
+      "image_path": "data/coco/val2017/000000058111.jpg",
+      "bbox_xywh": [
+        0.0,
+        54.66,
+        110.88,
+        12.18
+      ],
+      "area": 783.6713500000004,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 73326,
+      "annotation_id": 1871621,
+      "category_id": 44,
+      "category_name": "bottle",
+      "image_path": "data/coco/val2017/000000073326.jpg",
+      "bbox_xywh": [
+        165.47,
+        83.41,
+        16.11,
+        23.21
+      ],
+      "area": 248.93635000000015,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 158660,
+      "annotation_id": 716487,
+      "category_id": 51,
+      "category_name": "bowl",
+      "image_path": "data/coco/val2017/000000158660.jpg",
+      "bbox_xywh": [
+        71.4,
+        251.83,
+        256.46,
+        115.27
+      ],
+      "area": 16006.68965,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 191580,
+      "annotation_id": 1057799,
+      "category_id": 56,
+      "category_name": "broccoli",
+      "image_path": "data/coco/val2017/000000191580.jpg",
+      "bbox_xywh": [
+        79.81,
+        192.75,
+        206.31,
+        207.81
+      ],
+      "area": 26512.725049999997,
+      "size_bucket": "large",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 293324,
+      "annotation_id": 166240,
+      "category_id": 6,
+      "category_name": "bus",
+      "image_path": "data/coco/val2017/000000293324.jpg",
+      "bbox_xywh": [
+        28.28,
+        302.9,
+        113.14,
+        27.37
+      ],
+      "area": 2770.3090000000016,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 117425,
+      "annotation_id": 1088239,
+      "category_id": 61,
+      "category_name": "cake",
+      "image_path": "data/coco/val2017/000000117425.jpg",
+      "bbox_xywh": [
+        115.18,
+        240.73,
+        85.7,
+        124.14
+      ],
+      "area": 4892.73475,
+      "size_bucket": "medium",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 188296,
+      "annotation_id": 1339561,
+      "category_id": 3,
+      "category_name": "car",
+      "image_path": "data/coco/val2017/000000188296.jpg",
+      "bbox_xywh": [
+        361.88,
+        243.21,
+        51.2,
+        25.21
+      ],
+      "area": 953.40685,
+      "size_bucket": "small",
+      "iscrowd": 0
+    },
+    {
+      "image_id": 308430,
+      "annotation_id": 1919838,
+      "category_id": 57,
+      "category_name": "carrot",
+      "image_path": "data/coco/val2017/000000308430.jpg",
+      "bbox_xywh": [
+        428.75,
+        155.26,
+        17.88,
+        31.83
+      ],
+      "area": 337.4681000000002,
+      "size_bucket": "small",
+      "iscrowd": 0
+    }
+  ]
+}

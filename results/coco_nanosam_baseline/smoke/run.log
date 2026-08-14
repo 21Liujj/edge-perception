@@ -1,0 +1,2 @@
+  progress 20/20  valid=20 failed=0
+=== smoke DONE === valid=20 failed=0 mIoU=0.7554877804806334 wall=2.4s
