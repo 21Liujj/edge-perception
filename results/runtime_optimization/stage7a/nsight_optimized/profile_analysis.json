@@ -1,0 +1,70 @@
+{
+  "pipeline_total_ms": {
+    "mean": 115.89
+  },
+  "overall_gpu_busy_pct": 50.5,
+  "overall_gpu_idle_pct": 49.5,
+  "stages": {
+    "preprocess": {
+      "wall_ms": 2.18,
+      "gpu_busy_ms": 0.0,
+      "gpu_busy_pct": 0.0
+    },
+    "nanoowl": {
+      "wall_ms": 36.4,
+      "gpu_busy_ms": 28.31,
+      "gpu_busy_pct": 77.8
+    },
+    "nanoowl_postprocess": {
+      "wall_ms": 0.02,
+      "gpu_busy_ms": 0.0,
+      "gpu_busy_pct": 0.0
+    },
+    "bridge": {
+      "wall_ms": 0.07,
+      "gpu_busy_ms": 0.0,
+      "gpu_busy_pct": 0.0
+    },
+    "nanosam_set_image": {
+      "wall_ms": 57.92,
+      "gpu_busy_ms": 17.08,
+      "gpu_busy_pct": 29.5
+    },
+    "nanosam_decode": {
+      "wall_ms": 15.71,
+      "gpu_busy_ms": 12.88,
+      "gpu_busy_pct": 82.0
+    }
+  },
+  "H2D_in_profile": {
+    "count": 60,
+    "total_bytes": 205720140,
+    "per_iter_count": 4.0
+  },
+  "D2H_in_profile": {
+    "count": 150,
+    "total_bytes": 5659350
+  },
+  "cuda_api": {
+    "cudaMemcpyAsync": {
+      "count": 0,
+      "avg_us": null,
+      "total_s": null
+    },
+    "cudaStreamSynchronize": {
+      "count": 0,
+      "avg_us": null,
+      "total_s": null
+    },
+    "cudaDeviceSynchronize": {
+      "count": 0,
+      "avg_us": null,
+      "total_s": null
+    },
+    "cudaLaunchKernel": {
+      "count": 0,
+      "avg_us": null,
+      "total_s": null
+    }
+  }
+}

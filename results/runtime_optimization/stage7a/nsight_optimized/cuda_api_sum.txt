@@ -1,0 +1,47 @@
+
+NOTICE: Existing SQLite export found: /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite
+        It is assumed file was previously exported from: /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [/home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_api_sum.py]... 
+
+ ** CUDA API Summary (cuda_api_sum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)     Med (ns)    Min (ns)   Max (ns)    StdDev (ns)                Name             
+ --------  ---------------  ---------  -----------  -----------  --------  -----------  ------------  ------------------------------
+     31.3      975,913,440      1,129    864,405.2     52,608.0       192   42,056,480   3,891,452.1  cudaMemcpyAsync               
+     19.3      602,915,872        110  5,481,053.4    354,560.0     9,824  105,131,648  11,857,593.5  cudaDeviceSynchronize         
+     17.4      543,352,352        892    609,139.4     44,256.0     2,944   18,417,216   2,206,792.5  cudaStreamSynchronize         
+     16.7      520,002,624      3,226    161,191.1     36,128.0    10,976   81,313,536   2,052,409.5  cudaLaunchKernel              
+      4.7      146,747,104         87  1,686,748.3    912,000.0    10,752   16,127,168   2,915,471.9  cudaMalloc                    
+      2.5       76,510,912      4,480     17,078.3     14,432.0     8,544      435,360      11,944.8  cuLaunchKernelEx              
+      2.2       68,848,832        110    625,898.5    130,496.0    69,312   13,714,208   1,525,505.8  cuModuleLoadData              
+      1.9       59,960,000      3,570     16,795.5     15,168.0     8,416      210,560       8,926.2  cuLaunchKernel                
+      1.3       40,269,152        153    263,197.1     52,480.0    27,776    2,749,888     599,610.9  cuModuleUnload                
+      0.7       22,748,160         26    874,929.2     28,128.0     1,952    6,598,880   1,781,167.8  cudaFree                      
+      0.4       13,573,632          4  3,393,408.0  3,912,752.0   701,824    5,046,304   1,872,578.3  cuLibraryLoadData             
+      0.4       11,877,600         43    276,223.3    165,120.0    82,400    1,466,464     313,860.8  cuModuleLoadFatBinary         
+      0.3       10,517,632        128     82,169.0      3,296.0     2,080    2,207,296     321,616.0  cudaStreamCreateWithPriority  
+      0.2        6,864,832          3  2,288,277.3  1,055,872.0    50,336    5,758,624   3,047,171.7  cudaHostAlloc                 
+      0.2        4,880,128        185     26,379.1     22,336.0       224      145,728      21,119.4  cudaMemsetAsync               
+      0.1        2,988,800      1,050      2,846.5      2,144.0     1,312       33,312       2,287.6  cuEventRecord                 
+      0.1        2,676,768      1,225      2,185.1      1,568.0       768       27,808       1,942.7  cuStreamWaitEvent             
+      0.0        1,266,560         14     90,468.6     13,072.0     3,488      999,488     262,531.0  cudaStreamCreate              
+      0.0        1,068,800        278      3,844.6      3,536.0     1,344       10,080       1,851.0  cudaStreamIsCapturing_v10000  
+      0.0          923,200        661      1,396.7      1,248.0       896       24,672       1,340.5  cudaEventCreateWithFlags      
+      0.0          888,960         14     63,497.1     55,520.0    52,224      163,328      28,916.4  cuMemcpyDtoH_v2               
+      0.0          805,056         37     21,758.3     16,864.0     4,192      204,512      30,991.3  cudaEventRecord               
+      0.0          606,912        641        946.8        864.0       800        6,240         379.1  cudaEventDestroy              
+      0.0          548,000         35     15,657.1     14,912.0    10,496       41,536       4,894.5  cudaEventSynchronize          
+      0.0          507,904      1,222        415.6        288.0       160       16,224         627.9  cuGetProcAddress_v2           
+      0.0          239,520         12     19,960.0      8,128.0     2,816      104,832      28,670.2  cuStreamCreate                
+      0.0          157,856         14     11,275.4      8,736.0     4,064       27,328       7,210.4  cudaStreamDestroy             
+      0.0          118,816         12      9,901.3      6,544.0     4,960       29,568       7,136.1  cuStreamDestroy_v2            
+      0.0           71,904         36      1,997.3        576.0       512       14,880       3,407.8  cuEventCreate                 
+      0.0           35,904         12      2,992.0      2,368.0     1,152        7,456       2,039.3  cuCtxSetCurrent               
+      0.0           35,360         36        982.2        672.0       384        4,384         916.1  cuEventDestroy_v2             
+      0.0           29,088          4      7,272.0      7,648.0     5,824        7,968         980.2  cuInit                        
+      0.0           12,640          4      3,160.0      3,088.0     2,528        3,936         621.8  cuLibraryGetKernel            
+      0.0            7,200          7      1,028.6        608.0       320        2,880         894.2  cuModuleGetLoadingMode        
+      0.0            2,560          2      1,280.0      1,280.0       672        1,888         859.8  cudaGetDriverEntryPoint_v11030
+

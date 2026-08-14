@@ -1,0 +1,48 @@
+{
+  "baseline": {
+    "samples": 93,
+    "RAM_MB": {
+      "mean": 3115.71,
+      "max": 3665
+    },
+    "GR3D_pct": {
+      "mean": 20.67,
+      "max": 99
+    },
+    "GPU_temp_C": {
+      "mean": 53.15,
+      "max": 54.38
+    },
+    "CPU_temp_C": {
+      "mean": 52.06,
+      "max": 53.06
+    },
+    "VDD_IN_mW": {
+      "mean": 6134.89,
+      "max": 8438
+    }
+  },
+  "optimized": {
+    "samples": 91,
+    "RAM_MB": {
+      "mean": 3121.88,
+      "max": 3692
+    },
+    "GR3D_pct": {
+      "mean": 21.25,
+      "max": 99
+    },
+    "GPU_temp_C": {
+      "mean": 53.7,
+      "max": 54.94
+    },
+    "CPU_temp_C": {
+      "mean": 52.58,
+      "max": 53.34
+    },
+    "VDD_IN_mW": {
+      "mean": 6126.27,
+      "max": 8582
+    }
+  }
+}

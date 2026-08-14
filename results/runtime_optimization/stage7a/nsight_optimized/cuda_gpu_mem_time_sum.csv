@@ -1,0 +1,8 @@
+Generating SQLite file /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite from /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.nsys-rep
+Processing [/home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_gpu_mem_time_sum.py]... 
+Time (%),Total Time (ns),Count,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Operation
+89.9,212772288,570,373284.7,3936.0,608,29652576,1731539.1,[CUDA memcpy Host-to-Device]
+7.1,16717536,154,108555.4,1472.0,512,5948000,697670.4,[CUDA memset]
+2.3,5502720,179,30741.5,8576.0,4640,122336,30740.1,[CUDA memcpy Device-to-Device]
+0.7,1763680,364,4845.3,1712.0,960,49376,9090.5,[CUDA memcpy Device-to-Host]
+

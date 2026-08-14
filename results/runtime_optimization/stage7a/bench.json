@@ -1,0 +1,49 @@
+{
+  "runtime": "baseline",
+  "micro": "joint",
+  "warmup": 1,
+  "iters": 1,
+  "model_load_ms": {
+    "owl": 1451.106,
+    "nsam": 621.503
+  },
+  "correctness": {
+    "owl": {
+      "status": "DETECTED",
+      "label": "an owl",
+      "score": 0.341924,
+      "box": [
+        275.1943359375,
+        82.3544921875,
+        463.640625,
+        399.34619140625
+      ],
+      "mask_nonzero": 34065,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "dogs": {
+      "status": "DETECTED",
+      "box": [
+        100.0,
+        100.0,
+        1000.0,
+        660.0
+      ],
+      "mask_nonzero": 204540,
+      "has_nan": false,
+      "has_inf": false
+    }
+  },
+  "latency_ms": {
+    "mean": 116.2799,
+    "min": 116.2799,
+    "p50": 116.2799,
+    "p95": 116.2799,
+    "p99": 116.2799,
+    "max": 116.2799
+  },
+  "per_iter_ms": [
+    116.28
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mean_abs_iou_delta": 0.0,
+  "max_abs_iou_delta": 0.0,
+  "baseline_mIoU": 0.721328258289041,
+  "optimized_mIoU": 0.721328258289041,
+  "n_common": 100,
+  "n_with_iou_both": 100
+}

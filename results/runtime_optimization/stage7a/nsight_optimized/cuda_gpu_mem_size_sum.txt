@@ -1,0 +1,16 @@
+
+NOTICE: Existing SQLite export found: /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite
+        It is assumed file was previously exported from: /home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [/home/nvidia/jetson-deploy-lab/results/runtime_optimization/stage7a/nsight_optimized/edge_perception.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_gpu_mem_size_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Size) (cuda_gpu_mem_size_sum):
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)            Operation           
+ ----------  -----  --------  --------  --------  --------  -----------  ------------------------------
+  1,328.465    570     2.331     0.003     0.000   174.172        9.140  [CUDA memcpy Host-to-Device]  
+    480.964    154     3.123     0.000     0.000   174.172       20.436  [CUDA memset]                 
+    104.055    179     0.581     0.009     0.002     1.769        0.742  [CUDA memcpy Device-to-Device]
+     13.206    364     0.036     0.000     0.000     0.377        0.111  [CUDA memcpy Device-to-Host]  
+

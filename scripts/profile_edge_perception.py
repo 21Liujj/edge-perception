@@ -31,6 +31,7 @@ os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 _HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(_HERE, ".."))
 sys.path.insert(0, _HERE)
+sys.path.insert(0, ROOT)
 
 from nanoowl.owl_predictor import OwlPredictor  # noqa: E402
 from nanosam.utils.predictor import Predictor as NanosamPredictor  # noqa: E402
@@ -172,6 +173,7 @@ def main():
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--warmup", type=int, default=20)
     ap.add_argument("--iters", type=int, default=15)
+    ap.add_argument("--runtime", choices=["baseline", "optimized"], default="baseline")
     ap.add_argument("--out", default="results/nsight_profile/profile_meta.json")
     args = ap.parse_args()
 
@@ -187,7 +189,11 @@ def main():
     text = [t.strip() for t in args.prompts.split(",") if t.strip()]
     text_encodings = owl.encode_text(text); cuda_sync()
     t0 = time.perf_counter()
-    nsam = NanosamPredictor(args.nanosam_enc, args.nanosam_dec); cuda_sync()
+    if args.runtime == "optimized":
+        from edge_perception.runtime.nanosam_optimized import OptimizedPredictor
+        nsam = OptimizedPredictor(args.nanosam_enc, args.nanosam_dec); cuda_sync()
+    else:
+        nsam = NanosamPredictor(args.nanosam_enc, args.nanosam_dec); cuda_sync()
     nsam_load = (time.perf_counter() - t0) * 1000.0
     print("model_load nanoowl=%.1fms nanosam=%.1fms nvtx=%s img=%dx%d" %
           (owl_load, nsam_load, HAS_NVTX, in_w, in_h), flush=True)
@@ -219,7 +225,7 @@ def main():
 
     a = np.array(times)
     meta = {
-        "image": args.image, "in_h": in_h, "in_w": in_w,
+        "image": args.image, "in_h": in_h, "in_w": in_w, "runtime": args.runtime,
         "prompts": args.prompts, "target_label": args.target_label, "threshold": args.threshold,
         "warmup": args.warmup, "iters": args.iters,
         "has_nvtx": HAS_NVTX,

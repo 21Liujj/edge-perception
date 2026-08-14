@@ -1,0 +1,61 @@
+{
+  "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+  "in_h": 499,
+  "in_w": 756,
+  "runtime": "optimized",
+  "prompts": "an owl,a glove,a finger",
+  "target_label": "an owl",
+  "threshold": 0.1,
+  "warmup": 20,
+  "iters": 15,
+  "has_nvtx": true,
+  "nvtx_ranges": [
+    "pipeline_total",
+    "preprocess",
+    "nanoowl",
+    "nanoowl_postprocess",
+    "bridge",
+    "nanosam_set_image",
+    "nanosam_decode"
+  ],
+  "measurement_sync_note": "cuda_sync in this script demarcates NVTX stage boundaries for nsys timeline; production sync is what TRT/upstream does internally.",
+  "model_load_ms": {
+    "nanoowl": 1530.375,
+    "nanosam": 747.934,
+    "total": 2278.308
+  },
+  "profile_iters": {
+    "mean_ms": 115.98,
+    "min_ms": 106.159,
+    "max_ms": 126.811,
+    "p50_ms": 114.684,
+    "p95_ms": 126.149,
+    "p99_ms": 126.678
+  },
+  "correctness": {
+    "detected_iters": 15,
+    "no_detection_iters": 0,
+    "nan_inf_iters": 0,
+    "owl_detection_present": true,
+    "mask_nonzero_last": 34065,
+    "has_nan": false,
+    "has_inf": false
+  },
+  "per_iter_ms": [
+    116.779,
+    107.702,
+    118.578,
+    106.159,
+    114.684,
+    112.203,
+    112.404,
+    126.811,
+    118.765,
+    125.865,
+    120.011,
+    113.638,
+    113.869,
+    118.05,
+    114.185
+  ]
+}
