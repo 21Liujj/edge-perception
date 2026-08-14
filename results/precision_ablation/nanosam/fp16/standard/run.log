@@ -1,0 +1,11 @@
+  progress 50/500  valid=50 failed=0
+  progress 100/500  valid=100 failed=0
+  progress 150/500  valid=150 failed=0
+  progress 200/500  valid=200 failed=0
+  progress 250/500  valid=250 failed=0
+  progress 300/500  valid=300 failed=0
+  progress 350/500  valid=350 failed=0
+  progress 400/500  valid=400 failed=0
+  progress 450/500  valid=450 failed=0
+  progress 500/500  valid=500 failed=0
+=== standard DONE === valid=500 failed=0 mIoU=0.718127976997991 wall=51.7s

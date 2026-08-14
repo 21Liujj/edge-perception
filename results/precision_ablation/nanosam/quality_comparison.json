@@ -1,0 +1,18 @@
+{
+  "equal_tolerance": 0.0001,
+  "n_paired": 500,
+  "fp16_mIoU": 0.718127976997991,
+  "fp32_mIoU": 0.7182086805723996,
+  "mean_iou_delta_fp32_minus_fp16": 8.070357440849832e-05,
+  "median_iou_delta": 0.0,
+  "mean_abs_iou_delta": 0.000880393162741351,
+  "max_abs_iou_delta": 0.013953488372092981,
+  "fp32_better_count": 176,
+  "fp16_better_count": 164,
+  "approximately_equal_count": 160,
+  "small_mIoU_delta": 9.934810567651096e-05,
+  "medium_mIoU_delta": 9.146310629404715e-05,
+  "large_mIoU_delta": 4.8949641924829625e-05,
+  "small_fp16_mIoU": 0.6053200768868633,
+  "small_fp32_mIoU": 0.6054194249925399
+}

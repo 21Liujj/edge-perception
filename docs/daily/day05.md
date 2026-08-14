@@ -275,3 +275,133 @@ Engine SHA256 与 Day 3 构建一致，未重建：enc `c277e5ca...aaa6a8`（FP1
 ## Stage 5B 结论
 
 NanoSAM COCO box-prompt 质量基线已建立：STANDARD mIoU=0.7181（500 instances，0 failed），small/medium/large mIoU = 0.6053 / 0.7627 / 0.7958，IoU>=0.50=0.846，IoU>=0.75=0.590。dogs.jpg 回归 PASS。基线可用于后续 precision ablation（A/B/C/D）对照。**不继续 Stage 5C。**
+
+---
+
+# Day 5 收口（Stage 5C 启用）
+
+Stage 5B 结束时记录"不继续 Stage 5C"，Stage 5C 现在已显式授权并执行：完成 NanoSAM Image Encoder FP32 vs FP16 质量–性能 Ablation，并关闭 Day 5。
+
+---
+
+## Stage 5C — FP32 vs FP16 Precision Ablation
+
+只改变 NanoSAM Image Encoder 精度（FP16 baseline vs FP32），Mask Decoder 始终 FP32，其余评测条件全部不变（同一 STANDARD manifest / seed=2027 / GT box / slot 0 / metric code）。
+
+### 1. Engine configuration
+
+- 复用 Day 3 固定 ONNX：`third_party/nanosam/data/resnet18_image_encoder.onnx`（SHA256 `d266fcdc...`）。
+- **FP16 Engine（baseline，未重建）**：`resnet18_image_encoder.engine`，34,766,700 B，SHA256 `c277e5ca...aaa6a8`。
+- **FP32 Engine（新建，trtexec 无 --fp16，TRT 10.3）**：`resnet18_image_encoder_fp32.engine`，63,893,220 B，SHA256 `51d75af6...1cbbed`。build PASSED，reload PASS（features [1,256,64,64] finite）。
+- 两个 engine 并存，FP16 未被覆盖；FP32 engine 不设为默认。
+- build log：`results/precision_ablation/nanosam/fp32_engine_build.log`。
+- 本阶段不建立 NanoOWL FP32 Engine：NanoSAM 已具备独立 GT-box quality evaluator，适合 controlled precision ablation；NanoOWL COCO detection AP 属独立扩展实验，不阻塞 7-day EdgePerception 主线（写入 Day 5 scope）。
+
+### 2. FP32 correctness smoke（dogs.jpg，box [100,100,850,759]，slot 0）
+
+PASS：selected IoU 0.6618（vs FP16 0.6619），mask 非空（242113 非零），无 NaN/Inf。FP16 baseline evidence 未触碰（FP32 输出存 `results/precision_ablation/nanosam/fp32/`）。
+
+### 3. COCO paired quality（STANDARD，500 instances，GT box，slot 0）
+
+重新运行 FP16 STANDARD（同当前代码）+ FP32 STANDARD，同一 manifest / evaluator / code：
+
+| Variant | valid/failed | mIoU | median | P10 | P90 | IoU>=0.50 | IoU>=0.75 |
+|---|---|---|---|---|---|---|---|
+| A — FP16 enc | 500/0 | 0.71813 | 0.78387 | 0.37913 | 0.91923 | 0.846 | 0.590 |
+| B — FP32 enc | 500/0 | 0.71821 | 0.78387 | 0.37871 | 0.91926 | 0.846 | 0.590 |
+
+mIoU by size bucket：
+
+| Variant | small | medium | large |
+|---|---|---|---|
+| FP16 | 0.60532 (175) | 0.76266 (166) | 0.79580 (159) |
+| FP32 | 0.60542 (175) | 0.76275 (166) | 0.79584 (159) |
+
+### 4. Paired per-instance comparison（equal tolerance |delta| < 1e-4）
+
+- n paired = 500
+- mean IoU delta (FP32−FP16) = +8.07e-05
+- median IoU delta = 0.0
+- mean absolute IoU delta = 8.80e-04
+- max absolute IoU delta = 0.01395
+- FP32 better = 176 / FP16 better = 164 / approximately equal = 160（近对称，无系统性优势）
+- **small objects mIoU delta (FP32−FP16) = +9.93e-05**：可忽略；**只报告事实，不归因于 FP16 精度**（Stage 5B 已观察到 small mIoU 最低，但本阶段不做该归因）。
+- tolerance `abs(delta_iou) < 1e-4` 写入 summary，未为美观修改。
+
+证据：`results/precision_ablation/nanosam/paired_quality.csv`、`quality_comparison.json`。
+
+### 5. Paired latency（dogs.jpg，warmup>=20，iters>=100，cuda-sync）
+
+同一 timing boundary、同一方法重测 FP16 与 FP32：
+
+| metric | FP16 | FP32 | FP32/FP16 |
+|---|---|---|---|
+| encoder P50 (ms) | 71.90 | 84.92 | 1.18x |
+| encoder P95 (ms) | 79.36 | 92.95 | 1.17x |
+| encoder mean (ms) | 69.95 | 82.98 | 1.19x |
+| full segmentation P50 (ms) | 88.76 | 100.33 | 1.13x |
+| full segmentation mean (ms) | 88.86 | 98.08 | 1.10x |
+
+- 未用 Day 3 单次 52.186 ms 作对照；FP16/FP32 用同一 timing boundary 与运行方法。
+- Mask Decoder 未变，未对其做大规模独立 benchmark。
+- 证据：`fp16/encoder_latencies.csv`、`fp16/full_segmentation_latencies.csv`、`fp32/...`、`latency_comparison.json`。
+
+### 6. Engine size / resource
+
+- FP32 → FP16 engine size reduction = 45.6%（省 28.9 MB）。
+- tegrastats（steady-state encode burst，best-effort，非稳定均值）：
+
+| metric | FP16 | FP32 |
+|---|---|---|
+| peak RAM (MB) | 2919 | 2951 |
+| peak GR3D (%) | 99 | 99 |
+| peak GPU temp (C) | 53 | 54 |
+| peak VDD_IN (mW) | 7170 | 8160 |
+
+FP32 略高 RAM (+32 MB) 与功耗 (+14% VDD_IN)；GR3D 两边都 99%（encoder-bound）。采样短，仅作指示。
+
+### 7. Quality-performance conclusion
+
+- FP16 明显更快（encoder P50 ~15% 更低）且 ~46% 更小，RAM/功耗略低。
+- 质量差异可忽略（mean mIoU delta 8e-05；mean abs per-instance delta 9e-04；FP32-better / FP16-better 近对称 176/164），含 small objects 在内无系统性 FP32 质量优势。
+- **结论（按事实得出，非预设）**：在所评测 COCO STANDARD subset 下，FP16 是 NanoSAM image encoder 的优选部署精度——明显 latency/size 优势，质量代价可忽略。该结论不超出该 subset（未跑 FULL）；small-object delta 只报告事实，不归因精度。
+
+### 8. 默认配置恢复 + dogs FP16 regression
+
+- 默认 pipeline 恢复为 NanoSAM Image Encoder FP16 + Mask Decoder FP32（FP32 engine 不设为默认）。
+- dogs.jpg FP16 regression：**PASS**（selected IoU 0.6619，mask 非空 242155，无 NaN/Inf）。
+
+### 9. Evidence 路径
+
+- `results/precision_ablation/nanosam/fp16/`（latency + standard COCO + tegrastats）
+- `results/precision_ablation/nanosam/fp32/`（latency + standard COCO + tegrastats + dogs box smoke）
+- `results/precision_ablation/nanosam/paired_quality.csv`、`quality_comparison.json`、`latency_comparison.json`
+- `results/precision_ablation/nanosam/fp32_engine_build.log`
+- `results/precision_ablation/nanosam/summary.md`（正式 trade-off 表）
+- `results/nanosam_baseline/regression/box_result.json`（dogs FP16 regression）
+
+---
+
+## Day 5 Final Result
+
+Day 5 建立了 COCO quality + TensorRT precision + latency + engine size 之间的可复现 trade-off：
+
+- **Stage 5A**：COCO Evaluation Protocol（口径冻结）。
+- **Stage 5B**：NanoSAM COCO Quality Baseline — STANDARD 500 instances，mIoU 0.7181，small 0.6053 / medium 0.7627 / large 0.7958。
+- **Stage 5C**：FP32 vs FP16 精度 Ablation — 质量 delta 可忽略（mean abs 9e-04），FP16 encoder P50 快 ~15%、engine 小 ~46%；结论 FP16 为优选部署精度（该 subset 内）。
+
+## Day 6 起点
+
+MP4 real-time / streaming pipeline：
+
+- Video frames → NanoOWL → NanoSAM → overlay → output video。
+- 关注：end-to-end video FPS / backpressure / latest-frame strategy / timestamp / frame drop。
+
+**不在 Day 5 提前开始视频。**
+
+## Stage 5C 约束遵守
+
+- 未建立 NanoOWL FP32 Engine；未做 INT8；未跑 FULL COCO inference；未做 MP4 / ROS2 / stability。
+- 未修改 upstream；未 remote / push / GitHub 上传（无 remote）。
+- 未修改评测协议改善结果；tolerance 未为美观修改。
+- 核心环境保持：torch 2.5.0a0+nv24.08 / tensorrt 10.3.0 / numpy 1.23.5 / torchvision 0.20.0a0+afc54f7 / pycocotools 2.0.11。

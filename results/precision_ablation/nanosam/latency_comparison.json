@@ -1,0 +1,27 @@
+{
+  "fp16_encoder_P50_ms": 71.8984,
+  "fp16_encoder_P95_ms": 79.3553,
+  "fp32_encoder_P50_ms": 84.9189,
+  "fp32_encoder_P95_ms": 92.9463,
+  "fp16_encoder_mean_ms": 69.9505,
+  "fp32_encoder_mean_ms": 82.9779,
+  "fp16_full_segmentation_P50_ms": 88.755,
+  "fp32_full_segmentation_P50_ms": 100.3334,
+  "fp16_full_segmentation_mean_ms": 88.8601,
+  "fp32_full_segmentation_mean_ms": 98.078,
+  "encoder_P50_speedup_fp32_over_fp16": 1.1811,
+  "encoder_mean_speedup_fp32_over_fp16": 1.1862,
+  "full_seg_P50_speedup_fp32_over_fp16": 1.1305,
+  "fp16_tegrastats": {
+    "peak_RAM_MB": 2919,
+    "peak_GR3D_pct": 99,
+    "peak_temperature_C": 53,
+    "peak_VDD_IN_mW": 7170
+  },
+  "fp32_tegrastats": {
+    "peak_RAM_MB": 2951,
+    "peak_GR3D_pct": 99,
+    "peak_temperature_C": 54,
+    "peak_VDD_IN_mW": 8160
+  }
+}

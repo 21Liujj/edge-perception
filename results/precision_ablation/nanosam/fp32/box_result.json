@@ -1,0 +1,72 @@
+{
+  "prompt_type": "box",
+  "image_path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/assets/dogs.jpg",
+  "image_size_W_H": [
+    1180,
+    760
+  ],
+  "image_embeddings_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "bbox_xyxy": [
+    100,
+    100,
+    850,
+    759
+  ],
+  "points": [
+    [
+      100,
+      100
+    ],
+    [
+      850,
+      759
+    ]
+  ],
+  "point_labels": [
+    2,
+    3
+  ],
+  "mask_decoder_output_count": 4,
+  "mask_selection_rule": "fixed slot (basic_usage.py: mask[0,0] > 0); not IoU argmax",
+  "selected_mask_index": 0,
+  "selected_predicted_iou": 0.661811113357544,
+  "iou_predictions_all": [
+    0.661811113357544,
+    0.6263548731803894,
+    0.7580462694168091,
+    0.7130051851272583
+  ],
+  "low_res_mask_shape": [
+    1,
+    4,
+    256,
+    256
+  ],
+  "hi_res_mask_shape": [
+    1,
+    4,
+    760,
+    1180
+  ],
+  "has_nan_inf": {
+    "nan": false,
+    "inf": false
+  },
+  "timing_ms": {
+    "model_load_ms": 776.848,
+    "set_image_ms": 119.939,
+    "prompt_decode_ms": 16.749,
+    "full_segmentation_ms": 136.688
+  },
+  "nonzero_pixels": 242113,
+  "mask_area_ratio": 0.269974,
+  "mask_shape": [
+    760,
+    1180
+  ]
+}

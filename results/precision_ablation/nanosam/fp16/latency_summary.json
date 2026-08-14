@@ -1,0 +1,31 @@
+{
+  "precision": "fp16",
+  "encoder_engine": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/resnet18_image_encoder.engine",
+  "warmup": 20,
+  "encoder_iterations": 100,
+  "full_segmentation_iterations": 100,
+  "encoder": {
+    "count": 100,
+    "mean_ms": 69.9505,
+    "min_ms": 50.9558,
+    "max_ms": 82.0673,
+    "P50_ms": 71.8984,
+    "P95_ms": 79.3553,
+    "P99_ms": 80.8522
+  },
+  "full_segmentation": {
+    "count": 100,
+    "mean_ms": 88.8601,
+    "min_ms": 61.4051,
+    "max_ms": 113.0102,
+    "P50_ms": 88.755,
+    "P95_ms": 104.711,
+    "P99_ms": 109.671
+  },
+  "tegrastats": {
+    "peak_RAM_MB": 2919,
+    "peak_GR3D_pct": 99,
+    "peak_temperature_C": 53,
+    "peak_VDD_IN_mW": 7170
+  }
+}
