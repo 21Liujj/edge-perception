@@ -111,3 +111,111 @@
 ## Day 6 结论
 
 Stage 6A：MP4 → NanoOWL → NanoSAM → Overlay → MP4 基础视频推理闭环已建立。60 帧 smoke PASS（60 detection，NO_DETECTION 分支 PASS，输出可重读，无 NaN/Inf/shape mismatch/per-frame reload/内存增长），单图回归 PASS。Stage 6B 将在此基础上正式定义 throughput / backpressure / latest-frame。
+
+---
+
+## Stage 6B — Realtime Video Runtime / Backpressure / Latest-Frame 策略对比
+
+### 目标
+
+在**真实帧到达节奏**（producer 按视频原始 FPS=10 释放帧，即每 100ms 一帧；**非磁盘解码速度**）下，对比三种 runtime 队列/背压策略的吞吐、延迟、丢帧、队列行为与资源占用。此为 runtime 策略 benchmark，**非算法质量 benchmark**（输入为 Stage 6A 合成视频，仅作 runtime-controlled 输入）。
+
+### 三种策略定义
+
+| 策略 | 机制 | 丢帧 | 背压 |
+|---|---|---|---|
+| sequential | read→inference→next，无 queue | 否 | N/A（无 queue） |
+| fifo | producer thread → 有界 FIFO queue（maxsize=8，`--queue-size`）→ consumer thread | 否（满则 BLOCK） | 是：queue 满时 producer 阻塞 |
+| latest | 有效容量 1；新帧到达且 consumer 忙时丢弃被取代的旧 pending 帧 | 是（reason=`superseded_by_newer_frame`） | 否（drop-old 替代 block） |
+
+### 实时回放实现
+
+- producer 按 source FPS 节奏释放帧：`target_wall = replay_start + src_idx * (1/FPS)`，`time.sleep` 到点；**不是磁盘解码速度**。
+- `source_timestamp_ms = src_idx * (1000/FPS)`，跨 `--loops 5` 单调递增（loop-2 frame-0 不重置为 0）。
+- 源帧一次性读入内存（60 帧很小），保证回放节奏只受 FPS 节拍控制，不受 IO/decode 抖动污染。
+- 每源帧记录：`source_timestamp_ms` / `scheduled_arrival_ms` / `arrival_wall_time` / `enqueue_time` / `dequeue_time` / `inference_start` / `inference_end` / `completion_time`。
+- 关键实时指标 `live_e2e_latency_ms = completion_time - scheduled_arrival_time`（completion 相对 replay 开始，减去该帧的 scheduled 到达时间，即"这一帧从该到达时刻到处理完成的真实端到端延迟"）。
+
+### 复用与一致性
+
+- 复用 Stage 6A / Day 4 已验证推理逻辑：`detect_on_image`（NanoOWL `pad_square=False`）/ `select_detection` / `clip_box` / NanoSAM `set_image`+box prompt(slot 0) `/ NaN-Inf guard。BGR→RGB PIL 与 Day 4 一致。
+- 模型**只加载一次**（NanoOWL 1459.5ms + NanoSAM 627.4ms = 2086.9ms），三模式共用同一 instance，无 per-frame reload。
+- 输出视频写入**已禁用**（VideoWriter IO 会污染 runtime timing）；在 summary 中显式标注。
+- processing throughput 为 realtime-paced 输入下的离线 pipeline throughput，**不声称**为 realtime 摄像头 FPS。
+
+### 输出 artifacts
+
+`results/video_runtime_benchmark/`：
+- `sequential|fifo|latest/{summary.json, frames.jsonl, tegrastats.log, tegrastats_parsed.json, run.log}`
+- `comparison.json` / `comparison.md`
+
+### 结果汇总表（--loops 5，300 源帧，10 fps，756×498）
+
+| Mode | Proc FPS | Processed | Dropped | Drop Rate | Live Lat P50 (ms) | P95 (ms) | P99 (ms) | Queue Wait P95 (ms) | Frame Age P95 (ms) | Max Q Depth | Producer Blocked (ms) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| sequential | 7.87 | 300 | 0 | 0.000 | 4130.47 | 7868.44 | 8172.94 | N/A | 0.013 | N/A | N/A |
+| fifo | 8.51 | 300 | 0 | 0.000 | 2763.56 | 5027.58 | 5316.07 | 1100.08 | 1100.10 | 1 | 28.30 |
+| latest | 8.59 | 260 | 40 | 0.133 | 289.01 | 334.73 | 343.98 | 95.74 | 95.80 | N/A | N/A |
+
+资源占用（tegrastats，每模式独立采样）：
+
+| Mode | RAM Peak (MB) | GR3D Mean (%) | GPU Temp Peak (C) | CPU Temp Peak (C) | Power Mean (mW) |
+|---|---|---|---|---|---|
+| sequential | 3502 | 54.54 | 55.75 | 54.06 | 8140.86 |
+| fifo | 3629 | 51.53 | 57.06 | 55.34 | 8340.84 |
+| latest | 3683 | 55.17 | 58.19 | 56.25 | 8417.07 |
+
+单帧处理时延（ms；三模式几乎一致，差异在测量噪声范围内，**不据此称某模式更快**）：
+
+| Mode | mean | P50 | P95 | P99 | max |
+|---|---|---|---|---|---|
+| sequential | 126.53 | 125.70 | 142.76 | 149.68 | 267.95 |
+| fifo | 117.06 | 119.19 | 124.22 | 135.57 | 151.76 |
+| latest | 115.86 | 117.64 | 123.21 | 133.66 | 139.02 |
+
+### 数据解读（data-driven，不强行结论）
+
+- **源供给侧**：10 fps；**处理侧**：~126ms/帧（sequential，含 TRT default-stream 同步开销）→ ~7.9 fps。处理 < 源供给 → 持续积压，这是三模式分化的根因。
+- **sequential**：无 escape valve，积压线性累积。`live_e2e_latency_ms` 随帧单调增长至 **P99=8173ms / max=8236ms**（300 帧末端帧的实际端到端延迟已超 8 秒）。frame_age 始终 ~0（每帧到达即立即处理，但处理的是"很早之前该到达的帧"）。零丢帧，但延迟不可接受。
+- **fifo**：有界 queue(maxsize=8) 吸收突发、queue 满时 producer block（实测 `producer_blocked=28.3ms`，`queue_depth_max=8` 触发背压）。零丢帧，但 queue_wait / frame_age P95≈1100ms —— 延迟被缓冲而非消除，仍持续上升至 P99=5316ms。适合"不能丢帧、可接受可控延迟"的场景。
+- **latest**：drop-old 换低延迟。latency 有界：P50=289ms / P99=344ms，frame_age P95=96ms —— 始终处理近实时帧。代价是丢 40/300=13.3% 帧（`reason=superseded_by_newer_frame`，不丢 in-flight 帧仅丢 pending 旧帧）。丢帧率与吞吐缺口一致：理论 max drop ≈ 1 - 8.0/10 = 20%，实测 13.3%（稳态尾部追回部分帧）。
+- **资源**：三模式 RAM 3.5–3.7 GB、GR3D ~52–55%、GPU temp peak 56–58°C、power ~8.1–8.4 W，差异在噪声范围。latest 因更密集调度（CPU 线程唤醒更频繁）峰值 temp 略高（58.2°C），无热异常。
+- **correctness**：三模式 0 NaN/Inf；sequential/fifo 300 detection；latest 260 detection（其余 40 帧为 superseded drop，未被推理）。latest 不丢 in-flight 帧（被推理中的帧不被取代），仅丢 consumer 忙时堆积的旧 pending 帧。
+
+### 结论（基于上述数据）
+
+- 若需**零丢帧**：fifo（可控延迟）优于 sequential（延迟爆炸）。sequential 在处理 < 供给时不可用。
+- 若需**低实时延迟**：latest 用 13.3% 丢帧换 P99=344ms 有界延迟，适合作业容忍丢帧的实时场景。本合成视频 owl 始终居中、帧间位移小（max 30px 正弦），丢帧对"目标持续在场"语义影响小；**真实场景是否可丢帧需结合作业判定，本 benchmark 不替场景下该结论**。
+- 三模式单帧处理时延差异在测量噪声内，**不据此排序处理速度**。
+- 不声称任一策略"最优"；选择取决于 业务对丢帧 vs 延迟 的权衡。
+
+### 单图回归
+
+- 重跑 Day 4 owl 单图 joint regression（`scripts/run_edge_perception.py`，owl_glove_small.jpg，prompts “an owl,a glove,a finger”，target-label “an owl”，threshold 0.10）。
+- **PASS**：label “an owl”，score 0.3419，box [275.19, 82.35, 463.64, 399.35]（与 Day1/2/4/6A baseline 一致），mask slot 0、selected IoU 0.7206、nonzero 34065、无 NaN/Inf。
+- 结论：新增 runtime benchmark 脚本未改动 `run_edge_perception.py`，单图 Pipeline 未受影响。
+
+### Evidence 路径
+
+- `scripts/benchmark_video_runtime.py`
+- `results/video_runtime_benchmark/{sequential,fifo,latest}/{summary.json,frames.jsonl,tegrastats.log,tegrastats_parsed.json,run.log}`
+- `results/video_runtime_benchmark/comparison.json` / `comparison.md`
+
+### 约束遵守（Stage 6B）
+
+- 未 remote / push / GitHub 上传（无 remote，仅 local commit）。
+- 未修改 `third_party/nanoowl`、`third_party/nanosam`；未安装新依赖。
+- 未 rebuild engine / 未 INT8 / 未新精度 / 未 COCO / 未 ROS2 / 未 camera / 未 long-run stability。
+- **未继续 Stage 6C**。
+
+### 默认配置（未变）
+
+- NanoOWL：`owlvit_image_encoder_patch32.engine`（FP16）
+- NanoSAM Image Encoder：`resnet18_image_encoder.engine`（FP16）
+- NanoSAM Mask Decoder：`mobile_sam_mask_decoder.engine`（FP32）
+
+## Day 6 结论（更新）
+
+Stage 6A：MP4 基础视频推理闭环已建立，60 帧 smoke PASS，单图回归 PASS。
+
+Stage 6B：在真实帧到达节奏（source FPS pacing）下对比 sequential / fifo / latest 三种 runtime 策略（300 源帧）。结果：sequential 无 escape valve 致 live latency 爆炸（P99=8173ms）；fifo 零丢帧但延迟被缓冲持续上升（P99=5316ms，背压 28.3ms，queue depth max=8）；latest 用 13.3% superseded drop 换有界延迟（P99=344ms，frame age P95=96ms）。三模式单帧处理 ~116–127ms、资源占用相近、0 NaN/Inf。选择取决于 丢帧 vs 延迟 权衡，不强行称某策略最优。单图回归 PASS。环境保持，无残留进程，无 remote/git push。

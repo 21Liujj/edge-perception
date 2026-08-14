@@ -1,0 +1,26 @@
+{
+  "RAM_MB": {
+    "mean": 3475.22,
+    "max": 3502.0
+  },
+  "GR3D_pct": {
+    "mean": 54.54,
+    "max": 99.0
+  },
+  "GPU_temp_C": {
+    "mean": 54.63,
+    "max": 55.75
+  },
+  "CPU_temp_C": {
+    "mean": 53.04,
+    "max": 54.06
+  },
+  "VDD_IN_mW": {
+    "mean": 8140.86,
+    "max": 8859.0
+  },
+  "EMC": {
+    "mean": null,
+    "max": null
+  }
+}

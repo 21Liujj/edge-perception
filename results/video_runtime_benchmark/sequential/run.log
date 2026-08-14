@@ -1,0 +1,7 @@
+  seq progress frame 50 status=DETECTED
+  seq progress frame 100 status=DETECTED
+  seq progress frame 150 status=DETECTED
+  seq progress frame 200 status=DETECTED
+  seq progress frame 250 status=DETECTED
+  seq progress frame 300 status=DETECTED
+sequential DONE processed=300 throughput=7.87fps

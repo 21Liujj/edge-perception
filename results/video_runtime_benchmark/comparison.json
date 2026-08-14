@@ -1,0 +1,219 @@
+{
+  "sequential": {
+    "mode": "sequential",
+    "source_fps": 10.0,
+    "source_frames": 300,
+    "processed_frames": 300,
+    "dropped_frames": 0,
+    "drop_rate": 0.0,
+    "detection_frames": 300,
+    "nan_inf_frames": 0,
+    "processing_throughput_fps": 7.8665,
+    "wall_time_s": 38.137,
+    "processing_ms": {
+      "mean": 126.5256,
+      "p50": 125.6984,
+      "p95": 142.7638,
+      "p99": 149.678,
+      "max": 267.9454
+    },
+    "live_e2e_latency_ms": {
+      "mean": 4230.7389,
+      "p50": 4130.4721,
+      "p95": 7868.4417,
+      "p99": 8172.9415,
+      "max": 8235.8598
+    },
+    "queue_wait_ms": "N/A (no queue)",
+    "frame_age_at_inference_start_ms": {
+      "mean": 0.0117,
+      "p50": 0.0118,
+      "p95": 0.013,
+      "p99": 0.0141,
+      "max": 0.0281
+    },
+    "queue_depth": "N/A (no queue)",
+    "producer_blocked_ms": "N/A",
+    "output_video": "DISABLED (benchmark; VideoWriter I/O would pollute timing)",
+    "model_load": {
+      "nanoowl_load_ms": 1459.486,
+      "nanosam_load_ms": 627.364,
+      "total_load_ms": 2086.85
+    },
+    "tegrastats": {
+      "RAM_MB": {
+        "mean": 3475.22,
+        "max": 3502.0
+      },
+      "GR3D_pct": {
+        "mean": 54.54,
+        "max": 99.0
+      },
+      "GPU_temp_C": {
+        "mean": 54.63,
+        "max": 55.75
+      },
+      "CPU_temp_C": {
+        "mean": 53.04,
+        "max": 54.06
+      },
+      "VDD_IN_mW": {
+        "mean": 8140.86,
+        "max": 8859.0
+      },
+      "EMC": {
+        "mean": null,
+        "max": null
+      }
+    }
+  },
+  "fifo": {
+    "mode": "fifo",
+    "source_fps": 10.0,
+    "source_frames": 300,
+    "queue_size": 8,
+    "processed_frames": 300,
+    "dropped_frames": 0,
+    "drop_rate": 0.0,
+    "detection_frames": 300,
+    "nan_inf_frames": 0,
+    "processing_throughput_fps": 8.5065,
+    "wall_time_s": 35.267,
+    "processing_ms": {
+      "mean": 117.0597,
+      "p50": 119.1918,
+      "p95": 124.2192,
+      "p99": 135.5678,
+      "max": 151.7561
+    },
+    "live_e2e_latency_ms": {
+      "mean": 2781.5497,
+      "p50": 2763.5627,
+      "p95": 5027.5754,
+      "p99": 5316.0689,
+      "max": 5367.1083
+    },
+    "queue_wait_ms": {
+      "mean": 953.0444,
+      "p50": 1042.2084,
+      "p95": 1100.0805,
+      "p99": 1125.3562,
+      "max": 1135.7872
+    },
+    "frame_age_at_inference_start_ms": {
+      "mean": 953.0671,
+      "p50": 1042.2273,
+      "p95": 1100.1024,
+      "p99": 1125.3792,
+      "max": 1135.805
+    },
+    "queue_depth_max": 8,
+    "queue_depth_mean": null,
+    "producer_blocked_ms": 28.295,
+    "output_video": "DISABLED (benchmark; VideoWriter I/O would pollute timing)",
+    "model_load": {
+      "nanoowl_load_ms": 1459.486,
+      "nanosam_load_ms": 627.364,
+      "total_load_ms": 2086.85
+    },
+    "tegrastats": {
+      "RAM_MB": {
+        "mean": 3623.96,
+        "max": 3629.0
+      },
+      "GR3D_pct": {
+        "mean": 51.53,
+        "max": 99.0
+      },
+      "GPU_temp_C": {
+        "mean": 56.27,
+        "max": 57.06
+      },
+      "CPU_temp_C": {
+        "mean": 54.59,
+        "max": 55.34
+      },
+      "VDD_IN_mW": {
+        "mean": 8340.84,
+        "max": 8715.0
+      },
+      "EMC": {
+        "mean": null,
+        "max": null
+      }
+    }
+  },
+  "latest": {
+    "mode": "latest",
+    "source_fps": 10.0,
+    "source_frames": 300,
+    "processed_frames": 260,
+    "dropped_frames": 40,
+    "drop_rate": 0.1333,
+    "detection_frames": 260,
+    "nan_inf_frames": 0,
+    "processing_throughput_fps": 8.5941,
+    "wall_time_s": 30.253,
+    "processing_ms": {
+      "mean": 115.8565,
+      "p50": 117.641,
+      "p95": 123.2128,
+      "p99": 133.6644,
+      "max": 139.0189
+    },
+    "live_e2e_latency_ms": {
+      "mean": 288.6099,
+      "p50": 289.006,
+      "p95": 334.726,
+      "p99": 343.9827,
+      "max": 353.2929
+    },
+    "queue_wait_ms": {
+      "mean": 50.5057,
+      "p50": 50.7774,
+      "p95": 95.7433,
+      "p99": 99.7183,
+      "max": 110.215
+    },
+    "frame_age_at_inference_start_ms": {
+      "mean": 50.5538,
+      "p50": 50.8205,
+      "p95": 95.7972,
+      "p99": 99.7663,
+      "max": 110.263
+    },
+    "queue_capacity": 1,
+    "output_video": "DISABLED (benchmark; VideoWriter I/O would pollute timing)",
+    "model_load": {
+      "nanoowl_load_ms": 1459.486,
+      "nanosam_load_ms": 627.364,
+      "total_load_ms": 2086.85
+    },
+    "tegrastats": {
+      "RAM_MB": {
+        "mean": 3678.86,
+        "max": 3683.0
+      },
+      "GR3D_pct": {
+        "mean": 55.17,
+        "max": 99.0
+      },
+      "GPU_temp_C": {
+        "mean": 57.32,
+        "max": 58.19
+      },
+      "CPU_temp_C": {
+        "mean": 55.59,
+        "max": 56.25
+      },
+      "VDD_IN_mW": {
+        "mean": 8417.07,
+        "max": 9057.0
+      },
+      "EMC": {
+        "mean": null,
+        "max": null
+      }
+    }
+  }
+}
