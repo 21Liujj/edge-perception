@@ -1,0 +1,18 @@
+{
+  "type": "synthetic_test_video",
+  "purpose": "engineering pipeline validation only; NOT a real video dataset",
+  "source_image": "third_party/nanoowl/assets/owl_glove_small.jpg",
+  "source_image_resolution_WxH": [
+    756,
+    499
+  ],
+  "fps": 10,
+  "frame_count": 60,
+  "resolution_WxH": [
+    756,
+    499
+  ],
+  "duration_s": 6.0,
+  "generation_method": "owl_glove_small.jpg with per-frame horizontal sine pan (max 30px), constant scale, OpenCV mp4v writer",
+  "output": "results/video_pipeline/baseline/input.mp4"
+}

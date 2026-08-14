@@ -1,0 +1,60 @@
+{
+  "input_video": "results/video_pipeline/baseline/input.mp4",
+  "output_video": "results/video_pipeline/baseline/output_overlay.mp4",
+  "input_fps": 10.0,
+  "input_frame_count": 60,
+  "input_resolution_WxH": [
+    756,
+    498
+  ],
+  "max_frames": 60,
+  "process_every_n": 1,
+  "processed_frames": 60,
+  "detected_frames": 60,
+  "no_detection_frames": 0,
+  "written_frames": 60,
+  "output_frame_count_via_videocapture": 60,
+  "output_resolution_WxH_via_videocapture": [
+    756,
+    498
+  ],
+  "output_fps_via_videocapture": 10.0,
+  "output_reread_ok": true,
+  "input_frame_shapes_seen": [
+    [
+      498,
+      756,
+      3
+    ]
+  ],
+  "output_frame_shape_first": [
+    498,
+    756,
+    3
+  ],
+  "model_load": {
+    "nanoowl_load_ms": 2307.589,
+    "nanosam_load_ms": 706.367,
+    "total_model_load_ms": 3013.956
+  },
+  "prompts": [
+    "an owl",
+    "a glove",
+    "a finger"
+  ],
+  "target_label": "an owl",
+  "threshold": 0.1,
+  "mask_selection": "slot 0 (fixed, not IoU argmax)",
+  "timing_note": "correctness profiling only; NOT real-time FPS (Stage 6B defines throughput)",
+  "averages_ms_over_processed_frames": {
+    "decode_ms": 0.106,
+    "nanoowl_ms": 44.232,
+    "bridge_ms": 1.828,
+    "nanosam_set_image_ms": 59.83,
+    "nanosam_decode_ms": 18.523,
+    "overlay_ms": 10.186,
+    "encode_write_ms": 14.877,
+    "frame_total_ms": 149.582
+  },
+  "avg_frame_total_ms_over_all_written": 149.582
+}

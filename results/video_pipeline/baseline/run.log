@@ -1,0 +1,10 @@
+model_load: nanoowl=2307.6ms nanosam=706.4ms
+  frame 0: status=DETECTED alloc_MB=643.6
+  progress frame 10/60 processed=10 detected=10 no_det=0
+  progress frame 20/60 processed=20 detected=20 no_det=0
+  frame 20: status=DETECTED alloc_MB=643.8
+  progress frame 30/60 processed=30 detected=30 no_det=0
+  progress frame 40/60 processed=40 detected=40 no_det=0
+  frame 40: status=DETECTED alloc_MB=643.8
+  progress frame 50/60 processed=50 detected=50 no_det=0
+  progress frame 60/60 processed=60 detected=60 no_det=0
