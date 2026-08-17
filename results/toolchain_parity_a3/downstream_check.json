@@ -1,0 +1,5 @@
+{
+  "status": "DOWNSTREAM_CHECK_NOT_RUN",
+  "local_sample_available": "third_party/nanosam/assets/dogs.jpg",
+  "reason": "CPU-to-CPU embedding parity is near numerical precision. Injecting ORT embeddings into the CUDA predictor requires a new mixed-runtime pipeline and would expand scope."
+}

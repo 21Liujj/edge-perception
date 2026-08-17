@@ -1,0 +1,26 @@
+{
+  "backend": "ONNX Runtime 1.20.0",
+  "device": "CPUExecutionProvider",
+  "model": "MobileSAM vit_t TinyViT image_encoder",
+  "model_eval": true,
+  "no_grad": true,
+  "checkpoint_sha256": "6dbb90523a35330fedd7f1d3dfc66f995213d81b29a5ca8108dbcdd4e37d6c2f",
+  "input_sha256_raw_float32": "fda4c3d2ad945c3441a7bd79de1711655d5324d2921831549003a769892aba93",
+  "elapsed_seconds": 1.7555421129999331,
+  "output": {
+    "shape": [
+      1,
+      256,
+      64,
+      64
+    ],
+    "dtype": "float32",
+    "min": -0.5274307131767273,
+    "max": 0.5370333194732666,
+    "mean": -0.0031807559431349386,
+    "std": 0.10218838677564311,
+    "has_nan": false,
+    "has_inf": false,
+    "sha256_raw": "1aef40888ab02ef154e074731a2199a5ac4b01bb7413768f725509b7f827c27c"
+  }
+}

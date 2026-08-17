@@ -1,0 +1,28 @@
+{
+  "reference": "PyTorch CPU FP32",
+  "candidate": "ONNX Runtime CPU FP32",
+  "shape_match": true,
+  "dtype_match": true,
+  "element_count": 1048576,
+  "max_absolute_error": 1.1622905731201172e-06,
+  "mean_absolute_error": 8.838612775008414e-08,
+  "rmse": 1.1833107541670492e-07,
+  "absolute_error_percentiles": {
+    "p50": 5.960464477539063e-08,
+    "p90": 1.7881393432617188e-07,
+    "p95": 2.384185791015625e-07,
+    "p99": 3.5762786865234375e-07,
+    "p99_9": 5.364418029785156e-07
+  },
+  "relative_l2_error": 1.1574093054736745e-06,
+  "cosine_similarity": 0.9999999999989372,
+  "pearson_correlation": 0.9999999999993284,
+  "threshold_proportions": {
+    ">1e-1": 0.0,
+    ">5e-2": 0.0,
+    ">1e-2": 0.0,
+    ">1e-3": 0.0
+  },
+  "max_relative_error_audit_only": 5.0,
+  "max_relative_error_note": "Audit only; unstable where reference approaches zero."
+}

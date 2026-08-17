@@ -62,3 +62,6 @@ nsight_*/
 # Stage A2 isolated toolchain and generated model artifact
 .venv-toolchain/
 results/toolchain_export_a2/artifacts/*.onnx
+
+# Stage A3 controlled tensor artifacts
+results/toolchain_parity_a3/*.npy

@@ -1,0 +1,26 @@
+{
+  "backend": "PyTorch",
+  "device": "cpu",
+  "model": "MobileSAM vit_t TinyViT image_encoder",
+  "model_eval": true,
+  "no_grad": true,
+  "checkpoint_sha256": "6dbb90523a35330fedd7f1d3dfc66f995213d81b29a5ca8108dbcdd4e37d6c2f",
+  "input_sha256_raw_float32": "fda4c3d2ad945c3441a7bd79de1711655d5324d2921831549003a769892aba93",
+  "elapsed_seconds": 4.455527305000032,
+  "output": {
+    "shape": [
+      1,
+      256,
+      64,
+      64
+    ],
+    "dtype": "float32",
+    "min": -0.5274307727813721,
+    "max": 0.5370336771011353,
+    "mean": -0.003180754740908176,
+    "std": 0.10218839079022796,
+    "has_nan": false,
+    "has_inf": false,
+    "sha256_raw": "2442154b360fc10656ef060259a725888a9810b69d99b9ed9dda86373df287dc"
+  }
+}

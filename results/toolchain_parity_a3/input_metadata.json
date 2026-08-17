@@ -1,0 +1,19 @@
+{
+  "path": "results/toolchain_parity_a3/input_reference.npy",
+  "seed": 20260817,
+  "generator": "torch.randn on CUDA",
+  "shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "dtype": "float32",
+  "min": -4.9204912185668945,
+  "max": 4.7816596031188965,
+  "mean": -0.0014639516593888402,
+  "std": 0.9997518062591553,
+  "sha256_raw_float32": "fda4c3d2ad945c3441a7bd79de1711655d5324d2921831549003a769892aba93",
+  "matches_stage_a2_input_sha256": true,
+  "git_tracked": false
+}

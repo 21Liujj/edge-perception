@@ -1,0 +1,28 @@
+{
+  "reference": "PyTorch CUDA FP32",
+  "candidate": "ONNX Runtime CPU FP32",
+  "shape_match": true,
+  "dtype_match": true,
+  "element_count": 1048576,
+  "max_absolute_error": 0.001156836748123169,
+  "mean_absolute_error": 5.147903785407415e-05,
+  "rmse": 7.32615465590709e-05,
+  "absolute_error_percentiles": {
+    "p50": 3.612041473388672e-05,
+    "p90": 0.0001182258129119873,
+    "p95": 0.0001513659954071045,
+    "p99": 0.00023409724235534668,
+    "p99_9": 0.0003948375582695299
+  },
+  "relative_l2_error": 0.0007165596230048252,
+  "cosine_similarity": 0.9999997436406215,
+  "pearson_correlation": 0.9999997434348025,
+  "threshold_proportions": {
+    ">1e-1": 0.0,
+    ">5e-2": 0.0,
+    ">1e-2": 0.0,
+    ">1e-3": 9.5367431640625e-07
+  },
+  "max_relative_error_audit_only": 1105.25,
+  "max_relative_error_note": "Audit only; unstable where reference approaches zero."
+}

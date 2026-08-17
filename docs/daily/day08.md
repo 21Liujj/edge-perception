@@ -96,3 +96,41 @@ Checkpoint load passed with no missing or unexpected keys. PyTorch produced fini
 - Linux, Python, Git, and deployment toolchain debugging
 
 No existing ONNX or engine changed, no upstream source changed, no TensorRT build occurred, and Stage A3 was not started.
+## Stage A3 — Numerical Parity Audit
+
+### WHAT
+
+Ran three controlled FP32 comparisons for the MobileSAM `vit_t` image encoder using one serialized input: PyTorch CPU versus PyTorch CUDA, PyTorch CPU versus ONNX Runtime CPU, and PyTorch CUDA versus ONNX Runtime CPU. Recorded full error distributions, output scale, graph operator risk, export warnings, and decision evidence under `results/toolchain_parity_a3/`.
+
+### WHY
+
+The Stage A2 cross-backend comparison reported unexpectedly large differences but did not isolate device effects from export effects. A same-device CPU comparison was required to determine whether the exported graph changed model semantics.
+
+### CONTROLLED VARIABLES
+
+- Same `float32` input artifact and raw SHA256 for all executions
+- Same MobileSAM checkpoint SHA256 and `vit_t` image encoder
+- PyTorch `eval()` and `torch.no_grad()`
+- No precision conversion, training, distillation, TensorRT, or INT8
+- ONNX Runtime `CPUExecutionProvider`
+- Existing Stage A2 ONNX used read-only
+
+### RESULT
+
+`PARITY_PASS`
+
+PyTorch CPU versus ONNX Runtime CPU reached relative L2 `1.1574093e-6`, max absolute error `1.1622906e-6`, and cosine similarity `0.999999999999`. PyTorch CPU versus CUDA reached relative L2 `7.1641795e-4`; CUDA versus ONNX Runtime CPU reached `7.1655962e-4`. No CPU-versus-ORT element exceeded `1e-3`.
+
+### ROOT-CAUSE STATUS
+
+The controlled CPU pair shows that ONNX export semantics are numerically faithful. The larger comparisons both cross CPU/CUDA and share nearly the same error signature, so the measurable difference is backend drift. Stage A2's much larger recorded pair did not reproduce with the hash-matched input and reproduced CUDA output statistics; the exact stale or mismatched temporary pairing cannot be reconstructed and is not assigned a speculative cause.
+
+Intermediate localization: `NOT_REQUIRED`. Downstream mask check: `NOT_RUN`. Export warning audit: `NO_CRITICAL_EXPORT_WARNING_FOUND`.
+
+### NEXT STEP
+
+A separately authorized TensorRT stage is numerically justified. A3 stops here and does not build TensorRT artifacts.
+
+### JD CAPABILITY MAPPING
+
+Demonstrates reproducible model-conversion validation, cross-framework numerical debugging, backend isolation, ONNX graph inspection, evidence-based root-cause analysis, and deployment-readiness documentation on Jetson.

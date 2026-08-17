@@ -1,0 +1,28 @@
+{
+  "reference": "PyTorch CPU FP32",
+  "candidate": "PyTorch CUDA FP32",
+  "shape_match": true,
+  "dtype_match": true,
+  "element_count": 1048576,
+  "max_absolute_error": 0.001155942678451538,
+  "mean_absolute_error": 5.146761674779121e-05,
+  "rmse": 7.324505372311537e-05,
+  "absolute_error_percentiles": {
+    "p50": 3.6090612411499023e-05,
+    "p90": 0.00011819601058959961,
+    "p95": 0.0001513361930847168,
+    "p99": 0.00023405253887176514,
+    "p99_9": 0.0003947772085667288
+  },
+  "relative_l2_error": 0.0007164179524314799,
+  "cosine_similarity": 0.9999997437551277,
+  "pearson_correlation": 0.9999997435493178,
+  "threshold_proportions": {
+    ">1e-1": 0.0,
+    ">5e-2": 0.0,
+    ">1e-2": 0.0,
+    ">1e-3": 9.5367431640625e-07
+  },
+  "max_relative_error_audit_only": 823.0,
+  "max_relative_error_note": "Audit only; unstable where reference approaches zero."
+}

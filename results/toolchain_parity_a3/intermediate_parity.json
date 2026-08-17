@@ -1,0 +1,13 @@
+{
+  "status": "INTERMEDIATE_LOCALIZATION_NOT_REQUIRED",
+  "decision_basis": {
+    "max_absolute_error": 1.1622905731201172e-06,
+    "mean_absolute_error": 8.838612775008414e-08,
+    "rmse": 1.1833107541670492e-07,
+    "relative_l2_error": 1.1574093054736745e-06,
+    "cosine_similarity": 0.9999999999989372,
+    "p99_absolute_error": 3.5762786865234375e-07
+  },
+  "reason": "CPU-to-CPU parity is approximately 1e-6 relative L2 with no element above 1e-3. Intermediate dumping is not proportionate or required.",
+  "first_divergence_stage": null
+}

@@ -1,0 +1,25 @@
+{
+  "reference": "PyTorch CPU FP32",
+  "shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "dtype": "float32",
+  "min": -0.5274307727813721,
+  "max": 0.5370336771011353,
+  "mean": -0.003180754740908176,
+  "std": 0.10218839079022796,
+  "absolute_output_percentiles": {
+    "p50": 0.04244941473007202,
+    "p90": 0.1618136167526245,
+    "p95": 0.2225315272808075,
+    "p99": 0.37071850895881653,
+    "max": 0.5370336771011353
+  },
+  "mean_abs_error_context": {
+    "cpu_vs_cuda_mean_abs_over_output_std": 0.0005036542443793228,
+    "cpu_vs_ort_mean_abs_over_output_std": 8.6493315988822e-07
+  }
+}
