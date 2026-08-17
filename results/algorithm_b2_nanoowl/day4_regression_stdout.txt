@@ -1,0 +1,7 @@
+[08/17/2026-16:30:50] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+NanoOWL: 1 detections; image W=756 H=499
+Bridge: box [275.1943, 82.3545, 463.6406, 399.3462] oob=False -> points [[275.1943, 82.3545], [463.6406, 399.3462]] labels [2, 3]
+[08/17/2026-16:30:51] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+[08/17/2026-16:30:51] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+STATUS=OK sel_label=an owl score=0.3419 box=[275.1943, 82.3545, 463.6406, 399.3462] sel_iou=0.7206 nonzero=34065 nan/inf=False/False
+ALL_DONE

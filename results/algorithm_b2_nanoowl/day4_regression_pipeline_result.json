@@ -1,0 +1,92 @@
+{
+  "input": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+  "prompts": [
+    "an owl",
+    "a glove",
+    "a finger"
+  ],
+  "threshold": 0.1,
+  "target_label": "an owl",
+  "image_width": 756,
+  "image_height": 499,
+  "nanoowl": {
+    "num_detections": 1,
+    "detections": [
+      {
+        "label_index": 0,
+        "label": "an owl",
+        "score": 0.3419235944747925,
+        "box": [
+          275.1943359375,
+          82.3544921875,
+          463.640625,
+          399.34619140625
+        ]
+      }
+    ],
+    "selected_detection": {
+      "label_index": 0,
+      "label": "an owl",
+      "score": 0.3419235944747925,
+      "box": [
+        275.1943359375,
+        82.3544921875,
+        463.640625,
+        399.34619140625
+      ]
+    },
+    "selection_rule": "highest-score detection matching target-label 'an owl'"
+  },
+  "bridge": {
+    "convention": "both ends original-image xyxy/[x,y]; no axis swap",
+    "image_width": 756,
+    "image_height": 499,
+    "original_box": [
+      275.1943,
+      82.3545,
+      463.6406,
+      399.3462
+    ],
+    "out_of_bounds": false,
+    "clipped_box": [
+      275.1943,
+      82.3545,
+      463.6406,
+      399.3462
+    ],
+    "nanosam_point_coords": [
+      [
+        275.1943,
+        82.3545
+      ],
+      [
+        463.6406,
+        399.3462
+      ]
+    ],
+    "nanosam_point_labels": [
+      2,
+      3
+    ]
+  },
+  "nanosam": {
+    "mask_selection_rule": "fixed slot 0 (basic_usage.py: mask[0,0]>0), not IoU argmax",
+    "selected_mask_index": 0,
+    "predicted_ious": [
+      0.720552,
+      0.733915,
+      0.847281,
+      0.790455
+    ],
+    "selected_iou": 0.720552,
+    "mask_shape": [
+      499,
+      756
+    ],
+    "nonzero_pixels": 34065,
+    "mask_area_ratio": 0.0903,
+    "has_nan": false,
+    "has_inf": false
+  },
+  "status": "OK"
+}

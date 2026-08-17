@@ -1,0 +1,487 @@
+{
+  "prompt_template": "a {category_name}",
+  "count": 80,
+  "text_embeddings_cached_once": true,
+  "mapping": [
+    {
+      "prompt_index": 0,
+      "category_id": 1,
+      "category_name": "person",
+      "prompt": "a person"
+    },
+    {
+      "prompt_index": 1,
+      "category_id": 2,
+      "category_name": "bicycle",
+      "prompt": "a bicycle"
+    },
+    {
+      "prompt_index": 2,
+      "category_id": 3,
+      "category_name": "car",
+      "prompt": "a car"
+    },
+    {
+      "prompt_index": 3,
+      "category_id": 4,
+      "category_name": "motorcycle",
+      "prompt": "a motorcycle"
+    },
+    {
+      "prompt_index": 4,
+      "category_id": 5,
+      "category_name": "airplane",
+      "prompt": "a airplane"
+    },
+    {
+      "prompt_index": 5,
+      "category_id": 6,
+      "category_name": "bus",
+      "prompt": "a bus"
+    },
+    {
+      "prompt_index": 6,
+      "category_id": 7,
+      "category_name": "train",
+      "prompt": "a train"
+    },
+    {
+      "prompt_index": 7,
+      "category_id": 8,
+      "category_name": "truck",
+      "prompt": "a truck"
+    },
+    {
+      "prompt_index": 8,
+      "category_id": 9,
+      "category_name": "boat",
+      "prompt": "a boat"
+    },
+    {
+      "prompt_index": 9,
+      "category_id": 10,
+      "category_name": "traffic light",
+      "prompt": "a traffic light"
+    },
+    {
+      "prompt_index": 10,
+      "category_id": 11,
+      "category_name": "fire hydrant",
+      "prompt": "a fire hydrant"
+    },
+    {
+      "prompt_index": 11,
+      "category_id": 13,
+      "category_name": "stop sign",
+      "prompt": "a stop sign"
+    },
+    {
+      "prompt_index": 12,
+      "category_id": 14,
+      "category_name": "parking meter",
+      "prompt": "a parking meter"
+    },
+    {
+      "prompt_index": 13,
+      "category_id": 15,
+      "category_name": "bench",
+      "prompt": "a bench"
+    },
+    {
+      "prompt_index": 14,
+      "category_id": 16,
+      "category_name": "bird",
+      "prompt": "a bird"
+    },
+    {
+      "prompt_index": 15,
+      "category_id": 17,
+      "category_name": "cat",
+      "prompt": "a cat"
+    },
+    {
+      "prompt_index": 16,
+      "category_id": 18,
+      "category_name": "dog",
+      "prompt": "a dog"
+    },
+    {
+      "prompt_index": 17,
+      "category_id": 19,
+      "category_name": "horse",
+      "prompt": "a horse"
+    },
+    {
+      "prompt_index": 18,
+      "category_id": 20,
+      "category_name": "sheep",
+      "prompt": "a sheep"
+    },
+    {
+      "prompt_index": 19,
+      "category_id": 21,
+      "category_name": "cow",
+      "prompt": "a cow"
+    },
+    {
+      "prompt_index": 20,
+      "category_id": 22,
+      "category_name": "elephant",
+      "prompt": "a elephant"
+    },
+    {
+      "prompt_index": 21,
+      "category_id": 23,
+      "category_name": "bear",
+      "prompt": "a bear"
+    },
+    {
+      "prompt_index": 22,
+      "category_id": 24,
+      "category_name": "zebra",
+      "prompt": "a zebra"
+    },
+    {
+      "prompt_index": 23,
+      "category_id": 25,
+      "category_name": "giraffe",
+      "prompt": "a giraffe"
+    },
+    {
+      "prompt_index": 24,
+      "category_id": 27,
+      "category_name": "backpack",
+      "prompt": "a backpack"
+    },
+    {
+      "prompt_index": 25,
+      "category_id": 28,
+      "category_name": "umbrella",
+      "prompt": "a umbrella"
+    },
+    {
+      "prompt_index": 26,
+      "category_id": 31,
+      "category_name": "handbag",
+      "prompt": "a handbag"
+    },
+    {
+      "prompt_index": 27,
+      "category_id": 32,
+      "category_name": "tie",
+      "prompt": "a tie"
+    },
+    {
+      "prompt_index": 28,
+      "category_id": 33,
+      "category_name": "suitcase",
+      "prompt": "a suitcase"
+    },
+    {
+      "prompt_index": 29,
+      "category_id": 34,
+      "category_name": "frisbee",
+      "prompt": "a frisbee"
+    },
+    {
+      "prompt_index": 30,
+      "category_id": 35,
+      "category_name": "skis",
+      "prompt": "a skis"
+    },
+    {
+      "prompt_index": 31,
+      "category_id": 36,
+      "category_name": "snowboard",
+      "prompt": "a snowboard"
+    },
+    {
+      "prompt_index": 32,
+      "category_id": 37,
+      "category_name": "sports ball",
+      "prompt": "a sports ball"
+    },
+    {
+      "prompt_index": 33,
+      "category_id": 38,
+      "category_name": "kite",
+      "prompt": "a kite"
+    },
+    {
+      "prompt_index": 34,
+      "category_id": 39,
+      "category_name": "baseball bat",
+      "prompt": "a baseball bat"
+    },
+    {
+      "prompt_index": 35,
+      "category_id": 40,
+      "category_name": "baseball glove",
+      "prompt": "a baseball glove"
+    },
+    {
+      "prompt_index": 36,
+      "category_id": 41,
+      "category_name": "skateboard",
+      "prompt": "a skateboard"
+    },
+    {
+      "prompt_index": 37,
+      "category_id": 42,
+      "category_name": "surfboard",
+      "prompt": "a surfboard"
+    },
+    {
+      "prompt_index": 38,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "prompt": "a tennis racket"
+    },
+    {
+      "prompt_index": 39,
+      "category_id": 44,
+      "category_name": "bottle",
+      "prompt": "a bottle"
+    },
+    {
+      "prompt_index": 40,
+      "category_id": 46,
+      "category_name": "wine glass",
+      "prompt": "a wine glass"
+    },
+    {
+      "prompt_index": 41,
+      "category_id": 47,
+      "category_name": "cup",
+      "prompt": "a cup"
+    },
+    {
+      "prompt_index": 42,
+      "category_id": 48,
+      "category_name": "fork",
+      "prompt": "a fork"
+    },
+    {
+      "prompt_index": 43,
+      "category_id": 49,
+      "category_name": "knife",
+      "prompt": "a knife"
+    },
+    {
+      "prompt_index": 44,
+      "category_id": 50,
+      "category_name": "spoon",
+      "prompt": "a spoon"
+    },
+    {
+      "prompt_index": 45,
+      "category_id": 51,
+      "category_name": "bowl",
+      "prompt": "a bowl"
+    },
+    {
+      "prompt_index": 46,
+      "category_id": 52,
+      "category_name": "banana",
+      "prompt": "a banana"
+    },
+    {
+      "prompt_index": 47,
+      "category_id": 53,
+      "category_name": "apple",
+      "prompt": "a apple"
+    },
+    {
+      "prompt_index": 48,
+      "category_id": 54,
+      "category_name": "sandwich",
+      "prompt": "a sandwich"
+    },
+    {
+      "prompt_index": 49,
+      "category_id": 55,
+      "category_name": "orange",
+      "prompt": "a orange"
+    },
+    {
+      "prompt_index": 50,
+      "category_id": 56,
+      "category_name": "broccoli",
+      "prompt": "a broccoli"
+    },
+    {
+      "prompt_index": 51,
+      "category_id": 57,
+      "category_name": "carrot",
+      "prompt": "a carrot"
+    },
+    {
+      "prompt_index": 52,
+      "category_id": 58,
+      "category_name": "hot dog",
+      "prompt": "a hot dog"
+    },
+    {
+      "prompt_index": 53,
+      "category_id": 59,
+      "category_name": "pizza",
+      "prompt": "a pizza"
+    },
+    {
+      "prompt_index": 54,
+      "category_id": 60,
+      "category_name": "donut",
+      "prompt": "a donut"
+    },
+    {
+      "prompt_index": 55,
+      "category_id": 61,
+      "category_name": "cake",
+      "prompt": "a cake"
+    },
+    {
+      "prompt_index": 56,
+      "category_id": 62,
+      "category_name": "chair",
+      "prompt": "a chair"
+    },
+    {
+      "prompt_index": 57,
+      "category_id": 63,
+      "category_name": "couch",
+      "prompt": "a couch"
+    },
+    {
+      "prompt_index": 58,
+      "category_id": 64,
+      "category_name": "potted plant",
+      "prompt": "a potted plant"
+    },
+    {
+      "prompt_index": 59,
+      "category_id": 65,
+      "category_name": "bed",
+      "prompt": "a bed"
+    },
+    {
+      "prompt_index": 60,
+      "category_id": 67,
+      "category_name": "dining table",
+      "prompt": "a dining table"
+    },
+    {
+      "prompt_index": 61,
+      "category_id": 70,
+      "category_name": "toilet",
+      "prompt": "a toilet"
+    },
+    {
+      "prompt_index": 62,
+      "category_id": 72,
+      "category_name": "tv",
+      "prompt": "a tv"
+    },
+    {
+      "prompt_index": 63,
+      "category_id": 73,
+      "category_name": "laptop",
+      "prompt": "a laptop"
+    },
+    {
+      "prompt_index": 64,
+      "category_id": 74,
+      "category_name": "mouse",
+      "prompt": "a mouse"
+    },
+    {
+      "prompt_index": 65,
+      "category_id": 75,
+      "category_name": "remote",
+      "prompt": "a remote"
+    },
+    {
+      "prompt_index": 66,
+      "category_id": 76,
+      "category_name": "keyboard",
+      "prompt": "a keyboard"
+    },
+    {
+      "prompt_index": 67,
+      "category_id": 77,
+      "category_name": "cell phone",
+      "prompt": "a cell phone"
+    },
+    {
+      "prompt_index": 68,
+      "category_id": 78,
+      "category_name": "microwave",
+      "prompt": "a microwave"
+    },
+    {
+      "prompt_index": 69,
+      "category_id": 79,
+      "category_name": "oven",
+      "prompt": "a oven"
+    },
+    {
+      "prompt_index": 70,
+      "category_id": 80,
+      "category_name": "toaster",
+      "prompt": "a toaster"
+    },
+    {
+      "prompt_index": 71,
+      "category_id": 81,
+      "category_name": "sink",
+      "prompt": "a sink"
+    },
+    {
+      "prompt_index": 72,
+      "category_id": 82,
+      "category_name": "refrigerator",
+      "prompt": "a refrigerator"
+    },
+    {
+      "prompt_index": 73,
+      "category_id": 84,
+      "category_name": "book",
+      "prompt": "a book"
+    },
+    {
+      "prompt_index": 74,
+      "category_id": 85,
+      "category_name": "clock",
+      "prompt": "a clock"
+    },
+    {
+      "prompt_index": 75,
+      "category_id": 86,
+      "category_name": "vase",
+      "prompt": "a vase"
+    },
+    {
+      "prompt_index": 76,
+      "category_id": 87,
+      "category_name": "scissors",
+      "prompt": "a scissors"
+    },
+    {
+      "prompt_index": 77,
+      "category_id": 88,
+      "category_name": "teddy bear",
+      "prompt": "a teddy bear"
+    },
+    {
+      "prompt_index": 78,
+      "category_id": 89,
+      "category_name": "hair drier",
+      "prompt": "a hair drier"
+    },
+    {
+      "prompt_index": 79,
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "prompt": "a toothbrush"
+    }
+  ]
+}

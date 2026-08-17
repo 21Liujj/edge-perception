@@ -1,0 +1,108 @@
+[08/17/2026-16:30:39] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+{
+  "stage": "2B",
+  "status": "PASS",
+  "owl_baseline_pass": true,
+  "model_load_ms": 1843.7132400003975,
+  "total_cases": 5,
+  "pass_cases": 5,
+  "failed_cases": 0,
+  "distinct_images": 5,
+  "cases": [
+    {
+      "case_id": "owl_glove",
+      "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
+      "prompts": [
+        "an owl",
+        "a glove",
+        "a finger"
+      ],
+      "threshold": 0.1,
+      "detection_count": 1,
+      "labels": [
+        "an owl"
+      ],
+      "scores": [
+        0.3419235944747925
+      ],
+      "execution": "PASS",
+      "status_message": "",
+      "expect_label": "an owl",
+      "expect_label_found": true
+    },
+    {
+      "case_id": "owl_glove_full",
+      "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove.jpg",
+      "prompts": [
+        "an owl",
+        "a glove"
+      ],
+      "threshold": 0.1,
+      "detection_count": 1,
+      "labels": [
+        "an owl"
+      ],
+      "scores": [
+        0.3648817539215088
+      ],
+      "execution": "PASS",
+      "status_message": ""
+    },
+    {
+      "case_id": "frog",
+      "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/frog.jpg",
+      "prompts": [
+        "a frog",
+        "a leaf",
+        "a hand"
+      ],
+      "threshold": 0.1,
+      "detection_count": 1,
+      "labels": [
+        "a frog"
+      ],
+      "scores": [
+        0.4308895766735077
+      ],
+      "execution": "PASS",
+      "status_message": ""
+    },
+    {
+      "case_id": "classroom",
+      "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/class.jpg",
+      "prompts": [
+        "a person",
+        "a backpack",
+        "a chair"
+      ],
+      "threshold": 0.1,
+      "detection_count": 2,
+      "labels": [
+        "a chair",
+        "a person"
+      ],
+      "scores": [
+        0.12014468759298325,
+        0.10958289355039597
+      ],
+      "execution": "PASS",
+      "status_message": ""
+    },
+    {
+      "case_id": "camera_scene",
+      "image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/camera.jpg",
+      "prompts": [
+        "a camera",
+        "a hand",
+        "a person"
+      ],
+      "threshold": 0.1,
+      "detection_count": 0,
+      "labels": [],
+      "scores": [],
+      "execution": "PASS",
+      "status_message": ""
+    }
+  ],
+  "note": "Zero-detection cases are NOT execution failures; only model-load/inference exceptions or invalid output are FAIL."
+}

@@ -68,3 +68,11 @@ results/toolchain_parity_a3/*.npy
 # Stage A4 TensorRT runtime artifacts
 results/toolchain_trt_a4/artifacts/*.engine
 results/toolchain_trt_a4/*.npy
+
+# Stage B2 NanoOWL: retain compact summaries, not large/redundant run artifacts
+results/algorithm_b2_nanoowl/smoke/
+results/algorithm_b2_nanoowl/quick/
+results/algorithm_b2_nanoowl/standard/
+results/algorithm_b2_nanoowl/full/*.json
+results/algorithm_b2_nanoowl/full/*.txt
+results/algorithm_b2_nanoowl/regressions/

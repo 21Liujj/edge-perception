@@ -1,0 +1,24 @@
+{
+  "protocol": "NanoOWL open-vocabulary detection; COCO category-name text prompts",
+  "iou_type": "bbox",
+  "image_count": 5000,
+  "gt_instance_count": 36781,
+  "threshold": 0.1,
+  "top_k_per_image": 100,
+  "prediction_count": 44962,
+  "zero_prediction_images": 82,
+  "metrics": {
+    "AP": 0.2586156450729537,
+    "AP50": 0.40788472066816434,
+    "AP75": 0.2729479713625649,
+    "APsmall": 0.09526281492719438,
+    "APmedium": 0.26408925507350295,
+    "APlarge": 0.44218638597002385,
+    "AR1": 0.25519328742165226,
+    "AR10": 0.36505769402959487,
+    "AR100": 0.3723116815290572,
+    "ARsmall": 0.132255211120839,
+    "ARmedium": 0.38441421883841853,
+    "ARlarge": 0.6248057727254248
+  }
+}

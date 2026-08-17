@@ -1,0 +1,933 @@
+{
+  "scope": "FULL",
+  "image_count": 5000,
+  "policy": {
+    "threshold": 0.1,
+    "top_k": 100
+  },
+  "matcher": "analysis-only greedy class-aware matching at IoU >= 0.50; not COCOeval",
+  "interpretation": "analysis-only failure evidence; does not replace COCOeval",
+  "groups": {
+    "successful_detections": [
+      {
+        "image_id": 338191,
+        "gt_count": 9,
+        "prediction_count": 9,
+        "tp_iou50": 9,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 60855,
+        "gt_count": 7,
+        "prediction_count": 7,
+        "tp_iou50": 7,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 64359,
+        "gt_count": 7,
+        "prediction_count": 7,
+        "tp_iou50": 7,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      }
+    ],
+    "false_positive_heavy": [
+      {
+        "image_id": 397681,
+        "gt_count": 28,
+        "prediction_count": 100,
+        "tp_iou50": 14,
+        "fp_iou50": 86,
+        "fn_iou50": 14,
+        "small_fn_iou50": 6,
+        "semantic_confusion_count": 7,
+        "semantic_confusions": [
+          {
+            "prediction_index": 29,
+            "predicted_category_id": 51,
+            "predicted_category_name": "bowl",
+            "gt_annotation_id": 1912526,
+            "gt_category_id": 55,
+            "gt_category_name": "orange",
+            "iou": 0.5079656187356373,
+            "score": 0.19146040081977844
+          },
+          {
+            "prediction_index": 36,
+            "predicted_category_id": 50,
+            "predicted_category_name": "spoon",
+            "gt_annotation_id": 1517920,
+            "gt_category_id": 48,
+            "gt_category_name": "fork",
+            "iou": 0.8230524824307418,
+            "score": 0.18131712079048157
+          },
+          {
+            "prediction_index": 37,
+            "predicted_category_id": 57,
+            "predicted_category_name": "carrot",
+            "gt_annotation_id": 1558581,
+            "gt_category_id": 55,
+            "gt_category_name": "orange",
+            "iou": 0.5645979712228987,
+            "score": 0.17431659996509552
+          },
+          {
+            "prediction_index": 59,
+            "predicted_category_id": 50,
+            "predicted_category_name": "spoon",
+            "gt_annotation_id": 1517920,
+            "gt_category_id": 48,
+            "gt_category_name": "fork",
+            "iou": 0.7266103300553247,
+            "score": 0.13890741765499115
+          },
+          {
+            "prediction_index": 76,
+            "predicted_category_id": 55,
+            "predicted_category_name": "orange",
+            "gt_annotation_id": 1577421,
+            "gt_category_id": 61,
+            "gt_category_name": "cake",
+            "iou": 0.5714207500926257,
+            "score": 0.11526328325271606
+          },
+          {
+            "prediction_index": 84,
+            "predicted_category_id": 55,
+            "predicted_category_name": "orange",
+            "gt_annotation_id": 2188511,
+            "gt_category_id": 57,
+            "gt_category_name": "carrot",
+            "iou": 0.8837090366250856,
+            "score": 0.10879039764404297
+          },
+          {
+            "prediction_index": 89,
+            "predicted_category_id": 64,
+            "predicted_category_name": "potted plant",
+            "gt_annotation_id": 1532839,
+            "gt_category_id": 51,
+            "gt_category_name": "bowl",
+            "iou": 0.8590217116290951,
+            "score": 0.10730642825365067
+          }
+        ]
+      },
+      {
+        "image_id": 191845,
+        "gt_count": 37,
+        "prediction_count": 100,
+        "tp_iou50": 22,
+        "fp_iou50": 78,
+        "fn_iou50": 15,
+        "small_fn_iou50": 11,
+        "semantic_confusion_count": 1,
+        "semantic_confusions": [
+          {
+            "prediction_index": 69,
+            "predicted_category_id": 28,
+            "predicted_category_name": "umbrella",
+            "gt_annotation_id": 1328994,
+            "gt_category_id": 1,
+            "gt_category_name": "person",
+            "iou": 0.5699444991839216,
+            "score": 0.1341547966003418
+          }
+        ]
+      },
+      {
+        "image_id": 340697,
+        "gt_count": 13,
+        "prediction_count": 86,
+        "tp_iou50": 13,
+        "fp_iou50": 73,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      }
+    ],
+    "false_negative_heavy": [
+      {
+        "image_id": 435081,
+        "gt_count": 62,
+        "prediction_count": 9,
+        "tp_iou50": 4,
+        "fp_iou50": 5,
+        "fn_iou50": 58,
+        "small_fn_iou50": 41,
+        "semantic_confusion_count": 2,
+        "semantic_confusions": [
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 48,
+            "predicted_category_name": "fork",
+            "gt_annotation_id": 697994,
+            "gt_category_id": 49,
+            "gt_category_name": "knife",
+            "iou": 0.6194872655757857,
+            "score": 0.15221865475177765
+          },
+          {
+            "prediction_index": 7,
+            "predicted_category_id": 80,
+            "predicted_category_name": "toaster",
+            "gt_annotation_id": 1084993,
+            "gt_category_id": 61,
+            "gt_category_name": "cake",
+            "iou": 0.8245758294238728,
+            "score": 0.10166046768426895
+          }
+        ]
+      },
+      {
+        "image_id": 470924,
+        "gt_count": 55,
+        "prediction_count": 22,
+        "tp_iou50": 10,
+        "fp_iou50": 12,
+        "fn_iou50": 45,
+        "small_fn_iou50": 27,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 303566,
+        "gt_count": 53,
+        "prediction_count": 32,
+        "tp_iou50": 15,
+        "fp_iou50": 17,
+        "fn_iou50": 38,
+        "small_fn_iou50": 29,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      }
+    ],
+    "small_object_failure": [
+      {
+        "image_id": 435081,
+        "gt_count": 62,
+        "prediction_count": 9,
+        "tp_iou50": 4,
+        "fp_iou50": 5,
+        "fn_iou50": 58,
+        "small_fn_iou50": 41,
+        "semantic_confusion_count": 2,
+        "semantic_confusions": [
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 48,
+            "predicted_category_name": "fork",
+            "gt_annotation_id": 697994,
+            "gt_category_id": 49,
+            "gt_category_name": "knife",
+            "iou": 0.6194872655757857,
+            "score": 0.15221865475177765
+          },
+          {
+            "prediction_index": 7,
+            "predicted_category_id": 80,
+            "predicted_category_name": "toaster",
+            "gt_annotation_id": 1084993,
+            "gt_category_id": 61,
+            "gt_category_name": "cake",
+            "iou": 0.8245758294238728,
+            "score": 0.10166046768426895
+          }
+        ]
+      },
+      {
+        "image_id": 524850,
+        "gt_count": 40,
+        "prediction_count": 4,
+        "tp_iou50": 3,
+        "fp_iou50": 1,
+        "fn_iou50": 37,
+        "small_fn_iou50": 35,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 316666,
+        "gt_count": 40,
+        "prediction_count": 14,
+        "tp_iou50": 6,
+        "fp_iou50": 8,
+        "fn_iou50": 34,
+        "small_fn_iou50": 33,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      }
+    ],
+    "semantic_confusion": [
+      {
+        "image_id": 16249,
+        "gt_count": 11,
+        "prediction_count": 31,
+        "tp_iou50": 7,
+        "fp_iou50": 24,
+        "fn_iou50": 4,
+        "small_fn_iou50": 1,
+        "semantic_confusion_count": 13,
+        "semantic_confusions": [
+          {
+            "prediction_index": 0,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1394910,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.9064267802891416,
+            "score": 0.400610089302063
+          },
+          {
+            "prediction_index": 1,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1396783,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.7026260327929769,
+            "score": 0.36869385838508606
+          },
+          {
+            "prediction_index": 2,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 573041,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.8132387072774124,
+            "score": 0.36306023597717285
+          },
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 573041,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5251446049777777,
+            "score": 0.36163070797920227
+          },
+          {
+            "prediction_index": 4,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1397318,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5587633885210405,
+            "score": 0.33858248591423035
+          },
+          {
+            "prediction_index": 5,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1396783,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5742532744258281,
+            "score": 0.29210877418518066
+          },
+          {
+            "prediction_index": 9,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 561321,
+            "gt_category_id": 1,
+            "gt_category_name": "person",
+            "iou": 0.6774340703217385,
+            "score": 0.21229656040668488
+          },
+          {
+            "prediction_index": 10,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1397318,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5990531318194217,
+            "score": 0.2053341567516327
+          },
+          {
+            "prediction_index": 14,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1394910,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5514221741306863,
+            "score": 0.18111257255077362
+          },
+          {
+            "prediction_index": 16,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1397318,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.7865599970619999,
+            "score": 0.16313238441944122
+          },
+          {
+            "prediction_index": 20,
+            "predicted_category_id": 15,
+            "predicted_category_name": "bench",
+            "gt_annotation_id": 1601358,
+            "gt_category_id": 62,
+            "gt_category_name": "chair",
+            "iou": 0.5109799775342934,
+            "score": 0.1443885862827301
+          },
+          {
+            "prediction_index": 26,
+            "predicted_category_id": 31,
+            "predicted_category_name": "handbag",
+            "gt_annotation_id": 1416870,
+            "gt_category_id": 27,
+            "gt_category_name": "backpack",
+            "iou": 0.5304307097468011,
+            "score": 0.11987615376710892
+          },
+          {
+            "prediction_index": 29,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 573041,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.6765390526773718,
+            "score": 0.1022590845823288
+          }
+        ]
+      },
+      {
+        "image_id": 247838,
+        "gt_count": 12,
+        "prediction_count": 15,
+        "tp_iou50": 2,
+        "fp_iou50": 13,
+        "fn_iou50": 10,
+        "small_fn_iou50": 7,
+        "semantic_confusion_count": 12,
+        "semantic_confusions": [
+          {
+            "prediction_index": 0,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821001,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.752756818157229,
+            "score": 0.3456411361694336
+          },
+          {
+            "prediction_index": 2,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820664,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8244108023537661,
+            "score": 0.2647419273853302
+          },
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821027,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.894519748688775,
+            "score": 0.25325146317481995
+          },
+          {
+            "prediction_index": 4,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820717,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.7499018111811121,
+            "score": 0.2440290004014969
+          },
+          {
+            "prediction_index": 5,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821015,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8267631442265194,
+            "score": 0.23173825442790985
+          },
+          {
+            "prediction_index": 6,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820757,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.785727952265515,
+            "score": 0.22368581593036652
+          },
+          {
+            "prediction_index": 8,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821077,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8501355601465274,
+            "score": 0.2185312807559967
+          },
+          {
+            "prediction_index": 9,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820774,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.7983386600683094,
+            "score": 0.21232011914253235
+          },
+          {
+            "prediction_index": 10,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821005,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.556970122896622,
+            "score": 0.162810280919075
+          },
+          {
+            "prediction_index": 11,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821036,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.7601571131297853,
+            "score": 0.14950262010097504
+          },
+          {
+            "prediction_index": 12,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821077,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8586558007443907,
+            "score": 0.12967175245285034
+          },
+          {
+            "prediction_index": 14,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821077,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.7813367930414848,
+            "score": 0.12003187090158463
+          }
+        ]
+      },
+      {
+        "image_id": 356387,
+        "gt_count": 20,
+        "prediction_count": 49,
+        "tp_iou50": 9,
+        "fp_iou50": 40,
+        "fn_iou50": 11,
+        "small_fn_iou50": 8,
+        "semantic_confusion_count": 11,
+        "semantic_confusions": [
+          {
+            "prediction_index": 5,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.6320011973223663,
+            "score": 0.2706736922264099
+          },
+          {
+            "prediction_index": 6,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5880228085953163,
+            "score": 0.26412734389305115
+          },
+          {
+            "prediction_index": 9,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5978300163956102,
+            "score": 0.23742687702178955
+          },
+          {
+            "prediction_index": 10,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.8673461697345468,
+            "score": 0.23394885659217834
+          },
+          {
+            "prediction_index": 14,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5496149389231715,
+            "score": 0.20597203075885773
+          },
+          {
+            "prediction_index": 19,
+            "predicted_category_id": 1,
+            "predicted_category_name": "person",
+            "gt_annotation_id": 153836,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5720571143813107,
+            "score": 0.18570907413959503
+          },
+          {
+            "prediction_index": 20,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 153455,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.7410717385684358,
+            "score": 0.17894381284713745
+          },
+          {
+            "prediction_index": 22,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5838529140647034,
+            "score": 0.1620621532201767
+          },
+          {
+            "prediction_index": 23,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 153455,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.6312445201661155,
+            "score": 0.15897805988788605
+          },
+          {
+            "prediction_index": 27,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.7449720511901389,
+            "score": 0.1491071581840515
+          },
+          {
+            "prediction_index": 41,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.6087913697308716,
+            "score": 0.10802040249109268
+          }
+        ]
+      }
+    ]
+  },
+  "semantic_confusion_pairs": [
+    {
+      "gt_category": "car",
+      "predicted_category": "truck",
+      "count": 74
+    },
+    {
+      "gt_category": "chair",
+      "predicted_category": "couch",
+      "count": 58
+    },
+    {
+      "gt_category": "truck",
+      "predicted_category": "car",
+      "count": 57
+    },
+    {
+      "gt_category": "knife",
+      "predicted_category": "fork",
+      "count": 50
+    },
+    {
+      "gt_category": "snowboard",
+      "predicted_category": "skis",
+      "count": 48
+    },
+    {
+      "gt_category": "bus",
+      "predicted_category": "truck",
+      "count": 44
+    },
+    {
+      "gt_category": "sheep",
+      "predicted_category": "cow",
+      "count": 44
+    },
+    {
+      "gt_category": "knife",
+      "predicted_category": "spoon",
+      "count": 38
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "chair",
+      "count": 38
+    },
+    {
+      "gt_category": "microwave",
+      "predicted_category": "oven",
+      "count": 35
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "backpack",
+      "count": 34
+    },
+    {
+      "gt_category": "motorcycle",
+      "predicted_category": "bicycle",
+      "count": 34
+    },
+    {
+      "gt_category": "chair",
+      "predicted_category": "dining table",
+      "count": 33
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "surfboard",
+      "count": 29
+    },
+    {
+      "gt_category": "cup",
+      "predicted_category": "wine glass",
+      "count": 29
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "couch",
+      "count": 28
+    },
+    {
+      "gt_category": "suitcase",
+      "predicted_category": "backpack",
+      "count": 28
+    },
+    {
+      "gt_category": "bowl",
+      "predicted_category": "cup",
+      "count": 27
+    },
+    {
+      "gt_category": "dining table",
+      "predicted_category": "chair",
+      "count": 27
+    },
+    {
+      "gt_category": "cell phone",
+      "predicted_category": "remote",
+      "count": 27
+    },
+    {
+      "gt_category": "fork",
+      "predicted_category": "spoon",
+      "count": 27
+    },
+    {
+      "gt_category": "cup",
+      "predicted_category": "bowl",
+      "count": 25
+    },
+    {
+      "gt_category": "cow",
+      "predicted_category": "sheep",
+      "count": 25
+    },
+    {
+      "gt_category": "bench",
+      "predicted_category": "dining table",
+      "count": 25
+    },
+    {
+      "gt_category": "handbag",
+      "predicted_category": "backpack",
+      "count": 25
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "bed",
+      "count": 23
+    },
+    {
+      "gt_category": "couch",
+      "predicted_category": "bed",
+      "count": 22
+    },
+    {
+      "gt_category": "cake",
+      "predicted_category": "donut",
+      "count": 22
+    },
+    {
+      "gt_category": "pizza",
+      "predicted_category": "sandwich",
+      "count": 21
+    },
+    {
+      "gt_category": "chair",
+      "predicted_category": "bench",
+      "count": 21
+    }
+  ],
+  "visualizations": [
+    {
+      "group": "successful_detections",
+      "rank": 1,
+      "image_id": 338191,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_01_image_000000338191.jpg",
+      "drawn_predictions": 9
+    },
+    {
+      "group": "successful_detections",
+      "rank": 2,
+      "image_id": 60855,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_02_image_000000060855.jpg",
+      "drawn_predictions": 7
+    },
+    {
+      "group": "successful_detections",
+      "rank": 3,
+      "image_id": 64359,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_03_image_000000064359.jpg",
+      "drawn_predictions": 7
+    },
+    {
+      "group": "false_positive_heavy",
+      "rank": 1,
+      "image_id": 397681,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_01_image_000000397681.jpg",
+      "drawn_predictions": 30
+    },
+    {
+      "group": "false_positive_heavy",
+      "rank": 2,
+      "image_id": 191845,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_02_image_000000191845.jpg",
+      "drawn_predictions": 30
+    },
+    {
+      "group": "false_positive_heavy",
+      "rank": 3,
+      "image_id": 340697,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_03_image_000000340697.jpg",
+      "drawn_predictions": 30
+    },
+    {
+      "group": "false_negative_heavy",
+      "rank": 1,
+      "image_id": 435081,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_01_image_000000435081.jpg",
+      "drawn_predictions": 9
+    },
+    {
+      "group": "false_negative_heavy",
+      "rank": 2,
+      "image_id": 470924,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_02_image_000000470924.jpg",
+      "drawn_predictions": 22
+    },
+    {
+      "group": "false_negative_heavy",
+      "rank": 3,
+      "image_id": 303566,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_03_image_000000303566.jpg",
+      "drawn_predictions": 30
+    },
+    {
+      "group": "small_object_failure",
+      "rank": 1,
+      "image_id": 435081,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_01_image_000000435081.jpg",
+      "drawn_predictions": 9
+    },
+    {
+      "group": "small_object_failure",
+      "rank": 2,
+      "image_id": 524850,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_02_image_000000524850.jpg",
+      "drawn_predictions": 4
+    },
+    {
+      "group": "small_object_failure",
+      "rank": 3,
+      "image_id": 316666,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_03_image_000000316666.jpg",
+      "drawn_predictions": 14
+    },
+    {
+      "group": "semantic_confusion",
+      "rank": 1,
+      "image_id": 16249,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_01_image_000000016249.jpg",
+      "drawn_predictions": 30
+    },
+    {
+      "group": "semantic_confusion",
+      "rank": 2,
+      "image_id": 247838,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_02_image_000000247838.jpg",
+      "drawn_predictions": 15
+    },
+    {
+      "group": "semantic_confusion",
+      "rank": 3,
+      "image_id": 356387,
+      "path": "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_03_image_000000356387.jpg",
+      "drawn_predictions": 30
+    }
+  ]
+}
