@@ -1,0 +1,25 @@
+{
+  "scope": "GPU mask selection and threshold extraction only; same decoder outputs and image embedding",
+  "warmup": 100,
+  "iterations": 1000,
+  "synchronization": "torch.cuda.synchronize after each measured operation",
+  "fixed_slot_0": {
+    "mean_us": 133.894894,
+    "p50_us": 127.001,
+    "p95_us": 185.7224,
+    "p99_us": 206.2082
+  },
+  "predicted_iou_argmax": {
+    "mean_us": 263.4374030000001,
+    "p50_us": 261.8945,
+    "p95_us": 284.40894999999995,
+    "p99_us": 309.14481
+  },
+  "paired_delta_argmax_minus_fixed": {
+    "mean_us": 129.542509,
+    "p50_us": 134.3145,
+    "p95_us": 152.45175,
+    "p99_us": 164.78635
+  },
+  "conclusion": "MEASURABLE"
+}

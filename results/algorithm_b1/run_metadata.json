@@ -1,0 +1,14 @@
+{
+  "wall_time_seconds": 58.94559326999999,
+  "valid": 500,
+  "failed": 0,
+  "unique_images": 455,
+  "image_encoder_engine": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+    "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8"
+  },
+  "mask_decoder_engine": {
+    "path": "third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+    "sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2"
+  }
+}

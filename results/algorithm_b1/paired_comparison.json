@@ -1,0 +1,54 @@
+{
+  "equal_tolerance": 0.0001,
+  "predicted_argmax_minus_fixed": {
+    "mean_delta": -0.056643883901120844,
+    "median_delta": -0.020664500993113677,
+    "mean_absolute_delta": 0.0789581996767594,
+    "improved_count": 126,
+    "degraded_count": 374,
+    "approximately_equal_count": 0
+  },
+  "oracle_minus_fixed": {
+    "mean_headroom": 0.029965797928423375,
+    "median_headroom": 0.0043266578026257,
+    "mean_absolute_headroom": 0.029965797928423375,
+    "improved_count": 299,
+    "approximately_equal_count": 201
+  },
+  "predicted_argmax_slot_distribution": {
+    "0": {
+      "count": 0,
+      "ratio": 0.0
+    },
+    "1": {
+      "count": 0,
+      "ratio": 0.0
+    },
+    "2": {
+      "count": 500,
+      "ratio": 1.0
+    },
+    "3": {
+      "count": 0,
+      "ratio": 0.0
+    }
+  },
+  "oracle_slot_distribution": {
+    "0": {
+      "count": 199,
+      "ratio": 0.398
+    },
+    "1": {
+      "count": 158,
+      "ratio": 0.316
+    },
+    "2": {
+      "count": 91,
+      "ratio": 0.182
+    },
+    "3": {
+      "count": 52,
+      "ratio": 0.104
+    }
+  }
+}

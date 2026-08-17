@@ -1,0 +1,11 @@
+{
+  "candidate_masks": 2000,
+  "pearson_correlation": -0.023301676944554973,
+  "spearman_rank_correlation": -0.0319031654650651,
+  "mean_absolute_error": 0.20161891513076075,
+  "root_mean_squared_error": 0.2692995147565418,
+  "argmax_top1_selection_accuracy": 0.182,
+  "argmax_top1_correct_count": 91,
+  "instances": 500,
+  "note": "Predicted IoU is treated as a quality regression output, not a calibrated probability; classification ECE is not applied."
+}

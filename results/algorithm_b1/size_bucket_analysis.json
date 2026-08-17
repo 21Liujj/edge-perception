@@ -1,0 +1,26 @@
+{
+  "small": {
+    "count": 175,
+    "fixed_mIoU": 0.6053200768868633,
+    "predicted_argmax_mIoU": 0.49293306684798777,
+    "oracle_mIoU": 0.6402037088930732,
+    "predicted_delta": -0.11238701003887552,
+    "oracle_headroom": 0.03488363200620992
+  },
+  "medium": {
+    "count": 166,
+    "fixed_mIoU": 0.7626592084204067,
+    "predicted_argmax_mIoU": 0.7407907446952883,
+    "oracle_mIoU": 0.7867847949656575,
+    "predicted_delta": -0.021868463725118414,
+    "oracle_headroom": 0.024125586545250766
+  },
+  "large": {
+    "count": 159,
+    "fixed_mIoU": 0.795795889597528,
+    "predicted_argmax_mIoU": 0.764198089500751,
+    "oracle_mIoU": 0.8264463046705683,
+    "predicted_delta": -0.03159780009677704,
+    "oracle_headroom": 0.030650415073040338
+  }
+}
