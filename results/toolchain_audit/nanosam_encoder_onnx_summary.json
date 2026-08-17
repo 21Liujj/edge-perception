@@ -1,0 +1,55 @@
+{
+  "artifact": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.onnx",
+    "size_bytes": 63321621,
+    "sha256": "d266fcdc9e4f0182b59946cd3cf1be331641f1d0d1de2415c4fd94e7a1c9cf0a",
+    "provenance": "Official NanoSAM README Google Drive artifact (file ID 14-SsvoaTl-esC3JOzomHDnI9OGgdO2OR), recovered by user offline transfer and hash-verified in Day 3."
+  },
+  "ir_version": 8,
+  "producer_name": "pytorch",
+  "producer_version": "1.14.0",
+  "opset_imports": [
+    {
+      "domain": "ai.onnx",
+      "version": 16
+    }
+  ],
+  "inputs": [
+    {
+      "name": "image",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        3,
+        1024,
+        1024
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "image_embeddings",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        256,
+        64,
+        64
+      ]
+    }
+  ],
+  "initializer_count": 53,
+  "node_count": 93,
+  "operator_distribution": {
+    "Conv": 25,
+    "Relu": 17,
+    "Constant": 15,
+    "Add": 14,
+    "Mul": 10,
+    "Div": 5,
+    "Erf": 5,
+    "ConvTranspose": 1,
+    "MaxPool": 1
+  },
+  "onnx_checker": "PASS"
+}

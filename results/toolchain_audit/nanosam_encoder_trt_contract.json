@@ -1,0 +1,40 @@
+{
+  "artifact": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+    "size_bytes": 34766700,
+    "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8"
+  },
+  "tensorrt_version": "10.3.0",
+  "build_command_from_existing_evidence": "trtexec --onnx=data/resnet18_image_encoder.onnx --saveEngine=data/resnet18_image_encoder.engine --fp16",
+  "build_precision": "FP32+FP16 (FP16 enabled)",
+  "num_io_tensors": 2,
+  "num_optimization_profiles": 1,
+  "tensors": [
+    {
+      "name": "image",
+      "mode": "INPUT",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        3,
+        1024,
+        1024
+      ],
+      "location": "DEVICE"
+    },
+    {
+      "name": "image_embeddings",
+      "mode": "OUTPUT",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        256,
+        64,
+        64
+      ],
+      "location": "DEVICE"
+    }
+  ],
+  "onnx_contract_match": true,
+  "notes": "FLOAT is the network boundary dtype. The --fp16 flag permits internal FP16 tactics; it does not require FP16 bindings. Engine was deserialized read-only and was not rebuilt during Stage A1."
+}
