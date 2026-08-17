@@ -1,0 +1,29 @@
+{
+  "selected_actual_operators": {
+    "Conv": {
+      "count": 29,
+      "example": "/patch_embed/seq/seq.0/c/Conv",
+      "initializer_inputs": [
+        "onnx::Conv_2786",
+        "onnx::Conv_2787"
+      ]
+    },
+    "MatMul": {
+      "count": 60,
+      "example": "/layers.1/blocks.0/attn/qkv/MatMul",
+      "initializer_inputs": [
+        "onnx::MatMul_2878"
+      ]
+    },
+    "Add": {
+      "count": 139
+    },
+    "Mul": {
+      "count": 98
+    },
+    "Softmax": {
+      "count": 10
+    }
+  },
+  "source": "actual exported graph"
+}

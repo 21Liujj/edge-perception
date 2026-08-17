@@ -1,0 +1,30 @@
+{
+  "status": "PASS_WITH_BACKEND_DIFFERENCE",
+  "provider": "CPUExecutionProvider",
+  "input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "input_dtype": "float32",
+  "pytorch_output_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "pytorch_output_dtype": "float32",
+  "onnx_output_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "onnx_output_dtype": "float32",
+  "max_absolute_error": 0.2841012179851532,
+  "mean_absolute_error": 0.02175542408853448,
+  "rmse": 0.03186013262714965,
+  "max_relative_error": 328639.0,
+  "interpretation": "Shape and dtype match. CUDA PyTorch versus CPU ONNX Runtime includes backend-specific FP32 accumulation differences; relative error is unstable near zero."
+}

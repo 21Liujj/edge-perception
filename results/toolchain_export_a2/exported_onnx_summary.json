@@ -1,0 +1,66 @@
+{
+  "path": "results/toolchain_export_a2/artifacts/mobile_sam_image_encoder_exported.onnx",
+  "size_bytes": 28106961,
+  "sha256": "f8d9ac5da0f9521aaf067b35dbe1eac78c50c9d7a0eef72dc3e07db5eb6f3ec7",
+  "checker": "PASS",
+  "ir_version": 8,
+  "producer_name": "pytorch",
+  "producer_version": "2.5.0",
+  "opset_imports": [
+    {
+      "domain": "",
+      "version": 16
+    }
+  ],
+  "inputs": [
+    {
+      "name": "image",
+      "elem_type": "FLOAT",
+      "shape": [
+        "batch_size",
+        3,
+        1024,
+        1024
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "image_embeddings",
+      "elem_type": "FLOAT",
+      "shape": [
+        "Addimage_embeddings_dim_0",
+        256,
+        64,
+        64
+      ]
+    }
+  ],
+  "initializer_count": 180,
+  "node_count": 2036,
+  "operator_distribution": {
+    "Add": 139,
+    "Cast": 10,
+    "Concat": 114,
+    "Constant": 784,
+    "ConstantOfShape": 10,
+    "Conv": 29,
+    "Div": 45,
+    "Erf": 23,
+    "Gather": 52,
+    "MatMul": 60,
+    "Mul": 98,
+    "Pad": 10,
+    "Pow": 22,
+    "ReduceMean": 44,
+    "Reshape": 126,
+    "Shape": 55,
+    "Slice": 33,
+    "Softmax": 10,
+    "Split": 10,
+    "Sqrt": 22,
+    "Sub": 22,
+    "Transpose": 96,
+    "Unsqueeze": 222
+  }
+}
