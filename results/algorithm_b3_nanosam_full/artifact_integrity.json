@@ -1,0 +1,33 @@
+{
+  "encoder_engine": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+    "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+    "expected_sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+    "unchanged": true
+  },
+  "decoder_engine": {
+    "path": "third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+    "sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "expected_sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "unchanged": true
+  },
+  "encoder_onnx": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.onnx",
+    "sha256": "d266fcdc9e4f0182b59946cd3cf1be331641f1d0d1de2415c4fd94e7a1c9cf0a",
+    "expected_sha256": "d266fcdc9e4f0182b59946cd3cf1be331641f1d0d1de2415c4fd94e7a1c9cf0a",
+    "unchanged": true
+  },
+  "decoder_onnx": {
+    "path": "third_party/nanosam/data/mobile_sam_mask_decoder.onnx",
+    "sha256": "41e49a298099048186ce109a4518286b8972959898a02577414405efa5c3b247",
+    "expected_sha256": "41e49a298099048186ce109a4518286b8972959898a02577414405efa5c3b247",
+    "unchanged": true
+  },
+  "nanoowl_engine": {
+    "path": "third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+    "sha256": "d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037",
+    "expected_sha256": "d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037",
+    "unchanged": true
+  },
+  "status": "UNCHANGED"
+}

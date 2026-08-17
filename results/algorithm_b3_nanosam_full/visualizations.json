@@ -1,0 +1,205 @@
+{
+  "count": 20,
+  "cases": [
+    {
+      "group": "lowest",
+      "annotation_id": 307860,
+      "image_id": 218997,
+      "category": "sports ball",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.15789473684210525,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/01_lowest_ann_307860.jpg"
+    },
+    {
+      "group": "lowest",
+      "annotation_id": 329970,
+      "image_id": 380913,
+      "category": "cell phone",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.07766990291262135,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/02_lowest_ann_329970.jpg"
+    },
+    {
+      "group": "lowest",
+      "annotation_id": 566438,
+      "image_id": 294695,
+      "category": "person",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.26666666666666666,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/03_lowest_ann_566438.jpg"
+    },
+    {
+      "group": "lowest",
+      "annotation_id": 603948,
+      "image_id": 437239,
+      "category": "frisbee",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.0008285004142502071,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/04_lowest_ann_603948.jpg"
+    },
+    {
+      "group": "lowest",
+      "annotation_id": 665644,
+      "image_id": 99039,
+      "category": "wine glass",
+      "size": "medium",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.40690652377307135,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/05_lowest_ann_665644.jpg"
+    },
+    {
+      "group": "small",
+      "annotation_id": 692452,
+      "image_id": 275198,
+      "category": "fork",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.005847953216374269,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/06_small_ann_692452.jpg"
+    },
+    {
+      "group": "small",
+      "annotation_id": 1109128,
+      "image_id": 13729,
+      "category": "remote",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.0006331117442228553,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/07_small_ann_1109128.jpg"
+    },
+    {
+      "group": "small",
+      "annotation_id": 1166516,
+      "image_id": 424162,
+      "category": "backpack",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.186144578313253,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/08_small_ann_1166516.jpg"
+    },
+    {
+      "group": "small",
+      "annotation_id": 1181895,
+      "image_id": 563604,
+      "category": "handbag",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.4,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/09_small_ann_1181895.jpg"
+    },
+    {
+      "group": "small",
+      "annotation_id": 1213735,
+      "image_id": 502168,
+      "category": "person",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.36363636363636365,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/10_small_ann_1213735.jpg"
+    },
+    {
+      "group": "overconfident",
+      "annotation_id": 1060079,
+      "image_id": 157390,
+      "category": "broccoli",
+      "size": "medium",
+      "slot0_iou": 0.001976284584980237,
+      "oracle_headroom": 0.16752633321606689,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/11_overconfident_ann_1060079.jpg"
+    },
+    {
+      "group": "overconfident",
+      "annotation_id": 2190725,
+      "image_id": 130699,
+      "category": "car",
+      "size": "medium",
+      "slot0_iou": 0.026378896882494004,
+      "oracle_headroom": 0.2809804104768133,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/12_overconfident_ann_2190725.jpg"
+    },
+    {
+      "group": "overconfident",
+      "annotation_id": 2117517,
+      "image_id": 431568,
+      "category": "pizza",
+      "size": "large",
+      "slot0_iou": 0.0018082388982031724,
+      "oracle_headroom": 0.4082812538869005,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/13_overconfident_ann_2117517.jpg"
+    },
+    {
+      "group": "overconfident",
+      "annotation_id": 2204065,
+      "image_id": 438862,
+      "category": "person",
+      "size": "small",
+      "slot0_iou": 0.0,
+      "oracle_headroom": 0.07393939393939394,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/14_overconfident_ann_2204065.jpg"
+    },
+    {
+      "group": "overconfident",
+      "annotation_id": 160276,
+      "image_id": 485237,
+      "category": "airplane",
+      "size": "medium",
+      "slot0_iou": 0.01445158718293716,
+      "oracle_headroom": 0.22230505986394736,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/15_overconfident_ann_160276.jpg"
+    },
+    {
+      "group": "headroom",
+      "annotation_id": 1605524,
+      "image_id": 407825,
+      "category": "potted plant",
+      "size": "large",
+      "slot0_iou": 0.045494313210848646,
+      "oracle_headroom": 0.766720570700093,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/16_headroom_ann_1605524.jpg"
+    },
+    {
+      "group": "headroom",
+      "annotation_id": 1172927,
+      "image_id": 548780,
+      "category": "handbag",
+      "size": "medium",
+      "slot0_iou": 0.030922693266832918,
+      "oracle_headroom": 0.6400768585036736,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/17_headroom_ann_1172927.jpg"
+    },
+    {
+      "group": "headroom",
+      "annotation_id": 1095167,
+      "image_id": 117914,
+      "category": "toilet",
+      "size": "large",
+      "slot0_iou": 0.02692591681023874,
+      "oracle_headroom": 0.6022780632892638,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/18_headroom_ann_1095167.jpg"
+    },
+    {
+      "group": "headroom",
+      "annotation_id": 1129674,
+      "image_id": 474786,
+      "category": "sink",
+      "size": "medium",
+      "slot0_iou": 0.06416100455835555,
+      "oracle_headroom": 0.5997128693155183,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/19_headroom_ann_1129674.jpg"
+    },
+    {
+      "group": "headroom",
+      "annotation_id": 696808,
+      "image_id": 447611,
+      "category": "knife",
+      "size": "small",
+      "slot0_iou": 0.12891566265060242,
+      "oracle_headroom": 0.5915144448762794,
+      "path": "results/algorithm_b3_nanosam_full/visualizations/20_headroom_ann_696808.jpg"
+    }
+  ]
+}

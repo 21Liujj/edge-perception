@@ -1,0 +1,2095 @@
+{
+  "lowest_iou_20": [
+    {
+      "annotation_id": 307860,
+      "image_id": 218997,
+      "category_id": 37,
+      "category_name": "sports ball",
+      "area": 18.227599999999985,
+      "size_bucket": "small",
+      "bbox": [
+        416.7,
+        223.74,
+        6.060000000000002,
+        4.569999999999993
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6127277612686157,
+        0.6330425143241882,
+        0.7370138168334961,
+        0.6831600666046143
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.15789473684210525,
+      "oracle_headroom": 0.15789473684210525
+    },
+    {
+      "annotation_id": 329970,
+      "image_id": 380913,
+      "category_id": 77,
+      "category_name": "cell phone",
+      "area": 198.80364999999904,
+      "size_bucket": "small",
+      "bbox": [
+        291.66,
+        198.62,
+        305.49000000000007,
+        90.40999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6295396089553833,
+        0.6471574306488037,
+        0.7063796520233154,
+        0.6736916303634644
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.07766990291262135,
+      "oracle_index": 2,
+      "oracle_iou": 0.07766990291262135,
+      "oracle_headroom": 0.07766990291262135
+    },
+    {
+      "annotation_id": 566438,
+      "image_id": 294695,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 8.916149999999982,
+      "size_bucket": "small",
+      "bbox": [
+        123.67,
+        222.05,
+        2.6200000000000045,
+        4.759999999999991
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6774366497993469,
+        0.6900636553764343,
+        0.803191065788269,
+        0.78348708152771
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.26666666666666666,
+      "oracle_headroom": 0.26666666666666666
+    },
+    {
+      "annotation_id": 603948,
+      "image_id": 437239,
+      "category_id": 34,
+      "category_name": "frisbee",
+      "area": 991.23485,
+      "size_bucket": "small",
+      "bbox": [
+        53.02,
+        266.64,
+        302.8,
+        81.30000000000001
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6022919416427612,
+        0.6503133773803711,
+        0.6985396146774292,
+        0.6728658676147461
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0008285004142502071,
+      "oracle_index": 2,
+      "oracle_iou": 0.0008285004142502071,
+      "oracle_headroom": 0.0008285004142502071
+    },
+    {
+      "annotation_id": 665644,
+      "image_id": 99039,
+      "category_id": 46,
+      "category_name": "wine glass",
+      "area": 8853.001549999999,
+      "size_bucket": "medium",
+      "bbox": [
+        280.87,
+        229.03,
+        202.46000000000004,
+        135.12999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6810737252235413,
+        0.7113589644432068,
+        0.7683728933334351,
+        0.7353113889694214
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.40690652377307135,
+      "oracle_index": 2,
+      "oracle_iou": 0.40690652377307135,
+      "oracle_headroom": 0.40690652377307135
+    },
+    {
+      "annotation_id": 692452,
+      "image_id": 275198,
+      "category_id": 48,
+      "category_name": "fork",
+      "area": 237.40330000000074,
+      "size_bucket": "small",
+      "bbox": [
+        383.82,
+        350.02,
+        73.38999999999999,
+        22.889999999999986
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7279702425003052,
+        0.756304919719696,
+        0.856134295463562,
+        0.8129290342330933
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.005847953216374269,
+      "oracle_headroom": 0.005847953216374269
+    },
+    {
+      "annotation_id": 1109128,
+      "image_id": 13729,
+      "category_id": 75,
+      "category_name": "remote",
+      "area": 270.0995000000001,
+      "size_bucket": "small",
+      "bbox": [
+        231.69,
+        141.7,
+        165.19,
+        138.52000000000004
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.652206540107727,
+        0.6776360869407654,
+        0.7328968048095703,
+        0.7096335887908936
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0006331117442228553,
+      "oracle_index": 2,
+      "oracle_iou": 0.0006331117442228553,
+      "oracle_headroom": 0.0006331117442228553
+    },
+    {
+      "annotation_id": 1166516,
+      "image_id": 424162,
+      "category_id": 27,
+      "category_name": "backpack",
+      "area": 906.4189000000009,
+      "size_bucket": "small",
+      "bbox": [
+        416.5,
+        163.46,
+        131.16999999999996,
+        73.63
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6953027248382568,
+        0.7469438910484314,
+        0.7957708835601807,
+        0.7507033348083496
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.17064846416382254,
+      "oracle_index": 1,
+      "oracle_iou": 0.186144578313253,
+      "oracle_headroom": 0.186144578313253
+    },
+    {
+      "annotation_id": 1173123,
+      "image_id": 413689,
+      "category_id": 31,
+      "category_name": "handbag",
+      "area": 2492.7539,
+      "size_bucket": "medium",
+      "bbox": [
+        353.98,
+        186.93,
+        136.41999999999996,
+        103.03000000000003
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6209482550621033,
+        0.6225834488868713,
+        0.704947829246521,
+        0.6699866652488708
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.16946610677864427,
+      "oracle_index": 2,
+      "oracle_iou": 0.16946610677864427,
+      "oracle_headroom": 0.16946610677864427
+    },
+    {
+      "annotation_id": 1181895,
+      "image_id": 563604,
+      "category_id": 31,
+      "category_name": "handbag",
+      "area": 39.34944999999961,
+      "size_bucket": "small",
+      "bbox": [
+        561.09,
+        293.26,
+        5.940000000000055,
+        10.029999999999973
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7044751644134521,
+        0.7319552898406982,
+        0.8210482597351074,
+        0.8036723136901855
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.12643678160919541,
+      "oracle_index": 1,
+      "oracle_iou": 0.4,
+      "oracle_headroom": 0.4
+    },
+    {
+      "annotation_id": 1213735,
+      "image_id": 502168,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 4.653400000000028,
+      "size_bucket": "small",
+      "bbox": [
+        288.65,
+        132.26,
+        2.4700000000000273,
+        3.0800000000000125
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7006261944770813,
+        0.7189854383468628,
+        0.8167836666107178,
+        0.7767540216445923
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.21428571428571427,
+      "oracle_index": 1,
+      "oracle_iou": 0.36363636363636365,
+      "oracle_headroom": 0.36363636363636365
+    },
+    {
+      "annotation_id": 1254516,
+      "image_id": 108503,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 14.017849999999973,
+      "size_bucket": "small",
+      "bbox": [
+        589.47,
+        210.64,
+        5.0499999999999545,
+        4.8700000000000045
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6611230373382568,
+        0.6801797151565552,
+        0.7804343700408936,
+        0.7466338872909546
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.125,
+      "oracle_index": 1,
+      "oracle_iou": 0.45,
+      "oracle_headroom": 0.45
+    },
+    {
+      "annotation_id": 1378088,
+      "image_id": 570448,
+      "category_id": 9,
+      "category_name": "boat",
+      "area": 12.211000000000054,
+      "size_bucket": "small",
+      "bbox": [
+        139.82,
+        167.87,
+        6.289999999999992,
+        2.3499999999999943
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6457148194313049,
+        0.6631510853767395,
+        0.7423313856124878,
+        0.7259625196456909
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.5,
+      "oracle_headroom": 0.5
+    },
+    {
+      "annotation_id": 1452924,
+      "image_id": 118921,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 127.44619999999931,
+      "size_bucket": "small",
+      "bbox": [
+        387.25,
+        336.77,
+        50.81,
+        33.27999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7114654779434204,
+        0.7330688834190369,
+        0.8080565929412842,
+        0.7839175462722778
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.10143540669856459,
+      "oracle_index": 1,
+      "oracle_iou": 0.16166281755196305,
+      "oracle_headroom": 0.16166281755196305
+    },
+    {
+      "annotation_id": 1570611,
+      "image_id": 208363,
+      "category_id": 59,
+      "category_name": "pizza",
+      "area": 397.68865000000017,
+      "size_bucket": "small",
+      "bbox": [
+        67.76,
+        170.98,
+        198.3,
+        276.43999999999994
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6718863248825073,
+        0.6840634346008301,
+        0.765784740447998,
+        0.7326666116714478
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 0,
+      "oracle_iou": 0.0,
+      "oracle_headroom": 0.0
+    },
+    {
+      "annotation_id": 1736353,
+      "image_id": 281759,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 243.58115000000083,
+      "size_bucket": "small",
+      "bbox": [
+        213.0,
+        190.38,
+        14.360000000000014,
+        84.02999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6765533685684204,
+        0.7167351841926575,
+        0.7930314540863037,
+        0.764546275138855
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0071174377224199285,
+      "oracle_index": 1,
+      "oracle_iou": 0.04991680532445923,
+      "oracle_headroom": 0.04991680532445923
+    },
+    {
+      "annotation_id": 1847218,
+      "image_id": 361919,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 3.1930999999999816,
+      "size_bucket": "small",
+      "bbox": [
+        179.52,
+        371.41,
+        6.900000000000006,
+        1.9700000000000273
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6741117238998413,
+        0.6904736161231995,
+        0.8045283555984497,
+        0.7627969980239868
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.009216589861751152,
+      "oracle_index": 1,
+      "oracle_iou": 0.0625,
+      "oracle_headroom": 0.0625
+    },
+    {
+      "annotation_id": 1850450,
+      "image_id": 85682,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 1.0004499999999878,
+      "size_bucket": "small",
+      "bbox": [
+        208.2,
+        254.04,
+        5.610000000000014,
+        1.2800000000000011
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6839041709899902,
+        0.6777077317237854,
+        0.7988401651382446,
+        0.7376096248626709
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.125,
+      "oracle_index": 2,
+      "oracle_iou": 0.125,
+      "oracle_headroom": 0.125
+    },
+    {
+      "annotation_id": 1864053,
+      "image_id": 440184,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "area": 12.94285000000021,
+      "size_bucket": "small",
+      "bbox": [
+        526.3,
+        171.81,
+        9.669999999999959,
+        8.389999999999986
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6862080097198486,
+        0.7070487141609192,
+        0.8028794527053833,
+        0.7529138326644897
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.11764705882352941,
+      "oracle_headroom": 0.11764705882352941
+    },
+    {
+      "annotation_id": 1896981,
+      "image_id": 233238,
+      "category_id": 50,
+      "category_name": "spoon",
+      "area": 891.2500000000018,
+      "size_bucket": "small",
+      "bbox": [
+        111.82,
+        415.75,
+        108.73000000000002,
+        46.69
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6701017618179321,
+        0.6891494393348694,
+        0.7636615037918091,
+        0.7288438081741333
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2229299363057325,
+      "oracle_index": 1,
+      "oracle_iou": 0.2674040338321405,
+      "oracle_headroom": 0.2674040338321405
+    }
+  ],
+  "small_lowest_iou_20": [
+    {
+      "annotation_id": 307860,
+      "image_id": 218997,
+      "category_id": 37,
+      "category_name": "sports ball",
+      "area": 18.227599999999985,
+      "size_bucket": "small",
+      "bbox": [
+        416.7,
+        223.74,
+        6.060000000000002,
+        4.569999999999993
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6127277612686157,
+        0.6330425143241882,
+        0.7370138168334961,
+        0.6831600666046143
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.15789473684210525,
+      "oracle_headroom": 0.15789473684210525
+    },
+    {
+      "annotation_id": 329970,
+      "image_id": 380913,
+      "category_id": 77,
+      "category_name": "cell phone",
+      "area": 198.80364999999904,
+      "size_bucket": "small",
+      "bbox": [
+        291.66,
+        198.62,
+        305.49000000000007,
+        90.40999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6295396089553833,
+        0.6471574306488037,
+        0.7063796520233154,
+        0.6736916303634644
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.07766990291262135,
+      "oracle_index": 2,
+      "oracle_iou": 0.07766990291262135,
+      "oracle_headroom": 0.07766990291262135
+    },
+    {
+      "annotation_id": 566438,
+      "image_id": 294695,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 8.916149999999982,
+      "size_bucket": "small",
+      "bbox": [
+        123.67,
+        222.05,
+        2.6200000000000045,
+        4.759999999999991
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6774366497993469,
+        0.6900636553764343,
+        0.803191065788269,
+        0.78348708152771
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.26666666666666666,
+      "oracle_headroom": 0.26666666666666666
+    },
+    {
+      "annotation_id": 603948,
+      "image_id": 437239,
+      "category_id": 34,
+      "category_name": "frisbee",
+      "area": 991.23485,
+      "size_bucket": "small",
+      "bbox": [
+        53.02,
+        266.64,
+        302.8,
+        81.30000000000001
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6022919416427612,
+        0.6503133773803711,
+        0.6985396146774292,
+        0.6728658676147461
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0008285004142502071,
+      "oracle_index": 2,
+      "oracle_iou": 0.0008285004142502071,
+      "oracle_headroom": 0.0008285004142502071
+    },
+    {
+      "annotation_id": 692452,
+      "image_id": 275198,
+      "category_id": 48,
+      "category_name": "fork",
+      "area": 237.40330000000074,
+      "size_bucket": "small",
+      "bbox": [
+        383.82,
+        350.02,
+        73.38999999999999,
+        22.889999999999986
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7279702425003052,
+        0.756304919719696,
+        0.856134295463562,
+        0.8129290342330933
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.005847953216374269,
+      "oracle_headroom": 0.005847953216374269
+    },
+    {
+      "annotation_id": 1109128,
+      "image_id": 13729,
+      "category_id": 75,
+      "category_name": "remote",
+      "area": 270.0995000000001,
+      "size_bucket": "small",
+      "bbox": [
+        231.69,
+        141.7,
+        165.19,
+        138.52000000000004
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.652206540107727,
+        0.6776360869407654,
+        0.7328968048095703,
+        0.7096335887908936
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0006331117442228553,
+      "oracle_index": 2,
+      "oracle_iou": 0.0006331117442228553,
+      "oracle_headroom": 0.0006331117442228553
+    },
+    {
+      "annotation_id": 1166516,
+      "image_id": 424162,
+      "category_id": 27,
+      "category_name": "backpack",
+      "area": 906.4189000000009,
+      "size_bucket": "small",
+      "bbox": [
+        416.5,
+        163.46,
+        131.16999999999996,
+        73.63
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6953027248382568,
+        0.7469438910484314,
+        0.7957708835601807,
+        0.7507033348083496
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.17064846416382254,
+      "oracle_index": 1,
+      "oracle_iou": 0.186144578313253,
+      "oracle_headroom": 0.186144578313253
+    },
+    {
+      "annotation_id": 1181895,
+      "image_id": 563604,
+      "category_id": 31,
+      "category_name": "handbag",
+      "area": 39.34944999999961,
+      "size_bucket": "small",
+      "bbox": [
+        561.09,
+        293.26,
+        5.940000000000055,
+        10.029999999999973
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7044751644134521,
+        0.7319552898406982,
+        0.8210482597351074,
+        0.8036723136901855
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.12643678160919541,
+      "oracle_index": 1,
+      "oracle_iou": 0.4,
+      "oracle_headroom": 0.4
+    },
+    {
+      "annotation_id": 1213735,
+      "image_id": 502168,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 4.653400000000028,
+      "size_bucket": "small",
+      "bbox": [
+        288.65,
+        132.26,
+        2.4700000000000273,
+        3.0800000000000125
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7006261944770813,
+        0.7189854383468628,
+        0.8167836666107178,
+        0.7767540216445923
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.21428571428571427,
+      "oracle_index": 1,
+      "oracle_iou": 0.36363636363636365,
+      "oracle_headroom": 0.36363636363636365
+    },
+    {
+      "annotation_id": 1254516,
+      "image_id": 108503,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 14.017849999999973,
+      "size_bucket": "small",
+      "bbox": [
+        589.47,
+        210.64,
+        5.0499999999999545,
+        4.8700000000000045
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6611230373382568,
+        0.6801797151565552,
+        0.7804343700408936,
+        0.7466338872909546
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.125,
+      "oracle_index": 1,
+      "oracle_iou": 0.45,
+      "oracle_headroom": 0.45
+    },
+    {
+      "annotation_id": 1378088,
+      "image_id": 570448,
+      "category_id": 9,
+      "category_name": "boat",
+      "area": 12.211000000000054,
+      "size_bucket": "small",
+      "bbox": [
+        139.82,
+        167.87,
+        6.289999999999992,
+        2.3499999999999943
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6457148194313049,
+        0.6631510853767395,
+        0.7423313856124878,
+        0.7259625196456909
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.5,
+      "oracle_headroom": 0.5
+    },
+    {
+      "annotation_id": 1452924,
+      "image_id": 118921,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 127.44619999999931,
+      "size_bucket": "small",
+      "bbox": [
+        387.25,
+        336.77,
+        50.81,
+        33.27999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7114654779434204,
+        0.7330688834190369,
+        0.8080565929412842,
+        0.7839175462722778
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.10143540669856459,
+      "oracle_index": 1,
+      "oracle_iou": 0.16166281755196305,
+      "oracle_headroom": 0.16166281755196305
+    },
+    {
+      "annotation_id": 1570611,
+      "image_id": 208363,
+      "category_id": 59,
+      "category_name": "pizza",
+      "area": 397.68865000000017,
+      "size_bucket": "small",
+      "bbox": [
+        67.76,
+        170.98,
+        198.3,
+        276.43999999999994
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6718863248825073,
+        0.6840634346008301,
+        0.765784740447998,
+        0.7326666116714478
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 0,
+      "oracle_iou": 0.0,
+      "oracle_headroom": 0.0
+    },
+    {
+      "annotation_id": 1736353,
+      "image_id": 281759,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 243.58115000000083,
+      "size_bucket": "small",
+      "bbox": [
+        213.0,
+        190.38,
+        14.360000000000014,
+        84.02999999999997
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6765533685684204,
+        0.7167351841926575,
+        0.7930314540863037,
+        0.764546275138855
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0071174377224199285,
+      "oracle_index": 1,
+      "oracle_iou": 0.04991680532445923,
+      "oracle_headroom": 0.04991680532445923
+    },
+    {
+      "annotation_id": 1847218,
+      "image_id": 361919,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 3.1930999999999816,
+      "size_bucket": "small",
+      "bbox": [
+        179.52,
+        371.41,
+        6.900000000000006,
+        1.9700000000000273
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6741117238998413,
+        0.6904736161231995,
+        0.8045283555984497,
+        0.7627969980239868
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.009216589861751152,
+      "oracle_index": 1,
+      "oracle_iou": 0.0625,
+      "oracle_headroom": 0.0625
+    },
+    {
+      "annotation_id": 1850450,
+      "image_id": 85682,
+      "category_id": 35,
+      "category_name": "skis",
+      "area": 1.0004499999999878,
+      "size_bucket": "small",
+      "bbox": [
+        208.2,
+        254.04,
+        5.610000000000014,
+        1.2800000000000011
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6839041709899902,
+        0.6777077317237854,
+        0.7988401651382446,
+        0.7376096248626709
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.125,
+      "oracle_index": 2,
+      "oracle_iou": 0.125,
+      "oracle_headroom": 0.125
+    },
+    {
+      "annotation_id": 1864053,
+      "image_id": 440184,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "area": 12.94285000000021,
+      "size_bucket": "small",
+      "bbox": [
+        526.3,
+        171.81,
+        9.669999999999959,
+        8.389999999999986
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6862080097198486,
+        0.7070487141609192,
+        0.8028794527053833,
+        0.7529138326644897
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.11764705882352941,
+      "oracle_headroom": 0.11764705882352941
+    },
+    {
+      "annotation_id": 1896981,
+      "image_id": 233238,
+      "category_id": 50,
+      "category_name": "spoon",
+      "area": 891.2500000000018,
+      "size_bucket": "small",
+      "bbox": [
+        111.82,
+        415.75,
+        108.73000000000002,
+        46.69
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6701017618179321,
+        0.6891494393348694,
+        0.7636615037918091,
+        0.7288438081741333
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2229299363057325,
+      "oracle_index": 1,
+      "oracle_iou": 0.2674040338321405,
+      "oracle_headroom": 0.2674040338321405
+    },
+    {
+      "annotation_id": 1938261,
+      "image_id": 54628,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 35.331800000000094,
+      "size_bucket": "small",
+      "bbox": [
+        166.17,
+        139.38,
+        8.050000000000011,
+        7.189999999999998
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6551780104637146,
+        0.6696816086769104,
+        0.7758783102035522,
+        0.7552717924118042
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.043859649122807015,
+      "oracle_index": 1,
+      "oracle_iou": 0.3148148148148148,
+      "oracle_headroom": 0.3148148148148148
+    },
+    {
+      "annotation_id": 1944855,
+      "image_id": 546219,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 34.87379999999965,
+      "size_bucket": "small",
+      "bbox": [
+        259.05,
+        272.98,
+        75.29000000000002,
+        6.360000000000014
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.6886129975318909,
+        0.7404010891914368,
+        0.8099707365036011,
+        0.7683072090148926
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.004,
+      "oracle_headroom": 0.004
+    }
+  ],
+  "high_confidence_low_actual_20": [
+    {
+      "annotation_id": 1060079,
+      "image_id": 157390,
+      "category_id": 56,
+      "category_name": "broccoli",
+      "area": 1511.5200499999996,
+      "size_bucket": "medium",
+      "bbox": [
+        185.55,
+        245.7,
+        66.66,
+        64.19999999999999
+      ],
+      "slot0_iou": 0.001976284584980237,
+      "predicted_iou": [
+        0.8026318550109863,
+        0.8276553750038147,
+        0.9012585878372192,
+        0.8587367534637451
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.04806565064478312,
+      "oracle_index": 3,
+      "oracle_iou": 0.1695026178010471,
+      "oracle_headroom": 0.16752633321606689
+    },
+    {
+      "annotation_id": 2190725,
+      "image_id": 130699,
+      "category_id": 3,
+      "category_name": "car",
+      "area": 1310.7370499999984,
+      "size_bucket": "medium",
+      "bbox": [
+        450.87,
+        241.02,
+        89.49000000000001,
+        52.66999999999999
+      ],
+      "slot0_iou": 0.026378896882494004,
+      "predicted_iou": [
+        0.8238428235054016,
+        0.8358660936355591,
+        0.8991475105285645,
+        0.8514930009841919
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.30735930735930733,
+      "oracle_index": 2,
+      "oracle_iou": 0.30735930735930733,
+      "oracle_headroom": 0.2809804104768133
+    },
+    {
+      "annotation_id": 2117517,
+      "image_id": 431568,
+      "category_id": 59,
+      "category_name": "pizza",
+      "area": 77482.33750000002,
+      "size_bucket": "large",
+      "bbox": [
+        2.21,
+        7.28,
+        636.79,
+        242.8
+      ],
+      "slot0_iou": 0.0018082388982031724,
+      "predicted_iou": [
+        0.7675291299819946,
+        0.7817339897155762,
+        0.8814774751663208,
+        0.8544512987136841
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.001975417032484636,
+      "oracle_index": 3,
+      "oracle_iou": 0.4100894927851037,
+      "oracle_headroom": 0.4082812538869005
+    },
+    {
+      "annotation_id": 2204065,
+      "image_id": 438862,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 112.0351499999997,
+      "size_bucket": "small",
+      "bbox": [
+        483.43,
+        90.1,
+        20.310000000000002,
+        34.629999999999995
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.762872040271759,
+        0.7760471701622009,
+        0.8704239130020142,
+        0.8257807493209839
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.03146067415730337,
+      "oracle_index": 3,
+      "oracle_iou": 0.07393939393939394,
+      "oracle_headroom": 0.07393939393939394
+    },
+    {
+      "annotation_id": 160276,
+      "image_id": 485237,
+      "category_id": 5,
+      "category_name": "airplane",
+      "area": 3522.8957500000015,
+      "size_bucket": "medium",
+      "bbox": [
+        7.58,
+        16.47,
+        317.67,
+        95.33
+      ],
+      "slot0_iou": 0.01445158718293716,
+      "predicted_iou": [
+        0.7741061449050903,
+        0.777279794216156,
+        0.8408818244934082,
+        0.8121287822723389
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2367566470468845,
+      "oracle_index": 2,
+      "oracle_iou": 0.2367566470468845,
+      "oracle_headroom": 0.22230505986394736
+    },
+    {
+      "annotation_id": 2192620,
+      "image_id": 414673,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 356.0682000000003,
+      "size_bucket": "small",
+      "bbox": [
+        111.33,
+        100.83,
+        32.040000000000006,
+        44.85000000000001
+      ],
+      "slot0_iou": 0.022908366533864542,
+      "predicted_iou": [
+        0.7737592458724976,
+        0.7666002511978149,
+        0.8463588953018188,
+        0.8161206245422363
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.028670721112076455,
+      "oracle_index": 3,
+      "oracle_iou": 0.05351170568561873,
+      "oracle_headroom": 0.030603339151754186
+    },
+    {
+      "annotation_id": 380577,
+      "image_id": 8211,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 366.840399999999,
+      "size_bucket": "small",
+      "bbox": [
+        412.09,
+        282.5,
+        36.81999999999999,
+        58.129999999999995
+      ],
+      "slot0_iou": 0.01145374449339207,
+      "predicted_iou": [
+        0.7533266544342041,
+        0.776163637638092,
+        0.8468115329742432,
+        0.8007618188858032
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.058823529411764705,
+      "oracle_index": 3,
+      "oracle_iou": 0.12736236647493837,
+      "oracle_headroom": 0.1159086219815463
+    },
+    {
+      "annotation_id": 1330416,
+      "image_id": 570756,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 106.2775000000002,
+      "size_bucket": "small",
+      "bbox": [
+        194.71,
+        282.57,
+        374.78,
+        19.980000000000018
+      ],
+      "slot0_iou": 0.009095634095634096,
+      "predicted_iou": [
+        0.7505879998207092,
+        0.7404443621635437,
+        0.8015695810317993,
+        0.7702382802963257
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.004562422231439237,
+      "oracle_index": 3,
+      "oracle_iou": 0.01078448425813185,
+      "oracle_headroom": 0.0016888501624977535
+    },
+    {
+      "annotation_id": 2121367,
+      "image_id": 518770,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 231.99145000000027,
+      "size_bucket": "small",
+      "bbox": [
+        152.48,
+        133.69,
+        46.21000000000001,
+        53.84
+      ],
+      "slot0_iou": 0.024539877300613498,
+      "predicted_iou": [
+        0.7564546465873718,
+        0.7677627801895142,
+        0.8552711009979248,
+        0.8224350214004517
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.06799230275817832,
+      "oracle_index": 2,
+      "oracle_iou": 0.06799230275817832,
+      "oracle_headroom": 0.04345242545756482
+    },
+    {
+      "annotation_id": 1688523,
+      "image_id": 179642,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 3014.85575,
+      "size_bucket": "medium",
+      "bbox": [
+        209.29,
+        0,
+        75.68000000000004,
+        63.06
+      ],
+      "slot0_iou": 0.1010958904109589,
+      "predicted_iou": [
+        0.8306514620780945,
+        0.8400282263755798,
+        0.9123607873916626,
+        0.8897628784179688
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.5912849872773537,
+      "oracle_index": 2,
+      "oracle_iou": 0.5912849872773537,
+      "oracle_headroom": 0.4901890968663948
+    },
+    {
+      "annotation_id": 692452,
+      "image_id": 275198,
+      "category_id": 48,
+      "category_name": "fork",
+      "area": 237.40330000000074,
+      "size_bucket": "small",
+      "bbox": [
+        383.82,
+        350.02,
+        73.38999999999999,
+        22.889999999999986
+      ],
+      "slot0_iou": 0.0,
+      "predicted_iou": [
+        0.7279702425003052,
+        0.756304919719696,
+        0.856134295463562,
+        0.8129290342330933
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.0,
+      "oracle_index": 1,
+      "oracle_iou": 0.005847953216374269,
+      "oracle_headroom": 0.005847953216374269
+    },
+    {
+      "annotation_id": 2101637,
+      "image_id": 402720,
+      "category_id": 48,
+      "category_name": "fork",
+      "area": 290.0764500000007,
+      "size_bucket": "small",
+      "bbox": [
+        125.04,
+        437.27,
+        63.39,
+        26.329999999999984
+      ],
+      "slot0_iou": 0.028284671532846715,
+      "predicted_iou": [
+        0.7535628080368042,
+        0.7878179550170898,
+        0.877172589302063,
+        0.8355600833892822
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.02471169686985173,
+      "oracle_index": 1,
+      "oracle_iou": 0.06539833531510107,
+      "oracle_headroom": 0.03711366378225436
+    },
+    {
+      "annotation_id": 1751051,
+      "image_id": 121417,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 338.6620500000006,
+      "size_bucket": "small",
+      "bbox": [
+        204.44,
+        0.31,
+        39.579999999999984,
+        33.64
+      ],
+      "slot0_iou": 0.03923357664233577,
+      "predicted_iou": [
+        0.763710618019104,
+        0.8215919137001038,
+        0.8988240957260132,
+        0.8659449815750122
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.07615384615384616,
+      "oracle_index": 1,
+      "oracle_iou": 0.17368873602751506,
+      "oracle_headroom": 0.1344551593851793
+    },
+    {
+      "annotation_id": 1622403,
+      "image_id": 39484,
+      "category_id": 67,
+      "category_name": "dining table",
+      "area": 40.059299999999794,
+      "size_bucket": "small",
+      "bbox": [
+        571.02,
+        360.62,
+        17.629999999999995,
+        3.420000000000016
+      ],
+      "slot0_iou": 0.02127659574468085,
+      "predicted_iou": [
+        0.7427676320075989,
+        0.7782928943634033,
+        0.8623347282409668,
+        0.8276305198669434
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.15671641791044777,
+      "oracle_index": 1,
+      "oracle_iou": 0.20618556701030927,
+      "oracle_headroom": 0.1849089712656284
+    },
+    {
+      "annotation_id": 659782,
+      "image_id": 213830,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "area": 1767.4974500000003,
+      "size_bucket": "medium",
+      "bbox": [
+        203.76,
+        172.67,
+        214.96000000000004,
+        184.85
+      ],
+      "slot0_iou": 0.00482017055988135,
+      "predicted_iou": [
+        0.7257990837097168,
+        0.7192893624305725,
+        0.8018120527267456,
+        0.7771493196487427
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.026902382782475018,
+      "oracle_index": 2,
+      "oracle_iou": 0.026902382782475018,
+      "oracle_headroom": 0.02208221222259367
+    },
+    {
+      "annotation_id": 216026,
+      "image_id": 422706,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 5692.238449999999,
+      "size_bucket": "medium",
+      "bbox": [
+        1.42,
+        141.13,
+        118.93,
+        176.2
+      ],
+      "slot0_iou": 0.05407562606006186,
+      "predicted_iou": [
+        0.7721699476242065,
+        0.8002669215202332,
+        0.8728938102722168,
+        0.8413022756576538
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.3788967102427812,
+      "oracle_index": 2,
+      "oracle_iou": 0.3788967102427812,
+      "oracle_headroom": 0.3248210841827194
+    },
+    {
+      "annotation_id": 376792,
+      "image_id": 8211,
+      "category_id": 62,
+      "category_name": "chair",
+      "area": 793.4226999999978,
+      "size_bucket": "small",
+      "bbox": [
+        322.48,
+        250.87,
+        55.110000000000014,
+        93.93
+      ],
+      "slot0_iou": 0.08149509803921569,
+      "predicted_iou": [
+        0.7994235157966614,
+        0.784460186958313,
+        0.8870143890380859,
+        0.8427830934524536
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.07261853908586074,
+      "oracle_index": 3,
+      "oracle_iou": 0.11253309796999117,
+      "oracle_headroom": 0.03103799993077548
+    },
+    {
+      "annotation_id": 1737523,
+      "image_id": 388056,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 1248.5772999999997,
+      "size_bucket": "medium",
+      "bbox": [
+        108.21,
+        4.92,
+        34.42999999999999,
+        67.22
+      ],
+      "slot0_iou": 0.034262948207171316,
+      "predicted_iou": [
+        0.7475165128707886,
+        0.7845805287361145,
+        0.8480757474899292,
+        0.8287032842636108
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2758142758142758,
+      "oracle_index": 2,
+      "oracle_iou": 0.2758142758142758,
+      "oracle_headroom": 0.2415513276071045
+    },
+    {
+      "annotation_id": 1528281,
+      "image_id": 580294,
+      "category_id": 50,
+      "category_name": "spoon",
+      "area": 5353.006149999995,
+      "size_bucket": "medium",
+      "bbox": [
+        0.76,
+        330.73,
+        342.87,
+        112.26999999999998
+      ],
+      "slot0_iou": 0.0382754634584921,
+      "predicted_iou": [
+        0.750615656375885,
+        0.7631113529205322,
+        0.8552374839782715,
+        0.8015022277832031
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.14475468441814596,
+      "oracle_index": 2,
+      "oracle_iou": 0.14475468441814596,
+      "oracle_headroom": 0.10647922095965386
+    },
+    {
+      "annotation_id": 2028701,
+      "image_id": 146667,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 556.4450499999997,
+      "size_bucket": "small",
+      "bbox": [
+        477.7,
+        16.68,
+        39.829999999999984,
+        41.35
+      ],
+      "slot0_iou": 0.012,
+      "predicted_iou": [
+        0.7214464545249939,
+        0.7345820665359497,
+        0.8019524812698364,
+        0.7637008428573608
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.20358514724711907,
+      "oracle_index": 2,
+      "oracle_iou": 0.20358514724711907,
+      "oracle_headroom": 0.19158514724711906
+    }
+  ],
+  "high_confidence_rule": {
+    "predicted_slot0_p75": 0.7214143574237823,
+    "actual_slot0_p25": 0.5946901615271659
+  },
+  "largest_oracle_headroom_20": [
+    {
+      "annotation_id": 1605524,
+      "image_id": 407825,
+      "category_id": 64,
+      "category_name": "potted plant",
+      "area": 13464.968250000007,
+      "size_bucket": "large",
+      "bbox": [
+        287.16,
+        1.69,
+        211.83999999999997,
+        135.13
+      ],
+      "slot0_iou": 0.045494313210848646,
+      "predicted_iou": [
+        0.66827791929245,
+        0.6812406182289124,
+        0.7781045436859131,
+        0.7354569435119629
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.8122148839109417,
+      "oracle_index": 2,
+      "oracle_iou": 0.8122148839109417,
+      "oracle_headroom": 0.766720570700093
+    },
+    {
+      "annotation_id": 1172927,
+      "image_id": 548780,
+      "category_id": 31,
+      "category_name": "handbag",
+      "area": 2003.4098999999999,
+      "size_bucket": "medium",
+      "bbox": [
+        251.51,
+        177.3,
+        79.64999999999998,
+        33.59
+      ],
+      "slot0_iou": 0.030922693266832918,
+      "predicted_iou": [
+        0.7321947813034058,
+        0.755166232585907,
+        0.823710560798645,
+        0.7924124002456665
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6709995517705065,
+      "oracle_index": 2,
+      "oracle_iou": 0.6709995517705065,
+      "oracle_headroom": 0.6400768585036736
+    },
+    {
+      "annotation_id": 1095167,
+      "image_id": 117914,
+      "category_id": 70,
+      "category_name": "toilet",
+      "area": 18410.46755,
+      "size_bucket": "large",
+      "bbox": [
+        8.97,
+        277.58,
+        172.64,
+        222.42000000000002
+      ],
+      "slot0_iou": 0.02692591681023874,
+      "predicted_iou": [
+        0.7108114957809448,
+        0.7101650238037109,
+        0.7999676465988159,
+        0.7565798759460449
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6292039800995025,
+      "oracle_index": 2,
+      "oracle_iou": 0.6292039800995025,
+      "oracle_headroom": 0.6022780632892638
+    },
+    {
+      "annotation_id": 1129674,
+      "image_id": 474786,
+      "category_id": 81,
+      "category_name": "sink",
+      "area": 8423.9909,
+      "size_bucket": "medium",
+      "bbox": [
+        86.35,
+        360.04,
+        288.05999999999995,
+        139.07
+      ],
+      "slot0_iou": 0.06416100455835555,
+      "predicted_iou": [
+        0.6525483131408691,
+        0.6916369795799255,
+        0.7557945251464844,
+        0.7230174541473389
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6638738738738739,
+      "oracle_index": 2,
+      "oracle_iou": 0.6638738738738739,
+      "oracle_headroom": 0.5997128693155183
+    },
+    {
+      "annotation_id": 696808,
+      "image_id": 447611,
+      "category_id": 49,
+      "category_name": "knife",
+      "area": 825.9399499999993,
+      "size_bucket": "small",
+      "bbox": [
+        274.76,
+        164.52,
+        156.3,
+        15.490000000000009
+      ],
+      "slot0_iou": 0.12891566265060242,
+      "predicted_iou": [
+        0.6982585191726685,
+        0.7088050246238708,
+        0.7967572212219238,
+        0.7714612483978271
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.7204301075268817,
+      "oracle_index": 2,
+      "oracle_iou": 0.7204301075268817,
+      "oracle_headroom": 0.5915144448762794
+    },
+    {
+      "annotation_id": 1754784,
+      "image_id": 75612,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 2687.898649999999,
+      "size_bucket": "medium",
+      "bbox": [
+        2.54,
+        245.59,
+        80.32,
+        81.68999999999997
+      ],
+      "slot0_iou": 0.07328933657519972,
+      "predicted_iou": [
+        0.7437882423400879,
+        0.7283931374549866,
+        0.8240796327590942,
+        0.7843419313430786
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6494252873563219,
+      "oracle_index": 2,
+      "oracle_iou": 0.6494252873563219,
+      "oracle_headroom": 0.5761359507811221
+    },
+    {
+      "annotation_id": 1052767,
+      "image_id": 402783,
+      "category_id": 55,
+      "category_name": "orange",
+      "area": 55603.682,
+      "size_bucket": "large",
+      "bbox": [
+        110.68,
+        68.89,
+        399.81,
+        297.04
+      ],
+      "slot0_iou": 0.12489687578464077,
+      "predicted_iou": [
+        0.684388279914856,
+        0.6834179162979126,
+        0.7783246040344238,
+        0.7587779760360718
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6858696605560916,
+      "oracle_index": 2,
+      "oracle_iou": 0.6858696605560916,
+      "oracle_headroom": 0.5609727847714507
+    },
+    {
+      "annotation_id": 713581,
+      "image_id": 452784,
+      "category_id": 51,
+      "category_name": "bowl",
+      "area": 33033.9977,
+      "size_bucket": "large",
+      "bbox": [
+        0,
+        304.3,
+        480.0,
+        335.7
+      ],
+      "slot0_iou": 0.24845360026631363,
+      "predicted_iou": [
+        0.6894372701644897,
+        0.6803775429725647,
+        0.7695726156234741,
+        0.7577440738677979
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.41351646828757527,
+      "oracle_index": 1,
+      "oracle_iou": 0.7907889672867222,
+      "oracle_headroom": 0.5423353670204085
+    },
+    {
+      "annotation_id": 574314,
+      "image_id": 80666,
+      "category_id": 15,
+      "category_name": "bench",
+      "area": 120668.42609999998,
+      "size_bucket": "large",
+      "bbox": [
+        195.6,
+        147.7,
+        432.89,
+        476.04
+      ],
+      "slot0_iou": 0.2223018473018473,
+      "predicted_iou": [
+        0.6340205669403076,
+        0.6253712177276611,
+        0.756217360496521,
+        0.7075142860412598
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2137849746791204,
+      "oracle_index": 3,
+      "oracle_iou": 0.757481740029733,
+      "oracle_headroom": 0.5351798927278857
+    },
+    {
+      "annotation_id": 711035,
+      "image_id": 5600,
+      "category_id": 51,
+      "category_name": "bowl",
+      "area": 60049.35264999999,
+      "size_bucket": "large",
+      "bbox": [
+        212.07,
+        138.09,
+        326.19,
+        222.91
+      ],
+      "slot0_iou": 0.20952612000646936,
+      "predicted_iou": [
+        0.6359364986419678,
+        0.6448417901992798,
+        0.736120343208313,
+        0.708332896232605
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.7439964053320908,
+      "oracle_index": 2,
+      "oracle_iou": 0.7439964053320908,
+      "oracle_headroom": 0.5344702853256214
+    },
+    {
+      "annotation_id": 2184396,
+      "image_id": 561889,
+      "category_id": 48,
+      "category_name": "fork",
+      "area": 4676.89495,
+      "size_bucket": "medium",
+      "bbox": [
+        311.69,
+        53.4,
+        300.4700000000001,
+        206.96
+      ],
+      "slot0_iou": 0.12438043579912092,
+      "predicted_iou": [
+        0.6449249982833862,
+        0.69867342710495,
+        0.7626632452011108,
+        0.7459515333175659
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.17179910870762605,
+      "oracle_index": 1,
+      "oracle_iou": 0.6570482497634815,
+      "oracle_headroom": 0.5326678139643606
+    },
+    {
+      "annotation_id": 1614258,
+      "image_id": 229659,
+      "category_id": 67,
+      "category_name": "dining table",
+      "area": 20986.824500000006,
+      "size_bucket": "large",
+      "bbox": [
+        17.26,
+        334.65,
+        325.75,
+        139.14999999999998
+      ],
+      "slot0_iou": 0.087384365901301,
+      "predicted_iou": [
+        0.6610237956047058,
+        0.6624564528465271,
+        0.7555567026138306,
+        0.7254767417907715
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6165416774415998,
+      "oracle_index": 2,
+      "oracle_iou": 0.6165416774415998,
+      "oracle_headroom": 0.5291573115402988
+    },
+    {
+      "annotation_id": 333792,
+      "image_id": 357888,
+      "category_id": 85,
+      "category_name": "clock",
+      "area": 34.6317000000003,
+      "size_bucket": "small",
+      "bbox": [
+        548.56,
+        420.62,
+        5.720000000000027,
+        9.079999999999984
+      ],
+      "slot0_iou": 0.1388888888888889,
+      "predicted_iou": [
+        0.6932774782180786,
+        0.7042796611785889,
+        0.8118829727172852,
+        0.7670624256134033
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.058823529411764705,
+      "oracle_index": 1,
+      "oracle_iou": 0.6666666666666666,
+      "oracle_headroom": 0.5277777777777777
+    },
+    {
+      "annotation_id": 1898580,
+      "image_id": 209142,
+      "category_id": 51,
+      "category_name": "bowl",
+      "area": 256365.94820000004,
+      "size_bucket": "large",
+      "bbox": [
+        0,
+        0,
+        639.15,
+        425.0
+      ],
+      "slot0_iou": 0.19791337807672738,
+      "predicted_iou": [
+        0.6293809413909912,
+        0.6400343775749207,
+        0.7486302852630615,
+        0.7091805934906006
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.2853927001719855,
+      "oracle_index": 3,
+      "oracle_iou": 0.7253462210735467,
+      "oracle_headroom": 0.5274328429968194
+    },
+    {
+      "annotation_id": 31458,
+      "image_id": 463618,
+      "category_id": 72,
+      "category_name": "tv",
+      "area": 31266.507149999998,
+      "size_bucket": "large",
+      "bbox": [
+        63.85,
+        2.28,
+        277.69,
+        119.59
+      ],
+      "slot0_iou": 0.31680051775365514,
+      "predicted_iou": [
+        0.657594621181488,
+        0.6529638767242432,
+        0.7782032489776611,
+        0.7300988435745239
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.31286740692357934,
+      "oracle_index": 3,
+      "oracle_iou": 0.8410170053003534,
+      "oracle_headroom": 0.5242164875466983
+    },
+    {
+      "annotation_id": 703515,
+      "image_id": 127394,
+      "category_id": 50,
+      "category_name": "spoon",
+      "area": 1772.7737000000006,
+      "size_bucket": "medium",
+      "bbox": [
+        187.42,
+        408.97,
+        142.32000000000002,
+        116.99000000000001
+      ],
+      "slot0_iou": 0.07030430220356768,
+      "predicted_iou": [
+        0.6900609731674194,
+        0.7060880064964294,
+        0.8095237016677856,
+        0.7758846282958984
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.5926501035196687,
+      "oracle_index": 2,
+      "oracle_iou": 0.5926501035196687,
+      "oracle_headroom": 0.5223458013161011
+    },
+    {
+      "annotation_id": 1210633,
+      "image_id": 345385,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 46201.1332,
+      "size_bucket": "large",
+      "bbox": [
+        1.08,
+        66.49,
+        458.38,
+        171.89
+      ],
+      "slot0_iou": 0.4010479041916168,
+      "predicted_iou": [
+        0.6924138069152832,
+        0.6948559880256653,
+        0.7913628816604614,
+        0.7515580654144287
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.9172161483813333,
+      "oracle_index": 2,
+      "oracle_iou": 0.9172161483813333,
+      "oracle_headroom": 0.5161682441897164
+    },
+    {
+      "annotation_id": 1213436,
+      "image_id": 381587,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 3865.7457000000004,
+      "size_bucket": "medium",
+      "bbox": [
+        48.41,
+        199.47,
+        125.41999999999999,
+        64.98999999999998
+      ],
+      "slot0_iou": 0.17865650309671272,
+      "predicted_iou": [
+        0.7156059741973877,
+        0.7224313020706177,
+        0.8035451173782349,
+        0.7616362571716309
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.36127040141155714,
+      "oracle_index": 3,
+      "oracle_iou": 0.6920169001556593,
+      "oracle_headroom": 0.5133603970589466
+    },
+    {
+      "annotation_id": 1615676,
+      "image_id": 404678,
+      "category_id": 67,
+      "category_name": "dining table",
+      "area": 6395.983649999999,
+      "size_bucket": "medium",
+      "bbox": [
+        230.39,
+        144.36,
+        149.2,
+        66.6
+      ],
+      "slot0_iou": 0.05340183714775027,
+      "predicted_iou": [
+        0.7069657444953918,
+        0.7041916251182556,
+        0.7919209003448486,
+        0.7420711517333984
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.5651918271350874,
+      "oracle_index": 2,
+      "oracle_iou": 0.5651918271350874,
+      "oracle_headroom": 0.5117899899873372
+    },
+    {
+      "annotation_id": 1743621,
+      "image_id": 293200,
+      "category_id": 1,
+      "category_name": "person",
+      "area": 590.0509,
+      "size_bucket": "small",
+      "bbox": [
+        462.37,
+        163.45,
+        47.72000000000003,
+        30.829999999999984
+      ],
+      "slot0_iou": 0.19639934533551553,
+      "predicted_iou": [
+        0.7328128218650818,
+        0.7621873021125793,
+        0.838449239730835,
+        0.7819846868515015
+      ],
+      "predicted_argmax_index": 2,
+      "predicted_argmax_iou": 0.6105398457583547,
+      "oracle_index": 1,
+      "oracle_iou": 0.699523052464229,
+      "oracle_headroom": 0.5031237071287135
+    }
+  ],
+  "failed_instances": []
+}

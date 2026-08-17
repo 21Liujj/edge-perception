@@ -76,3 +76,11 @@ results/algorithm_b2_nanoowl/standard/
 results/algorithm_b2_nanoowl/full/*.json
 results/algorithm_b2_nanoowl/full/*.txt
 results/algorithm_b2_nanoowl/regressions/
+
+# Stage B3 NanoSAM: retain compact analyses and selected visualizations
+results/algorithm_b3_nanosam_full/per_instance_primary.csv
+results/algorithm_b3_nanosam_full/run_stdout.txt
+results/algorithm_b3_nanosam_full/run_stderr.txt
+results/algorithm_b3_nanosam_full/standard_gate/
+results/algorithm_b3_nanosam_full/stage_b3_machine_summary.json
+results/algorithm_b3_nanosam_smoke/

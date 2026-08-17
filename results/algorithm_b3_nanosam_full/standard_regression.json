@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "expected_mIoU": 0.718127976997991,
+  "observed_mIoU": 0.718127976997991,
+  "absolute_delta": 0.0,
+  "manifest_sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+  "fixed_slot0_metrics": {
+    "mIoU": 0.718127976997991,
+    "median_iou": 0.78387469290901,
+    "p10": 0.3791306071871128,
+    "p50": 0.78387469290901,
+    "p90": 0.9192292836992255,
+    "iou_ge_0_50": 0.846,
+    "iou_ge_0_75": 0.59,
+    "valid": 500,
+    "failed": 0,
+    "small_mIoU": 0.6053200768868633,
+    "small_count": 175,
+    "medium_mIoU": 0.7626592084204067,
+    "medium_count": 166,
+    "large_mIoU": 0.795795889597528,
+    "large_count": 159
+  },
+  "size": {}
+}

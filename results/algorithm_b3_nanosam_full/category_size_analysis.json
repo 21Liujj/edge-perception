@@ -1,0 +1,227 @@
+{
+  "scope": "worst 10 categories",
+  "global_small_ratio": 0.42009082152194854,
+  "analysis": [
+    {
+      "category_id": 35,
+      "category_name": "skis",
+      "count": 241,
+      "category_mIoU": 0.34545581346853355,
+      "small_ratio": 0.7385892116182573,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 178,
+          "mIoU": 0.31812717579702804
+        },
+        "medium": {
+          "count": 59,
+          "mIoU": 0.4254488493202873
+        },
+        "large": {
+          "count": 4,
+          "mIoU": 0.3816829110371575
+        }
+      }
+    },
+    {
+      "category_id": 48,
+      "category_name": "fork",
+      "count": 215,
+      "category_mIoU": 0.48302817779079366,
+      "small_ratio": 0.4744186046511628,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 102,
+          "mIoU": 0.40678846204702745
+        },
+        "medium": {
+          "count": 91,
+          "mIoU": 0.5483686089475357
+        },
+        "large": {
+          "count": 22,
+          "mIoU": 0.5662314400908222
+        }
+      }
+    },
+    {
+      "category_id": 49,
+      "category_name": "knife",
+      "count": 325,
+      "category_mIoU": 0.5104966328087446,
+      "small_ratio": 0.6646153846153846,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 216,
+          "mIoU": 0.44699351645522956
+        },
+        "medium": {
+          "count": 96,
+          "mIoU": 0.646115583259168
+        },
+        "large": {
+          "count": 13,
+          "mIoU": 0.5641315473563299
+        }
+      }
+    },
+    {
+      "category_id": 50,
+      "category_name": "spoon",
+      "count": 253,
+      "category_mIoU": 0.5403930628846403,
+      "small_ratio": 0.6679841897233202,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 169,
+          "mIoU": 0.4715716547579574
+        },
+        "medium": {
+          "count": 70,
+          "mIoU": 0.6683840935109556
+        },
+        "large": {
+          "count": 14,
+          "mIoU": 0.731210622139451
+        }
+      }
+    },
+    {
+      "category_id": 67,
+      "category_name": "dining table",
+      "count": 695,
+      "category_mIoU": 0.542388778133242,
+      "small_ratio": 0.16402877697841728,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 114,
+          "mIoU": 0.4906913063746558
+        },
+        "medium": {
+          "count": 173,
+          "mIoU": 0.6016862056726202
+        },
+        "large": {
+          "count": 408,
+          "mIoU": 0.5316903879767871
+        }
+      }
+    },
+    {
+      "category_id": 87,
+      "category_name": "scissors",
+      "count": 36,
+      "category_mIoU": 0.5461489954407353,
+      "small_ratio": 0.3611111111111111,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 13,
+          "mIoU": 0.4888247060109325
+        },
+        "medium": {
+          "count": 9,
+          "mIoU": 0.5883900934721733
+        },
+        "large": {
+          "count": 14,
+          "mIoU": 0.5722237011767705
+        }
+      }
+    },
+    {
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "count": 57,
+      "category_mIoU": 0.5617953490841139,
+      "small_ratio": 0.631578947368421,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 36,
+          "mIoU": 0.5177725319827906
+        },
+        "medium": {
+          "count": 18,
+          "mIoU": 0.6173250562801011
+        },
+        "large": {
+          "count": 3,
+          "mIoU": 0.7568909111240717
+        }
+      }
+    },
+    {
+      "category_id": 32,
+      "category_name": "tie",
+      "count": 252,
+      "category_mIoU": 0.5820068399731934,
+      "small_ratio": 0.6111111111111112,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 154,
+          "mIoU": 0.49188854448579145
+        },
+        "medium": {
+          "count": 77,
+          "mIoU": 0.7028805764707552
+        },
+        "large": {
+          "count": 21,
+          "mIoU": 0.7996706397230782
+        }
+      }
+    },
+    {
+      "category_id": 41,
+      "category_name": "skateboard",
+      "count": 179,
+      "category_mIoU": 0.5822118084995519,
+      "small_ratio": 0.43575418994413406,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 78,
+          "mIoU": 0.5105943651310141
+        },
+        "medium": {
+          "count": 84,
+          "mIoU": 0.6157456111506919
+        },
+        "large": {
+          "count": 17,
+          "mIoU": 0.7451130532083854
+        }
+      }
+    },
+    {
+      "category_id": 36,
+      "category_name": "snowboard",
+      "count": 69,
+      "category_mIoU": 0.5826883982863288,
+      "small_ratio": 0.5797101449275363,
+      "global_small_ratio": 0.42009082152194854,
+      "by_size": {
+        "small": {
+          "count": 40,
+          "mIoU": 0.4972222322545889
+        },
+        "medium": {
+          "count": 24,
+          "mIoU": 0.6905490540033243
+        },
+        "large": {
+          "count": 5,
+          "mIoU": 0.7486865790986694
+        }
+      }
+    }
+  ],
+  "caution": "Association only; does not prove size causes category result."
+}

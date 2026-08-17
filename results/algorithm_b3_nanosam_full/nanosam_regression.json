@@ -1,0 +1,17 @@
+{
+  "dogs": {
+    "status": "PASS",
+    "selected_predicted_iou": 0.6618869304656982,
+    "nonzero_pixels": 242155,
+    "reference_selected_predicted_iou": 0.6618869304656982,
+    "reference_nonzero_pixels": 242155,
+    "has_nan_inf": {"nan": false, "inf": false}
+  },
+  "standard_500": {
+    "status": "PASS",
+    "manifest_sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+    "expected_fixed_slot0_mIoU": 0.718127976997991,
+    "observed_fixed_slot0_mIoU": 0.718127976997991,
+    "failed": 0
+  }
+}

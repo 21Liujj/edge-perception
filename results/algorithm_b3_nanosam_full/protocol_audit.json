@@ -1,0 +1,1816 @@
+{
+  "dataset": "COCO 2017 val2017",
+  "annotations_path": "data/coco/annotations/instances_val2017.json",
+  "images_path": "data/coco/val2017",
+  "total_images": 5000,
+  "total_annotations": 36781,
+  "total_categories": 80,
+  "excluded_crowd": 446,
+  "excluded_invalid_bbox": 0,
+  "excluded_invalid_mask": 0,
+  "other_excluded": 0,
+  "exclusion_counts": {
+    "crowd": 446
+  },
+  "legal_instances": 36335,
+  "legal_unique_images": 4952,
+  "bbox_clipped_legal_count": 30277,
+  "accounting_check": true,
+  "protocol": {
+    "crowd": "exclude because crowd region is not necessarily one unambiguous instance",
+    "bbox": "require finite positive xywh and positive image intersection; clip partial out-of-image coordinates",
+    "segmentation": "require decodable non-empty mask matching image shape",
+    "prompt": "clipped GT box corners as points with labels [2,3]",
+    "mask": "decoder high-resolution logits > 0",
+    "primary": "fixed slot 0",
+    "size": "COCO area: small < 32^2, medium < 96^2, large >= 96^2"
+  },
+  "exclusion_details": {
+    "crowd": [
+      {
+        "annotation_id": 900100448263,
+        "image_id": 448263
+      },
+      {
+        "annotation_id": 900100374545,
+        "image_id": 374545
+      },
+      {
+        "annotation_id": 900100284445,
+        "image_id": 284445
+      },
+      {
+        "annotation_id": 904700579070,
+        "image_id": 579070
+      },
+      {
+        "annotation_id": 906200031296,
+        "image_id": 31296
+      },
+      {
+        "annotation_id": 900300210273,
+        "image_id": 210273
+      },
+      {
+        "annotation_id": 901600182441,
+        "image_id": 182441
+      },
+      {
+        "annotation_id": 900100350122,
+        "image_id": 350122
+      },
+      {
+        "annotation_id": 908400255165,
+        "image_id": 255165
+      },
+      {
+        "annotation_id": 905500303566,
+        "image_id": 303566
+      },
+      {
+        "annotation_id": 902800416991,
+        "image_id": 416991
+      },
+      {
+        "annotation_id": 906100318455,
+        "image_id": 318455
+      },
+      {
+        "annotation_id": 908400389315,
+        "image_id": 389315
+      },
+      {
+        "annotation_id": 900100546823,
+        "image_id": 546823
+      },
+      {
+        "annotation_id": 900100153669,
+        "image_id": 153669
+      },
+      {
+        "annotation_id": 900100227399,
+        "image_id": 227399
+      },
+      {
+        "annotation_id": 908400509260,
+        "image_id": 509260
+      },
+      {
+        "annotation_id": 900100079969,
+        "image_id": 79969
+      },
+      {
+        "annotation_id": 900100481390,
+        "image_id": 481390
+      },
+      {
+        "annotation_id": 900100219271,
+        "image_id": 219271
+      },
+      {
+        "annotation_id": 900100309391,
+        "image_id": 309391
+      },
+      {
+        "annotation_id": 900300054967,
+        "image_id": 54967
+      },
+      {
+        "annotation_id": 900100161978,
+        "image_id": 161978
+      },
+      {
+        "annotation_id": 906000245311,
+        "image_id": 245311
+      },
+      {
+        "annotation_id": 900100293200,
+        "image_id": 293200
+      },
+      {
+        "annotation_id": 900100489842,
+        "image_id": 489842
+      },
+      {
+        "annotation_id": 905200378515,
+        "image_id": 378515
+      },
+      {
+        "annotation_id": 900100154004,
+        "image_id": 154004
+      },
+      {
+        "annotation_id": 900100563648,
+        "image_id": 563648
+      },
+      {
+        "annotation_id": 900100039405,
+        "image_id": 39405
+      },
+      {
+        "annotation_id": 905800213255,
+        "image_id": 213255
+      },
+      {
+        "annotation_id": 900100277005,
+        "image_id": 277005
+      },
+      {
+        "annotation_id": 902800253742,
+        "image_id": 253742
+      },
+      {
+        "annotation_id": 905900122962,
+        "image_id": 122962
+      },
+      {
+        "annotation_id": 906000450399,
+        "image_id": 450399
+      },
+      {
+        "annotation_id": 908400386912,
+        "image_id": 386912
+      },
+      {
+        "annotation_id": 900100326248,
+        "image_id": 326248
+      },
+      {
+        "annotation_id": 904400289938,
+        "image_id": 289938
+      },
+      {
+        "annotation_id": 905700393838,
+        "image_id": 393838
+      },
+      {
+        "annotation_id": 902000534394,
+        "image_id": 534394
+      },
+      {
+        "annotation_id": 903800570756,
+        "image_id": 570756
+      },
+      {
+        "annotation_id": 901600060363,
+        "image_id": 60363
+      },
+      {
+        "annotation_id": 904200520659,
+        "image_id": 520659
+      },
+      {
+        "annotation_id": 900100211674,
+        "image_id": 211674
+      },
+      {
+        "annotation_id": 906200491008,
+        "image_id": 491008
+      },
+      {
+        "annotation_id": 900100432898,
+        "image_id": 432898
+      },
+      {
+        "annotation_id": 906200089648,
+        "image_id": 89648
+      },
+      {
+        "annotation_id": 901600511076,
+        "image_id": 511076
+      },
+      {
+        "annotation_id": 900100236426,
+        "image_id": 236426
+      },
+      {
+        "annotation_id": 900100474028,
+        "image_id": 474028
+      },
+      {
+        "annotation_id": 905200272566,
+        "image_id": 272566
+      },
+      {
+        "annotation_id": 900900160728,
+        "image_id": 160728
+      },
+      {
+        "annotation_id": 903300179174,
+        "image_id": 179174
+      },
+      {
+        "annotation_id": 902200173799,
+        "image_id": 173799
+      },
+      {
+        "annotation_id": 900100261097,
+        "image_id": 261097
+      },
+      {
+        "annotation_id": 902100559099,
+        "image_id": 559099
+      },
+      {
+        "annotation_id": 904400512330,
+        "image_id": 512330
+      },
+      {
+        "annotation_id": 902100387148,
+        "image_id": 387148
+      },
+      {
+        "annotation_id": 908400467176,
+        "image_id": 467176
+      },
+      {
+        "annotation_id": 900100072795,
+        "image_id": 72795
+      },
+      {
+        "annotation_id": 901600060823,
+        "image_id": 60823
+      },
+      {
+        "annotation_id": 900100203931,
+        "image_id": 203931
+      },
+      {
+        "annotation_id": 900100507037,
+        "image_id": 507037
+      },
+      {
+        "annotation_id": 908400395701,
+        "image_id": 395701
+      },
+      {
+        "annotation_id": 900100572620,
+        "image_id": 572620
+      },
+      {
+        "annotation_id": 900100441553,
+        "image_id": 441553
+      },
+      {
+        "annotation_id": 903200024021,
+        "image_id": 24021
+      },
+      {
+        "annotation_id": 900100163057,
+        "image_id": 163057
+      },
+      {
+        "annotation_id": 901000309391,
+        "image_id": 309391
+      },
+      {
+        "annotation_id": 900100179487,
+        "image_id": 179487
+      },
+      {
+        "annotation_id": 900100376112,
+        "image_id": 376112
+      },
+      {
+        "annotation_id": 908400379441,
+        "image_id": 379441
+      },
+      {
+        "annotation_id": 902400378453,
+        "image_id": 378453
+      },
+      {
+        "annotation_id": 900100007511,
+        "image_id": 7511
+      },
+      {
+        "annotation_id": 906100426329,
+        "image_id": 426329
+      },
+      {
+        "annotation_id": 900100433515,
+        "image_id": 433515
+      },
+      {
+        "annotation_id": 901600315001,
+        "image_id": 315001
+      },
+      {
+        "annotation_id": 900100138639,
+        "image_id": 138639
+      },
+      {
+        "annotation_id": 900100204186,
+        "image_id": 204186
+      },
+      {
+        "annotation_id": 900100105912,
+        "image_id": 105912
+      },
+      {
+        "annotation_id": 900100024021,
+        "image_id": 24021
+      },
+      {
+        "annotation_id": 900300400367,
+        "image_id": 400367
+      },
+      {
+        "annotation_id": 900100163314,
+        "image_id": 163314
+      },
+      {
+        "annotation_id": 900100376322,
+        "image_id": 376322
+      },
+      {
+        "annotation_id": 900100343561,
+        "image_id": 343561
+      },
+      {
+        "annotation_id": 908400416534,
+        "image_id": 416534
+      },
+      {
+        "annotation_id": 900100266981,
+        "image_id": 266981
+      },
+      {
+        "annotation_id": 900100036494,
+        "image_id": 36494
+      },
+      {
+        "annotation_id": 903300451308,
+        "image_id": 451308
+      },
+      {
+        "annotation_id": 903300360097,
+        "image_id": 360097
+      },
+      {
+        "annotation_id": 902100314034,
+        "image_id": 314034
+      },
+      {
+        "annotation_id": 900100024243,
+        "image_id": 24243
+      },
+      {
+        "annotation_id": 906200229849,
+        "image_id": 229849
+      },
+      {
+        "annotation_id": 906700416991,
+        "image_id": 416991
+      },
+      {
+        "annotation_id": 904400463842,
+        "image_id": 463842
+      },
+      {
+        "annotation_id": 908400294783,
+        "image_id": 294783
+      },
+      {
+        "annotation_id": 908400371699,
+        "image_id": 371699
+      },
+      {
+        "annotation_id": 900100540414,
+        "image_id": 540414
+      },
+      {
+        "annotation_id": 900100065288,
+        "image_id": 65288
+      },
+      {
+        "annotation_id": 905600141328,
+        "image_id": 141328
+      },
+      {
+        "annotation_id": 902800549930,
+        "image_id": 549930
+      },
+      {
+        "annotation_id": 900100057150,
+        "image_id": 57150
+      },
+      {
+        "annotation_id": 905200527029,
+        "image_id": 527029
+      },
+      {
+        "annotation_id": 900100212800,
+        "image_id": 212800
+      },
+      {
+        "annotation_id": 900100490936,
+        "image_id": 490936
+      },
+      {
+        "annotation_id": 900300474452,
+        "image_id": 474452
+      },
+      {
+        "annotation_id": 900100139099,
+        "image_id": 139099
+      },
+      {
+        "annotation_id": 900100450399,
+        "image_id": 450399
+      },
+      {
+        "annotation_id": 900100016228,
+        "image_id": 16228
+      },
+      {
+        "annotation_id": 900100014439,
+        "image_id": 14439
+      },
+      {
+        "annotation_id": 901500225670,
+        "image_id": 225670
+      },
+      {
+        "annotation_id": 900100065455,
+        "image_id": 65455
+      },
+      {
+        "annotation_id": 903800469192,
+        "image_id": 469192
+      },
+      {
+        "annotation_id": 903800208423,
+        "image_id": 208423
+      },
+      {
+        "annotation_id": 900100098287,
+        "image_id": 98287
+      },
+      {
+        "annotation_id": 906200238410,
+        "image_id": 238410
+      },
+      {
+        "annotation_id": 903800432898,
+        "image_id": 432898
+      },
+      {
+        "annotation_id": 900100188465,
+        "image_id": 188465
+      },
+      {
+        "annotation_id": 900100376900,
+        "image_id": 376900
+      },
+      {
+        "annotation_id": 908400183049,
+        "image_id": 183049
+      },
+      {
+        "annotation_id": 906000529122,
+        "image_id": 529122
+      },
+      {
+        "annotation_id": 900100122962,
+        "image_id": 122962
+      },
+      {
+        "annotation_id": 900300458325,
+        "image_id": 458325
+      },
+      {
+        "annotation_id": 901600166287,
+        "image_id": 166287
+      },
+      {
+        "annotation_id": 905300560256,
+        "image_id": 560256
+      },
+      {
+        "annotation_id": 908400121586,
+        "image_id": 121586
+      },
+      {
+        "annotation_id": 903700343218,
+        "image_id": 343218
+      },
+      {
+        "annotation_id": 902000389566,
+        "image_id": 389566
+      },
+      {
+        "annotation_id": 900400490936,
+        "image_id": 490936
+      },
+      {
+        "annotation_id": 900100114907,
+        "image_id": 114907
+      },
+      {
+        "annotation_id": 900100305317,
+        "image_id": 305317
+      },
+      {
+        "annotation_id": 905600092660,
+        "image_id": 92660
+      },
+      {
+        "annotation_id": 905100470773,
+        "image_id": 470773
+      },
+      {
+        "annotation_id": 900100057597,
+        "image_id": 57597
+      },
+      {
+        "annotation_id": 904400357888,
+        "image_id": 357888
+      },
+      {
+        "annotation_id": 900100065798,
+        "image_id": 65798
+      },
+      {
+        "annotation_id": 906200410650,
+        "image_id": 410650
+      },
+      {
+        "annotation_id": 900200343561,
+        "image_id": 343561
+      },
+      {
+        "annotation_id": 903700187734,
+        "image_id": 187734
+      },
+      {
+        "annotation_id": 900100074092,
+        "image_id": 74092
+      },
+      {
+        "annotation_id": 906000034417,
+        "image_id": 34417
+      },
+      {
+        "annotation_id": 900100057760,
+        "image_id": 57760
+      },
+      {
+        "annotation_id": 906200434459,
+        "image_id": 434459
+      },
+      {
+        "annotation_id": 900100156071,
+        "image_id": 156071
+      },
+      {
+        "annotation_id": 908400091406,
+        "image_id": 91406
+      },
+      {
+        "annotation_id": 900100541123,
+        "image_id": 541123
+      },
+      {
+        "annotation_id": 900100303566,
+        "image_id": 303566
+      },
+      {
+        "annotation_id": 900100229849,
+        "image_id": 229849
+      },
+      {
+        "annotation_id": 908400134882,
+        "image_id": 134882
+      },
+      {
+        "annotation_id": 900100224807,
+        "image_id": 224807
+      },
+      {
+        "annotation_id": 902100347664,
+        "image_id": 347664
+      },
+      {
+        "annotation_id": 903300500257,
+        "image_id": 500257
+      },
+      {
+        "annotation_id": 902000364322,
+        "image_id": 364322
+      },
+      {
+        "annotation_id": 900100098853,
+        "image_id": 98853
+      },
+      {
+        "annotation_id": 904400464689,
+        "image_id": 464689
+      },
+      {
+        "annotation_id": 900100524850,
+        "image_id": 524850
+      },
+      {
+        "annotation_id": 900100049759,
+        "image_id": 49759
+      },
+      {
+        "annotation_id": 900100303713,
+        "image_id": 303713
+      },
+      {
+        "annotation_id": 908400520077,
+        "image_id": 520077
+      },
+      {
+        "annotation_id": 900100361103,
+        "image_id": 361103
+      },
+      {
+        "annotation_id": 908400061333,
+        "image_id": 61333
+      },
+      {
+        "annotation_id": 900100328430,
+        "image_id": 328430
+      },
+      {
+        "annotation_id": 906000370677,
+        "image_id": 370677
+      },
+      {
+        "annotation_id": 900100500478,
+        "image_id": 500478
+      },
+      {
+        "annotation_id": 900100336658,
+        "image_id": 336658
+      },
+      {
+        "annotation_id": 902800370711,
+        "image_id": 370711
+      },
+      {
+        "annotation_id": 904600166918,
+        "image_id": 166918
+      },
+      {
+        "annotation_id": 900100099114,
+        "image_id": 99114
+      },
+      {
+        "annotation_id": 901000171382,
+        "image_id": 171382
+      },
+      {
+        "annotation_id": 900100254814,
+        "image_id": 254814
+      },
+      {
+        "annotation_id": 900300336232,
+        "image_id": 336232
+      },
+      {
+        "annotation_id": 900100377723,
+        "image_id": 377723
+      },
+      {
+        "annotation_id": 900100410496,
+        "image_id": 410496
+      },
+      {
+        "annotation_id": 904700546219,
+        "image_id": 546219
+      },
+      {
+        "annotation_id": 900100312237,
+        "image_id": 312237
+      },
+      {
+        "annotation_id": 900100345027,
+        "image_id": 345027
+      },
+      {
+        "annotation_id": 905200479448,
+        "image_id": 479448
+      },
+      {
+        "annotation_id": 900200279278,
+        "image_id": 279278
+      },
+      {
+        "annotation_id": 900100165681,
+        "image_id": 165681
+      },
+      {
+        "annotation_id": 900100484351,
+        "image_id": 484351
+      },
+      {
+        "annotation_id": 900100173057,
+        "image_id": 173057
+      },
+      {
+        "annotation_id": 900100410650,
+        "image_id": 410650
+      },
+      {
+        "annotation_id": 900100148508,
+        "image_id": 148508
+      },
+      {
+        "annotation_id": 900100558114,
+        "image_id": 558114
+      },
+      {
+        "annotation_id": 901600374052,
+        "image_id": 374052
+      },
+      {
+        "annotation_id": 908400340175,
+        "image_id": 340175
+      },
+      {
+        "annotation_id": 905200090891,
+        "image_id": 90891
+      },
+      {
+        "annotation_id": 908400520531,
+        "image_id": 520531
+      },
+      {
+        "annotation_id": 900100509014,
+        "image_id": 509014
+      },
+      {
+        "annotation_id": 900300350023,
+        "image_id": 350023
+      },
+      {
+        "annotation_id": 900100402615,
+        "image_id": 402615
+      },
+      {
+        "annotation_id": 908400233825,
+        "image_id": 233825
+      },
+      {
+        "annotation_id": 900100427256,
+        "image_id": 427256
+      },
+      {
+        "annotation_id": 900100361730,
+        "image_id": 361730
+      },
+      {
+        "annotation_id": 900100304404,
+        "image_id": 304404
+      },
+      {
+        "annotation_id": 900100181542,
+        "image_id": 181542
+      },
+      {
+        "annotation_id": 906200183391,
+        "image_id": 183391
+      },
+      {
+        "annotation_id": 906200244833,
+        "image_id": 244833
+      },
+      {
+        "annotation_id": 900100107851,
+        "image_id": 107851
+      },
+      {
+        "annotation_id": 900100189775,
+        "image_id": 189775
+      },
+      {
+        "annotation_id": 904400195165,
+        "image_id": 195165
+      },
+      {
+        "annotation_id": 900100222559,
+        "image_id": 222559
+      },
+      {
+        "annotation_id": 900100279927,
+        "image_id": 279927
+      },
+      {
+        "annotation_id": 901900439180,
+        "image_id": 439180
+      },
+      {
+        "annotation_id": 900100097988,
+        "image_id": 97988
+      },
+      {
+        "annotation_id": 900100542127,
+        "image_id": 542127
+      },
+      {
+        "annotation_id": 903800405279,
+        "image_id": 405279
+      },
+      {
+        "annotation_id": 900100361919,
+        "image_id": 361919
+      },
+      {
+        "annotation_id": 905700157390,
+        "image_id": 157390
+      },
+      {
+        "annotation_id": 904400146155,
+        "image_id": 146155
+      },
+      {
+        "annotation_id": 900100148999,
+        "image_id": 148999
+      },
+      {
+        "annotation_id": 908400553664,
+        "image_id": 553664
+      },
+      {
+        "annotation_id": 900100214539,
+        "image_id": 214539
+      },
+      {
+        "annotation_id": 900100017959,
+        "image_id": 17959
+      },
+      {
+        "annotation_id": 900400254814,
+        "image_id": 254814
+      },
+      {
+        "annotation_id": 900100476770,
+        "image_id": 476770
+      },
+      {
+        "annotation_id": 906400398652,
+        "image_id": 398652
+      },
+      {
+        "annotation_id": 904700481386,
+        "image_id": 481386
+      },
+      {
+        "annotation_id": 900100329323,
+        "image_id": 329323
+      },
+      {
+        "annotation_id": 900100059044,
+        "image_id": 59044
+      },
+      {
+        "annotation_id": 900100296649,
+        "image_id": 296649
+      },
+      {
+        "annotation_id": 906000535523,
+        "image_id": 535523
+      },
+      {
+        "annotation_id": 900100272148,
+        "image_id": 272148
+      },
+      {
+        "annotation_id": 900100378673,
+        "image_id": 378673
+      },
+      {
+        "annotation_id": 900100370486,
+        "image_id": 370486
+      },
+      {
+        "annotation_id": 900300460147,
+        "image_id": 460147
+      },
+      {
+        "annotation_id": 902000103548,
+        "image_id": 103548
+      },
+      {
+        "annotation_id": 900100411530,
+        "image_id": 411530
+      },
+      {
+        "annotation_id": 908400128148,
+        "image_id": 128148
+      },
+      {
+        "annotation_id": 900100288685,
+        "image_id": 288685
+      },
+      {
+        "annotation_id": 902400129054,
+        "image_id": 129054
+      },
+      {
+        "annotation_id": 906000405195,
+        "image_id": 405195
+      },
+      {
+        "annotation_id": 900100018380,
+        "image_id": 18380
+      },
+      {
+        "annotation_id": 900100108503,
+        "image_id": 108503
+      },
+      {
+        "annotation_id": 900100427997,
+        "image_id": 427997
+      },
+      {
+        "annotation_id": 906200416991,
+        "image_id": 416991
+      },
+      {
+        "annotation_id": 900100084031,
+        "image_id": 84031
+      },
+      {
+        "annotation_id": 900100026690,
+        "image_id": 26690
+      },
+      {
+        "annotation_id": 900100231508,
+        "image_id": 231508
+      },
+      {
+        "annotation_id": 902800191845,
+        "image_id": 191845
+      },
+      {
+        "annotation_id": 905100381587,
+        "image_id": 381587
+      },
+      {
+        "annotation_id": 900100133244,
+        "image_id": 133244
+      },
+      {
+        "annotation_id": 902000140583,
+        "image_id": 140583
+      },
+      {
+        "annotation_id": 902100152740,
+        "image_id": 152740
+      },
+      {
+        "annotation_id": 900100256192,
+        "image_id": 256192
+      },
+      {
+        "annotation_id": 905800083531,
+        "image_id": 83531
+      },
+      {
+        "annotation_id": 906200289741,
+        "image_id": 289741
+      },
+      {
+        "annotation_id": 900100190676,
+        "image_id": 190676
+      },
+      {
+        "annotation_id": 906200019432,
+        "image_id": 19432
+      },
+      {
+        "annotation_id": 908400494913,
+        "image_id": 494913
+      },
+      {
+        "annotation_id": 900100059635,
+        "image_id": 59635
+      },
+      {
+        "annotation_id": 900100559348,
+        "image_id": 559348
+      },
+      {
+        "annotation_id": 900100002299,
+        "image_id": 2299
+      },
+      {
+        "annotation_id": 900100338219,
+        "image_id": 338219
+      },
+      {
+        "annotation_id": 900100084270,
+        "image_id": 84270
+      },
+      {
+        "annotation_id": 902200414795,
+        "image_id": 414795
+      },
+      {
+        "annotation_id": 900100493905,
+        "image_id": 493905
+      },
+      {
+        "annotation_id": 901600031322,
+        "image_id": 31322
+      },
+      {
+        "annotation_id": 900100141671,
+        "image_id": 141671
+      },
+      {
+        "annotation_id": 905700397681,
+        "image_id": 397681
+      },
+      {
+        "annotation_id": 900100100723,
+        "image_id": 100723
+      },
+      {
+        "annotation_id": 900100338304,
+        "image_id": 338304
+      },
+      {
+        "annotation_id": 901600490125,
+        "image_id": 490125
+      },
+      {
+        "annotation_id": 900300255917,
+        "image_id": 255917
+      },
+      {
+        "annotation_id": 902100087470,
+        "image_id": 87470
+      },
+      {
+        "annotation_id": 904600171190,
+        "image_id": 171190
+      },
+      {
+        "annotation_id": 900900442822,
+        "image_id": 442822
+      },
+      {
+        "annotation_id": 900100190923,
+        "image_id": 190923
+      },
+      {
+        "annotation_id": 908400014038,
+        "image_id": 14038
+      },
+      {
+        "annotation_id": 903800361730,
+        "image_id": 361730
+      },
+      {
+        "annotation_id": 901500261097,
+        "image_id": 261097
+      },
+      {
+        "annotation_id": 905100286908,
+        "image_id": 286908
+      },
+      {
+        "annotation_id": 902800388846,
+        "image_id": 388846
+      },
+      {
+        "annotation_id": 900400165681,
+        "image_id": 165681
+      },
+      {
+        "annotation_id": 908400037740,
+        "image_id": 37740
+      },
+      {
+        "annotation_id": 906100435081,
+        "image_id": 435081
+      },
+      {
+        "annotation_id": 900100199236,
+        "image_id": 199236
+      },
+      {
+        "annotation_id": 900100039484,
+        "image_id": 39484
+      },
+      {
+        "annotation_id": 906700036494,
+        "image_id": 36494
+      },
+      {
+        "annotation_id": 903800570688,
+        "image_id": 570688
+      },
+      {
+        "annotation_id": 900100125572,
+        "image_id": 125572
+      },
+      {
+        "annotation_id": 900100182923,
+        "image_id": 182923
+      },
+      {
+        "annotation_id": 900100363188,
+        "image_id": 363188
+      },
+      {
+        "annotation_id": 906200282037,
+        "image_id": 282037
+      },
+      {
+        "annotation_id": 900100486104,
+        "image_id": 486104
+      },
+      {
+        "annotation_id": 900100559842,
+        "image_id": 559842
+      },
+      {
+        "annotation_id": 900100117492,
+        "image_id": 117492
+      },
+      {
+        "annotation_id": 903800140840,
+        "image_id": 140840
+      },
+      {
+        "annotation_id": 900600210273,
+        "image_id": 210273
+      },
+      {
+        "annotation_id": 900100133969,
+        "image_id": 133969
+      },
+      {
+        "annotation_id": 900100158548,
+        "image_id": 158548
+      },
+      {
+        "annotation_id": 900100166747,
+        "image_id": 166747
+      },
+      {
+        "annotation_id": 900100551820,
+        "image_id": 551820
+      },
+      {
+        "annotation_id": 906200036494,
+        "image_id": 36494
+      },
+      {
+        "annotation_id": 900100142238,
+        "image_id": 142238
+      },
+      {
+        "annotation_id": 905700165831,
+        "image_id": 165831
+      },
+      {
+        "annotation_id": 900100094157,
+        "image_id": 94157
+      },
+      {
+        "annotation_id": 908400104666,
+        "image_id": 104666
+      },
+      {
+        "annotation_id": 908600370042,
+        "image_id": 370042
+      },
+      {
+        "annotation_id": 900100207844,
+        "image_id": 207844
+      },
+      {
+        "annotation_id": 900100142324,
+        "image_id": 142324
+      },
+      {
+        "annotation_id": 904400229659,
+        "image_id": 229659
+      },
+      {
+        "annotation_id": 903700205105,
+        "image_id": 205105
+      },
+      {
+        "annotation_id": 905200571718,
+        "image_id": 571718
+      },
+      {
+        "annotation_id": 900100060507,
+        "image_id": 60507
+      },
+      {
+        "annotation_id": 900100183391,
+        "image_id": 183391
+      },
+      {
+        "annotation_id": 900100568439,
+        "image_id": 568439
+      },
+      {
+        "annotation_id": 906000254016,
+        "image_id": 254016
+      },
+      {
+        "annotation_id": 900100134322,
+        "image_id": 134322
+      },
+      {
+        "annotation_id": 900100126137,
+        "image_id": 126137
+      },
+      {
+        "annotation_id": 900100421060,
+        "image_id": 421060
+      },
+      {
+        "annotation_id": 905700308430,
+        "image_id": 308430
+      },
+      {
+        "annotation_id": 900100412894,
+        "image_id": 412894
+      },
+      {
+        "annotation_id": 908400571893,
+        "image_id": 571893
+      },
+      {
+        "annotation_id": 902100415990,
+        "image_id": 415990
+      },
+      {
+        "annotation_id": 906200397303,
+        "image_id": 397303
+      },
+      {
+        "annotation_id": 906100226903,
+        "image_id": 226903
+      },
+      {
+        "annotation_id": 900300228436,
+        "image_id": 228436
+      },
+      {
+        "annotation_id": 904400213547,
+        "image_id": 213547
+      },
+      {
+        "annotation_id": 900100076468,
+        "image_id": 76468
+      },
+      {
+        "annotation_id": 900900222559,
+        "image_id": 222559
+      },
+      {
+        "annotation_id": 900100191845,
+        "image_id": 191845
+      },
+      {
+        "annotation_id": 900100531135,
+        "image_id": 531135
+      },
+      {
+        "annotation_id": 900400019109,
+        "image_id": 19109
+      },
+      {
+        "annotation_id": 900100282037,
+        "image_id": 282037
+      },
+      {
+        "annotation_id": 908400416451,
+        "image_id": 416451
+      },
+      {
+        "annotation_id": 900100290248,
+        "image_id": 290248
+      },
+      {
+        "annotation_id": 900100356387,
+        "image_id": 356387
+      },
+      {
+        "annotation_id": 900100060886,
+        "image_id": 60886
+      },
+      {
+        "annotation_id": 900100208363,
+        "image_id": 208363
+      },
+      {
+        "annotation_id": 900100331280,
+        "image_id": 331280
+      },
+      {
+        "annotation_id": 908400400161,
+        "image_id": 400161
+      },
+      {
+        "annotation_id": 904400025394,
+        "image_id": 25394
+      },
+      {
+        "annotation_id": 900300121242,
+        "image_id": 121242
+      },
+      {
+        "annotation_id": 903900057232,
+        "image_id": 57232
+      },
+      {
+        "annotation_id": 905500366711,
+        "image_id": 366711
+      },
+      {
+        "annotation_id": 906200208363,
+        "image_id": 208363
+      },
+      {
+        "annotation_id": 905700530052,
+        "image_id": 530052
+      },
+      {
+        "annotation_id": 900100478862,
+        "image_id": 478862
+      },
+      {
+        "annotation_id": 900100077460,
+        "image_id": 77460
+      },
+      {
+        "annotation_id": 905200293794,
+        "image_id": 293794
+      },
+      {
+        "annotation_id": 902200245915,
+        "image_id": 245915
+      },
+      {
+        "annotation_id": 908400474021,
+        "image_id": 474021
+      },
+      {
+        "annotation_id": 900100085682,
+        "image_id": 85682
+      },
+      {
+        "annotation_id": 900100282298,
+        "image_id": 282298
+      },
+      {
+        "annotation_id": 900300052412,
+        "image_id": 52412
+      },
+      {
+        "annotation_id": 908400302030,
+        "image_id": 302030
+      },
+      {
+        "annotation_id": 900100143068,
+        "image_id": 143068
+      },
+      {
+        "annotation_id": 906000349152,
+        "image_id": 349152
+      },
+      {
+        "annotation_id": 900100388846,
+        "image_id": 388846
+      },
+      {
+        "annotation_id": 901600147498,
+        "image_id": 147498
+      },
+      {
+        "annotation_id": 901600434247,
+        "image_id": 434247
+      },
+      {
+        "annotation_id": 900300175438,
+        "image_id": 175438
+      },
+      {
+        "annotation_id": 900100012120,
+        "image_id": 12120
+      },
+      {
+        "annotation_id": 900100470924,
+        "image_id": 470924
+      },
+      {
+        "annotation_id": 906000345469,
+        "image_id": 345469
+      },
+      {
+        "annotation_id": 900100397303,
+        "image_id": 397303
+      },
+      {
+        "annotation_id": 900100430073,
+        "image_id": 430073
+      },
+      {
+        "annotation_id": 900100184324,
+        "image_id": 184324
+      },
+      {
+        "annotation_id": 904200272148,
+        "image_id": 272148
+      },
+      {
+        "annotation_id": 905300479596,
+        "image_id": 479596
+      },
+      {
+        "annotation_id": 905600579900,
+        "image_id": 579900
+      },
+      {
+        "annotation_id": 900900133233,
+        "image_id": 133233
+      },
+      {
+        "annotation_id": 904700483999,
+        "image_id": 483999
+      },
+      {
+        "annotation_id": 906200239857,
+        "image_id": 239857
+      },
+      {
+        "annotation_id": 903200250282,
+        "image_id": 250282
+      },
+      {
+        "annotation_id": 900100504000,
+        "image_id": 504000
+      },
+      {
+        "annotation_id": 900100217285,
+        "image_id": 217285
+      },
+      {
+        "annotation_id": 906200462904,
+        "image_id": 462904
+      },
+      {
+        "annotation_id": 900100143572,
+        "image_id": 143572
+      },
+      {
+        "annotation_id": 906100300276,
+        "image_id": 300276
+      },
+      {
+        "annotation_id": 908400384527,
+        "image_id": 384527
+      },
+      {
+        "annotation_id": 900100184611,
+        "image_id": 184611
+      },
+      {
+        "annotation_id": 900100209222,
+        "image_id": 209222
+      },
+      {
+        "annotation_id": 900100259597,
+        "image_id": 259597
+      },
+      {
+        "annotation_id": 900100364884,
+        "image_id": 364884
+      },
+      {
+        "annotation_id": 900100012670,
+        "image_id": 12670
+      },
+      {
+        "annotation_id": 905600465585,
+        "image_id": 465585
+      },
+      {
+        "annotation_id": 900100520659,
+        "image_id": 520659
+      },
+      {
+        "annotation_id": 902100332318,
+        "image_id": 332318
+      },
+      {
+        "annotation_id": 900100520707,
+        "image_id": 520707
+      },
+      {
+        "annotation_id": 900900082821,
+        "image_id": 82821
+      },
+      {
+        "annotation_id": 900100299553,
+        "image_id": 299553
+      },
+      {
+        "annotation_id": 908600097585,
+        "image_id": 97585
+      },
+      {
+        "annotation_id": 900100332351,
+        "image_id": 332351
+      },
+      {
+        "annotation_id": 900100143961,
+        "image_id": 143961
+      },
+      {
+        "annotation_id": 906200054628,
+        "image_id": 54628
+      },
+      {
+        "annotation_id": 904900156278,
+        "image_id": 156278
+      },
+      {
+        "annotation_id": 902000360325,
+        "image_id": 360325
+      },
+      {
+        "annotation_id": 900100373382,
+        "image_id": 373382
+      },
+      {
+        "annotation_id": 900100266892,
+        "image_id": 266892
+      },
+      {
+        "annotation_id": 900100193181,
+        "image_id": 193181
+      },
+      {
+        "annotation_id": 900100463522,
+        "image_id": 463522
+      },
+      {
+        "annotation_id": 900100438955,
+        "image_id": 438955
+      },
+      {
+        "annotation_id": 900100463542,
+        "image_id": 463542
+      },
+      {
+        "annotation_id": 900100201418,
+        "image_id": 201418
+      },
+      {
+        "annotation_id": 900100193245,
+        "image_id": 193245
+      },
+      {
+        "annotation_id": 900100078565,
+        "image_id": 78565
+      },
+      {
+        "annotation_id": 901000166391,
+        "image_id": 166391
+      },
+      {
+        "annotation_id": 900100561958,
+        "image_id": 561958
+      },
+      {
+        "annotation_id": 900100037689,
+        "image_id": 37689
+      },
+      {
+        "annotation_id": 900100463730,
+        "image_id": 463730
+      },
+      {
+        "annotation_id": 900100005001,
+        "image_id": 5001
+      },
+      {
+        "annotation_id": 900100439180,
+        "image_id": 439180
+      },
+      {
+        "annotation_id": 903800077460,
+        "image_id": 77460
+      },
+      {
+        "annotation_id": 905200581781,
+        "image_id": 581781
+      },
+      {
+        "annotation_id": 900100078748,
+        "image_id": 78748
+      },
+      {
+        "annotation_id": 908800474293,
+        "image_id": 474293
+      },
+      {
+        "annotation_id": 900100095862,
+        "image_id": 95862
+      },
+      {
+        "annotation_id": 900100455624,
+        "image_id": 455624
+      },
+      {
+        "annotation_id": 900100414673,
+        "image_id": 414673
+      },
+      {
+        "annotation_id": 900100087038,
+        "image_id": 87038
+      },
+      {
+        "annotation_id": 900100521259,
+        "image_id": 521259
+      },
+      {
+        "annotation_id": 900100406611,
+        "image_id": 406611
+      },
+      {
+        "annotation_id": 901600558421,
+        "image_id": 558421
+      },
+      {
+        "annotation_id": 900300373353,
+        "image_id": 373353
+      },
+      {
+        "annotation_id": 900900463849,
+        "image_id": 463849
+      },
+      {
+        "annotation_id": 900100283785,
+        "image_id": 283785
+      },
+      {
+        "annotation_id": 900100169169,
+        "image_id": 169169
+      },
+      {
+        "annotation_id": 904400340697,
+        "image_id": 340697
+      },
+      {
+        "annotation_id": 906200065288,
+        "image_id": 65288
+      },
+      {
+        "annotation_id": 908600434230,
+        "image_id": 434230
+      },
+      {
+        "annotation_id": 900100012639,
+        "image_id": 12639
+      },
+      {
+        "annotation_id": 900100570688,
+        "image_id": 570688
+      },
+      {
+        "annotation_id": 901600049761,
+        "image_id": 49761
+      },
+      {
+        "annotation_id": 900800573943,
+        "image_id": 573943
+      },
+      {
+        "annotation_id": 906100260470,
+        "image_id": 260470
+      },
+      {
+        "annotation_id": 908400000632,
+        "image_id": 632
+      },
+      {
+        "annotation_id": 900100570756,
+        "image_id": 570756
+      },
+      {
+        "annotation_id": 900100390555,
+        "image_id": 390555
+      },
+      {
+        "annotation_id": 900100325031,
+        "image_id": 325031
+      },
+      {
+        "annotation_id": 905300303566,
+        "image_id": 303566
+      },
+      {
+        "annotation_id": 900100005586,
+        "image_id": 5586
+      },
+      {
+        "annotation_id": 900100210394,
+        "image_id": 210394
+      },
+      {
+        "annotation_id": 900100226802,
+        "image_id": 226802
+      },
+      {
+        "annotation_id": 900100259571,
+        "image_id": 259571
+      },
+      {
+        "annotation_id": 900100136715,
+        "image_id": 136715
+      },
+      {
+        "annotation_id": 902000230166,
+        "image_id": 230166
+      },
+      {
+        "annotation_id": 900100259690,
+        "image_id": 259690
+      },
+      {
+        "annotation_id": 900100145020,
+        "image_id": 145020
+      },
+      {
+        "annotation_id": 900100562818,
+        "image_id": 562818
+      },
+      {
+        "annotation_id": 900600015517,
+        "image_id": 15517
+      },
+      {
+        "annotation_id": 900100439994,
+        "image_id": 439994
+      },
+      {
+        "annotation_id": 904400117719,
+        "image_id": 117719
+      },
+      {
+        "annotation_id": 905200050149,
+        "image_id": 50149
+      },
+      {
+        "annotation_id": 900100250282,
+        "image_id": 250282
+      }
+    ]
+  }
+}

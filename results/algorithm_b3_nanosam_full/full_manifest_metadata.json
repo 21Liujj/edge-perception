@@ -1,0 +1,8 @@
+{
+  "path": "data/eval_manifests/nanosam_coco_full_instances.json",
+  "sha256": "ad8843c78b3ea4c94c368bfbeb7ae26138c761a8adcabb277a4a63600c00a764",
+  "size_bytes": 3413777,
+  "instances": 36335,
+  "unique_images": 4952,
+  "frozen_for_future_comparisons": true
+}

@@ -1,0 +1,30 @@
+{
+  "standard": {
+    "mIoU": 0.718127976997991,
+    "median_iou": 0.78387469290901,
+    "iou_ge_0_50_ratio": 0.846,
+    "iou_ge_0_75_ratio": 0.59,
+    "small_mIoU": 0.6053200768868633,
+    "medium_mIoU": 0.7626592084204067,
+    "large_mIoU": 0.795795889597528
+  },
+  "full": {
+    "mIoU": 0.7032011354593914,
+    "median_iou": 0.7516989022477784,
+    "iou_ge_0_50_ratio": 0.8421356818494564,
+    "iou_ge_0_75_ratio": 0.503453970001376,
+    "small_mIoU": 0.6210482480833809,
+    "medium_mIoU": 0.7446609410051154,
+    "large_mIoU": 0.7884888140611679
+  },
+  "full_minus_standard": {
+    "mIoU": -0.014926841538599578,
+    "median_iou": -0.03217579066123166,
+    "iou_ge_0_50_ratio": -0.0038643181505435553,
+    "iou_ge_0_75_ratio": -0.08654602999862393,
+    "small_mIoU": 0.015728171196517593,
+    "medium_mIoU": -0.017998267415291314,
+    "large_mIoU": -0.007307075536360119
+  },
+  "representativeness": "described by absolute deltas; no universal representativeness claim from one subset"
+}

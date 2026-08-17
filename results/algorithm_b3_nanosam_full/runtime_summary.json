@@ -1,0 +1,25 @@
+{
+  "scope": "algorithm quality evaluation, not deployment FPS",
+  "wall_time_seconds": 1966.7749725140002,
+  "legal_instances": 36335,
+  "unique_images": 4952,
+  "encoder_calls": 4952,
+  "decoder_calls": 36335,
+  "embedding_reuse_instances": 31383,
+  "encoder_aggregate_seconds": 327.2762538190491,
+  "decoder_aggregate_seconds": 826.7107188537993,
+  "mask_metric_aggregate_seconds": 701.8599737538934,
+  "images_per_second": 2.517827442999329,
+  "instances_per_second": 18.474406329034856,
+  "valid_count": 36335,
+  "failed_count": 0,
+  "peak_rss_bytes": 1084317696,
+  "torch_cuda_peak_allocated_bytes": 38047744,
+  "torch_cuda_peak_reserved_bytes": 65011712,
+  "minimum_system_mem_available_bytes": 4605550592,
+  "csv": {
+    "path": "results/algorithm_b3_nanosam_full/per_instance_primary.csv",
+    "size_bytes": 12467973,
+    "sha256": "ef7ef97e2615c6e9372ab2b9763b3b5b4f3f343fbc0c2ebc796ec0d2d096e77c"
+  }
+}

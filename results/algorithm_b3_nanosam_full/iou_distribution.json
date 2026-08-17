@@ -1,0 +1,55 @@
+{
+  "metric": "fixed slot0 GT mask IoU",
+  "bins": [
+    {
+      "lower": 0.0,
+      "upper": 0.1,
+      "count": 231
+    },
+    {
+      "lower": 0.1,
+      "upper": 0.2,
+      "count": 483
+    },
+    {
+      "lower": 0.2,
+      "upper": 0.3,
+      "count": 956
+    },
+    {
+      "lower": 0.3,
+      "upper": 0.4,
+      "count": 1628
+    },
+    {
+      "lower": 0.4,
+      "upper": 0.5,
+      "count": 2438
+    },
+    {
+      "lower": 0.5,
+      "upper": 0.6,
+      "count": 3587
+    },
+    {
+      "lower": 0.6,
+      "upper": 0.7,
+      "count": 5297
+    },
+    {
+      "lower": 0.7,
+      "upper": 0.8,
+      "count": 7427
+    },
+    {
+      "lower": 0.8,
+      "upper": 0.9,
+      "count": 9707
+    },
+    {
+      "lower": 0.9,
+      "upper": 1.0,
+      "count": 4581
+    }
+  ]
+}

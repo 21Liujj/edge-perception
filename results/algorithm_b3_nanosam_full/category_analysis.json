@@ -1,0 +1,1509 @@
+{
+  "all_categories": [
+    {
+      "category_id": 1,
+      "category_name": "person",
+      "count": 10777,
+      "slot0_mIoU": 0.7053955068652435,
+      "median_iou": 0.7403203688034313,
+      "iou_ge_0_5": 0.8693513964925303,
+      "iou_ge_0_75": 0.4802820822121184,
+      "oracle_mIoU": 0.7299059419703946,
+      "size_counts": {
+        "medium": 3723,
+        "small": 4308,
+        "large": 2746
+      }
+    },
+    {
+      "category_id": 2,
+      "category_name": "bicycle",
+      "count": 314,
+      "slot0_mIoU": 0.5935468467748677,
+      "median_iou": 0.6238927338343045,
+      "iou_ge_0_5": 0.7261146496815286,
+      "iou_ge_0_75": 0.2070063694267516,
+      "oracle_mIoU": 0.6244575754670715,
+      "size_counts": {
+        "medium": 123,
+        "large": 50,
+        "small": 141
+      }
+    },
+    {
+      "category_id": 3,
+      "category_name": "car",
+      "count": 1918,
+      "slot0_mIoU": 0.7123052310744469,
+      "median_iou": 0.7499462550520251,
+      "iou_ge_0_5": 0.8915537017726799,
+      "iou_ge_0_75": 0.5,
+      "oracle_mIoU": 0.7334865945845138,
+      "size_counts": {
+        "small": 1193,
+        "large": 178,
+        "medium": 547
+      }
+    },
+    {
+      "category_id": 4,
+      "category_name": "motorcycle",
+      "count": 367,
+      "slot0_mIoU": 0.6540493876557006,
+      "median_iou": 0.690984170681349,
+      "iou_ge_0_5": 0.8010899182561307,
+      "iou_ge_0_75": 0.36239782016348776,
+      "oracle_mIoU": 0.6829992728845569,
+      "size_counts": {
+        "large": 138,
+        "medium": 138,
+        "small": 91
+      }
+    },
+    {
+      "category_id": 5,
+      "category_name": "airplane",
+      "count": 143,
+      "slot0_mIoU": 0.725377004438182,
+      "median_iou": 0.7969011938023876,
+      "iou_ge_0_5": 0.8531468531468531,
+      "iou_ge_0_75": 0.5804195804195804,
+      "oracle_mIoU": 0.7508697733368758,
+      "size_counts": {
+        "small": 30,
+        "medium": 43,
+        "large": 70
+      }
+    },
+    {
+      "category_id": 6,
+      "category_name": "bus",
+      "count": 283,
+      "slot0_mIoU": 0.8348670547568157,
+      "median_iou": 0.865359477124183,
+      "iou_ge_0_5": 0.9717314487632509,
+      "iou_ge_0_75": 0.823321554770318,
+      "oracle_mIoU": 0.8592506328984253,
+      "size_counts": {
+        "large": 165,
+        "medium": 82,
+        "small": 36
+      }
+    },
+    {
+      "category_id": 7,
+      "category_name": "train",
+      "count": 190,
+      "slot0_mIoU": 0.8131928103375023,
+      "median_iou": 0.8597298290578905,
+      "iou_ge_0_5": 0.9578947368421052,
+      "iou_ge_0_75": 0.7736842105263158,
+      "oracle_mIoU": 0.8379837152093077,
+      "size_counts": {
+        "large": 168,
+        "medium": 18,
+        "small": 4
+      }
+    },
+    {
+      "category_id": 8,
+      "category_name": "truck",
+      "count": 414,
+      "slot0_mIoU": 0.7759367878970254,
+      "median_iou": 0.8063007837994814,
+      "iou_ge_0_5": 0.9468599033816425,
+      "iou_ge_0_75": 0.6835748792270532,
+      "oracle_mIoU": 0.801641026132107,
+      "size_counts": {
+        "small": 117,
+        "medium": 164,
+        "large": 133
+      }
+    },
+    {
+      "category_id": 9,
+      "category_name": "boat",
+      "count": 424,
+      "slot0_mIoU": 0.667378796386667,
+      "median_iou": 0.6944799298734791,
+      "iou_ge_0_5": 0.8443396226415094,
+      "iou_ge_0_75": 0.38443396226415094,
+      "oracle_mIoU": 0.701385754646857,
+      "size_counts": {
+        "medium": 135,
+        "small": 223,
+        "large": 66
+      }
+    },
+    {
+      "category_id": 10,
+      "category_name": "traffic light",
+      "count": 634,
+      "slot0_mIoU": 0.7125004767166018,
+      "median_iou": 0.7378727928744488,
+      "iou_ge_0_5": 0.916403785488959,
+      "iou_ge_0_75": 0.47003154574132494,
+      "oracle_mIoU": 0.7344536661861643,
+      "size_counts": {
+        "small": 516,
+        "medium": 99,
+        "large": 19
+      }
+    },
+    {
+      "category_id": 11,
+      "category_name": "fire hydrant",
+      "count": 101,
+      "slot0_mIoU": 0.8167958349069407,
+      "median_iou": 0.8686301514990995,
+      "iou_ge_0_5": 0.9306930693069307,
+      "iou_ge_0_75": 0.7722772277227723,
+      "oracle_mIoU": 0.837367882796664,
+      "size_counts": {
+        "medium": 30,
+        "small": 27,
+        "large": 44
+      }
+    },
+    {
+      "category_id": 13,
+      "category_name": "stop sign",
+      "count": 75,
+      "slot0_mIoU": 0.8457457756954163,
+      "median_iou": 0.906871609403255,
+      "iou_ge_0_5": 0.9733333333333334,
+      "iou_ge_0_75": 0.76,
+      "oracle_mIoU": 0.8562620399376647,
+      "size_counts": {
+        "large": 27,
+        "small": 27,
+        "medium": 21
+      }
+    },
+    {
+      "category_id": 14,
+      "category_name": "parking meter",
+      "count": 60,
+      "slot0_mIoU": 0.853350658081845,
+      "median_iou": 0.8821781258236487,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.85,
+      "oracle_mIoU": 0.8670342401769692,
+      "size_counts": {
+        "medium": 21,
+        "small": 16,
+        "large": 23
+      }
+    },
+    {
+      "category_id": 15,
+      "category_name": "bench",
+      "count": 411,
+      "slot0_mIoU": 0.6199640216798964,
+      "median_iou": 0.6663743971942131,
+      "iou_ge_0_5": 0.7201946472019465,
+      "iou_ge_0_75": 0.3284671532846715,
+      "oracle_mIoU": 0.6584700237440808,
+      "size_counts": {
+        "small": 162,
+        "medium": 132,
+        "large": 117
+      }
+    },
+    {
+      "category_id": 16,
+      "category_name": "bird",
+      "count": 427,
+      "slot0_mIoU": 0.6085154413846358,
+      "median_iou": 0.6521739130434783,
+      "iou_ge_0_5": 0.6814988290398126,
+      "iou_ge_0_75": 0.3255269320843091,
+      "oracle_mIoU": 0.6301834261554898,
+      "size_counts": {
+        "medium": 85,
+        "small": 294,
+        "large": 48
+      }
+    },
+    {
+      "category_id": 17,
+      "category_name": "cat",
+      "count": 202,
+      "slot0_mIoU": 0.832167233677767,
+      "median_iou": 0.8902474313945554,
+      "iou_ge_0_5": 0.9702970297029703,
+      "iou_ge_0_75": 0.801980198019802,
+      "oracle_mIoU": 0.8479523112892285,
+      "size_counts": {
+        "large": 161,
+        "medium": 37,
+        "small": 4
+      }
+    },
+    {
+      "category_id": 18,
+      "category_name": "dog",
+      "count": 218,
+      "slot0_mIoU": 0.8199144339796576,
+      "median_iou": 0.8680992096385594,
+      "iou_ge_0_5": 0.9541284403669725,
+      "iou_ge_0_75": 0.8073394495412844,
+      "oracle_mIoU": 0.8371324930294556,
+      "size_counts": {
+        "medium": 62,
+        "large": 137,
+        "small": 19
+      }
+    },
+    {
+      "category_id": 19,
+      "category_name": "horse",
+      "count": 272,
+      "slot0_mIoU": 0.6834656241933507,
+      "median_iou": 0.712770039405298,
+      "iou_ge_0_5": 0.8382352941176471,
+      "iou_ge_0_75": 0.4227941176470588,
+      "oracle_mIoU": 0.7041479974563669,
+      "size_counts": {
+        "medium": 98,
+        "large": 115,
+        "small": 59
+      }
+    },
+    {
+      "category_id": 20,
+      "category_name": "sheep",
+      "count": 354,
+      "slot0_mIoU": 0.7234900834716633,
+      "median_iou": 0.7719024760396562,
+      "iou_ge_0_5": 0.8728813559322034,
+      "iou_ge_0_75": 0.5451977401129944,
+      "oracle_mIoU": 0.7488645640581933,
+      "size_counts": {
+        "large": 87,
+        "medium": 159,
+        "small": 108
+      }
+    },
+    {
+      "category_id": 21,
+      "category_name": "cow",
+      "count": 372,
+      "slot0_mIoU": 0.7267044124249544,
+      "median_iou": 0.7652397617881558,
+      "iou_ge_0_5": 0.8897849462365591,
+      "iou_ge_0_75": 0.543010752688172,
+      "oracle_mIoU": 0.7504099311982713,
+      "size_counts": {
+        "large": 93,
+        "small": 156,
+        "medium": 123
+      }
+    },
+    {
+      "category_id": 22,
+      "category_name": "elephant",
+      "count": 252,
+      "slot0_mIoU": 0.7861750133531293,
+      "median_iou": 0.8392444419908592,
+      "iou_ge_0_5": 0.9325396825396826,
+      "iou_ge_0_75": 0.7222222222222222,
+      "oracle_mIoU": 0.8153205398344546,
+      "size_counts": {
+        "large": 139,
+        "medium": 96,
+        "small": 17
+      }
+    },
+    {
+      "category_id": 23,
+      "category_name": "bear",
+      "count": 71,
+      "slot0_mIoU": 0.8716389417400142,
+      "median_iou": 0.8911444998223251,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.9577464788732394,
+      "oracle_mIoU": 0.8824055579467256,
+      "size_counts": {
+        "large": 53,
+        "medium": 13,
+        "small": 5
+      }
+    },
+    {
+      "category_id": 24,
+      "category_name": "zebra",
+      "count": 266,
+      "slot0_mIoU": 0.7431954107669559,
+      "median_iou": 0.7829367152596389,
+      "iou_ge_0_5": 0.9022556390977443,
+      "iou_ge_0_75": 0.6015037593984962,
+      "oracle_mIoU": 0.7651053738590805,
+      "size_counts": {
+        "large": 123,
+        "medium": 95,
+        "small": 48
+      }
+    },
+    {
+      "category_id": 25,
+      "category_name": "giraffe",
+      "count": 232,
+      "slot0_mIoU": 0.7319958073642745,
+      "median_iou": 0.7907448197095774,
+      "iou_ge_0_5": 0.8836206896551724,
+      "iou_ge_0_75": 0.603448275862069,
+      "oracle_mIoU": 0.7521144233053965,
+      "size_counts": {
+        "large": 109,
+        "medium": 97,
+        "small": 26
+      }
+    },
+    {
+      "category_id": 27,
+      "category_name": "backpack",
+      "count": 371,
+      "slot0_mIoU": 0.6599904636704548,
+      "median_iou": 0.7204301075268817,
+      "iou_ge_0_5": 0.7870619946091644,
+      "iou_ge_0_75": 0.42857142857142855,
+      "oracle_mIoU": 0.6978738697302503,
+      "size_counts": {
+        "small": 212,
+        "medium": 135,
+        "large": 24
+      }
+    },
+    {
+      "category_id": 28,
+      "category_name": "umbrella",
+      "count": 407,
+      "slot0_mIoU": 0.7501874970122989,
+      "median_iou": 0.8156209987195903,
+      "iou_ge_0_5": 0.9066339066339066,
+      "iou_ge_0_75": 0.601965601965602,
+      "oracle_mIoU": 0.7735278207262288,
+      "size_counts": {
+        "large": 104,
+        "medium": 169,
+        "small": 134
+      }
+    },
+    {
+      "category_id": 31,
+      "category_name": "handbag",
+      "count": 540,
+      "slot0_mIoU": 0.6361704337344465,
+      "median_iou": 0.689408866995074,
+      "iou_ge_0_5": 0.7592592592592593,
+      "iou_ge_0_75": 0.40925925925925927,
+      "oracle_mIoU": 0.6686473245438526,
+      "size_counts": {
+        "medium": 204,
+        "large": 20,
+        "small": 316
+      }
+    },
+    {
+      "category_id": 32,
+      "category_name": "tie",
+      "count": 252,
+      "slot0_mIoU": 0.5820068399731934,
+      "median_iou": 0.5959563543003851,
+      "iou_ge_0_5": 0.6468253968253969,
+      "iou_ge_0_75": 0.2777777777777778,
+      "oracle_mIoU": 0.6305995204434662,
+      "size_counts": {
+        "small": 154,
+        "medium": 77,
+        "large": 21
+      }
+    },
+    {
+      "category_id": 33,
+      "category_name": "suitcase",
+      "count": 299,
+      "slot0_mIoU": 0.7989410762317253,
+      "median_iou": 0.8430232558139535,
+      "iou_ge_0_5": 0.9632107023411371,
+      "iou_ge_0_75": 0.6989966555183946,
+      "oracle_mIoU": 0.82097496681212,
+      "size_counts": {
+        "large": 80,
+        "medium": 118,
+        "small": 101
+      }
+    },
+    {
+      "category_id": 34,
+      "category_name": "frisbee",
+      "count": 115,
+      "slot0_mIoU": 0.8041844868767816,
+      "median_iou": 0.8448275862068966,
+      "iou_ge_0_5": 0.9391304347826087,
+      "iou_ge_0_75": 0.782608695652174,
+      "oracle_mIoU": 0.8191610861136625,
+      "size_counts": {
+        "large": 8,
+        "medium": 40,
+        "small": 67
+      }
+    },
+    {
+      "category_id": 35,
+      "category_name": "skis",
+      "count": 241,
+      "slot0_mIoU": 0.34545581346853355,
+      "median_iou": 0.3404427645788337,
+      "iou_ge_0_5": 0.16182572614107885,
+      "iou_ge_0_75": 0.016597510373443983,
+      "oracle_mIoU": 0.39302516758942657,
+      "size_counts": {
+        "medium": 59,
+        "small": 178,
+        "large": 4
+      }
+    },
+    {
+      "category_id": 36,
+      "category_name": "snowboard",
+      "count": 69,
+      "slot0_mIoU": 0.5826883982863288,
+      "median_iou": 0.5917695473251029,
+      "iou_ge_0_5": 0.6521739130434783,
+      "iou_ge_0_75": 0.2753623188405797,
+      "oracle_mIoU": 0.61653007644066,
+      "size_counts": {
+        "medium": 24,
+        "small": 40,
+        "large": 5
+      }
+    },
+    {
+      "category_id": 37,
+      "category_name": "sports ball",
+      "count": 260,
+      "slot0_mIoU": 0.7104068453920781,
+      "median_iou": 0.7472272453285111,
+      "iou_ge_0_5": 0.8384615384615385,
+      "iou_ge_0_75": 0.49615384615384617,
+      "oracle_mIoU": 0.7282735222498085,
+      "size_counts": {
+        "small": 226,
+        "medium": 27,
+        "large": 7
+      }
+    },
+    {
+      "category_id": 38,
+      "category_name": "kite",
+      "count": 327,
+      "slot0_mIoU": 0.6711252627436745,
+      "median_iou": 0.7074829931972789,
+      "iou_ge_0_5": 0.7737003058103975,
+      "iou_ge_0_75": 0.42507645259938837,
+      "oracle_mIoU": 0.6867046418547132,
+      "size_counts": {
+        "small": 224,
+        "large": 22,
+        "medium": 81
+      }
+    },
+    {
+      "category_id": 39,
+      "category_name": "baseball bat",
+      "count": 145,
+      "slot0_mIoU": 0.6010674484042948,
+      "median_iou": 0.6568627450980392,
+      "iou_ge_0_5": 0.7103448275862069,
+      "iou_ge_0_75": 0.2827586206896552,
+      "oracle_mIoU": 0.6292286420230179,
+      "size_counts": {
+        "small": 82,
+        "medium": 61,
+        "large": 2
+      }
+    },
+    {
+      "category_id": 40,
+      "category_name": "baseball glove",
+      "count": 148,
+      "slot0_mIoU": 0.7609917515002614,
+      "median_iou": 0.8034248198710656,
+      "iou_ge_0_5": 0.9324324324324325,
+      "iou_ge_0_75": 0.6621621621621622,
+      "oracle_mIoU": 0.777584082136571,
+      "size_counts": {
+        "medium": 52,
+        "small": 93,
+        "large": 3
+      }
+    },
+    {
+      "category_id": 41,
+      "category_name": "skateboard",
+      "count": 179,
+      "slot0_mIoU": 0.5822118084995519,
+      "median_iou": 0.5948616600790514,
+      "iou_ge_0_5": 0.6759776536312849,
+      "iou_ge_0_75": 0.22905027932960895,
+      "oracle_mIoU": 0.6232069727766478,
+      "size_counts": {
+        "large": 17,
+        "medium": 84,
+        "small": 78
+      }
+    },
+    {
+      "category_id": 42,
+      "category_name": "surfboard",
+      "count": 267,
+      "slot0_mIoU": 0.6392182116342181,
+      "median_iou": 0.6739130434782609,
+      "iou_ge_0_5": 0.7415730337078652,
+      "iou_ge_0_75": 0.3595505617977528,
+      "oracle_mIoU": 0.6681239579388841,
+      "size_counts": {
+        "medium": 118,
+        "large": 39,
+        "small": 110
+      }
+    },
+    {
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "count": 225,
+      "slot0_mIoU": 0.71081526816934,
+      "median_iou": 0.7763002364066194,
+      "iou_ge_0_5": 0.8533333333333334,
+      "iou_ge_0_75": 0.56,
+      "oracle_mIoU": 0.7395315058380794,
+      "size_counts": {
+        "medium": 125,
+        "small": 81,
+        "large": 19
+      }
+    },
+    {
+      "category_id": 44,
+      "category_name": "bottle",
+      "count": 1013,
+      "slot0_mIoU": 0.7473079069340957,
+      "median_iou": 0.7840290381125227,
+      "iou_ge_0_5": 0.9180651530108588,
+      "iou_ge_0_75": 0.5863770977295163,
+      "oracle_mIoU": 0.7685183623484131,
+      "size_counts": {
+        "small": 625,
+        "medium": 328,
+        "large": 60
+      }
+    },
+    {
+      "category_id": 46,
+      "category_name": "wine glass",
+      "count": 341,
+      "slot0_mIoU": 0.6445278003098791,
+      "median_iou": 0.6607949412827462,
+      "iou_ge_0_5": 0.7741935483870968,
+      "iou_ge_0_75": 0.3489736070381232,
+      "oracle_mIoU": 0.6750180677559985,
+      "size_counts": {
+        "medium": 116,
+        "large": 35,
+        "small": 190
+      }
+    },
+    {
+      "category_id": 47,
+      "category_name": "cup",
+      "count": 895,
+      "slot0_mIoU": 0.7939677443914306,
+      "median_iou": 0.8347360367253251,
+      "iou_ge_0_5": 0.9497206703910615,
+      "iou_ge_0_75": 0.7061452513966481,
+      "oracle_mIoU": 0.8142161543307519,
+      "size_counts": {
+        "medium": 351,
+        "large": 104,
+        "small": 440
+      }
+    },
+    {
+      "category_id": 48,
+      "category_name": "fork",
+      "count": 215,
+      "slot0_mIoU": 0.48302817779079366,
+      "median_iou": 0.46830985915492956,
+      "iou_ge_0_5": 0.4558139534883721,
+      "iou_ge_0_75": 0.10697674418604651,
+      "oracle_mIoU": 0.5283634881771611,
+      "size_counts": {
+        "medium": 91,
+        "small": 102,
+        "large": 22
+      }
+    },
+    {
+      "category_id": 49,
+      "category_name": "knife",
+      "count": 325,
+      "slot0_mIoU": 0.5104966328087446,
+      "median_iou": 0.4843260188087774,
+      "iou_ge_0_5": 0.49230769230769234,
+      "iou_ge_0_75": 0.19076923076923077,
+      "oracle_mIoU": 0.5511922187894199,
+      "size_counts": {
+        "medium": 96,
+        "large": 13,
+        "small": 216
+      }
+    },
+    {
+      "category_id": 50,
+      "category_name": "spoon",
+      "count": 253,
+      "slot0_mIoU": 0.5403930628846403,
+      "median_iou": 0.546583850931677,
+      "iou_ge_0_5": 0.5612648221343873,
+      "iou_ge_0_75": 0.25691699604743085,
+      "oracle_mIoU": 0.5805975401262415,
+      "size_counts": {
+        "medium": 70,
+        "small": 169,
+        "large": 14
+      }
+    },
+    {
+      "category_id": 51,
+      "category_name": "bowl",
+      "count": 623,
+      "slot0_mIoU": 0.7462536219113561,
+      "median_iou": 0.8140149845747026,
+      "iou_ge_0_5": 0.869983948635634,
+      "iou_ge_0_75": 0.6131621187800963,
+      "oracle_mIoU": 0.7778707432630354,
+      "size_counts": {
+        "large": 190,
+        "small": 199,
+        "medium": 234
+      }
+    },
+    {
+      "category_id": 52,
+      "category_name": "banana",
+      "count": 370,
+      "slot0_mIoU": 0.7447277985544025,
+      "median_iou": 0.7872229408157065,
+      "iou_ge_0_5": 0.9108108108108108,
+      "iou_ge_0_75": 0.5945945945945946,
+      "oracle_mIoU": 0.7769163515135528,
+      "size_counts": {
+        "large": 75,
+        "medium": 173,
+        "small": 122
+      }
+    },
+    {
+      "category_id": 53,
+      "category_name": "apple",
+      "count": 236,
+      "slot0_mIoU": 0.7747094909120349,
+      "median_iou": 0.8163882342827089,
+      "iou_ge_0_5": 0.923728813559322,
+      "iou_ge_0_75": 0.690677966101695,
+      "oracle_mIoU": 0.7944106603519945,
+      "size_counts": {
+        "large": 39,
+        "small": 106,
+        "medium": 91
+      }
+    },
+    {
+      "category_id": 54,
+      "category_name": "sandwich",
+      "count": 177,
+      "slot0_mIoU": 0.8286575412638545,
+      "median_iou": 0.8720994987933915,
+      "iou_ge_0_5": 0.9491525423728814,
+      "iou_ge_0_75": 0.8192090395480226,
+      "oracle_mIoU": 0.8485562937283138,
+      "size_counts": {
+        "large": 104,
+        "medium": 48,
+        "small": 25
+      }
+    },
+    {
+      "category_id": 55,
+      "category_name": "orange",
+      "count": 285,
+      "slot0_mIoU": 0.781561103953491,
+      "median_iou": 0.8383458646616542,
+      "iou_ge_0_5": 0.9228070175438596,
+      "iou_ge_0_75": 0.6631578947368421,
+      "oracle_mIoU": 0.8042080070310965,
+      "size_counts": {
+        "large": 65,
+        "small": 104,
+        "medium": 116
+      }
+    },
+    {
+      "category_id": 56,
+      "category_name": "broccoli",
+      "count": 312,
+      "slot0_mIoU": 0.7243278477264323,
+      "median_iou": 0.7570445052214112,
+      "iou_ge_0_5": 0.9134615384615384,
+      "iou_ge_0_75": 0.5128205128205128,
+      "oracle_mIoU": 0.7463099150121605,
+      "size_counts": {
+        "large": 68,
+        "medium": 189,
+        "small": 55
+      }
+    },
+    {
+      "category_id": 57,
+      "category_name": "carrot",
+      "count": 365,
+      "slot0_mIoU": 0.7063057078577075,
+      "median_iou": 0.7480670103092784,
+      "iou_ge_0_5": 0.8410958904109589,
+      "iou_ge_0_75": 0.4931506849315068,
+      "oracle_mIoU": 0.7291115151884223,
+      "size_counts": {
+        "medium": 157,
+        "large": 34,
+        "small": 174
+      }
+    },
+    {
+      "category_id": 58,
+      "category_name": "hot dog",
+      "count": 125,
+      "slot0_mIoU": 0.7072803676817541,
+      "median_iou": 0.7544089687274634,
+      "iou_ge_0_5": 0.864,
+      "iou_ge_0_75": 0.512,
+      "oracle_mIoU": 0.7458546811104885,
+      "size_counts": {
+        "large": 47,
+        "medium": 33,
+        "small": 45
+      }
+    },
+    {
+      "category_id": 59,
+      "category_name": "pizza",
+      "count": 284,
+      "slot0_mIoU": 0.7800000835385335,
+      "median_iou": 0.8350688609920003,
+      "iou_ge_0_5": 0.9190140845070423,
+      "iou_ge_0_75": 0.7007042253521126,
+      "oracle_mIoU": 0.8028415037087873,
+      "size_counts": {
+        "large": 152,
+        "medium": 80,
+        "small": 52
+      }
+    },
+    {
+      "category_id": 60,
+      "category_name": "donut",
+      "count": 328,
+      "slot0_mIoU": 0.8217085975033965,
+      "median_iou": 0.8678656456158157,
+      "iou_ge_0_5": 0.9573170731707317,
+      "iou_ge_0_75": 0.7835365853658537,
+      "oracle_mIoU": 0.8423260030047808,
+      "size_counts": {
+        "large": 69,
+        "medium": 96,
+        "small": 163
+      }
+    },
+    {
+      "category_id": 61,
+      "category_name": "cake",
+      "count": 310,
+      "slot0_mIoU": 0.8048153983440802,
+      "median_iou": 0.827099299871733,
+      "iou_ge_0_5": 0.9741935483870968,
+      "iou_ge_0_75": 0.7419354838709677,
+      "oracle_mIoU": 0.8289887615253553,
+      "size_counts": {
+        "large": 98,
+        "small": 90,
+        "medium": 122
+      }
+    },
+    {
+      "category_id": 62,
+      "category_name": "chair",
+      "count": 1771,
+      "slot0_mIoU": 0.6564133396740343,
+      "median_iou": 0.7002032520325203,
+      "iou_ge_0_5": 0.782608695652174,
+      "iou_ge_0_75": 0.4054206662902315,
+      "oracle_mIoU": 0.6934401691884964,
+      "size_counts": {
+        "medium": 829,
+        "small": 695,
+        "large": 247
+      }
+    },
+    {
+      "category_id": 63,
+      "category_name": "couch",
+      "count": 261,
+      "slot0_mIoU": 0.7373551186641396,
+      "median_iou": 0.794174013031813,
+      "iou_ge_0_5": 0.8735632183908046,
+      "iou_ge_0_75": 0.6053639846743295,
+      "oracle_mIoU": 0.7920554763510795,
+      "size_counts": {
+        "large": 194,
+        "medium": 58,
+        "small": 9
+      }
+    },
+    {
+      "category_id": 64,
+      "category_name": "potted plant",
+      "count": 342,
+      "slot0_mIoU": 0.6894944313435538,
+      "median_iou": 0.7227179881542931,
+      "iou_ge_0_5": 0.8654970760233918,
+      "iou_ge_0_75": 0.42105263157894735,
+      "oracle_mIoU": 0.7180218890233422,
+      "size_counts": {
+        "small": 98,
+        "medium": 189,
+        "large": 55
+      }
+    },
+    {
+      "category_id": 65,
+      "category_name": "bed",
+      "count": 163,
+      "slot0_mIoU": 0.6939363370304201,
+      "median_iou": 0.7283781469429697,
+      "iou_ge_0_5": 0.8098159509202454,
+      "iou_ge_0_75": 0.4785276073619632,
+      "oracle_mIoU": 0.7478342374210384,
+      "size_counts": {
+        "large": 148,
+        "medium": 14,
+        "small": 1
+      }
+    },
+    {
+      "category_id": 67,
+      "category_name": "dining table",
+      "count": 695,
+      "slot0_mIoU": 0.542388778133242,
+      "median_iou": 0.5584158415841585,
+      "iou_ge_0_5": 0.5712230215827339,
+      "iou_ge_0_75": 0.24028776978417266,
+      "oracle_mIoU": 0.6096125436592212,
+      "size_counts": {
+        "medium": 173,
+        "large": 408,
+        "small": 114
+      }
+    },
+    {
+      "category_id": 70,
+      "category_name": "toilet",
+      "count": 179,
+      "slot0_mIoU": 0.7999359454519732,
+      "median_iou": 0.8733251308121848,
+      "iou_ge_0_5": 0.8994413407821229,
+      "iou_ge_0_75": 0.7541899441340782,
+      "oracle_mIoU": 0.8307356448443151,
+      "size_counts": {
+        "large": 125,
+        "medium": 47,
+        "small": 7
+      }
+    },
+    {
+      "category_id": 72,
+      "category_name": "tv",
+      "count": 288,
+      "slot0_mIoU": 0.8284458877733263,
+      "median_iou": 0.8580853793868775,
+      "iou_ge_0_5": 0.96875,
+      "iou_ge_0_75": 0.8194444444444444,
+      "oracle_mIoU": 0.857936483959402,
+      "size_counts": {
+        "large": 143,
+        "medium": 106,
+        "small": 39
+      }
+    },
+    {
+      "category_id": 73,
+      "category_name": "laptop",
+      "count": 231,
+      "slot0_mIoU": 0.782961345759122,
+      "median_iou": 0.8385385975250442,
+      "iou_ge_0_5": 0.935064935064935,
+      "iou_ge_0_75": 0.70995670995671,
+      "oracle_mIoU": 0.8196247890286908,
+      "size_counts": {
+        "large": 131,
+        "medium": 80,
+        "small": 20
+      }
+    },
+    {
+      "category_id": 74,
+      "category_name": "mouse",
+      "count": 106,
+      "slot0_mIoU": 0.7997914387003296,
+      "median_iou": 0.8416375291375291,
+      "iou_ge_0_5": 0.9433962264150944,
+      "iou_ge_0_75": 0.7358490566037735,
+      "oracle_mIoU": 0.8095471974045191,
+      "size_counts": {
+        "small": 53,
+        "medium": 44,
+        "large": 9
+      }
+    },
+    {
+      "category_id": 75,
+      "category_name": "remote",
+      "count": 283,
+      "slot0_mIoU": 0.6571715612178692,
+      "median_iou": 0.6779661016949152,
+      "iou_ge_0_5": 0.7879858657243817,
+      "iou_ge_0_75": 0.37809187279151946,
+      "oracle_mIoU": 0.680497817779007,
+      "size_counts": {
+        "small": 209,
+        "medium": 60,
+        "large": 14
+      }
+    },
+    {
+      "category_id": 76,
+      "category_name": "keyboard",
+      "count": 153,
+      "slot0_mIoU": 0.8042247929615596,
+      "median_iou": 0.8545983278807706,
+      "iou_ge_0_5": 0.9411764705882353,
+      "iou_ge_0_75": 0.7581699346405228,
+      "oracle_mIoU": 0.8263440278274802,
+      "size_counts": {
+        "medium": 78,
+        "large": 57,
+        "small": 18
+      }
+    },
+    {
+      "category_id": 77,
+      "category_name": "cell phone",
+      "count": 262,
+      "slot0_mIoU": 0.6887260209628407,
+      "median_iou": 0.7727697871632857,
+      "iou_ge_0_5": 0.7709923664122137,
+      "iou_ge_0_75": 0.5267175572519084,
+      "oracle_mIoU": 0.7137947252935982,
+      "size_counts": {
+        "small": 148,
+        "medium": 78,
+        "large": 36
+      }
+    },
+    {
+      "category_id": 78,
+      "category_name": "microwave",
+      "count": 55,
+      "slot0_mIoU": 0.8478445061245139,
+      "median_iou": 0.8625542745920048,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.9090909090909091,
+      "oracle_mIoU": 0.8707924707485024,
+      "size_counts": {
+        "small": 4,
+        "medium": 33,
+        "large": 18
+      }
+    },
+    {
+      "category_id": 79,
+      "category_name": "oven",
+      "count": 143,
+      "slot0_mIoU": 0.7496377464500208,
+      "median_iou": 0.8184401641932428,
+      "iou_ge_0_5": 0.8531468531468531,
+      "iou_ge_0_75": 0.6503496503496503,
+      "oracle_mIoU": 0.787242551867394,
+      "size_counts": {
+        "large": 82,
+        "medium": 51,
+        "small": 10
+      }
+    },
+    {
+      "category_id": 80,
+      "category_name": "toaster",
+      "count": 9,
+      "slot0_mIoU": 0.8700257430845171,
+      "median_iou": 0.8660907127429806,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 1.0,
+      "oracle_mIoU": 0.8800884841672069,
+      "size_counts": {
+        "large": 2,
+        "medium": 5,
+        "small": 2
+      }
+    },
+    {
+      "category_id": 81,
+      "category_name": "sink",
+      "count": 225,
+      "slot0_mIoU": 0.7511192881824496,
+      "median_iou": 0.7945854240085941,
+      "iou_ge_0_5": 0.92,
+      "iou_ge_0_75": 0.5644444444444444,
+      "oracle_mIoU": 0.7846072565741982,
+      "size_counts": {
+        "medium": 98,
+        "small": 64,
+        "large": 63
+      }
+    },
+    {
+      "category_id": 82,
+      "category_name": "refrigerator",
+      "count": 126,
+      "slot0_mIoU": 0.8329558362873418,
+      "median_iou": 0.8774521794318676,
+      "iou_ge_0_5": 0.9523809523809523,
+      "iou_ge_0_75": 0.8174603174603174,
+      "oracle_mIoU": 0.8703271781379757,
+      "size_counts": {
+        "medium": 28,
+        "large": 97,
+        "small": 1
+      }
+    },
+    {
+      "category_id": 84,
+      "category_name": "book",
+      "count": 1129,
+      "slot0_mIoU": 0.6060493195866656,
+      "median_iou": 0.6129476584022039,
+      "iou_ge_0_5": 0.650132860938884,
+      "iou_ge_0_75": 0.32772364924712133,
+      "oracle_mIoU": 0.641002196077127,
+      "size_counts": {
+        "small": 833,
+        "medium": 239,
+        "large": 57
+      }
+    },
+    {
+      "category_id": 85,
+      "category_name": "clock",
+      "count": 267,
+      "slot0_mIoU": 0.7999386888599354,
+      "median_iou": 0.8488372093023255,
+      "iou_ge_0_5": 0.9325842696629213,
+      "iou_ge_0_75": 0.7228464419475655,
+      "oracle_mIoU": 0.8231721362572647,
+      "size_counts": {
+        "small": 121,
+        "large": 47,
+        "medium": 99
+      }
+    },
+    {
+      "category_id": 86,
+      "category_name": "vase",
+      "count": 274,
+      "slot0_mIoU": 0.7849617511603063,
+      "median_iou": 0.8242185249207721,
+      "iou_ge_0_5": 0.948905109489051,
+      "iou_ge_0_75": 0.6970802919708029,
+      "oracle_mIoU": 0.80649127840966,
+      "size_counts": {
+        "medium": 98,
+        "small": 125,
+        "large": 51
+      }
+    },
+    {
+      "category_id": 87,
+      "category_name": "scissors",
+      "count": 36,
+      "slot0_mIoU": 0.5461489954407353,
+      "median_iou": 0.5979419995678388,
+      "iou_ge_0_5": 0.6666666666666666,
+      "iou_ge_0_75": 0.19444444444444445,
+      "oracle_mIoU": 0.6013951293126294,
+      "size_counts": {
+        "medium": 9,
+        "small": 13,
+        "large": 14
+      }
+    },
+    {
+      "category_id": 88,
+      "category_name": "teddy bear",
+      "count": 190,
+      "slot0_mIoU": 0.7797571266428289,
+      "median_iou": 0.8402330514871925,
+      "iou_ge_0_5": 0.9315789473684211,
+      "iou_ge_0_75": 0.6578947368421053,
+      "oracle_mIoU": 0.8117158415374239,
+      "size_counts": {
+        "large": 102,
+        "medium": 49,
+        "small": 39
+      }
+    },
+    {
+      "category_id": 89,
+      "category_name": "hair drier",
+      "count": 11,
+      "slot0_mIoU": 0.7142523357246847,
+      "median_iou": 0.7206405693950177,
+      "iou_ge_0_5": 0.9090909090909091,
+      "iou_ge_0_75": 0.45454545454545453,
+      "oracle_mIoU": 0.7460447014794653,
+      "size_counts": {
+        "small": 5,
+        "medium": 3,
+        "large": 3
+      }
+    },
+    {
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "count": 57,
+      "slot0_mIoU": 0.5617953490841139,
+      "median_iou": 0.5538194444444444,
+      "iou_ge_0_5": 0.5964912280701754,
+      "iou_ge_0_75": 0.21052631578947367,
+      "oracle_mIoU": 0.5923369995170101,
+      "size_counts": {
+        "medium": 18,
+        "small": 36,
+        "large": 3
+      }
+    }
+  ],
+  "best_10": [
+    {
+      "category_id": 23,
+      "category_name": "bear",
+      "count": 71,
+      "slot0_mIoU": 0.8716389417400142,
+      "median_iou": 0.8911444998223251,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.9577464788732394,
+      "oracle_mIoU": 0.8824055579467256,
+      "size_counts": {
+        "large": 53,
+        "medium": 13,
+        "small": 5
+      }
+    },
+    {
+      "category_id": 80,
+      "category_name": "toaster",
+      "count": 9,
+      "slot0_mIoU": 0.8700257430845171,
+      "median_iou": 0.8660907127429806,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 1.0,
+      "oracle_mIoU": 0.8800884841672069,
+      "size_counts": {
+        "large": 2,
+        "medium": 5,
+        "small": 2
+      }
+    },
+    {
+      "category_id": 14,
+      "category_name": "parking meter",
+      "count": 60,
+      "slot0_mIoU": 0.853350658081845,
+      "median_iou": 0.8821781258236487,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.85,
+      "oracle_mIoU": 0.8670342401769692,
+      "size_counts": {
+        "medium": 21,
+        "small": 16,
+        "large": 23
+      }
+    },
+    {
+      "category_id": 78,
+      "category_name": "microwave",
+      "count": 55,
+      "slot0_mIoU": 0.8478445061245139,
+      "median_iou": 0.8625542745920048,
+      "iou_ge_0_5": 1.0,
+      "iou_ge_0_75": 0.9090909090909091,
+      "oracle_mIoU": 0.8707924707485024,
+      "size_counts": {
+        "small": 4,
+        "medium": 33,
+        "large": 18
+      }
+    },
+    {
+      "category_id": 13,
+      "category_name": "stop sign",
+      "count": 75,
+      "slot0_mIoU": 0.8457457756954163,
+      "median_iou": 0.906871609403255,
+      "iou_ge_0_5": 0.9733333333333334,
+      "iou_ge_0_75": 0.76,
+      "oracle_mIoU": 0.8562620399376647,
+      "size_counts": {
+        "large": 27,
+        "small": 27,
+        "medium": 21
+      }
+    },
+    {
+      "category_id": 6,
+      "category_name": "bus",
+      "count": 283,
+      "slot0_mIoU": 0.8348670547568157,
+      "median_iou": 0.865359477124183,
+      "iou_ge_0_5": 0.9717314487632509,
+      "iou_ge_0_75": 0.823321554770318,
+      "oracle_mIoU": 0.8592506328984253,
+      "size_counts": {
+        "large": 165,
+        "medium": 82,
+        "small": 36
+      }
+    },
+    {
+      "category_id": 82,
+      "category_name": "refrigerator",
+      "count": 126,
+      "slot0_mIoU": 0.8329558362873418,
+      "median_iou": 0.8774521794318676,
+      "iou_ge_0_5": 0.9523809523809523,
+      "iou_ge_0_75": 0.8174603174603174,
+      "oracle_mIoU": 0.8703271781379757,
+      "size_counts": {
+        "medium": 28,
+        "large": 97,
+        "small": 1
+      }
+    },
+    {
+      "category_id": 17,
+      "category_name": "cat",
+      "count": 202,
+      "slot0_mIoU": 0.832167233677767,
+      "median_iou": 0.8902474313945554,
+      "iou_ge_0_5": 0.9702970297029703,
+      "iou_ge_0_75": 0.801980198019802,
+      "oracle_mIoU": 0.8479523112892285,
+      "size_counts": {
+        "large": 161,
+        "medium": 37,
+        "small": 4
+      }
+    },
+    {
+      "category_id": 54,
+      "category_name": "sandwich",
+      "count": 177,
+      "slot0_mIoU": 0.8286575412638545,
+      "median_iou": 0.8720994987933915,
+      "iou_ge_0_5": 0.9491525423728814,
+      "iou_ge_0_75": 0.8192090395480226,
+      "oracle_mIoU": 0.8485562937283138,
+      "size_counts": {
+        "large": 104,
+        "medium": 48,
+        "small": 25
+      }
+    },
+    {
+      "category_id": 72,
+      "category_name": "tv",
+      "count": 288,
+      "slot0_mIoU": 0.8284458877733263,
+      "median_iou": 0.8580853793868775,
+      "iou_ge_0_5": 0.96875,
+      "iou_ge_0_75": 0.8194444444444444,
+      "oracle_mIoU": 0.857936483959402,
+      "size_counts": {
+        "large": 143,
+        "medium": 106,
+        "small": 39
+      }
+    }
+  ],
+  "worst_10": [
+    {
+      "category_id": 35,
+      "category_name": "skis",
+      "count": 241,
+      "slot0_mIoU": 0.34545581346853355,
+      "median_iou": 0.3404427645788337,
+      "iou_ge_0_5": 0.16182572614107885,
+      "iou_ge_0_75": 0.016597510373443983,
+      "oracle_mIoU": 0.39302516758942657,
+      "size_counts": {
+        "medium": 59,
+        "small": 178,
+        "large": 4
+      }
+    },
+    {
+      "category_id": 48,
+      "category_name": "fork",
+      "count": 215,
+      "slot0_mIoU": 0.48302817779079366,
+      "median_iou": 0.46830985915492956,
+      "iou_ge_0_5": 0.4558139534883721,
+      "iou_ge_0_75": 0.10697674418604651,
+      "oracle_mIoU": 0.5283634881771611,
+      "size_counts": {
+        "medium": 91,
+        "small": 102,
+        "large": 22
+      }
+    },
+    {
+      "category_id": 49,
+      "category_name": "knife",
+      "count": 325,
+      "slot0_mIoU": 0.5104966328087446,
+      "median_iou": 0.4843260188087774,
+      "iou_ge_0_5": 0.49230769230769234,
+      "iou_ge_0_75": 0.19076923076923077,
+      "oracle_mIoU": 0.5511922187894199,
+      "size_counts": {
+        "medium": 96,
+        "large": 13,
+        "small": 216
+      }
+    },
+    {
+      "category_id": 50,
+      "category_name": "spoon",
+      "count": 253,
+      "slot0_mIoU": 0.5403930628846403,
+      "median_iou": 0.546583850931677,
+      "iou_ge_0_5": 0.5612648221343873,
+      "iou_ge_0_75": 0.25691699604743085,
+      "oracle_mIoU": 0.5805975401262415,
+      "size_counts": {
+        "medium": 70,
+        "small": 169,
+        "large": 14
+      }
+    },
+    {
+      "category_id": 67,
+      "category_name": "dining table",
+      "count": 695,
+      "slot0_mIoU": 0.542388778133242,
+      "median_iou": 0.5584158415841585,
+      "iou_ge_0_5": 0.5712230215827339,
+      "iou_ge_0_75": 0.24028776978417266,
+      "oracle_mIoU": 0.6096125436592212,
+      "size_counts": {
+        "medium": 173,
+        "large": 408,
+        "small": 114
+      }
+    },
+    {
+      "category_id": 87,
+      "category_name": "scissors",
+      "count": 36,
+      "slot0_mIoU": 0.5461489954407353,
+      "median_iou": 0.5979419995678388,
+      "iou_ge_0_5": 0.6666666666666666,
+      "iou_ge_0_75": 0.19444444444444445,
+      "oracle_mIoU": 0.6013951293126294,
+      "size_counts": {
+        "medium": 9,
+        "small": 13,
+        "large": 14
+      }
+    },
+    {
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "count": 57,
+      "slot0_mIoU": 0.5617953490841139,
+      "median_iou": 0.5538194444444444,
+      "iou_ge_0_5": 0.5964912280701754,
+      "iou_ge_0_75": 0.21052631578947367,
+      "oracle_mIoU": 0.5923369995170101,
+      "size_counts": {
+        "medium": 18,
+        "small": 36,
+        "large": 3
+      }
+    },
+    {
+      "category_id": 32,
+      "category_name": "tie",
+      "count": 252,
+      "slot0_mIoU": 0.5820068399731934,
+      "median_iou": 0.5959563543003851,
+      "iou_ge_0_5": 0.6468253968253969,
+      "iou_ge_0_75": 0.2777777777777778,
+      "oracle_mIoU": 0.6305995204434662,
+      "size_counts": {
+        "small": 154,
+        "medium": 77,
+        "large": 21
+      }
+    },
+    {
+      "category_id": 41,
+      "category_name": "skateboard",
+      "count": 179,
+      "slot0_mIoU": 0.5822118084995519,
+      "median_iou": 0.5948616600790514,
+      "iou_ge_0_5": 0.6759776536312849,
+      "iou_ge_0_75": 0.22905027932960895,
+      "oracle_mIoU": 0.6232069727766478,
+      "size_counts": {
+        "large": 17,
+        "medium": 84,
+        "small": 78
+      }
+    },
+    {
+      "category_id": 36,
+      "category_name": "snowboard",
+      "count": 69,
+      "slot0_mIoU": 0.5826883982863288,
+      "median_iou": 0.5917695473251029,
+      "iou_ge_0_5": 0.6521739130434783,
+      "iou_ge_0_75": 0.2753623188405797,
+      "oracle_mIoU": 0.61653007644066,
+      "size_counts": {
+        "medium": 24,
+        "small": 40,
+        "large": 5
+      }
+    }
+  ],
+  "caution": "Descriptive; count is shown and low-count categories do not support strong generalization."
+}
