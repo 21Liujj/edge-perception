@@ -1,0 +1,24 @@
+{
+  "backend": "TensorRT 10.3.0",
+  "device": "CUDA FP32, TF32 disabled",
+  "model": "MobileSAM vit_t TinyViT image_encoder",
+  "checkpoint_sha256": "6dbb90523a35330fedd7f1d3dfc66f995213d81b29a5ca8108dbcdd4e37d6c2f",
+  "input_sha256_raw_float32": "fda4c3d2ad945c3441a7bd79de1711655d5324d2921831549003a769892aba93",
+  "elapsed_seconds_single_run": 0.1110049951171875,
+  "output": {
+    "shape": [
+      1,
+      256,
+      64,
+      64
+    ],
+    "dtype": "float32",
+    "min": -0.5274308323860168,
+    "max": 0.5370334386825562,
+    "mean": -0.003180754372279715,
+    "std": 0.10218839246685466,
+    "has_nan": false,
+    "has_inf": false,
+    "sha256_raw": "99779041cf41fedbed5e52e7c0c7bd957feb0ca6e3276614a550b9a363122bad"
+  }
+}

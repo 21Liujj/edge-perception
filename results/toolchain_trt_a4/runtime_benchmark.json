@@ -1,0 +1,13 @@
+{
+  "backend": "TensorRT FP32",
+  "warmup_iterations": 20,
+  "measured_iterations": 100,
+  "unit": "milliseconds",
+  "mean": 111.0049951171875,
+  "p50": 110.97051239013672,
+  "p95": 111.21147537231445,
+  "p99": 111.39701477050782,
+  "minimum": 110.78307342529297,
+  "maximum": 112.15347290039062,
+  "scope": "Runtime correctness baseline; no performance tuning."
+}

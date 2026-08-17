@@ -134,3 +134,51 @@ A separately authorized TensorRT stage is numerically justified. A3 stops here a
 ### JD CAPABILITY MAPPING
 
 Demonstrates reproducible model-conversion validation, cross-framework numerical debugging, backend isolation, ONNX graph inspection, evidence-based root-cause analysis, and deployment-readiness documentation on Jetson.
+
+## Stage A4 — ONNX → TensorRT Conversion
+
+### WHAT
+
+Parsed the Stage A2 MobileSAM teacher ONNX with TensorRT 10.3, built a dedicated FP32 engine with TF32 disabled, deserialized it through TensorRT Python Runtime, executed the exact Stage A3 input, and measured PyTorch CUDA / ORT CPU / TensorRT numerical parity plus a runtime baseline.
+
+### WHY
+
+Complete the framework model -> intermediate representation -> target runtime conversion loop and validate parser, builder, optimization profile, engine serialization, runtime execution, and backend-aware numerical correctness on Jetson.
+
+### INPUT
+
+- Stage A2 ONNX SHA256 `f8d9ac5da0f9521aaf067b35dbe1eac78c50c9d7a0eef72dc3e07db5eb6f3ec7`
+- Stage A3 raw FP32 input SHA256 `fda4c3d2ad945c3441a7bd79de1711655d5324d2921831549003a769892aba93`
+- Dynamic ONNX input `image [N,3,1024,1024]`
+- Profile min/opt/max `1x3x1024x1024`
+
+### OUTPUT
+
+- `results/toolchain_trt_a4/artifacts/mobile_sam_teacher_fp32.engine`
+- Engine size 32,403,988 bytes
+- Engine SHA256 `e8d4b5c0a1175f41e721a1e1124b40bdd8759b4a1c35f5c31d42818a53751269`
+- TensorRT output `image_embeddings [1,256,64,64]` FP32
+
+### PASS
+
+`TRT_CONVERSION_PASS`. Build, deserialization, execution context, inference, finite-output, shape, dtype, and numerical parity checks passed. There were no critical parser or build warnings.
+
+### BUILD
+
+TensorRT 10.3 built in 154.511 seconds with FP32 and `--noTF32`; FP16 and INT8 were not enabled. The verbose log shows fusion, reformatting, Myelin regions, and tactic timing/selection. The 2,036-node ONNX became a 327-layer engine; operators, layers, and kernels are not one-to-one.
+
+### PARITY
+
+PyTorch CUDA versus TensorRT: max absolute `1.1569858e-3`, mean absolute `5.1490759e-5`, RMSE `7.3277486e-5`, relative L2 `7.1671552e-4`, cosine `0.999999743527`. ORT CPU versus TensorRT relative L2 is `1.2884142e-6`, with no value above `1e-3`.
+
+### RUNTIME
+
+TensorRT Python Runtime used `Runtime`, engine deserialization, `ICudaEngine`, `IExecutionContext`, CUDA tensor bindings, and `execute_async_v3`. With 20 warmups and 100 iterations, FP32 latency was P50 `110.9705 ms`, P95 `111.2115 ms`, P99 `111.3970 ms`. This is a correctness baseline, not optimization work.
+
+### NEXT STEP
+
+Stop after A4. Any FP16, INT8, C++, CUDA optimization, or downstream mask experiment requires separate authorization.
+
+### JD CAPABILITY MAPPING
+
+PyTorch, ONNX, ONNX Runtime, TensorRT Parser, TensorRT Builder, optimization profiles, serialized engines, TensorRT Python Runtime, Jetson deployment, numerical parity, Linux, Python, Git, and model-conversion debugging.

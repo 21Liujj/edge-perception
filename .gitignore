@@ -65,3 +65,6 @@ results/toolchain_export_a2/artifacts/*.onnx
 
 # Stage A3 controlled tensor artifacts
 results/toolchain_parity_a3/*.npy
+# Stage A4 TensorRT runtime artifacts
+results/toolchain_trt_a4/artifacts/*.engine
+results/toolchain_trt_a4/*.npy
