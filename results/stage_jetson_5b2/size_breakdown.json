@@ -1,0 +1,25 @@
+{
+  "small": {
+    "n": 175,
+    "self_mean_iou": 0.5862959877682913,
+    "historical_mean_iou": 0.6053200768868633,
+    "self_minus_baseline": -0.019024089118572007,
+    "historical_per_instance_mean": 0.6053200768868633
+  },
+  "medium": {
+    "n": 166,
+    "self_mean_iou": 0.751910912063022,
+    "historical_mean_iou": 0.7626592084204067,
+    "self_minus_baseline": -0.010748296357384723,
+    "historical_per_instance_mean": 0.7626592084204067
+  },
+  "large": {
+    "n": 159,
+    "self_mean_iou": 0.7940322513951037,
+    "historical_mean_iou": 0.795795889597528,
+    "self_minus_baseline": -0.0017636382024243114,
+    "historical_per_instance_mean": 0.795795889597528
+  },
+  "ordering_self_trained": "small < medium < large",
+  "ordering_historical": "small < medium < large (preserved)"
+}

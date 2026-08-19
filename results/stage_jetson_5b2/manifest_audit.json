@@ -1,0 +1,27 @@
+{
+  "path": "data/eval_manifests/standard_manifest.json",
+  "sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+  "sha_match": true,
+  "seed": 2027,
+  "subset": "standard",
+  "n_instances": 500,
+  "n_categories": 80,
+  "unique_images": 455,
+  "size_bucket_counts": {
+    "small": 175,
+    "medium": 166,
+    "large": 159
+  },
+  "instance_schema": [
+    "image_id",
+    "annotation_id",
+    "category_id",
+    "category_name",
+    "image_path",
+    "bbox_xywh",
+    "area",
+    "size_bucket",
+    "iscrowd"
+  ],
+  "modified": false
+}

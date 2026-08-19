@@ -1,0 +1,9 @@
+{
+  "total_wall_time_s": 53.15854582100019,
+  "unique_images": 455,
+  "encoder_set_image_calls": 455,
+  "embedding_reuse_count": 45,
+  "decoder_calls": 500,
+  "instances_per_sec_eval": 9.40582539040178,
+  "note": "evaluation throughput; NOT deployment FPS"
+}

@@ -1,0 +1,20 @@
+loading annotations into memory...
+Done (t=0.82s)
+creating index...
+index created!
+subset=standard instances=500
+loading engines: enc=models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine dec=third_party/nanosam/data/mobile_sam_mask_decoder.engine runtime=baseline
+model_load_ms=4004.357
+[08/19/2026-11:37:26] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+[08/19/2026-11:37:26] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+  progress 50/500  valid=50 failed=0
+  progress 100/500  valid=100 failed=0
+  progress 150/500  valid=150 failed=0
+  progress 200/500  valid=200 failed=0
+  progress 250/500  valid=250 failed=0
+  progress 300/500  valid=300 failed=0
+  progress 350/500  valid=350 failed=0
+  progress 400/500  valid=400 failed=0
+  progress 450/500  valid=450 failed=0
+  progress 500/500  valid=500 failed=0
+=== standard DONE === valid=500 failed=0 mIoU=0.7073402744674683 wall=53.2s

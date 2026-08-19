@@ -20,11 +20,12 @@
   "build_wall_time_ms": 21000,
   "engine_path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
   "engine_exists": true,
-  "engine_size_bytes": 37136716,
-  "engine_sha256": "0d63103cf91daf41bcaeebd86b4d1fc3b3bcce4c9c70dc28b1c76dd32a6d5397",
+  "engine_size_bytes": 37060492,
+  "engine_sha256": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
   "onnx_sha256": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
   "build_passed": true,
   "parser_errors": [],
   "parser_warnings": [],
-  "fatal_error": null
+  "fatal_error": null,
+  "_correction_note": "Stage5B-1 ran two concurrent trtexec builds against same --saveEngine (race); disk engine is the later valid build. SHA reconciled to disk truth in Stage5B-2."
 }

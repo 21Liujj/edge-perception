@@ -1,0 +1,25 @@
+{
+  "mean_iou": 0.7073402744674683,
+  "median_iou": 0.7766945797603231,
+  "p10": 0.3703669583909105,
+  "p50": 0.7766945797603231,
+  "p90": 0.9178693480758523,
+  "iou_ge_050_ratio": 0.836,
+  "iou_ge_075_ratio": 0.552,
+  "valid": 500,
+  "failed": 0,
+  "skipped": {
+    "CROWD": 0,
+    "INVALID_BOX": 0,
+    "INVALID_GT_MASK": 0
+  },
+  "wall_time_s": 53.15854582100019,
+  "instances_per_sec": 9.40582539040178,
+  "unique_images": 455,
+  "embedding_set_calls": 455,
+  "embedding_reuse_count": 45,
+  "historical_mean_iou": 0.718127976997991,
+  "absolute_delta_self_minus_baseline": -0.010787702530522747,
+  "relative_delta": -0.015021977803481294,
+  "baseline_source": "HISTORICAL (results/coco_nanosam_baseline/standard/summary.json)"
+}

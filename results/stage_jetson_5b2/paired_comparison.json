@@ -1,0 +1,15 @@
+{
+  "matched_instances": 500,
+  "improved": 196,
+  "degraded": 303,
+  "equal_nearly_equal": 1,
+  "nearly_equal_definition": "abs(delta) < 1e-6",
+  "mean_paired_delta": -0.010787702530522893,
+  "median_paired_delta": -0.0047168505635542535,
+  "max_improvement": 0.23549568895803535,
+  "max_degradation": -0.37510825188667574,
+  "self_mean_iou": 0.7073402744674683,
+  "historical_mean_iou": 0.718127976997991,
+  "baseline_source": "HISTORICAL per_instance.jsonl (no rerun; reliable paired output exists)",
+  "baseline_rerun": false
+}

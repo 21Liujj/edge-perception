@@ -71,3 +71,47 @@ unchanged; embedding `[1,256,64,64]`, finite.
 STOP. No STANDARD500, COCO mIoU, further training, INT8, NanoOWL joint, CUDA
 preprocessing optimization, or power-mode changes. Await authorization for
 Stage Jetson-5B-2.
+
+## Stage Jetson-5B-2 — Self-Trained STANDARD500 Quality Gate
+
+### WHAT
+Ran the frozen STANDARD500 segmentation quality gate on the 10-epoch
+self-trained NanoSAM student encoder (Jetson FP16 engine) and compared
+apples-to-apples against the historical deployed baseline.
+
+### WHY
+Answer the core question: does the 10-epoch distilled student match the deployed
+encoder's segmentation quality, or is it undertrained? Separate distillation
+loss (0.000535) from downstream mask quality.
+
+### FROZEN PROTOCOL
+- Manifest `data/eval_manifests/standard_manifest.json` SHA `19a00a83…78f015`
+- 500 instances / 455 images / seed 2027 / fixed slot0 / GT-box prompt
+- Evaluator `scripts/eval_nanosam_coco.py` (prompt-conditioned instance IoU)
+- Decoder `mobile_sam_mask_decoder.engine` SHA `afb5ac49…ccb4f2` unchanged
+- Historical baseline engine SHA `c277e5ca…a6a8` untouched
+- Self-trained engine SHA `ab2d9962…0a140` (reconciled in 5B-1; DIFFERENT engine)
+
+### SELF-TRAINED RESULT
+- mIoU **0.707340** | median 0.776695 | P10 0.370367 | P90 0.917869
+- IoU>=0.50 0.836 | IoU>=0.75 0.552 | valid 500 failed 0
+
+### BASELINE
+- Historical mIoU **0.718128** (source: HISTORICAL, no rerun; paired per-instance available)
+
+### PAIRED ANALYSIS
+- improved 196 / degraded 303 / equal 1 ; mean paired delta −0.010788
+
+### SIZE BREAKDOWN (self / baseline / delta)
+- small n=175: 0.586296 vs 0.605320 → −0.019024
+- medium n=166: 0.751911 vs 0.762659 → −0.010748
+- large n=159: 0.794032 vs 0.795796 → −0.001764
+- small<medium<large ordering preserved.
+
+### QUALITY GATE
+- **UNDERTRAINED_BUT_HEALTHY** (|Δ|=0.0108, within 0.005–0.02 band)
+- Pipeline healthy (no NaN/Inf/CUDA/TRT errors); gap concentrated on small objects.
+
+### NEXT DECISION
+Recommendation (advisory, NOT executed): **RESUME TO 50 epochs**, then re-validate
+STANDARD500. STOP — no training started; awaiting authorization.

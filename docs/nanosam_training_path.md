@@ -81,3 +81,36 @@ to the other's build environment.
 
 See `results/stage_jetson_5b1/stage_summary.md` for the build and runtime
 evidence, and `docs/daily/day12.md` for the day-12 record.
+
+## Ten-Epoch Student Quality Gate
+
+The distilled loss and the downstream segmentation quality are different
+quantities and must be kept distinct:
+
+- **Training (RTX 5090)**: epoch9 feature-distillation **mean loss ≈ 0.000535**
+  (encoder embedding-space distillation, MobileSAM TinyViT teacher). A very low
+  distillation loss says the student reproduces the teacher's image embedding;
+  it does not by itself certify downstream mask quality.
+- **Deployment (Jetson)**: the student ONNX became a Jetson FP16 TensorRT engine
+  (Stage 5B-1); encoder embedding parity vs ORT FP32 was cosine 0.99985 /
+  relative L2 0.01763.
+- **Quality (Jetson, Stage 5B-2)**: under the frozen STANDARD500 protocol (seed
+  2027, 500 instances, GT-box prompt, fixed slot0, frozen decoder), the 10-epoch
+  student reached **mIoU 0.707340** vs the historical deployed baseline
+  **0.718128** — an absolute delta of **−0.010788** (−1.50% relative).
+
+Paired over the same 500 instances: 196 improved, 303 degraded, 1 equal; the
+gap concentrates on small objects (small Δ −0.019, medium −0.011, large −0.002),
+and the historical `small < medium < large` failure ordering is preserved.
+
+**Gate: UNDERTRAINED_BUT_HEALTHY** (project-internal heuristic:
+0.005 < |Δ| ≤ 0.02 ⟹ resume training rather than ship as-is). The small-object
+regression and the 303/500 degraded majority point to incomplete convergence,
+not a pipeline or FP16-conversion fault (Stage 5B-1 embedding parity was
+healthy; no NaN/Inf/CUDA/TRT errors in the 500-run). A PyTorch/ORT segmentation
+control would be needed to fully separate "undertrained" from "FP16 error", but
+within this stage the encoder parity evidence makes undertraining the most
+parsimonious explanation.
+
+Recommendation (advisory, not executed): resume distillation to ~50 epochs and
+re-validate. No training was started here.

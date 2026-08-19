@@ -1,0 +1,459 @@
+{
+  "best5": [
+    {
+      "category": "sandwich",
+      "n": 6,
+      "mean_iou": 0.9019837094637886
+    },
+    {
+      "category": "stop sign",
+      "n": 6,
+      "mean_iou": 0.8993695922609568
+    },
+    {
+      "category": "bus",
+      "n": 7,
+      "mean_iou": 0.8712000900610359
+    },
+    {
+      "category": "bear",
+      "n": 7,
+      "mean_iou": 0.8631773263775125
+    },
+    {
+      "category": "toaster",
+      "n": 6,
+      "mean_iou": 0.8569988232468869
+    }
+  ],
+  "worst5": [
+    {
+      "category": "skis",
+      "n": 6,
+      "mean_iou": 0.34770594332251087
+    },
+    {
+      "category": "scissors",
+      "n": 6,
+      "mean_iou": 0.3607800310881044
+    },
+    {
+      "category": "dining table",
+      "n": 6,
+      "mean_iou": 0.39035333529478966
+    },
+    {
+      "category": "snowboard",
+      "n": 6,
+      "mean_iou": 0.3917675541755182
+    },
+    {
+      "category": "couch",
+      "n": 6,
+      "mean_iou": 0.4322178225723679
+    }
+  ],
+  "note": "STANDARD500 small sample; category means descriptive only, no strong conclusions for low-n categories",
+  "all_categories": [
+    {
+      "category": "airplane",
+      "n": 7,
+      "mean_iou": 0.7258810523341684
+    },
+    {
+      "category": "apple",
+      "n": 7,
+      "mean_iou": 0.7874318659873959
+    },
+    {
+      "category": "orange",
+      "n": 6,
+      "mean_iou": 0.785229597156042
+    },
+    {
+      "category": "backpack",
+      "n": 7,
+      "mean_iou": 0.5635789237734933
+    },
+    {
+      "category": "banana",
+      "n": 7,
+      "mean_iou": 0.7434644108832228
+    },
+    {
+      "category": "baseball bat",
+      "n": 7,
+      "mean_iou": 0.6034555385535184
+    },
+    {
+      "category": "baseball glove",
+      "n": 7,
+      "mean_iou": 0.805669432005361
+    },
+    {
+      "category": "bear",
+      "n": 7,
+      "mean_iou": 0.8631773263775125
+    },
+    {
+      "category": "bed",
+      "n": 7,
+      "mean_iou": 0.7575949194556818
+    },
+    {
+      "category": "bench",
+      "n": 7,
+      "mean_iou": 0.6976043241713982
+    },
+    {
+      "category": "bicycle",
+      "n": 7,
+      "mean_iou": 0.5513816192285016
+    },
+    {
+      "category": "bird",
+      "n": 7,
+      "mean_iou": 0.5896756683712446
+    },
+    {
+      "category": "boat",
+      "n": 7,
+      "mean_iou": 0.771835690969705
+    },
+    {
+      "category": "book",
+      "n": 7,
+      "mean_iou": 0.5851114668544064
+    },
+    {
+      "category": "bottle",
+      "n": 7,
+      "mean_iou": 0.7074109571759093
+    },
+    {
+      "category": "bowl",
+      "n": 7,
+      "mean_iou": 0.7294161076371363
+    },
+    {
+      "category": "broccoli",
+      "n": 7,
+      "mean_iou": 0.7171962426284321
+    },
+    {
+      "category": "bus",
+      "n": 7,
+      "mean_iou": 0.8712000900610359
+    },
+    {
+      "category": "cake",
+      "n": 7,
+      "mean_iou": 0.7698175212810671
+    },
+    {
+      "category": "car",
+      "n": 7,
+      "mean_iou": 0.7837267521823641
+    },
+    {
+      "category": "carrot",
+      "n": 7,
+      "mean_iou": 0.7384466059761544
+    },
+    {
+      "category": "cat",
+      "n": 6,
+      "mean_iou": 0.8141822300284657
+    },
+    {
+      "category": "cell phone",
+      "n": 6,
+      "mean_iou": 0.6778390640055272
+    },
+    {
+      "category": "chair",
+      "n": 6,
+      "mean_iou": 0.5880483425610116
+    },
+    {
+      "category": "clock",
+      "n": 6,
+      "mean_iou": 0.8225172650224418
+    },
+    {
+      "category": "couch",
+      "n": 6,
+      "mean_iou": 0.4322178225723679
+    },
+    {
+      "category": "tv",
+      "n": 6,
+      "mean_iou": 0.8140494218776975
+    },
+    {
+      "category": "cow",
+      "n": 6,
+      "mean_iou": 0.7190326056817066
+    },
+    {
+      "category": "cup",
+      "n": 6,
+      "mean_iou": 0.7002652869898821
+    },
+    {
+      "category": "dining table",
+      "n": 6,
+      "mean_iou": 0.39035333529478966
+    },
+    {
+      "category": "dog",
+      "n": 6,
+      "mean_iou": 0.8232592097492427
+    },
+    {
+      "category": "donut",
+      "n": 6,
+      "mean_iou": 0.820715316183008
+    },
+    {
+      "category": "elephant",
+      "n": 6,
+      "mean_iou": 0.787020866535884
+    },
+    {
+      "category": "fire hydrant",
+      "n": 6,
+      "mean_iou": 0.8190208511835052
+    },
+    {
+      "category": "fork",
+      "n": 6,
+      "mean_iou": 0.4946548290619987
+    },
+    {
+      "category": "wine glass",
+      "n": 6,
+      "mean_iou": 0.7551276877621261
+    },
+    {
+      "category": "frisbee",
+      "n": 6,
+      "mean_iou": 0.675242877208588
+    },
+    {
+      "category": "giraffe",
+      "n": 6,
+      "mean_iou": 0.6839285736295139
+    },
+    {
+      "category": "hair drier",
+      "n": 6,
+      "mean_iou": 0.7785589922040693
+    },
+    {
+      "category": "handbag",
+      "n": 6,
+      "mean_iou": 0.6532722796994607
+    },
+    {
+      "category": "horse",
+      "n": 6,
+      "mean_iou": 0.7810885150207514
+    },
+    {
+      "category": "hot dog",
+      "n": 6,
+      "mean_iou": 0.5796391788568002
+    },
+    {
+      "category": "keyboard",
+      "n": 6,
+      "mean_iou": 0.8441187817883063
+    },
+    {
+      "category": "kite",
+      "n": 6,
+      "mean_iou": 0.6613609421485164
+    },
+    {
+      "category": "knife",
+      "n": 6,
+      "mean_iou": 0.5290736995495541
+    },
+    {
+      "category": "laptop",
+      "n": 6,
+      "mean_iou": 0.7488432880509283
+    },
+    {
+      "category": "microwave",
+      "n": 6,
+      "mean_iou": 0.831345555920799
+    },
+    {
+      "category": "teddy bear",
+      "n": 6,
+      "mean_iou": 0.7385095904152089
+    },
+    {
+      "category": "motorcycle",
+      "n": 6,
+      "mean_iou": 0.7216559064484995
+    },
+    {
+      "category": "mouse",
+      "n": 6,
+      "mean_iou": 0.8320001688526117
+    },
+    {
+      "category": "oven",
+      "n": 6,
+      "mean_iou": 0.8048485884568762
+    },
+    {
+      "category": "toaster",
+      "n": 6,
+      "mean_iou": 0.8569988232468869
+    },
+    {
+      "category": "parking meter",
+      "n": 6,
+      "mean_iou": 0.8374720495005942
+    },
+    {
+      "category": "person",
+      "n": 6,
+      "mean_iou": 0.7178249442838754
+    },
+    {
+      "category": "pizza",
+      "n": 6,
+      "mean_iou": 0.6484478665143536
+    },
+    {
+      "category": "potted plant",
+      "n": 6,
+      "mean_iou": 0.736610744740161
+    },
+    {
+      "category": "refrigerator",
+      "n": 6,
+      "mean_iou": 0.818725027760211
+    },
+    {
+      "category": "remote",
+      "n": 6,
+      "mean_iou": 0.6591713835157803
+    },
+    {
+      "category": "sandwich",
+      "n": 6,
+      "mean_iou": 0.9019837094637886
+    },
+    {
+      "category": "scissors",
+      "n": 6,
+      "mean_iou": 0.3607800310881044
+    },
+    {
+      "category": "sheep",
+      "n": 6,
+      "mean_iou": 0.7139145053259197
+    },
+    {
+      "category": "sink",
+      "n": 6,
+      "mean_iou": 0.7671700887616596
+    },
+    {
+      "category": "skateboard",
+      "n": 6,
+      "mean_iou": 0.6760253571789491
+    },
+    {
+      "category": "skis",
+      "n": 6,
+      "mean_iou": 0.34770594332251087
+    },
+    {
+      "category": "snowboard",
+      "n": 6,
+      "mean_iou": 0.3917675541755182
+    },
+    {
+      "category": "spoon",
+      "n": 6,
+      "mean_iou": 0.4954196757498772
+    },
+    {
+      "category": "sports ball",
+      "n": 6,
+      "mean_iou": 0.7566076987995843
+    },
+    {
+      "category": "stop sign",
+      "n": 6,
+      "mean_iou": 0.8993695922609568
+    },
+    {
+      "category": "suitcase",
+      "n": 6,
+      "mean_iou": 0.8343368318670411
+    },
+    {
+      "category": "surfboard",
+      "n": 6,
+      "mean_iou": 0.682126375456081
+    },
+    {
+      "category": "tennis racket",
+      "n": 6,
+      "mean_iou": 0.5431261254374135
+    },
+    {
+      "category": "tie",
+      "n": 6,
+      "mean_iou": 0.5826430215936556
+    },
+    {
+      "category": "toilet",
+      "n": 6,
+      "mean_iou": 0.8527784675135526
+    },
+    {
+      "category": "toothbrush",
+      "n": 6,
+      "mean_iou": 0.4745209401819484
+    },
+    {
+      "category": "traffic light",
+      "n": 6,
+      "mean_iou": 0.7410724005626719
+    },
+    {
+      "category": "train",
+      "n": 6,
+      "mean_iou": 0.7983132372392219
+    },
+    {
+      "category": "truck",
+      "n": 6,
+      "mean_iou": 0.7529138562629556
+    },
+    {
+      "category": "umbrella",
+      "n": 6,
+      "mean_iou": 0.6650275140005054
+    },
+    {
+      "category": "vase",
+      "n": 6,
+      "mean_iou": 0.785831237327632
+    },
+    {
+      "category": "zebra",
+      "n": 6,
+      "mean_iou": 0.7823945973491017
+    }
+  ]
+}

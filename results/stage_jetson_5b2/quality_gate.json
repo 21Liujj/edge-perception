@@ -1,0 +1,16 @@
+{
+  "ten_epoch_quality_gate": "UNDERTRAINED_BUT_HEALTHY",
+  "self_trained_mIoU": 0.7073402744674683,
+  "historical_baseline_mIoU": 0.718127976997991,
+  "absolute_delta_self_minus_baseline": -0.010787702530522747,
+  "heuristic_thresholds_PROJECT_DECISION_ONLY": {
+    "abs_delta >= -0.005": "NEAR_PARITY",
+    "-0.02 <= abs_delta < -0.005": "UNDERTRAINED_BUT_HEALTHY",
+    "abs_delta < -0.02": "QUALITY_REGRESSION"
+  },
+  "recommendation": "RESUME_TO_50",
+  "recommendation_is_advisory_not_executed": true,
+  "fp16_vs_fp32_context": "Stage5B-1 rel L2 0.01763 / cosine 0.99985 (encoder embedding); cannot attribute seg gap to FP16 without PyTorch/ORT seg control",
+  "ordering_preserved": "small < medium < large",
+  "pipeline_health": "no NaN/Inf/CUDA/TRT errors; 500/500 valid"
+}

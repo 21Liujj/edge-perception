@@ -1,0 +1,112 @@
+[
+  {
+    "file": "viz_00_ann618273_small_worse.png",
+    "annotation_id": 618273,
+    "category": "snowboard",
+    "size_bucket": "small",
+    "self_iou": 0.0847457627118644,
+    "historical_iou": 0.45985401459854014,
+    "delta": -0.37510825188667574,
+    "rerun_iou": 0.0847457627118644,
+    "selection": "worst"
+  },
+  {
+    "file": "viz_01_ann1123344_small_worse.png",
+    "annotation_id": 1123344,
+    "category": "oven",
+    "size_bucket": "small",
+    "self_iou": 0.19174603174603175,
+    "historical_iou": 0.412532637075718,
+    "delta": -0.22078660532968628,
+    "rerun_iou": 0.19174603174603175,
+    "selection": "worst"
+  },
+  {
+    "file": "viz_02_ann1038221_small_worse.png",
+    "annotation_id": 1038221,
+    "category": "bowl",
+    "size_bucket": "small",
+    "self_iou": 0.5676691729323309,
+    "historical_iou": 0.7801047120418848,
+    "delta": -0.21243553910955393,
+    "rerun_iou": 0.5676691729323309,
+    "selection": "worst"
+  },
+  {
+    "file": "viz_03_ann2192485_medium_worse.png",
+    "annotation_id": 2192485,
+    "category": "chair",
+    "size_bucket": "medium",
+    "self_iou": 0.5596406587922143,
+    "historical_iou": 0.7659322435441839,
+    "delta": -0.20629158475196963,
+    "rerun_iou": 0.5597337770382695,
+    "selection": "worst"
+  },
+  {
+    "file": "viz_04_ann376832_medium_better.png",
+    "annotation_id": 376832,
+    "category": "chair",
+    "size_bucket": "medium",
+    "self_iou": 0.5701260391525879,
+    "historical_iou": 0.3346303501945525,
+    "delta": 0.23549568895803535,
+    "rerun_iou": 0.5697050938337802,
+    "selection": "best"
+  },
+  {
+    "file": "viz_05_ann116052_large_better.png",
+    "annotation_id": 116052,
+    "category": "couch",
+    "size_bucket": "large",
+    "self_iou": 0.4563571850975754,
+    "historical_iou": 0.28075442145793905,
+    "delta": 0.17560276363963634,
+    "rerun_iou": 0.45612063867534003,
+    "selection": "best"
+  },
+  {
+    "file": "viz_06_ann611077_small_better.png",
+    "annotation_id": 611077,
+    "category": "skis",
+    "size_bucket": "small",
+    "self_iou": 0.23595505617977527,
+    "historical_iou": 0.0756634669678148,
+    "delta": 0.16029158921196046,
+    "rerun_iou": 0.23595505617977527,
+    "selection": "best"
+  },
+  {
+    "file": "viz_07_ann1559596_small_better.png",
+    "annotation_id": 1559596,
+    "category": "orange",
+    "size_bucket": "small",
+    "self_iou": 0.5110132158590308,
+    "historical_iou": 0.5075921908893709,
+    "delta": 0.0034210249696599027,
+    "rerun_iou": 0.5110132158590308,
+    "selection": "small"
+  },
+  {
+    "file": "viz_08_ann1170444_small_better.png",
+    "annotation_id": 1170444,
+    "category": "backpack",
+    "size_bucket": "small",
+    "self_iou": 0.6937759336099585,
+    "historical_iou": 0.628500823723229,
+    "delta": 0.06527510988672947,
+    "rerun_iou": 0.6937759336099585,
+    "selection": "small"
+  },
+  {
+    "file": "viz_09_ann1044377_small_worse.png",
+    "annotation_id": 1044377,
+    "category": "banana",
+    "size_bucket": "small",
+    "self_iou": 0.7323076923076923,
+    "historical_iou": 0.7659235668789809,
+    "delta": -0.03361587457128856,
+    "rerun_iou": 0.7323076923076923,
+    "selection": "small"
+  }
+]
