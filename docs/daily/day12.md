@@ -115,3 +115,42 @@ loss (0.000535) from downstream mask quality.
 ### NEXT DECISION
 Recommendation (advisory, NOT executed): **RESUME TO 50 epochs**, then re-validate
 STANDARD500. STOP — no training started; awaiting authorization.
+
+## Stage Jetson-5B-3 — FP32 vs FP16 Downstream Quality Control
+
+### WHAT
+Swapped only the image-encoder backend (TRT FP16 → ORT CPU FP32) for the same
+self-trained 10-epoch student and re-ran the frozen STANDARD500, to isolate the
+FP16 deployment-precision contribution to the Stage 5B-2 regression.
+
+### WHY
+Stage 5B-1 encoder-embedding parity (cosine 0.99985) does not prove downstream
+mask-quality parity; determine whether the −0.010788 regression is training or
+FP16.
+
+### FROZEN PROTOCOL
+- Same manifest/decoder/slot0/prompt/IoU as Stages 5B-1/5B-2; no upstream edit, no rebuild.
+- ONNX `aacbea87…5cf15`; TRT engine `ab2d9962…0a140` (frozen); decoder `afb5ac49…ccb4f2`.
+- Encoder backend: ORT CPUExecutionProvider FP32 (intra=8 threads); embedding moved .cuda() for the TRT decoder.
+
+### RESULT — ORT FP32 STANDARD500
+- mIoU **0.707379** | median 0.776226 | P10 0.370908 | P90 0.919480 | ≥0.5 0.834 | ≥0.75 0.552 | 500/500 valid
+- small 0.586319 / medium 0.751945 / large 0.794094 | wall 578s (CPU ORT, quality control not perf)
+
+### FP16 vs FP32
+- FP16 mIoU 0.707340 − FP32 mIoU 0.707379 = **+0.000039** (FP16 negligibly lower)
+- Paired: 176 higher / 176 lower / 148 equal; median 0; P95 abs 0.001928
+- Size FP16−FP32: small −0.000023 / med −0.000034 / large −0.000062 (all ~0)
+
+### QUALITY DECOMPOSITION
+- total gap (baseline − FP16) = +0.010788
+- FP16 precision gap (FP32 − FP16) = +0.000039 (0.36% of total)
+- training/model gap (baseline − FP32) = +0.010749
+
+### CONCLUSION
+- FP16_QUALITY_IMPACT = **NEGLIGIBLE**; main conclusion = **TRAINING_GAP_DOMINANT**
+- The small-object regression is training, not FP16.
+
+### NEXT DECISION
+Recommendation (advisory, NOT executed): **RESUME_TO_50**. FP16 path is sound;
+effort should go to distillation, not precision. STOP.

@@ -1,0 +1,11 @@
+{
+  "historical_baseline_mIoU": 0.718127976997991,
+  "self_trained_ORT_FP32_mIoU": 0.7073793236618349,
+  "self_trained_TRT_FP16_mIoU": 0.7073402744674683,
+  "total_gap_baseline_minus_FP16": 0.010787702530522747,
+  "FP16_precision_gap_FP32_minus_FP16": 3.90491943665916e-05,
+  "training_model_gap_baseline_minus_FP32": 0.010748653336156155,
+  "additive_engineering_approx_note": "nonlinear decoder => gaps are NOT strictly mathematically additive; additive residual shown as sanity check only",
+  "additive_residual": 0.0,
+  "fraction_of_total_gap_attributed_to_FP16": 0.003619787833053955
+}

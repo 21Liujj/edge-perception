@@ -1,0 +1,12 @@
+{
+  "FP16_QUALITY_IMPACT": "NEGLIGIBLE",
+  "definition": "abs(FP32_mIoU - FP16_mIoU) = 0.000039",
+  "heuristic_PROJECT_DECISION_ONLY": {
+    "<=0.002": "NEGLIGIBLE",
+    "0.002-0.005": "MINOR",
+    ">0.005": "MATERIAL"
+  },
+  "self_trained_FP32_mIoU": 0.7073793236618349,
+  "self_trained_FP16_mIoU": 0.7073402744674683,
+  "historical_baseline_mIoU": 0.718127976997991
+}

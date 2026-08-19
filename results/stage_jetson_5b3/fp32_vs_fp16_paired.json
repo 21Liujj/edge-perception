@@ -1,0 +1,13 @@
+{
+  "definition": "FP16_iou - FP32_iou (TRT FP16 minus ORT FP32, same instance)",
+  "matched": 500,
+  "improved_FP16_higher": 176,
+  "degraded_FP16_lower": 176,
+  "equal": 148,
+  "mean_delta_FP16_minus_FP32": -3.904919436662978e-05,
+  "median_delta": 0.0,
+  "max_abs_per_instance_delta": 0.009950248756218916,
+  "P95_abs_delta": 0.0019279248353759957,
+  "FP16_mean_iou": 0.7073402744674683,
+  "FP32_mean_iou": 0.7073793236618349
+}

@@ -1,0 +1,22 @@
+{
+  "self_trained_onnx": {
+    "path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch10/nanosam_resnet18_epoch009.onnx",
+    "sha256": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
+    "expected": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
+    "match": true
+  },
+  "self_trained_trt_engine": {
+    "path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
+    "sha256": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
+    "expected": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
+    "match": true,
+    "rebuilt_this_stage": false
+  },
+  "decoder_engine": {
+    "path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+    "sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "expected": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "match": true
+  },
+  "engine_sha_process_note": "Stage5B-1 captured 0d63103c...; Stage5B-2 found disk SHA ab2d9962... due to concurrent trtexec builds writing same --saveEngine. Frozen artifact for this stage = ab2d9962... Build system should use unique temp output -> validation -> atomic rename. No rebuild performed here."
+}

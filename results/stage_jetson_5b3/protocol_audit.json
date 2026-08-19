@@ -1,0 +1,17 @@
+{
+  "stage": "Jetson-5B-3",
+  "purpose": "isolate FP16 (TRT) vs FP32 (ORT CPU) downstream mask-quality impact; same model, same protocol, encoder-only backend swap",
+  "manifest": "data/eval_manifests/standard_manifest.json",
+  "manifest_sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+  "manifest_n_instances": 500,
+  "manifest_unique_images": 455,
+  "manifest_seed": 2027,
+  "decoder": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+  "decoder_sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+  "decoder_precision": "FP16 frozen TRT, unchanged",
+  "mask_selection": "fixed slot0",
+  "metric": "prompt-conditioned instance mask IoU (terminology mIoU per protocol)",
+  "encoder_backend_swap": "image encoder TRT FP16 -> ORT CPU FP32; nothing else changed",
+  "upstream_modified": false,
+  "engine_rebuilt": false
+}

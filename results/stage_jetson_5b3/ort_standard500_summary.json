@@ -1,0 +1,23 @@
+{
+  "backend": "ORT FP32 CPU encoder + frozen TRT FP16 decoder",
+  "mean_iou": 0.7073793236618349,
+  "median_iou": 0.7762255637218138,
+  "p10": 0.3709080047789725,
+  "p50": 0.7762255637218138,
+  "p90": 0.9194797542655652,
+  "iou_ge_050_ratio": 0.834,
+  "iou_ge_075_ratio": 0.552,
+  "valid": 500,
+  "failed": 0,
+  "mIoU_small": 0.5863192275420165,
+  "mIoU_medium": 0.7519450652610682,
+  "mIoU_large": 0.794093812438536,
+  "small_count": 175,
+  "medium_count": 166,
+  "large_count": 159,
+  "unique_images": 455,
+  "embedding_set_calls": 455,
+  "embedding_reuse_count": 45,
+  "wall_time_s": 578.0115212950004,
+  "instances_per_sec": 0.8650346603468729
+}

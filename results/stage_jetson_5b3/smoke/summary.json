@@ -1,0 +1,30 @@
+{
+  "subset": "standard",
+  "mask_selection": "slot 0 (fixed, not IoU argmax)",
+  "total_instances_in_subset": 5,
+  "skipped": {
+    "CROWD": 0,
+    "INVALID_BOX": 0,
+    "INVALID_GT_MASK": 0
+  },
+  "valid": 5,
+  "failed": 0,
+  "mean_iou": 0.7599904999882199,
+  "median_iou": 0.7625250501002004,
+  "p10": 0.7096865624002553,
+  "p50": 0.7625250501002004,
+  "p90": 0.8137544045204114,
+  "iou_ge_050_ratio": 1.0,
+  "iou_ge_075_ratio": 0.6,
+  "mIoU_small": 0.7298128505121745,
+  "mIoU_medium": 0.7627698226116691,
+  "mIoU_large": 0.8477441257929063,
+  "small_count": 3,
+  "medium_count": 1,
+  "large_count": 1,
+  "unique_images": 5,
+  "embedding_set_calls": 5,
+  "embedding_reuse_count": 0,
+  "wall_time_s": 6.3547662969995145,
+  "instances_per_sec_eval": 0.786810996080346
+}

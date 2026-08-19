@@ -1,0 +1,6 @@
+{
+  "main_conclusion": "TRAINING_GAP_DOMINANT",
+  "recommendation": "RESUME_TO_50",
+  "recommendation_advisory_not_executed": true,
+  "rationale": "FP16 impact NEGLIGIBLE (|delta|=0.000039). FP32 mIoU 0.707379 vs baseline 0.718128: training/model gap +0.010749 dominates total gap +0.010788."
+}

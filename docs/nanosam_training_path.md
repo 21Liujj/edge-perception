@@ -114,3 +114,44 @@ parsimonious explanation.
 
 Recommendation (advisory, not executed): resume distillation to ~50 epochs and
 re-validate. No training was started here.
+
+## FP32 vs FP16 Downstream Quality Control
+
+Encoder numerical parity is **not** a substitute for downstream segmentation
+quality parity.
+
+- **Stage 5B-1** measured encoder-embedding numerical parity: TRT FP16 vs ORT
+  FP32 on a deterministic input gave relative L2 `0.01763` and cosine `0.99985`.
+  That is an *embedding-space* check; it does not certify mask quality, because
+  the mask decoder is nonlinear and amplifies or dampens embedding errors
+  unevenly.
+- **Stage 5B-3** measured the quantity that actually matters: downstream
+  STANDARD500 mask mIoU with the same 10-epoch student, swapping **only** the
+  image encoder backend (TRT FP16 → ORT CPU FP32) while keeping the frozen
+  decoder, fixed slot0, GT-box prompt, manifest, and IoU code byte-identical.
+
+Result:
+
+| backend | mIoU |
+|---|---|
+| self-trained ORT FP32 (CPU) | `0.707379` |
+| self-trained TRT FP16 | `0.707340` |
+| **FP16 downstream delta (FP16 − FP32)** | **+0.000039** |
+
+Paired over the same 500 instances: 176 FP16-higher / 176 FP16-lower / 148
+equal; median delta `0.0`; P95 absolute delta `0.001928`.
+
+Quality decomposition (engineering approximation; nonlinear decoder ⇒ not
+strictly additive, additive residual = 0.0):
+
+- total gap (baseline − FP16) = `+0.010788`
+- FP16 precision gap (FP32 − FP16) = `+0.000039` (**0.36%** of the total gap)
+- training/model gap (baseline − FP32) = `+0.010749`
+
+**FP16_QUALITY_IMPACT = NEGLIGIBLE** (|delta| ≤ 0.002). The regression vs the
+deployed baseline — including the small-object gap — is dominated by the
+training/model gap, **not** by FP16 conversion. Therefore the Stage 5B-2
+`UNDERTRAINED_BUT_HEALTHY` diagnosis holds, and the small-object regression is
+a training symptom rather than a deployment-precision symptom: reducing the
+FP16 deployment path would recover essentially nothing (~0.00004 mIoU);
+resuming distillation is the lever.

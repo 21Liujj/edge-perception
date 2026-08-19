@@ -1,0 +1,50 @@
+loading annotations into memory...
+Done (t=0.98s)
+creating index...
+index created!
+subset=standard instances=500
+loading ORT encoder: models/self_distilled/epoch10/nanosam_resnet18_epoch009.onnx
+decoder: third_party/nanosam/data/mobile_sam_mask_decoder.engine
+ORT+decoder ready
+[08/19/2026-11:50:39] [TRT] [W] Using default stream in enqueueV3() may lead to performance issues due to additional calls to cudaStreamSynchronize() by TensorRT to ensure correct synchronization. Please use non-default stream instead.
+  progress 50/500  valid=50 failed=0
+  progress 100/500  valid=100 failed=0
+  progress 150/500  valid=150 failed=0
+  progress 200/500  valid=200 failed=0
+  progress 250/500  valid=250 failed=0
+  progress 300/500  valid=300 failed=0
+  progress 350/500  valid=350 failed=0
+  progress 400/500  valid=400 failed=0
+  progress 450/500  valid=450 failed=0
+  progress 500/500  valid=500 failed=0
+=== standard DONE === valid=500 failed=0 mIoU=0.7073793236618349 wall=578.0s
+{
+  "subset": "standard",
+  "mask_selection": "slot 0 (fixed, not IoU argmax)",
+  "total_instances_in_subset": 500,
+  "skipped": {
+    "CROWD": 0,
+    "INVALID_BOX": 0,
+    "INVALID_GT_MASK": 0
+  },
+  "valid": 500,
+  "failed": 0,
+  "mean_iou": 0.7073793236618349,
+  "median_iou": 0.7762255637218138,
+  "p10": 0.3709080047789725,
+  "p50": 0.7762255637218138,
+  "p90": 0.9194797542655652,
+  "iou_ge_050_ratio": 0.834,
+  "iou_ge_075_ratio": 0.552,
+  "mIoU_small": 0.5863192275420165,
+  "mIoU_medium": 0.7519450652610682,
+  "mIoU_large": 0.794093812438536,
+  "small_count": 175,
+  "medium_count": 166,
+  "large_count": 159,
+  "unique_images": 455,
+  "embedding_set_calls": 455,
+  "embedding_reuse_count": 45,
+  "wall_time_s": 578.0115212950004,
+  "instances_per_sec_eval": 0.8650346603468729
+}
