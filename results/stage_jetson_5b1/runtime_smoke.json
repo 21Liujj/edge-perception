@@ -1,0 +1,28 @@
+{
+  "deserialize": "PASS",
+  "input_name": "image",
+  "output_name": "image_embeddings",
+  "engine_input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "engine_output_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "runtime": "PASS",
+  "output_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "finite": true,
+  "has_nan": false,
+  "has_inf": false,
+  "n_measured": 30
+}

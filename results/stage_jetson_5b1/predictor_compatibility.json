@@ -1,0 +1,26 @@
+{
+  "predictor_load": "PASS",
+  "loader": "nanosam.utils.predictor.load_image_encoder_engine (TRTModule)",
+  "engine_path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
+  "input_source": "deterministic synthetic 1280x720 via preprocess_image(size=1024)",
+  "input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "embedding_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "finite": true,
+  "expected_embedding_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "shape_ok": true
+}

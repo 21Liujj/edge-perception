@@ -1,0 +1,28 @@
+{
+  "hostname": "nvidia-desktop",
+  "uname": "Linux nvidia-desktop 5.15.148-tegra #1 SMP PREEMPT Tue Jan 7 17:14:38 PST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+  "os": "Ubuntu 22.04.5 LTS",
+  "python": "3.10.12",
+  "torch": "2.5.0a0+872d972e41.nv24.08",
+  "torchvision": "0.20.0a0+afc54f7",
+  "cuda_available": true,
+  "gpu_name": "Orin",
+  "gpu_capability": [
+    8,
+    7
+  ],
+  "tensorrt": "10.3.0",
+  "cuda_runtime": "12.6",
+  "jetpack_l4t": "# R36 (release), REVISION: 4.3, GCID: 38968081, BOARD: generic, EABI: aarch64, DATE: Wed Jan  8 01:49:37 UTC 2025\n# KERNEL_VARIANT: oot\nTARGET_USERSPACE_LIB_DIR=nvidia\nTARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia",
+  "free_mem": [
+    "total        used        free      shared  buff/cache   available",
+    "Mem:           7.4Gi       3.9Gi       1.5Gi        21Mi       2.1Gi       3.3Gi",
+    "Swap:          3.7Gi          0B       3.7Gi"
+  ],
+  "disk_home": [
+    "Filesystem      Size  Used Avail Use% Mounted on",
+    "/dev/nvme0n1p1  233G   44G  180G  20% /"
+  ],
+  "tensorrt_expected": "10.3.0.30",
+  "drift": false
+}

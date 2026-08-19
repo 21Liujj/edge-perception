@@ -1,0 +1,21 @@
+{
+  "reference_backend": "ONNXRuntime CPU FP32",
+  "reference_available": true,
+  "max_abs": 0.09028482437133789,
+  "mean_abs": 0.000385640345351157,
+  "rmse": 0.001601112196283604,
+  "relative_l2": 0.017633037641644478,
+  "cosine": 0.9998468160629272,
+  "trt_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "ort_shape": [
+    1,
+    256,
+    64,
+    64
+  ]
+}

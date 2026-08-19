@@ -1,0 +1,41 @@
+{
+  "path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch10/nanosam_resnet18_epoch009.onnx",
+  "size_bytes": 63321641,
+  "sha256": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
+  "expected_sha256": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
+  "sha_match": true,
+  "opset": [
+    [
+      "",
+      16
+    ]
+  ],
+  "ir_version": 8,
+  "producer": "pytorch",
+  "num_nodes": 93,
+  "inputs": [
+    {
+      "name": "image",
+      "shape": [
+        1,
+        3,
+        1024,
+        1024
+      ],
+      "dtype": 1
+    }
+  ],
+  "outputs": [
+    {
+      "name": "image_embeddings",
+      "shape": [
+        1,
+        256,
+        64,
+        64
+      ],
+      "dtype": 1
+    }
+  ],
+  "contract_pass": true
+}

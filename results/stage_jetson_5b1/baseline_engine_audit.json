@@ -1,0 +1,11 @@
+{
+  "baseline_fp16_path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/resnet18_image_encoder.engine",
+  "baseline_fp16_exists": true,
+  "baseline_fp16_size": 34766700,
+  "baseline_fp16_sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+  "expected_baseline_fp16_sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+  "baseline_fp16_sha_match": true,
+  "baseline_fp32_path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/resnet18_image_encoder_fp32.engine",
+  "baseline_fp32_sha256": "51d75af67aa5244eca88fa0c39e38c115ea7e6253de29701128635b3721cbbed",
+  "protection_note": "historical baseline engine untouched; self-trained engine written to models/self_distilled/epoch10/"
+}

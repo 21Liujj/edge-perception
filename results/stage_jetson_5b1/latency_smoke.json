@@ -1,0 +1,9 @@
+{
+  "target": "self-trained student encoder FP16",
+  "warmup": 30,
+  "measured": 100,
+  "mean_ms": 17.459675049999532,
+  "P50_ms": 17.299537000099008,
+  "P95_ms": 20.915242499813758,
+  "P99_ms": 21.479811889948905
+}

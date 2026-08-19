@@ -1,0 +1,29 @@
+{
+  "artifacts": [
+    {
+      "label": "source_onnx",
+      "path": "models/self_distilled/epoch10/nanosam_resnet18_epoch009.onnx",
+      "exists": true,
+      "size_bytes": 63321641,
+      "sha256": "aacbea870b8eca91e61fbb6325806c60a80e2f4a193f96597881e060b5c5cf15",
+      "gitignored": "*.onnx / *.engine ignored, SHA tracked here"
+    },
+    {
+      "label": "self_trained_fp16_engine",
+      "path": "models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
+      "exists": true,
+      "size_bytes": 37060492,
+      "sha256": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
+      "gitignored": "*.onnx / *.engine ignored, SHA tracked here"
+    },
+    {
+      "label": "historical_baseline_fp16_engine",
+      "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+      "exists": true,
+      "size_bytes": 34766700,
+      "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+      "gitignored": "*.onnx / *.engine ignored, SHA tracked here"
+    }
+  ],
+  "note": "Large binaries gitignored; SHAs recorded for integrity."
+}

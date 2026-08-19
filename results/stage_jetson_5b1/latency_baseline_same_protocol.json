@@ -1,0 +1,10 @@
+{
+  "target": "historical NanoSAM student encoder FP16 (Day3 baseline)",
+  "engine_sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+  "warmup": 30,
+  "measured": 100,
+  "mean_ms": 15.186092950002603,
+  "P50_ms": 14.9844130000929,
+  "P95_ms": 16.547440549697967,
+  "P99_ms": 16.858023589893495
+}
