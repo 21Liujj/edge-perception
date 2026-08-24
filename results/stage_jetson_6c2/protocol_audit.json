@@ -1,0 +1,16 @@
+{
+  "evaluator_script": "scripts/eval_nanosam_coco.py",
+  "manifest_path": "data/eval_manifests/standard_manifest.json",
+  "manifest_sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+  "expected_manifest_sha256": "19a00a836c2f1d1f236ea34175d12c2afc670b9cb5136b30e6b39bf7ca78f015",
+  "manifest_n_instances": 500,
+  "manifest_unique_images": 455,
+  "manifest_seed": 2027,
+  "mask_selection": "fixed slot0 (BASELINE LOCKED, not IoU argmax)",
+  "metric": "prompt-conditioned instance mask IoU (|pred&gt|/|pred|gt|), union==0->0",
+  "decoder": "third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+  "decoder_sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+  "decoder_rebuilt": false,
+  "encoder_evaluated": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+  "freeze_check": "env TR10.3.0/torch2.5.0a0+nv24.08/nanosam 65363361 unchanged, no rebuild/retrain"
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "file": "viz_00_ann1123344_small_10worse_50better.png",
+    "annotation_id": 1123344,
+    "category": "oven",
+    "size_bucket": "small",
+    "selection": "10worse_50better",
+    "iou_50ep": 0.496875,
+    "iou_10ep": 0.19174603174603175,
+    "iou_historical": 0.412532637075718
+  },
+  {
+    "file": "viz_01_ann2192485_medium_10worse_50better.png",
+    "annotation_id": 2192485,
+    "category": "chair",
+    "size_bucket": "medium",
+    "selection": "10worse_50better",
+    "iou_50ep": 0.8146436390172708,
+    "iou_10ep": 0.5596406587922143,
+    "iou_historical": 0.7659322435441839
+  },
+  {
+    "file": "viz_02_ann1109128_small_both_bad_small.png",
+    "annotation_id": 1109128,
+    "category": "remote",
+    "size_bucket": "small",
+    "selection": "both_bad_small",
+    "iou_50ep": 0.0,
+    "iou_10ep": 0.0,
+    "iou_historical": 0.0
+  },
+  {
+    "file": "viz_03_ann1158315_small_both_bad_small.png",
+    "annotation_id": 1158315,
+    "category": "scissors",
+    "size_bucket": "small",
+    "selection": "both_bad_small",
+    "iou_50ep": 0.0,
+    "iou_10ep": 0.0,
+    "iou_historical": 0.12280701754385964
+  },
+  {
+    "file": "viz_04_ann1051555_large_near_parity.png",
+    "annotation_id": 1051555,
+    "category": "orange",
+    "size_bucket": "large",
+    "selection": "near_parity",
+    "iou_50ep": 0.9845992730856896,
+    "iou_10ep": 0.9848592091090937,
+    "iou_historical": 0.9835520236555165
+  },
+  {
+    "file": "viz_05_ann306508_small_near_parity.png",
+    "annotation_id": 306508,
+    "category": "sports ball",
+    "size_bucket": "small",
+    "selection": "near_parity",
+    "iou_50ep": 0.963276836158192,
+    "iou_10ep": 0.9620253164556962,
+    "iou_historical": 0.9621318373071529
+  },
+  {
+    "file": "viz_06_ann1157949_large_thin_structure.png",
+    "annotation_id": 1157949,
+    "category": "scissors",
+    "size_bucket": "large",
+    "selection": "thin_structure",
+    "iou_50ep": 0.00017477628635346757,
+    "iou_10ep": 0.0002626848028632644,
+    "iou_historical": 0.0074795649276912825
+  }
+]

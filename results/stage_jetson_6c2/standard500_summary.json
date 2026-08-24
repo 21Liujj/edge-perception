@@ -1,0 +1,16 @@
+{
+  "mean_iou": 0.7156503852298276,
+  "median_iou": 0.7821344339622642,
+  "p10": 0.382154459476653,
+  "p50": 0.7821344339622642,
+  "p90": 0.9187363819572114,
+  "iou_ge_050_ratio": 0.852,
+  "iou_ge_075_ratio": 0.582,
+  "valid": 500,
+  "failed": 0,
+  "wall_time_s": 53.35914024699969,
+  "instances_per_sec": 9.370465822453246,
+  "unique_images": 455,
+  "embedding_set_calls": 455,
+  "embedding_reuse_count": 45
+}

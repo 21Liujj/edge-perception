@@ -1,0 +1,11 @@
+{
+  "additional_epochs": 40,
+  "additional_training_wall_s": 69156,
+  "additional_training_wall_h": 19.21,
+  "absolute_miou_gain": 0.008310385229827633,
+  "relative_miou_gain": 0.01174878450225865,
+  "miou_gain_per_10_epochs": 0.002077596307456908,
+  "miou_gain_per_hour": 0.00043260724777863783,
+  "loss_drop_10_to_50": 0.0001113,
+  "note": "project engineering metrics, not a universal model law"
+}

@@ -1,0 +1,22 @@
+{
+  "encoder_50ep": {
+    "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+    "sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "expected": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4"
+  },
+  "encoder_10ep": {
+    "path": "models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
+    "sha256": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
+    "expected": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140"
+  },
+  "encoder_historical": {
+    "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+    "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+    "expected": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8"
+  },
+  "decoder": {
+    "expected": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2"
+  },
+  "all_sha_match": true,
+  "three_engines_independent": true
+}

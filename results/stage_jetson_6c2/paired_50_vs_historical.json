@@ -1,0 +1,12 @@
+{
+  "n_paired": 500,
+  "source": "results/coco_nanosam_baseline/standard/per_instance.jsonl (available)",
+  "improved": 235,
+  "degraded": 262,
+  "equal_or_near": 3,
+  "mean_delta": -0.0024775917681634776,
+  "median_delta": -0.0005059307481915798,
+  "p10_delta": -0.04390710588560688,
+  "p90_delta": 0.03383370193768789,
+  "p95_abs_delta": 0.09519195998451327
+}

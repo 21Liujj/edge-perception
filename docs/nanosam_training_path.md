@@ -171,3 +171,26 @@ deployment TensorRT FP16 engine — the Jetson-side mirror of Stage 5B-1 (10ep).
 
 **Out of scope (STOP):** STANDARD500, FULL COCO, INT8, NanoOWL, C++, training.
 **Next (Stage Jetson-6C-2, ready):** frozen STANDARD500 mIoU of the 50ep FP16 engine on the same 500 manifest used by 10ep/historical, enabling the 10ep / 50ep / historical 三方 comparison (10ep TRT FP16 0.707340 / historical 0.718128 / 50ep pending).
+
+## Fifty-Epoch Downstream Quality (Stage Jetson-6C-2)
+
+Stage Jetson-6C-2 ran the frozen STANDARD500 gate on the 50ep FP16 engine and
+produced the 10ep / 50ep / historical three-way comparison.
+
+| model | loss | STANDARD500 mIoU | train wall |
+|---|---|---|---|
+| 10ep self-trained | 0.0005354 | 0.707340 | 4h41m (16876s) |
+| **50ep self-trained** | **0.0004241** | **0.715650** | 23h53m (86123s) total; +19h12m for epoch10→49 |
+| historical deployed | — | 0.718128 | — |
+
+- 50ep − 10ep = **+0.008310** (relative +1.18%); remaining gap to historical = **+0.002478**.
+- Additional 40 epochs: +0.0021 mIoU / 10 epochs, +0.00043 mIoU / hour (diminishing slope).
+- Size: extra 40 epochs mainly lifted **small** (+0.0176, now ~historical) and medium (+0.0100); large −0.0094.
+- Paired 10→50: 349 improved / 137 degraded / 14 equal, mean +0.0083.
+- Quality gate: **NEAR_PARITY**; recommendation **STOP_LONG_TRAINING** (advisory, not executed).
+
+Feature-space loss keeps dropping (−20.8% over epoch10→49) and still converts to
+task-space gain, but the slope is shallow; 50ep is within 0.0025 of the deployed
+baseline. Per the project heuristic, long training to 100/200ep is not justified.
+
+**Out of scope (STOP):** FULL COCO, 100/200 epoch, INT8, NanoOWL, C++, rebuild.

@@ -1,0 +1,15 @@
+{
+  "gate": "NEAR_PARITY",
+  "recommendation": "STOP_LONG_TRAINING",
+  "fifty_miou": 0.7156503852298276,
+  "ten_miou": 0.70734,
+  "historical_miou": 0.718127976997991,
+  "gap_to_historical": 0.002477591768163423,
+  "gain_vs_10ep": 0.008310385229827633,
+  "heuristics": {
+    "near_parity_threshold": 0.005,
+    "improvement_threshold": 0.005,
+    "saturated_threshold": 0.002
+  },
+  "note": "project engineering decision heuristic, not statistical significance"
+}

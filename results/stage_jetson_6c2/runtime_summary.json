@@ -1,0 +1,8 @@
+{
+  "wall_time_s": 53.35914024699969,
+  "instances_per_sec": 9.370465822453246,
+  "encoder_set_calls": 455,
+  "embedding_reuse_count": 45,
+  "decoder_calls": 500,
+  "note": "evaluation throughput on STANDARD500, NOT deployment FPS"
+}

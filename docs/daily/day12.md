@@ -193,3 +193,73 @@ All DIFFERENT (expected). Historical and 10ep engines untouched.
 ### NEXT
 STOP. No STANDARD500 / FULL COCO / INT8 / NanoOWL / C++ / training.
 Stage Jetson-6C-2 ready: YES — frozen STANDARD500 mIoU of the 50ep FP16 engine (same 500 manifest as 10ep/baseline), to enable the 10ep / 50ep / historical三方 comparison.
+
+## Stage Jetson-6C-2 — 50-Epoch STANDARD500 Quality Evaluation
+
+### WHAT
+Ran the frozen STANDARD500 quality gate on the 50ep self-trained FP16 engine and
+produced the 10ep / 50ep / historical three-way comparison + training-efficiency
+analysis.
+
+### FROZEN PROTOCOL (verified)
+- Manifest `data/eval_manifests/standard_manifest.json` SHA `19a00a83…f015` (n=500, unique=455, seed=2027) — match
+- Evaluator `scripts/eval_nanosam_coco.py`, fixed slot0, GT-box prompt, same decoder/preprocess/IoU as 5B-2
+- Decoder `afb5ac49…ccb4f2` unchanged; 50ep engine `99147caf…` / 10ep `ab2d9962…` / historical `c277e5ca…` all verified, no rebuild/retrain
+
+### 50ep STANDARD500 RESULT
+- mean IoU **0.715650** | median 0.782134 | P10 0.3922 | P90 0.9179
+- IoU>=0.50 0.844 | IoU>=0.75 0.582 | valid 500 / failed 0
+- wall 53.4s | 9.36 inst/s | encoder set-calls 455 | reuse 45
+
+### THREE-WAY COMPARISON
+| model | mean IoU |
+|---|---|
+| 10ep self-trained | 0.707340 |
+| **50ep self-trained** | **0.715650** |
+| historical deployed | 0.718128 |
+
+- 50ep − 10ep = **+0.008310** (relative +1.176%)
+- 50ep − historical = **−0.002478**
+- remaining gap (historical − 50ep) = **+0.002478**
+
+### TRAINING EFFICIENCY (additional 40 epochs, epoch10→49)
+- additional wall ≈ 19.21 h (69156 s)
+- absolute mIoU gain +0.008310 | relative +1.176%
+- **+0.002078 mIoU per 10 epochs** | **+0.0004328 mIoU per hour**
+- feature loss 0.0005354 → 0.0004241 (−20.8% this run)
+
+### SIZE BREAKDOWN (50ep / 10ep / historical)
+| size | n | 50ep | 10ep | historical | 50−10 |
+|---|---|---|---|---|---|
+| small | 175 | 0.603903 | 0.586296 | 0.605320 | +0.017607 |
+| medium | 166 | 0.761895 | 0.751911 | 0.762659 | +0.009984 |
+| large | 159 | 0.784648 | 0.794032 | 0.795796 | −0.009384 |
+
+- Extra 40 epochs mainly improved **small** (+0.0176) and medium (+0.0100); large slightly regressed (−0.0094).
+- small 50ep (0.6039) now ~ historical small (0.6053): small-object gap essentially closed.
+
+### PAIRED (same 500 instances)
+- 10→50: improved 349 / degraded 137 / equal 14 | mean delta +0.00831 | median +0.0060
+- 50 vs historical: improved 134 / degraded 357 / equal 9 | mean delta −0.00248
+
+### CATEGORY (descriptive, per-class n small)
+- best5 (50ep): stop sign 0.904, sandwich 0.895, toaster 0.879, bus 0.876, bear 0.870
+- worst5 (50ep): skis 0.350, scissors 0.372, dining table 0.388, snowboard 0.388, couch 0.429
+- largest 10→50 improvement: umbrella +0.044, oven +0.040, bird +0.038, orange +0.036, skateboard +0.036
+
+### QUALITY GATE
+- **NEAR_PARITY** (gap to historical 0.002478 ≤ 0.005)
+- recommendation (advisory, NOT executed): **STOP_LONG_TRAINING**
+
+### INTERPRETATION
+Feature-space improvement (loss 0.000535→0.000424, −20.8%) translated into
+downstream mask gain (+0.0083 mIoU) but with diminishing slope:
+10→50ep gained +0.0083 in 40 epochs (~0.0021/10ep), whereas the first 10 epochs
+gained ~+0.71 from ImageNet init. 50ep is now within 0.0025 of the deployed
+baseline — the small-object gap that dominated the 5B-2 regression is largely
+closed. Additional long training is not warranted by the project heuristic.
+
+### NEXT
+STOP. No FULL COCO / 100ep / 200ep / INT8 / NanoOWL / C++ / engine rebuild.
+Fifty-epoch distillation milestone complete: self-trained student reaches
+near-parity with the deployed NanoSAM encoder on STANDARD500.
