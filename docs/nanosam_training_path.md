@@ -194,3 +194,72 @@ task-space gain, but the slope is shallow; 50ep is within 0.0025 of the deployed
 baseline. Per the project heuristic, long training to 100/200ep is not justified.
 
 **Out of scope (STOP):** FULL COCO, 100/200 epoch, INT8, NanoOWL, C++, rebuild.
+
+## Fifty-Epoch FULL COCO Validation (Stage Jetson-6D)
+
+Stage Jetson-6D validated the 50ep FP16 engine on the **full COCO val2017**
+(36,335 legal non-crowd instances, 4,952 unique images) using the frozen B3
+FULL evaluator — `eval_nanosam_full_b3.py` `evaluate()` + `analyze()` called
+directly, bypassing B3's `main()` standard-gate (STD_MIOU check, would exit 10
+with the 50ep encoder by design). Only the encoder was swapped; decoder
+`afb5ac49…`, manifest `ad8843c7…`, preprocess, GT-box prompt [2,3], fixed slot0,
+and IoU all unchanged.
+
+| metric | 50ep FULL | historical FULL | delta |
+|---|---|---|---|
+| mean IoU | **0.699183** | 0.703201 | −0.004018 |
+| median | 0.747113 | 0.751699 | −0.004586 |
+| P10 | 0.408485 | 0.415992 | −0.007507 |
+| P90 | 0.909632 | 0.910241 | −0.000610 |
+| IoU≥0.50 | 0.836219 | 0.842136 | −0.005917 |
+| IoU≥0.75 | 0.494647 | 0.503454 | −0.008807 |
+
+- absolute delta **−0.004018** | relative **−0.571%** — within NEAR_PARITY (≤0.005).
+- valid 36335 / failed **0**.
+
+### Size breakdown
+| size | n | 50ep | historical | delta |
+|---|---|---|---|---|
+| small | 15264 | 0.613713 | 0.621048 | −0.007335 |
+| medium | 12392 | 0.741617 | 0.744661 | −0.003044 |
+| large | 8679 | 0.788913 | 0.788489 | **+0.000424** |
+
+- STANDARD500 size trend on FULL: **PARTIAL** — medium near-parity (✓), small
+  drifts past 0.005 (✗, −0.0073), large slightly *up* not down (✗, +0.0004).
+  The STANDARD500 observation (small/med ~par, large down) does **not** fully
+  transfer to FULL: large is at parity, small is the weakest bucket.
+
+### Paired 50ep vs historical (per-instance, n=36335)
+- improved 16464 / degraded 19715 / equal-or-near 156.
+- mean delta **−0.004018** | median −0.001626 | P10 −0.0484 | P90 +0.0369 | P95 abs 0.0963.
+- Symmetric spread: ~45% of instances the 50ep encoder is *better* than historical,
+  ~54% worse — a near-tie with a tiny aggregate edge to historical, not a
+  systematic regression.
+
+### Mask selection (fixed slot0 vs alternatives)
+- fixed slot0 mIoU **0.699183** vs predicted-IoU-argmax 0.629860 (−0.0693) vs
+  oracle-best-of-4 0.727538 (+0.0284 headroom).
+- 99.98% of predictions land in slot 2 — the decoder's score model is
+  degenerate (argmax≠oracle 82.7%); fixed slot0 remains the right policy.
+
+### Categories
+- best5: toaster(0.873,n9) · bear(0.870,n71) · microwave(0.854,n55) · stop sign(0.849,n75) · parking meter(0.848,n60)
+- worst5: **skis(0.339,n241)** · fork(0.471,n215) · knife(0.503,n325) · spoon(0.528,n253) · dining table(0.544,n695)
+- Thin/elongated structures (skis, fork, knife, spoon) remain the dominant
+  failure mode — same regime as historical, not a 50ep-specific weakness.
+
+### Runtime
+- wall 1988s (33 min) | 18.28 inst/s | 2.49 img/s | encoder calls 4952 | reuse 31383
+- peak RSS 1.01GB | CUDA alloc 0.036GB | reserved 0.061GB (evaluation throughput, NOT deployment FPS).
+
+### Quality gate & distillation final decision
+- **NEAR_PARITY** (abs gap 0.004018 ≤ 0.005) → **Distillation Module: COMPLETE**.
+- recommendation (advisory, NOT executed): **STOP_LONG_TRAINING**.
+- Evidence chain: feature loss 0.001122→0.0004241 (epoch0→49); STANDARD500
+  0.707340→0.715650 (10→50ep); FULL COCO 0.699183 vs historical 0.703201.
+- The 50ep self-distilled student reaches within 0.4 mIoU points of the
+  historically-deployed NanoSAM encoder on full COCO — sufficient to close the
+  knowledge-distillation module. 100/200ep not justified by the shallow slope.
+
+**Out of scope (STOP):** 100/200ep, INT8, NanoOWL, C++, rebuild — NOT performed.
+**Next (awaiting authorization):** INT8 PTQ module.

@@ -1,0 +1,21 @@
+{
+  "distillation_module": "COMPLETE",
+  "recommendation": "STOP_LONG_TRAINING",
+  "evidence_chain": {
+    "training_loss": {
+      "epoch0": 0.001122,
+      "epoch9": 0.0005354,
+      "epoch49": 0.0004241
+    },
+    "standard500": {
+      "10ep": 0.70734,
+      "50ep": 0.71565,
+      "historical": 0.718128
+    },
+    "full_coco": {
+      "50ep": 0.6991830425053155,
+      "historical": 0.7032011354593914
+    }
+  },
+  "next_module": "INT8 PTQ (awaiting authorization)"
+}

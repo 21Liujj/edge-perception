@@ -1,0 +1,122 @@
+[
+  {
+    "file": "viz_00_ann2012012_medium_fifty_wins.png",
+    "annotation_id": 2012012,
+    "category": "person",
+    "size_bucket": "medium",
+    "selection": "fifty_wins",
+    "iou_50ep": 0.8477051460361613,
+    "iou_historical": 0.18309859154929578,
+    "delta": 0.6646065544868656
+  },
+  {
+    "file": "viz_01_ann46859_large_fifty_wins.png",
+    "annotation_id": 46859,
+    "category": "cat",
+    "size_bucket": "large",
+    "selection": "fifty_wins",
+    "iou_50ep": 0.8132624215418524,
+    "iou_historical": 0.273065296543465,
+    "delta": 0.5401971249983873
+  },
+  {
+    "file": "viz_02_ann2056564_small_fifty_wins.png",
+    "annotation_id": 2056564,
+    "category": "boat",
+    "size_bucket": "small",
+    "selection": "fifty_wins",
+    "iou_50ep": 0.7734668335419274,
+    "iou_historical": 0.3125,
+    "delta": 0.46096683354192736
+  },
+  {
+    "file": "viz_03_ann1506151_small_historical_wins.png",
+    "annotation_id": 1506151,
+    "category": "cup",
+    "size_bucket": "small",
+    "selection": "historical_wins",
+    "iou_50ep": 0.0,
+    "iou_historical": 1.0,
+    "delta": -1.0
+  },
+  {
+    "file": "viz_04_ann1303395_medium_historical_wins.png",
+    "annotation_id": 1303395,
+    "category": "person",
+    "size_bucket": "medium",
+    "selection": "historical_wins",
+    "iou_50ep": 0.1168724279835391,
+    "iou_historical": 0.8550608903972848,
+    "delta": -0.7381884624137457
+  },
+  {
+    "file": "viz_05_ann543757_medium_historical_wins.png",
+    "annotation_id": 543757,
+    "category": "person",
+    "size_bucket": "medium",
+    "selection": "historical_wins",
+    "iou_50ep": 0.18810715337062114,
+    "iou_historical": 0.8439878234398782,
+    "delta": -0.6558806700692571
+  },
+  {
+    "file": "viz_06_ann316818_large_near_parity.png",
+    "annotation_id": 316818,
+    "category": "bed",
+    "size_bucket": "large",
+    "selection": "near_parity",
+    "iou_50ep": 0.9889799331103679,
+    "iou_historical": 0.9904899593023742,
+    "delta": -0.0015100261920062419
+  },
+  {
+    "file": "viz_07_ann1585440_large_near_parity.png",
+    "annotation_id": 1585440,
+    "category": "chair",
+    "size_bucket": "large",
+    "selection": "near_parity",
+    "iou_50ep": 0.9856766800867142,
+    "iou_historical": 0.9852006818534015,
+    "delta": 0.00047599823331268
+  },
+  {
+    "file": "viz_08_ann89688_medium_near_parity.png",
+    "annotation_id": 89688,
+    "category": "bottle",
+    "size_bucket": "medium",
+    "selection": "near_parity",
+    "iou_50ep": 0.9853797546772395,
+    "iou_historical": 0.9867097254999379,
+    "delta": -0.0013299708226983675
+  },
+  {
+    "file": "viz_09_ann692452_small_thin_structure.png",
+    "annotation_id": 692452,
+    "category": "fork",
+    "size_bucket": "small",
+    "selection": "thin_structure",
+    "iou_50ep": 0.0,
+    "iou_historical": 0.0,
+    "delta": 0.0
+  },
+  {
+    "file": "viz_10_ann1158315_small_thin_structure.png",
+    "annotation_id": 1158315,
+    "category": "scissors",
+    "size_bucket": "small",
+    "selection": "thin_structure",
+    "iou_50ep": 0.0,
+    "iou_historical": 0.12280701754385964,
+    "delta": -0.12280701754385964
+  },
+  {
+    "file": "viz_11_ann1452924_small_thin_structure.png",
+    "annotation_id": 1452924,
+    "category": "skis",
+    "size_bucket": "small",
+    "selection": "thin_structure",
+    "iou_50ep": 0.0,
+    "iou_historical": 0.0,
+    "delta": 0.0
+  }
+]

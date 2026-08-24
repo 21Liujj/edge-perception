@@ -1,0 +1,25 @@
+{
+  "scope": "algorithm quality evaluation, not deployment FPS",
+  "wall_time_seconds": 1988.184946409,
+  "legal_instances": 36335,
+  "unique_images": 4952,
+  "encoder_calls": 4952,
+  "decoder_calls": 36335,
+  "embedding_reuse_instances": 31383,
+  "encoder_aggregate_seconds": 342.4997112230303,
+  "decoder_aggregate_seconds": 823.3225977459206,
+  "mask_metric_aggregate_seconds": 702.1479570149904,
+  "images_per_second": 2.4907139594554084,
+  "instances_per_second": 18.275462786109102,
+  "valid_count": 36335,
+  "failed_count": 0,
+  "peak_rss_bytes": 1085767680,
+  "torch_cuda_peak_allocated_bytes": 38047744,
+  "torch_cuda_peak_reserved_bytes": 65011712,
+  "minimum_system_mem_available_bytes": 4633513984,
+  "csv": {
+    "path": "results/stage_jetson_6d/per_instance_primary.csv",
+    "size_bytes": 12470491,
+    "sha256": "e3c47e29de2a0c910934df59a89653f626451cd68d9237b18f9d21347ce24c33"
+  }
+}

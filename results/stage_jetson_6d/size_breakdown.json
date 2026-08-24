@@ -1,0 +1,26 @@
+{
+  "small": {
+    "n": 15264,
+    "fifty": 0.6137132830953452,
+    "historical": 0.6210482480833809,
+    "delta": -0.007334964988035653
+  },
+  "medium": {
+    "n": 12392,
+    "fifty": 0.7416174052529757,
+    "historical": 0.7446609410051154,
+    "delta": -0.00304353575213967
+  },
+  "large": {
+    "n": 8679,
+    "fifty": 0.7889127100320792,
+    "historical": 0.7884888140611679,
+    "delta": 0.00042389597091130327
+  },
+  "std500_trend_on_full": "PARTIAL",
+  "std500_trend_detail": {
+    "small_near_par": false,
+    "medium_near_par": true,
+    "large_down": false
+  }
+}

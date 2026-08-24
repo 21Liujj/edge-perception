@@ -1,0 +1,13 @@
+{
+  "available": true,
+  "n_paired": 36335,
+  "source": "results/algorithm_b3_nanosam_full/per_instance_primary.csv",
+  "improved": 16464,
+  "degraded": 19715,
+  "equal_or_near": 156,
+  "mean_delta": -0.004018092954076017,
+  "median_delta": -0.0016259921509085284,
+  "p10_delta": -0.048383306026134,
+  "p90_delta": 0.036852912651105206,
+  "p95_abs_delta": 0.09631776092625417
+}

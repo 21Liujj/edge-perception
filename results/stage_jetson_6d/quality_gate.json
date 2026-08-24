@@ -1,0 +1,11 @@
+{
+  "gate": "NEAR_PARITY",
+  "fifty_miou": 0.6991830425053155,
+  "historical_miou": 0.7032011354593914,
+  "absolute_delta": -0.004018092954075958,
+  "abs_gap": 0.004018092954075958,
+  "heuristics": {
+    "near_parity": 0.005,
+    "acceptable": 0.015
+  }
+}

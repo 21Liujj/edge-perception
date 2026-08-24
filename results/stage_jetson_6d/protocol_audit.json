@@ -1,0 +1,24 @@
+{
+  "evaluator": "scripts/eval_nanosam_full_b3.py (frozen, imported)",
+  "functions_used": [
+    "evaluate",
+    "analyze",
+    "aggregate",
+    "materialize",
+    "bucket"
+  ],
+  "bypassed": "main() standard-gate (STD_MIOU check \u2014 would exit 10 with 50ep encoder)",
+  "encoder_swapped_only": true,
+  "decoder_unchanged": true,
+  "manifest_unchanged": true,
+  "mask_selection": "fixed slot0",
+  "prompt": "clipped GT box corners, points labels [2,3]",
+  "size_split": "COCO area small<32^2 medium<96^2 large>=96^2",
+  "crowd_excluded": true,
+  "embedding_reuse": true,
+  "env": {
+    "trt": "10.3.0",
+    "torch": "2.5.0a0+nv24.08",
+    "nanosam": "653633614b2eb93b06ba3be9adb2aeffb117bd72"
+  }
+}

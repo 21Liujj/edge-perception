@@ -1,0 +1,15 @@
+{
+  "encoder_50ep": {
+    "path": "/home/nvidia/jetson-deploy-lab/models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+    "sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "expected": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "match": true
+  },
+  "decoder": {
+    "path": "/home/nvidia/jetson-deploy-lab/third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+    "sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "expected": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2",
+    "match": true
+  },
+  "rebuilt": false
+}
