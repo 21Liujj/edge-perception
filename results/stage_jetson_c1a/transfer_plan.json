@@ -1,0 +1,71 @@
+{
+  "stage": "Jetson-C1A",
+  "blocker": "TRAIN2017_NOT_LOCAL",
+  "unblock_options": [
+    {
+      "option": "A",
+      "name": "Transfer 512-image calibration subset from 5090",
+      "source": "AutoDL 5090 (bjb2:33884)",
+      "steps": [
+        "On 5090: python sample_train2017_calib.py --seed 20260824 --n 512 --out train2017_calib512.tar.gz",
+        "On 5090: Generate manifest with image IDs + SHA256s",
+        "Transfer: scp 5090:train2017_calib512.tar.gz → Jetson:~/",
+        "On Jetson: tar xzf train2017_calib512.tar.gz -C data/coco/",
+        "Verify manifest SHA256s",
+        "Resume C1A"
+      ],
+      "transfer_size": "~50-100 MB (512 JPEGs)",
+      "transfer_time_estimate": "5-10 minutes",
+      "pros": "Minimal transfer, deterministic sampling, fast unblock",
+      "cons": "Requires 5090 access",
+      "recommended": true
+    },
+    {
+      "option": "B",
+      "name": "Transfer full train2017 to Jetson",
+      "source": "AutoDL 5090 or COCO downloads",
+      "steps": [
+        "Download/locate full COCO train2017 (19 GB, 118k images)",
+        "Transfer to Jetson: data/coco/train2017/",
+        "Resume C1A with local sampling (seed 20260824, n=512)"
+      ],
+      "transfer_size": "19 GB",
+      "transfer_time_estimate": "20-60 minutes (bandwidth-dependent)",
+      "pros": "Full dataset for future experiments",
+      "cons": "19 GB storage + long transfer",
+      "recommended": false
+    },
+    {
+      "option": "C",
+      "name": "Use pre-existing calibration subset",
+      "source": "Project history or canonical subset",
+      "steps": [
+        "Check if 512-image train2017 calibration subset already exists",
+        "Transfer to Jetson if remote",
+        "Verify manifest + SHA256s",
+        "Resume C1A"
+      ],
+      "transfer_size": "~50-100 MB",
+      "pros": "Reuses existing work",
+      "cons": "May not exist or may not match seed 20260824",
+      "recommended": "if available"
+    }
+  ],
+  "recommendation": {
+    "primary": "Option A",
+    "rationale": "Minimal transfer, deterministic sampling on 5090 (where train2017 already exists for distillation training), fast unblock (5-10min), sufficient for calibration (512 images)."
+  },
+  "target_manifest": {
+    "path": "data/calibration/nanosam_int8_train2017_512.json",
+    "schema": {
+      "seed": 20260824,
+      "sample_count": 512,
+      "source_dataset": "COCO train2017",
+      "image_paths": ["relative path from data/coco/train2017/"],
+      "image_sha256s": ["per-image SHA256"],
+      "onnx_sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+      "preprocessing": "nanosam.utils.predictor.preprocess_image",
+      "manifest_sha256": "computed after generation"
+    }
+  }
+}

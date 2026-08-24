@@ -63,3 +63,68 @@ Stage Jetson-C1: Build 512-image calibration dataset → IInt8EntropyCalibrator2
 **INT8_PTQ_PATH_READY**  
 **Path**: TensorRT implicit PTQ, IInt8EntropyCalibrator2, 512 val2017, seed 20260824  
 **Risk**: GELU/ConvTranspose may regress; quality gate + fallback designed
+
+
+---
+
+## Stage Jetson-C1A: INT8 Calibration Cache (BLOCKED)
+
+**Date**: 2026-08-24 (same day as C0)  
+**Status**: BLOCKED (TRAIN2017_NOT_LOCAL)
+
+### WHAT
+
+Attempted to build INT8 calibration cache using COCO train2017. Discovered train2017 is not available on Jetson device.
+
+### CALIBRATION SOURCE CORRECTION
+
+**C0 design**: Proposed val2017 for calibration (already on device)  
+**C1A correction**: Requires train2017 for strict calibration/evaluation isolation
+
+**Rationale**: STANDARD500 and FULL eval both use val2017. Even though calibration does not see GT, using val2017 for calibration creates image-level overlap with evaluation set (evaluation set leakage). Conservative practice: tune on train, validate on val.
+
+**Final protocol**:
+- train2017 → distillation training + INT8 calibration
+- val2017 → STANDARD500 + FULL evaluation
+
+### BLOCKER
+
+**train2017**: NOT FOUND on Jetson  
+**Available**: val2017 only (5000 images, reserved for evaluation)
+
+### TRANSFER PLAN
+
+**Recommended**: Option A — Transfer 512-image calibration subset from AutoDL 5090
+
+Steps:
+1. On 5090: Sample 512 train2017 images (seed 20260824, deterministic random)
+2. Create tar: train2017_calib512.tar.gz (~50-100 MB)
+3. Transfer: scp 5090 → Jetson (~5-10 min)
+4. Extract to: data/coco/train2017_calib512/
+5. Resume C1A
+
+Alternative: Transfer full train2017 (19 GB, 118k images) — more storage/time, but enables future experiments.
+
+### EVIDENCE
+
+results/stage_jetson_c1a/:
+- source_dataset_audit.json (val2017 found, train2017 not found)
+- transfer_plan.json (3 options with recommendations)
+- stage_summary.md (blocked status, unblock requirements)
+
+### DOCUMENTATION
+
+docs/int8_ptq.md: Added § 9 CALIBRATION_SOURCE_CORRECTION (C0 historical design + C1A correction rationale + transfer plan)
+
+### NEXT
+
+Awaiting user decision: Execute transfer plan Option A, B, or C. Once train2017 available, resume C1A to:
+1. Generate deterministic 512-image manifest
+2. Implement IInt8EntropyCalibrator2
+3. Run calibration with deployment preprocessing
+4. Generate calibration_train2017_512.cache
+5. Verify cache reuse
+
+### STOP
+
+C1A cannot proceed without train2017. No commit (no functional work completed).

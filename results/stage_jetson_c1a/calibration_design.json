@@ -1,0 +1,76 @@
+{
+  "stage": "Jetson-C1A",
+  "status": "BLOCKED",
+  "blocker": "TRAIN2017_NOT_LOCAL",
+  "calibration_design": {
+    "source_dataset": "COCO train2017",
+    "seed": 20260824,
+    "sample_count": 512,
+    "sampling_method": "deterministic random (numpy.default_rng(seed).choice, replace=False)",
+    "stratification": "none (image-level calibration, not category-dependent)",
+    "manifest_path": "data/calibration/nanosam_int8_train2017_512.json",
+    "manifest_schema": {
+      "seed": "int",
+      "sample_count": "int",
+      "source_dataset": "string",
+      "image_paths": "list[str] (relative to data/coco/train2017/)",
+      "image_sha256s": "list[str] (per-image SHA256)",
+      "onnx_sha256": "string (source ONNX for cache binding)",
+      "preprocessing": "string (identifier)",
+      "manifest_sha256": "string (computed after generation)"
+    }
+  },
+  "preprocessing": {
+    "function": "nanosam.utils.predictor.preprocess_image",
+    "signature": "preprocess_image(image: PIL.Image, size: int = 1024) -> torch.Tensor",
+    "output_shape": [1, 3, 1024, 1024],
+    "output_dtype": "torch.float32",
+    "output_device": "cuda",
+    "steps": [
+      "RGB PIL image input",
+      "Aspect-preserving resize (long edge → 1024)",
+      "HWC → CHW",
+      "To float32",
+      "ImageNet mean/std normalization",
+      "Zero-pad to [1, 3, 1024, 1024]",
+      "To CUDA"
+    ],
+    "must_match_deployment": true,
+    "no_reimplementation": "Import function directly, do not reimplement"
+  },
+  "calibrator": {
+    "class": "IInt8EntropyCalibrator2",
+    "api": "tensorrt.IInt8EntropyCalibrator2",
+    "trt_version": "10.3.0",
+    "required_methods": [
+      "get_batch_size() -> int",
+      "get_batch(names: list[str]) -> list[int] (device pointers)",
+      "read_calibration_cache() -> bytes",
+      "write_calibration_cache(cache: bytes) -> None"
+    ],
+    "batch_size_candidates": [1, 4, 8],
+    "batch_size_selection": "Based on Jetson 8GB memory + 1024x1024 input; prefer stable calibration over throughput",
+    "device_buffer_management": "torch CUDA tensor or pycuda; must not leak memory per batch"
+  },
+  "calibration_cache": {
+    "path": "models/self_distilled/epoch50/int8/calibration_train2017_512.cache",
+    "metadata_path": "models/self_distilled/epoch50/int8/calibration_metadata.json",
+    "provenance_guard": {
+      "onnx_sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+      "manifest_sha256": "TBD (computed after manifest generation)",
+      "preprocessing_id": "nanosam.utils.predictor.preprocess_image",
+      "tensorrt_version": "10.3.0",
+      "calibration_algorithm": "IInt8EntropyCalibrator2",
+      "input_contract": "[1, 3, 1024, 1024] fp32"
+    },
+    "reuse_condition": "All provenance fields must match exactly; otherwise CACHE_INVALID_FOR_MODEL"
+  },
+  "next_when_unblocked": [
+    "Transfer train2017 (512 images or full)",
+    "Generate manifest with deterministic sampling",
+    "Implement IInt8EntropyCalibrator2",
+    "Run calibration (512 images → cache)",
+    "Verify cache reuse",
+    "Record calibration runtime + resources"
+  ]
+}

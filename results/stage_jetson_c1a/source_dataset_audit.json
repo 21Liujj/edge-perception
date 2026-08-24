@@ -1,0 +1,32 @@
+{
+  "stage": "Jetson-C1A",
+  "objective": "Locate COCO train2017 for INT8 calibration",
+  "corrected_design": {
+    "original_c0_proposal": "val2017 (already on device)",
+    "c1a_correction": "train2017 (strict evaluation isolation)",
+    "rationale": "STANDARD500 and FULL eval both use val2017. To avoid calibration/evaluation distribution overlap, calibration must use train2017."
+  },
+  "search_paths": [
+    "/home/nvidia/jetson-deploy-lab/data",
+    "/home/nvidia/data",
+    "/data",
+    "~/data"
+  ],
+  "found": {
+    "val2017": {
+      "path": "data/coco/val2017",
+      "exists": true,
+      "image_count": 5000,
+      "usable_for_calibration": false,
+      "reason": "Reserved for STANDARD500 + FULL evaluation"
+    },
+    "train2017": {
+      "path": "NOT_FOUND",
+      "exists": false,
+      "searched": true,
+      "blocker": "TRAIN2017_NOT_LOCAL"
+    }
+  },
+  "status": "BLOCKED",
+  "unblock_requirement": "Transfer train2017 (512 images or full 118k) from AutoDL 5090 or other source"
+}

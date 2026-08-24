@@ -1,0 +1,16 @@
+{
+  "stage": "Jetson-C1A",
+  "timestamp": "2026-08-24",
+  "host": "jetson-orin",
+  "python": "3.10.12",
+  "pytorch": "2.5.0a0+872d972e41.nv24.08",
+  "tensorrt": "10.3.0",
+  "cuda_available": true,
+  "gpu": "Orin (sm_87 Ampere)",
+  "git_commit": "8ebd6ed",
+  "git_status": "clean (on commit quant: design NanoSAM INT8 PTQ pipeline)",
+  "venv": ".venv",
+  "nanosam_upstream": "third_party/nanosam (unchanged)",
+  "dependency_upgrades": false,
+  "constraint": "TRT 10.3.0 frozen, no upgrades"
+}

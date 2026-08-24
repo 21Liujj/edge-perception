@@ -270,3 +270,109 @@ delta = INT8_mIoU_STANDARD500 - FP16_mIoU_STANDARD500
 - This project's frozen artifacts: `models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx` (SHA `906d8fd7…`)
 
 **Document role**: Knowledge base + engineering path for NanoSAM INT8 PTQ. Update as Module C progresses (C1 calibration, C2 first INT8 build, C3 quality validation, C4 performance benchmark, C5 mixed-precision if needed).
+
+---
+
+## 9. CALIBRATION SOURCE CORRECTION (C0 → C1A)
+
+**Date**: 2026-08-24  
+**Stage**: Jetson-C1A  
+**Change**: Calibration dataset source
+
+### 9.1 Original C0 Design (Commit 8ebd6ed)
+
+**Proposed calibration source**: COCO 2017 val2017 (5000 images)
+
+**Rationale (C0)**:
+- val2017 already present on Jetson device (no download needed)
+- val2017 is the distribution NanoSAM evaluation sees (Module C baseline protocol)
+- PTQ calibration uses raw images only (no segmentation GT), so no direct GT leakage
+
+**C0 excerpt** (§ 4.1):
+> COCO 2017 val2017 (5000 images), already on Jetson device. val2017 is the same distribution NanoSAM evaluation sees.
+
+### 9.2 Corrected Design (C1A Final)
+
+**Required calibration source**: COCO 2017 train2017
+
+**Rationale (Correction)**:
+
+While PTQ calibration does not consume segmentation ground truth, there is still a **distribution overlap risk**:
+
+1. **STANDARD500** evaluation set: sampled from val2017
+2. **FULL COCO** evaluation set: entire val2017 (5000 images)
+3. **Calibration** (C0 proposal): 512 images from val2017
+
+This creates **image-level overlap** between calibration and evaluation:
+- If calibration uses val2017, the INT8 scale ranges are tuned on **the same image distribution** we later evaluate on.
+- This is not GT leakage (calibration sees no masks), but it is **evaluation set leakage** — the models quantization is optimized for the test distribution.
+
+
+---
+
+## 9. CALIBRATION SOURCE CORRECTION (C0 → C1A)
+
+**Date**: 2026-08-24  
+**Stage**: Jetson-C1A  
+**Change**: Calibration dataset source
+
+### 9.1 Original C0 Design (Commit 8ebd6ed)
+
+**Proposed calibration source**: COCO 2017 val2017 (5000 images)
+
+**Rationale (C0)**:
+- val2017 already present on Jetson device (no download needed)
+- val2017 is the distribution NanoSAM evaluation sees (Module C baseline protocol)
+- PTQ calibration uses raw images only (no segmentation GT), so no direct GT leakage
+
+**C0 excerpt** (§ 4.1):
+> COCO 2017 val2017 (5000 images), already on Jetson device. val2017 is the same distribution NanoSAM evaluation sees.
+
+### 9.2 Corrected Design (C1A Final)
+
+**Required calibration source**: COCO 2017 train2017
+
+**Rationale (Correction)**:
+
+While PTQ calibration does not consume segmentation ground truth, there is still a distribution overlap risk.
+
+STANDARD500 and FULL COCO evaluation both use val2017. If calibration also uses val2017, the INT8 scale ranges are tuned on the same image distribution we later evaluate on. This is not GT leakage, but it is evaluation set leakage.
+
+**Strict isolation principle**: Calibration and evaluation must use disjoint image sets, even at the image level, even when calibration does not see task labels.
+
+**Final protocol** (Module C):
+```
+train2017 → Knowledge distillation training + INT8 calibration
+val2017   → STANDARD500 + FULL COCO evaluation
+```
+
+This ensures:
+1. Zero image overlap between calibration and evaluation
+2. Conservative validation: If INT8 quality holds on unseen val2017, it generalizes
+3. Consistent with ML best practice: Tune on train, validate on val
+
+### 9.3 Impact on C0 Evidence
+
+C0 evidence files remain unchanged for historical record. C1A and all subsequent stages use train2017 for calibration. This correction is design evolution, not error concealment.
+
+### 9.4 Practical Consequence (C1A)
+
+**Blocker**: train2017 is NOT present on Jetson device.
+
+**C1A status**: BLOCKED (TRAIN2017_NOT_LOCAL)
+
+**Unblock**: Transfer 512 train2017 images from AutoDL 5090 to Jetson.
+
+**Recommendation**: Transfer 512-image calibration subset:
+- Deterministic sampling on 5090: seed 20260824, n=512
+- Tar archive: ~50-100 MB, transfer time ~5-10 minutes
+- Extract to: data/coco/train2017_calib512/
+
+Once train2017 is available, C1A resumes with:
+- Manifest: data/calibration/nanosam_int8_train2017_512.json
+- Calibrator: IInt8EntropyCalibrator2
+- Cache: models/self_distilled/epoch50/int8/calibration_train2017_512.cache
+
+---
+
+**Summary**: C0 proposed val2017, C1A requires train2017 for strict calibration/evaluation isolation.
