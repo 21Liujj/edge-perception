@@ -1,0 +1,12 @@
+{
+  "host": "nvidia-desktop",
+  "python": "3.10.12",
+  "torch": "2.5.0a0+872d972e41.nv24.08",
+  "tensorrt": "10.3.0",
+  "cuda_available": true,
+  "device": "Orin",
+  "nanosam_commit": "653633614b2eb93b06ba3be9adb2aeffb117bd72",
+  "stage_baseline": "matches Stage5B-1 (TR10.3.0 / torch2.5.0a0+nv24.08)",
+  "nanosam_pinned_commit_file": "third_party/nanosam/.pinned_commit",
+  "nanosam_commit_matches_5b": true
+}

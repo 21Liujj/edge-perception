@@ -1,0 +1,10 @@
+{
+  "target": "50ep self-trained student encoder FP16 (TRT execute_async_v3 only)",
+  "warmup": 30,
+  "measured": 100,
+  "mean_ms": 11.076932792663575,
+  "P50_ms": 10.861728191375732,
+  "P95_ms": 11.480073308944702,
+  "P99_ms": 11.545529537200927,
+  "note": "image encoder TensorRT execute latency, NOT full segmentation / NOT system FPS"
+}

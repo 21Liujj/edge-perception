@@ -155,3 +155,19 @@ training/model gap, **not** by FP16 conversion. Therefore the Stage 5B-2
 a training symptom rather than a deployment-precision symptom: reducing the
 FP16 deployment path would recover essentially nothing (~0.00004 mIoU);
 resuming distillation is the lever.
+
+## Fifty-Epoch Student Jetson FP16 Engine (Stage Jetson-6C-1)
+
+After Stage 5090-6B exported the 50-epoch student ONNX (checkpoint epoch049,
+sha `906d8fd7…`) and transferred it to Jetson, Stage Jetson-6C-1 built the
+deployment TensorRT FP16 engine — the Jetson-side mirror of Stage 5B-1 (10ep).
+
+- ONNX contract identical to 10ep: `image [1,3,1024,1024] FP32` -> `image_embeddings [1,256,64,64] FP32`, opset 16, 93 nodes.
+- Engine: `models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine`, SHA256 `99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4`, 38,049,788 B.
+- Built with the frozen Stage5B-1 protocol (trtexec FP16, builderOptimizationLevel=3, workspace:2048MiB, --skipInference), single builder, unique `.tmp` -> atomic rename (5B-1 race lesson applied).
+- Deserialize + runtime smoke PASS (finite, no NaN/Inf); predictor compat PASS via `load_image_encoder_engine` (upstream unmodified).
+- Engine identity: 50ep `99147caf…` != 10ep `ab2d9962…` != historical `c277e5ca…` (all DIFFERENT, expected).
+- Latency (encoder execute only, warmup30 measured100): mean 11.08ms / P50 10.86 / P95 11.48 / P99 11.55.
+
+**Out of scope (STOP):** STANDARD500, FULL COCO, INT8, NanoOWL, C++, training.
+**Next (Stage Jetson-6C-2, ready):** frozen STANDARD500 mIoU of the 50ep FP16 engine on the same 500 manifest used by 10ep/historical, enabling the 10ep / 50ep / historical 三方 comparison (10ep TRT FP16 0.707340 / historical 0.718128 / 50ep pending).

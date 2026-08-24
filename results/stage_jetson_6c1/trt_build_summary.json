@@ -1,0 +1,33 @@
+{
+  "tensorrt_version": "10.3.0",
+  "gpu": "Orin",
+  "precision": "FP16",
+  "builder": "trtexec",
+  "builder_optimization_level": 3,
+  "workspace_memPool": "workspace:2048MiB",
+  "input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "output_shape": [
+    1,
+    256,
+    64,
+    64
+  ],
+  "build_wall_time_ms": 141476,
+  "engine_tmp_path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine (atomic-renamed from .tmp after all checks passed)",
+  "engine_exists_tmp": false,
+  "engine_size_bytes": 38049788,
+  "engine_sha256_tmp": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+  "onnx_sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+  "build_passed": true,
+  "returncode": 0,
+  "warnings": [],
+  "fatal_error": null,
+  "concurrent_build_guard": "single builder, unique .tmp path (5B-1 race lesson applied)",
+  "build_wall_time_note": "parsed from build.log 'Engine built in 141.476 sec' (reused tmp on reruns)",
+  "engine_final_path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine"
+}

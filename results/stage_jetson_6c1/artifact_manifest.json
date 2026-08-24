@@ -1,0 +1,41 @@
+{
+  "artifacts": [
+    {
+      "label": "source_onnx_50ep",
+      "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx",
+      "exists": true,
+      "size_bytes": 63321641,
+      "sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+      "gitignored": "*.onnx ignored, SHA tracked"
+    },
+    {
+      "label": "self_trained_fp16_engine_50ep",
+      "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+      "exists": true,
+      "size_bytes": 38049788,
+      "sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+      "gitignored": "*.engine ignored, SHA tracked"
+    },
+    {
+      "label": "self_trained_fp16_engine_10ep",
+      "path": "models/self_distilled/epoch10/nanosam_resnet18_epoch009_fp16.engine",
+      "exists": true,
+      "size_bytes": 37060492,
+      "sha256": "ab2d9962b4cce724180333de04f5992eae3925b3f650e01f926f1aad0fc0a140",
+      "gitignored": "*.engine ignored, SHA tracked"
+    },
+    {
+      "label": "historical_baseline_fp16_engine",
+      "path": "third_party/nanosam/data/resnet18_image_encoder.engine",
+      "exists": true,
+      "size_bytes": 34766700,
+      "sha256": "c277e5ca445dc29b06e8be41a481e74bd806c4dd82071cbfbd47fddcf7aaa6a8",
+      "gitignored": "*.engine ignored, SHA tracked"
+    }
+  ],
+  "identity": {
+    "50ep_vs_10ep": "DIFFERENT",
+    "50ep_vs_historical": "DIFFERENT",
+    "expected": "all DIFFERENT"
+  }
+}

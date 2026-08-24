@@ -154,3 +154,42 @@ FP16.
 ### NEXT DECISION
 Recommendation (advisory, NOT executed): **RESUME_TO_50**. FP16 path is sound;
 effort should go to distillation, not precision. STOP.
+
+## Stage Jetson-6C-1 — 50-Epoch Student FP16 Engine Build
+
+### WHAT
+Built the 50-epoch self-distilled NanoSAM ResNet18 student image encoder as a
+TensorRT FP16 engine on Jetson Orin, from the ONNX produced by Stage 5090-6B.
+This mirrors Stage 5B-1's protocol but on the epoch049 (50ep) artifact.
+
+### INPUT
+- ONNX: `models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx`
+- ONNX SHA256: `906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7` (verified)
+- Contract: `image [1,3,1024,1024] FP32` -> `image_embeddings [1,256,64,64] FP32`, opset 16, 93 nodes (same graph as 10ep)
+
+### BUILD (reused Stage5B-1 protocol)
+- Builder: `trtexec`, FP16, `--builderOptimizationLevel=3`, `--memPoolSize=workspace:2048MiB`, `--skipInference`
+- Wall time ~145 s
+- Engine: `models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine` (38,049,788 B)
+- Engine SHA256: `99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4`
+- Build protection: single builder, unique `.tmp` path, atomic rename to final only after all checks PASS (Stage5B-1 concurrent-trtexec race lesson applied). No overwrite of epoch10 or historical engine.
+- Benign warning: `Some tactics do not have sufficient workspace memory` (same as 5B-1).
+
+### RUNTIME / PREDICTOR
+- Deserialize PASS; `image [1,3,1024,1024]` -> `image_embeddings [1,256,64,64]`; finite, no NaN/Inf.
+- `nanosam.utils.predictor.load_image_encoder_engine` loads it unchanged; embedding [1,256,64,64] finite, upstream unmodified.
+
+### LATENCY (encoder execute_async_v3 only; warmup30 measured100)
+mean 11.077ms | P50 10.862 | P95 11.480 | P99 11.546 (NOT full segmentation / NOT system FPS).
+
+### IDENTITY
+| engine | sha256 (prefix) | size |
+|---|---|---|
+| 50ep (new) | `99147caf…` | 38,049,788 B |
+| 10ep | `ab2d9962…` | 37,060,492 B |
+| historical deployed | `c277e5ca…` | 34,766,700 B |
+All DIFFERENT (expected). Historical and 10ep engines untouched.
+
+### NEXT
+STOP. No STANDARD500 / FULL COCO / INT8 / NanoOWL / C++ / training.
+Stage Jetson-6C-2 ready: YES — frozen STANDARD500 mIoU of the 50ep FP16 engine (same 500 manifest as 10ep/baseline), to enable the 10ep / 50ep / historical三方 comparison.
