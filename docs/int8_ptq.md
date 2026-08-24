@@ -436,3 +436,161 @@ results/stage_jetson_c1a/: c1a_evidence.json, calibration_train2017_512.cache, c
 ### 10.6 Next Stage
 
 Stage Jetson-C1B: Build formal deployment INT8 TensorRT engine.
+
+## 11. Stage Jetson-C1B: Formal INT8 Engine Build & Audit
+
+**Status**: COMPLETE
+**Result**: INT8_DEPLOYMENT_ENGINE_READY
+
+### 11.1 Deployment Engine (DEFAULT profiling)
+
+**ONNX**: `models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx`
+**Cache**: `models/self_distilled/epoch50/int8/calibration_train2017_512.cache` (5062 bytes, SHA `9689497a...`)
+**Output**: `models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8.engine`
+
+**Size**: 22,249,660 bytes (21.22MB)
+**SHA256**: `d8dd7a2f61427e072baeaf06bb38e78d2dab79c95f41c3839883d5891497d650`
+**Build time**: 284.03 seconds
+**Flags**: `INT8 | FP16` (mixed precision, FP16 fallback enabled)
+**ProfilingVerbosity**: DEFAULT (for production deployment)
+
+**Cache reuse**: PASS — TensorRT build log confirms "Generated calibration scales using calibration cache", zero calibration images reprocessed.
+
+### 11.2 Audit Engine (DETAILED profiling)
+
+**Output**: `models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8_detailed.engine`
+
+**Purpose**: Analysis artifact only (precision/layer audit)
+**Size**: 17,626,436 bytes (16.81MB)
+**SHA256**: `f3afcb3d93d00401e4cff8e321f746126f25ce07c788c90afa833d9c51f8136e`
+**Build time**: 234.55 seconds
+**ProfilingVerbosity**: DETAILED (required for per-layer precision visibility)
+
+Deployment and audit engines kept separate per design — deployment engine stability unaffected by profiling verbosity.
+
+### 11.3 Runtime Verification
+
+- Deserialize: PASS
+- I/O contract: `image [1,3,1024,1024]` → `image_embeddings [1,256,64,64]`
+- Runtime smoke (30 warmup + 200 measured): output finite, no fatal errors
+- Predictor compatibility: PASS — loaded via upstream `nanosam.utils.predictor.Predictor` unmodified
+
+### 11.4 Precision/Layer Audit (DETAILED engine)
+
+| Precision | Layer count | Percentage | Examples |
+|---|---|---|---|
+| **INT8** | 30 | **90.9%** | Backbone Conv/ReLU/MaxPool main path |
+| **FP16** | 2 | 6.1% | `pos_embedding` addition Reformat + Scale |
+| **FP32** | 1 | 3.0% | Final output Reformat |
+| Total | 33 | 100% | — |
+
+Visibility: **FULL** (requires `ProfilingVerbosity.DETAILED`; default verbosity exposes layer names only, not precision)
+
+**Key observation**: 90.9% INT8 coverage on compute path; FP16 fallback in `pos_embedding` (SAM position encoding module) and FP32 output reformat for downstream compatibility.
+
+### 11.5 Same-Protocol Latency (FP16 vs INT8, encoder only)
+
+**Protocol**: warmup=30, measured=200 iterations, run order FP16→INT8→FP16 to observe run-order drift
+
+| Engine | mean | P50 | P95 | P99 |
+|---|---|---|---|---|
+| FP16 (run1) | 11.106ms | 11.043ms | 11.624ms | 11.773ms |
+| **INT8** | **6.020ms** | **5.984ms** | **6.150ms** | **6.164ms** |
+| FP16 (run2) | 10.790ms | 10.754ms | 10.904ms | 10.917ms |
+
+**Speedup: mean 1.845x, P50 1.845x**
+**FP16 run-to-run drift: <3%** (confirms measurement stability)
+
+### 11.6 Engine Size
+
+FP16: 36.29MB → INT8: 21.22MB
+**Reduction: -41.52%**
+
+### 11.7 Resource Comparison
+
+CUDA allocated (post-inference): FP16 16.0MB, INT8 16.0MB — **identical** (activation memory dominated by fixed I/O tensor sizes, not weights).
+Marked `MEMORY_RESULT_DESCRIPTIVE_ONLY` (single-process sequential measurement, not isolated).
+
+### 11.8 Evidence
+
+`results/stage_jetson_c1b/`: artifact_provenance.json, cache_reuse.json, environment.json, predictor_compatibility.json, runtime_smoke.json, resource_comparison.json, precision_layer_audit.json, latency_fp16.json, latency_int8.json, performance_comparison.json, engine_size_comparison.json, trt_build_summary.json, trt_build_summary_detailed.json, stage_summary.md
+
+### 11.9 Next Stage
+
+Stage Jetson-C2: Quality gate evaluation (STANDARD500 + FULL COCO mIoU vs FP16 baseline).
+
+
+## 12. Stage Jetson-C2: Quality Gate Evaluation
+
+**Status**: COMPLETE
+**Result**: QUALITY_GATE_FAIL (degradation exceeds tolerance)
+
+### 12.1 Evaluation Protocol
+
+**Dataset**: COCO val2017
+**Subsets**: STANDARD500 (500 images, 1283 instances), FULL (5000 images, 12930 instances)
+**Prompt**: Ground-truth bounding box → NanoSAM single-box prompt (fixed slot 0)
+**Metric**: Instance-level mean IoU (mask IoU averaged across all instances)
+**Baseline**: FP16 TensorRT engine (same epoch49 ONNX)
+
+### 12.2 Results
+
+#### STANDARD500 (500 images)
+
+| Engine | mIoU | Δ (abs) | Δ (%) |
+|---|---|---|---|
+| FP16 baseline | 0.715650 | — | — |
+| **INT8** | **0.700264** | **-0.015386** | **-2.15%** |
+
+**Quality gate**: FAIL (threshold <0.5%)
+
+#### FULL COCO (5000 images)
+
+| Engine | mIoU | Δ (abs) | Δ (%) |
+|---|---|---|---|
+| FP16 baseline | 0.699183 | — | — |
+| **INT8** | **0.681910** | **-0.017273** | **-2.47%** |
+
+**Quality gate**: FAIL (threshold <0.5%)
+
+**Consistency**: STANDARD500 and FULL COCO show aligned degradation (~2.2-2.5%), confirming subset sampling was representative.
+
+### 12.3 Size-Stratified Breakdown (FULL COCO)
+
+| Size category | FP16 | INT8 | Δ (%) | Instance count |
+|---|---|---|---|---|
+| Small (area <32²) | 0.6475 | 0.6257 | **-3.37%** | 4485 |
+| Medium (32²≤area<96²) | 0.7601 | 0.7461 | -1.84% | 5110 |
+| Large (area≥96²) | 0.8145 | 0.8034 | -1.36% | 3335 |
+
+**Pattern**: Degradation inversely proportional to object size — small objects most affected (precision loss amplified at fine spatial scales).
+
+### 12.4 Root Cause
+
+**Layer audit (Section 11.4)**: 90.9% INT8, but `pos_embedding` module (SAM absolute positional encoding) fell back to FP16.
+
+**Hypothesis**: INT8 quantization on conv/norm/relu backbone path accumulated numerical error → positional encoding mismatch → spatial localization degradation → mask boundary quality drop.
+
+Small objects have fewer pixels → boundary precision matters more → higher relative IoU loss.
+
+### 12.5 Engineering Conclusion
+
+**Tradeoff achieved**:
+- Performance: **1.845x speedup** (11.1ms → 6.0ms encoder latency)
+- Compression: **41.5% size reduction** (36.3MB → 21.2MB)
+- Quality cost: **-2.47% mIoU** (FULL COCO)
+
+**Industrial assessment**:
+- Quality gate FAIL (exceeds <0.5% tolerance)
+- Acceptable for latency-critical applications (real-time robotics, edge video analytics) where 2.5% quality loss trades favorably for 1.8x throughput
+- NOT acceptable for high-precision scenarios (medical imaging, fine-grained recognition)
+
+**No further optimization pursued** — INT8 PTQ baseline documented as-is per project scope.
+
+### 12.6 Evidence
+
+`results/stage_jetson_c2/`: stage_summary.md (contains full evaluation logs, size-stratified metrics, and tradeoff analysis)
+
+### 12.7 Module Closure
+
+Module C (INT8 Deployment Study) complete. FP16 remains production deployment target for EdgePerception v1.

@@ -178,3 +178,162 @@ docs/int8_ptq.md: Added § 10 Stage Jetson-C1A-R (COMPLETE) — blocker resoluti
 
 Stage Jetson-C1A-R: PASS
 INT8 calibration cache ready for formal engine build (C1B).
+
+## STAGE JETSON-C1B: FORMAL INT8 ENGINE BUILD & AUDIT
+
+### DEPLOYMENT ENGINE
+
+Built with existing train2017-512 calibration cache. Cache reuse confirmed
+(TensorRT log: "Generated calibration scales using calibration cache", zero
+images reprocessed).
+
+Path: models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8.engine
+Size: 22,249,660 bytes (21.22MB)
+SHA256: d8dd7a2f61427e072baeaf06bb38e78d2dab79c95f41c3839883d5891497d650
+Build time: 284.03s
+Flags: INT8 + FP16 (mixed precision fallback)
+
+### AUDIT ENGINE (analysis only, DETAILED profiling)
+
+Path: models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8_detailed.engine
+Size: 17,626,436 bytes (16.81MB)
+SHA256: f3afcb3d93d00401e4cff8e321f746126f25ce07c788c90afa833d9c51f8136e
+Build time: 234.55s
+
+Root cause investigated: default ProfilingVerbosity only exposes layer names,
+not precision. Rebuilt with ProfilingVerbosity.DETAILED (same ONNX + same
+cache, only addition) to get structured per-layer JSON with Weights/Datatype/
+Tactic fields needed to infer actual precision.
+
+### PRECISION AUDIT RESULT
+
+33 layers total: 30 INT8 (90.9%), 2 FP16 (6.1%, pos_embedding add), 1 FP32
+(3.0%, output reformat). Visibility: FULL.
+
+### PREDICTOR COMPATIBILITY
+
+torch2trt import failure root-caused to missing venv activation (not an
+engine incompatibility) — torch2trt egg present at
+.venv/lib/python3.10/site-packages/torch2trt-0.5.0-py3.10.egg, resolved once
+venv properly activated. Loaded via upstream nanosam.utils.predictor.Predictor
+unmodified: PASS. Embedding shape [1,256,64,64], finite.
+
+### SAME-PROTOCOL LATENCY (warmup=30, measured=200, FP16→INT8→FP16)
+
+FP16 run1: mean 11.106ms, P50 11.043ms, P95 11.624ms, P99 11.773ms
+INT8:      mean  6.020ms, P50  5.984ms, P95  6.150ms, P99  6.164ms
+FP16 run2: mean 10.790ms, P50 10.754ms, P95 10.904ms, P99 10.917ms
+
+Speedup: mean 1.845x, P50 1.845x
+Engine size: FP16 36.29MB -> INT8 21.22MB (-41.52%)
+
+### EVIDENCE
+
+results/stage_jetson_c1b/: artifact_provenance.json, cache_reuse.json,
+environment.json, predictor_compatibility.json, runtime_smoke.json,
+resource_comparison.json, precision_layer_audit.json, latency_fp16.json,
+latency_int8.json, performance_comparison.json, engine_size_comparison.json,
+trt_build_summary.json, trt_build_summary_detailed.json, stage_summary.md
+
+### DOCUMENTATION
+
+docs/int8_ptq.md: Added Section 11 Stage Jetson-C1B (COMPLETE)
+
+### RESULT
+
+Stage Jetson-C1B: INT8_DEPLOYMENT_ENGINE_READY
+No quality claim made at this stage. Quality gate deferred to Stage C2.
+
+## Stage Jetson-C2: Quality Gate Evaluation
+
+**Status**: COMPLETE  
+**Result**: QUALITY_GATE_FAIL
+
+### Evaluation Protocol
+
+- **Dataset**: COCO val2017  
+- **Subsets**: STANDARD500 (500 images), FULL (5000 images)  
+- **Prompt**: GT box → NanoSAM single-box prompt (slot 0)  
+- **Metric**: Instance-level mean IoU  
+- **Baseline**: FP16 TensorRT (epoch49 ONNX)
+
+### Results
+
+**STANDARD500**:
+- FP16: 0.715650  
+- INT8: 0.700264  
+- Δ: -2.15%
+
+**FULL COCO**:
+- FP16: 0.699183  
+- INT8: 0.681910  
+- Δ: **-2.47%**
+
+**Quality gate**: FAIL (threshold <0.5%)
+
+### Size-Stratified Analysis (FULL COCO)
+
+| Size | FP16 | INT8 | Δ (%) |
+|---|---|---|---|
+| Small (<32²) | 0.6475 | 0.6257 | **-3.37%** |
+| Medium | 0.7601 | 0.7461 | -1.84% |
+| Large (≥96²) | 0.8145 | 0.8034 | -1.36% |
+
+Small objects most affected — precision loss amplified at fine spatial scales.
+
+### Root Cause
+
+- Layer audit: 90.9% INT8, but `pos_embedding` fell back to FP16  
+- Hypothesis: INT8 quantization noise accumulated in backbone → positional encoding mismatch → spatial localization degradation
+
+### Engineering Conclusion
+
+**Tradeoff achieved**:
+- ✅ Performance: **1.845x speedup** (11.1ms → 6.0ms)  
+- ✅ Compression: **41.5% reduction** (36.3MB → 21.2MB)  
+- ❌ Quality cost: **-2.47% mIoU**
+
+**Assessment**:
+- Acceptable for latency-critical apps (real-time robotics, edge video)  
+- NOT acceptable for high-precision scenarios (medical, fine-grained recognition)
+
+**No further optimization** — INT8 PTQ baseline documented as-is.
+
+### Evidence
+
+- `results/stage_jetson_c2/stage_summary.md`  
+- Updated `docs/int8_ptq.md` Section 12
+
+### Module Closure
+
+Module C (INT8 Deployment Study) complete. FP16 remains production target for EdgePerception v1.
+
+---
+
+## Day 13 Summary
+
+**Time**: 2026-08-24  
+**Focus**: Module C (INT8 Deployment Study) — Stages C1A, C1B, C2
+
+### Key Achievements
+
+1. **C1A**: INT8 calibration cache generation (512 train2017 images, 473.9s)  
+2. **C1B**: Formal INT8 engine build + precision audit (90.9% INT8, 1.845x speedup)  
+3. **C2**: Quality evaluation on STANDARD500 + FULL COCO (-2.47% mIoU, quality gate FAIL)
+
+### Technical Highlights
+
+- TensorRT 10.3 IInt8EntropyCalibrator2 with cache reuse  
+- ProfilingVerbosity.DETAILED for full precision visibility  
+- Same-protocol latency benchmarking (FP16→INT8→FP16)  
+- Size-stratified COCO analysis revealing small-object vulnerability
+
+### Engineering Outcome
+
+INT8 PTQ achieves **1.845x speedup** and **41.5% compression** at cost of **2.5% quality loss** — acceptable for latency-critical applications, documented as baseline tradeoff.
+
+**Module C closed. No further INT8 optimization per project scope.**
+
+### Next Phase
+
+EdgePerception v2: NanoSAM + NanoOWL multi-modal edge perception pipeline.
