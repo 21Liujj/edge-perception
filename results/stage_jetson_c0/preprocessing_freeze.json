@@ -1,0 +1,25 @@
+{
+  "must_match_deployment": true,
+  "deployment_function": "nanosam.utils.predictor.preprocess_image(image, size=1024) (called by Predictor.set_image, the exact path the deployed and eval encoders use)",
+  "function_path": "third_party/nanosam/nanosam/utils/predictor.py:preprocess_image",
+  "steps": [
+    "PIL.Image convert RGB",
+    "aspect-aware resize: long side -> 1024, short side = 1024/aspect",
+    "np.asarray (HWC uint8)",
+    "permute -> CHW, .float()",
+    "normalize: (x - mean) / std",
+    "mean = [123.675, 116.28, 103.53] (ImageNet, channel-last broadcast [:,None,None])",
+    "std  = [58.395, 57.12, 57.375]",
+    "zero-pad into [1,3,1024,1024] (top-left, rest zeros)",
+    ".cuda() \u2192 fp32 tensor"
+  ],
+  "input_shape": [
+    1,
+    3,
+    1024,
+    1024
+  ],
+  "dtype": "float32 (calibrator feeds fp32; TRT INT8 builder quantizes internally)",
+  "forbidden": "feeding raw JPEG bytes / different normalization / different resize / different pad scheme \u2014 would desync calibration distribution from deployment distribution",
+  "reuse_strategy": "Stage C1 will import preprocess_image directly \u2014 no reimplementation"
+}

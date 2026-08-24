@@ -1,0 +1,15 @@
+{
+  "dir": "models/self_distilled/epoch50/int8/",
+  "cache_file": "calibration.cache",
+  "manifest_file": "calibration_manifest.json",
+  "cache_binding": {
+    "onnx_sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+    "preprocessing_version": "predictor.preprocess_image @ size=1024 (ImageNet mean/std, aspect-resize, zero-pad)",
+    "calibration_manifest_sha256": "computed in C1 after sampling",
+    "tensorrt_version": "10.3.0",
+    "calibrator_class": "IInt8EntropyCalibrator2",
+    "calibration_batch_size": "TBD in C1 (likely 8, bounded by 1024x1024x3xCUDA fp32 + engine workspace)"
+  },
+  "reuse_guard": "Cache is engine-build- and TRT-version-specific; the manifest SHAs above MUST be checked before any cache reuse. Cache from a different ONNX / preprocess / TRT version must NOT be reused.",
+  "gitignore": "cache + dataset images gitignored; only calibration_manifest.json (paths+sha) committed"
+}

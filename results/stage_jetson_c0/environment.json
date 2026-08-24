@@ -1,0 +1,17 @@
+{
+  "host": "nvidia-desktop",
+  "arch": "aarch64",
+  "l4t_release": "# R36 (release), REVISION: 4.3, GCID: 38968081, BOARD: generic, EABI: aarch64, DATE: Wed Jan  8 01:49:37 UTC 2025",
+  "nvidia_l4t_core": "36.4.3-20250107174145",
+  "tensorrt_meta": "10.3.0.30-1+cuda12.5",
+  "tensorrt_python": "10.3.0",
+  "torch": "2.5.0a0+872d972e41.nv24.08",
+  "python": "3.10.12",
+  "cuda_available": true,
+  "gpu": "Orin",
+  "compute_capability": "8.7 (Orin, Ampere)",
+  "trtexec": "/usr/src/tensorrt/bin/trtexec",
+  "venv": ".venv (python3.10.12)",
+  "constraint": "TRT 10.3.0, no dependency upgrade",
+  "upgraded": false
+}

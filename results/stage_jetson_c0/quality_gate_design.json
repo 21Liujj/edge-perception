@@ -1,0 +1,17 @@
+{
+  "primary_metric": "STANDARD500 mIoU (fixed slot0), same frozen 500 manifest",
+  "baseline": "50ep FP16 STANDARD500 mIoU = 0.715650",
+  "delta_definition": "delta = INT8_STD500_miou - FP16_STD500_miou",
+  "heuristic": {
+    "delta >= -0.005": "QUALITY_ACCEPTABLE",
+    "-0.005 > delta >= -0.015": "QUALITY_DEGRADED_BUT_USABLE",
+    "delta < -0.015": "QUALITY_REGRESSION"
+  },
+  "not_statistical": "project deployment decision heuristic, not a significance test",
+  "consistent_with_prior_stages": "matches Stage 6C/6D NEAR_PARITY/ACCEPTABLE/REGRESSION 0.005/0.015 thresholds",
+  "gate_action": {
+    "ACCEPTABLE": "proceed to FULL COCO INT8 eval in a later stage",
+    "DEGRADED_BUT_USABLE": "proceed to FULL only if deployment context tolerates the loss; else try mixed-precision",
+    "REGRESSION": "do NOT deploy INT8; investigate sensitive ops (mixed precision / Q-DQ path B)"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "tensorrt_version": "10.3.0",
+  "platform_has_fast_int8": true,
+  "meaning": "Orin GPU (sm_87 Ampere) has hardware INT8 fast path (DP4A/IMMA)",
+  "builder_int8_enables_via": "config.set_flag(trt.BuilderFlag.INT8)",
+  "BuilderFlag_INT8_value": 1,
+  "BuilderFlag_FP16_value": 0,
+  "BuilderFlag_enum": [
+    "BF16",
+    "DEBUG",
+    "DIRECT_IO",
+    "DISABLE_COMPILATION_CACHE",
+    "DISABLE_TIMING_CACHE",
+    "ERROR_ON_TIMING_CACHE_MISS",
+    "EXCLUDE_LEAN_RUNTIME",
+    "FP16",
+    "FP8",
+    "GPU_FALLBACK",
+    "INT4",
+    "INT8",
+    "OBEY_PRECISION_CONSTRAINTS",
+    "PREFER_PRECISION_CONSTRAINTS",
+    "REFIT",
+    "REFIT_IDENTICAL",
+    "REFIT_INDIVIDUAL",
+    "REJECT_EMPTY_ALGORITHMS",
+    "SAFETY_SCOPE",
+    "SPARSE_WEIGHTS",
+    "STRIP_PLAN",
+    "TF32",
+    "VERSION_COMPATIBLE",
+    "WEIGHTLESS",
+    "WEIGHT_STREAMING",
+    "name",
+    "value"
+  ],
+  "config_int8_methods": {
+    "config.set_flag": true,
+    "config.int8_calibrator_property": true,
+    "config.set_int8_calibrator": false,
+    "config.set_quantization_flag": true,
+    "config.quantization_flags": true,
+    "config.get_calibration_profile": true
+  },
+  "calibrator_classes_available": [
+    "IInt8Calibrator",
+    "IInt8EntropyCalibrator",
+    "IInt8EntropyCalibrator2",
+    "IInt8LegacyCalibrator",
+    "IInt8MinMaxCalibrator"
+  ],
+  "recommended_calibrator": "IInt8EntropyCalibrator2 (TRT default for CNN PTQ; MinMax is alt, Legacy deprecated)",
+  "explicit_QDQ_support": {
+    "add_quantize": true,
+    "add_dequantize": true
+  },
+  "explicit_quantization_path": "StronglyTyped network + Q/DQ nodes (NetworkDefinitionCreationFlag.STRONGLY_TYPED=1); no separate EXPLICIT_QUANT flag in TRT 10.x",
+  "network_creation_flags": [
+    "EXPLICIT_BATCH",
+    "STRONGLY_TYPED",
+    "name",
+    "value"
+  ],
+  "trtexec_int8_flags": {
+    "--int8": true,
+    "--calib": true,
+    "--fp16": true,
+    "--minShapesCalib": true,
+    "--optShapesCalib": true,
+    "--maxShapesCalib": true,
+    "--calibProfile": true,
+    "--inputIOFormats": true,
+    "--outputIOFormats": true,
+    "--int8IOFormats": false
+  },
+  "trtexec_int8_build_recipe": [
+    "/usr/src/tensorrt/bin/trtexec",
+    "--onnx=<onnx>",
+    "--saveEngine=<int8.engine>",
+    "--int8 --fp16",
+    "--calib=<calibration.cache>",
+    "--builderOptimizationLevel=3",
+    "--memPoolSize=workspace:2048MiB",
+    "--skipInference"
+  ],
+  "note": "TRT 10.3 implicit-quantization PTQ via legacy-ish calibrator is supported; explicit Q/DQ also supported. Both paths verified against live API, not docs.",
+  "calibrator_cache_format": "TensorRT internal binary cache (engine-build-specific, not portable across TRT versions / GPU archs)"
+}

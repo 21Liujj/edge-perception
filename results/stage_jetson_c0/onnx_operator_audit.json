@@ -1,0 +1,104 @@
+{
+  "onnx_sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+  "total_nodes": 93,
+  "op_counts": {
+    "Conv": 25,
+    "Relu": 17,
+    "MaxPool": 1,
+    "Add": 14,
+    "Constant": 15,
+    "Div": 5,
+    "Erf": 5,
+    "Mul": 10,
+    "ConvTranspose": 1
+  },
+  "op_int8_profile": {
+    "Conv": {
+      "count": 25,
+      "int8_theory": "PRIMARY target \u2014 DP4A/IMMA INT8 conv kernels; weights per-tensor or per-channel quantized",
+      "likely": "INT8"
+    },
+    "ConvTranspose": {
+      "count": 1,
+      "int8_theory": "Transpose-conv INT8 support is patchier; may run FP16 fallback",
+      "likely": "INT8_or_FP16_fallback"
+    },
+    "Relu": {
+      "count": 17,
+      "int8_theory": "Clamp/ReLU quantizes cleanly (monotonic)",
+      "likely": "INT8"
+    },
+    "MaxPool": {
+      "count": 1,
+      "int8_theory": "Quantization-friendly (argmax)",
+      "likely": "INT8"
+    },
+    "Add": {
+      "count": 14,
+      "int8_theory": "Elementwise Add needs aligned input scales; residual adds are common INT8 sensitivity points",
+      "likely": "INT8 (watch residual scales)"
+    },
+    "Mul": {
+      "count": 10,
+      "int8_theory": "Elementwise Mul (used in GELU approx / up-proj); scale-mismatch sensitive",
+      "likely": "INT8_or_FP16_fallback"
+    },
+    "Div": {
+      "count": 5,
+      "int8_theory": "Div in Erf/GELU softmax-ish path; division not natively INT8, usually FP16",
+      "likely": "FP16_fallback"
+    },
+    "Erf": {
+      "count": 5,
+      "int8_theory": "Erf is transcendental (GELU); TRT fuses GELU but the Erf/Div/Mul cluster is the sensitive tail",
+      "likely": "FP16_fallback_or_fused"
+    },
+    "Constant": {
+      "count": 15,
+      "int8_theory": "No compute, folded at build",
+      "likely": "folded"
+    }
+  },
+  "conv_first_inputs_sample": [
+    [
+      "image",
+      "onnx::Conv_248",
+      "onnx::Conv_249"
+    ]
+  ],
+  "convtranspose": [
+    {
+      "name": "/up_1/up_1.6/ConvTranspose",
+      "inputs": [
+        "/up_1/up_1.5/Mul_1_output_0",
+        "up_1.6.weight",
+        "up_1.6.bias"
+      ]
+    }
+  ],
+  "erf_cluster_inputs": [
+    [
+      "/up_1/up_1.1/Div_output_0"
+    ],
+    [
+      "/up_1/up_1.3/Div_output_0"
+    ],
+    [
+      "/up_1/up_1.5/Div_output_0"
+    ],
+    [
+      "/up_1/up_1.7/Div_output_0"
+    ],
+    [
+      "/proj/proj.1/Div_output_0"
+    ]
+  ],
+  "existing_QDQ_nodes": "NONE (graph is plain FP32 \u2014 implicit-quantization PTQ, no Q/DQ)",
+  "quantization_style": "IMPLICIT (calibrator-based) \u2014 graph has no Q/DQ, TRT inserts quantization during build",
+  "disclaimer": "op 'likely' is theoretical. Actual per-op precision is decided by the TRT builder autotuner; confirmed only via build profile / --layerOutputTypes / verbose log in Stage C1.",
+  "sensitivity_watchlist": [
+    "ConvTranspose (up_1.6, output projection) \u2014 INT8 support uncertain",
+    "Erf/Div/Mul GELU tail (5 each) \u2014 transcendental, likely FP16",
+    "14 residual Adds \u2014 scale alignment sensitive"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "stage_C0_scope": "DESIGN ONLY \u2014 no layer override built here",
+  "investigation_order": [
+    "1. full INT8 build (C1) \u2192 STANDARD500 gate",
+    "2. if REGRESSION: pull TRT verbose layer-precision log, identify sensitive ops",
+    "3. expect sensitive ops from audit: ConvTranspose (up_1.6), GELU Erf/Div/Mul cluster, residual Adds",
+    "4. mixed precision: keep sensitive layers FP16, rest INT8 (trtexec --layerOutputTypes / config layer-precision API, or path B Q-DQ)",
+    "5. re-gate STANDARD500; only proceed if acceptable"
+  ],
+  "not_done_here": "no automated layer search; manual targeted override based on C1 evidence"
+}

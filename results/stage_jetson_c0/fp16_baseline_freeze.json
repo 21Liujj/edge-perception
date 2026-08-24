@@ -1,0 +1,15 @@
+{
+  "module_C_quality_baseline": "50ep FP16 self-trained student (Stage 6C/6D, not recomputed)",
+  "standard500_miou": 0.71565,
+  "full_coco_miou": 0.699183,
+  "historical_full_reference": 0.703201,
+  "eval_order": "INT8 runs STANDARD500 FIRST. Only if STANDARD500 gate passes does INT8 proceed to FULL COCO.",
+  "fp16_performance_baseline": {
+    "mean_ms": 11.08,
+    "P50_ms": 10.86,
+    "P95_ms": 11.48,
+    "P99_ms": 11.55,
+    "source": "Stage Jetson-6C-1 (execute_async_v3, encoder only, warmup30 measured100)"
+  },
+  "perf_note": "If a formal INT8 benchmark runs, FP16 and INT8 MUST be re-measured with the SAME script in the SAME session \u2014 do NOT mix historical 6C-1 numbers."
+}

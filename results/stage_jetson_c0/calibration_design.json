@@ -1,0 +1,31 @@
+{
+  "principle": "Use train/calibration images ONLY \u2014 never STANDARD500 GT eval set (avoid evaluation leakage). Calibration is image-level encoder input statistics; no masks/boxes used.",
+  "source_dataset": "COCO 2017 val2017 (5000 images) \u2014 ALREADY on device",
+  "source_dataset_rationale": "Module C frozen-baseline protocol uses val2017 for the encoder input distribution that deployment sees. train2017 is NOT present on Jetson (only val2017.zip); pulling 19GB train2017 needs user action and gives marginal calibration benefit for an encoder already trained on train2017. val2017 is a valid, present, in-distribution source for PTQ activation statistics.",
+  "train2017_on_device": false,
+  "source_image_count": 5000,
+  "candidate_sizes": {
+    "100": {
+      "wall_estimate_s": "~30 (preprocess only, no build)",
+      "coverage": "low"
+    },
+    "256": {
+      "wall_estimate_s": "~75",
+      "coverage": "moderate"
+    },
+    "512": {
+      "wall_estimate_s": "~150",
+      "coverage": "good \u2014 recommended primary"
+    },
+    "1024": {
+      "wall_estimate_s": "~300",
+      "coverage": "high (diminishing return)"
+    }
+  },
+  "primary_recommendation": 512,
+  "primary_rationale": "512 balances coverage vs calibration wall-time; common TRT rule-of-thumb 500-1000 batches; leaves headroom to bump to 1024 if C1 INT8 quality is borderline",
+  "seed": 20260824,
+  "sampling": "deterministic random (numpy default_rng(seed).choice of val2017 jpg list)",
+  "stratification": "NONE \u2014 calibration is image-level encoder-input statistics, not category/size metrics; complex stratification would expand scope without PTQ benefit",
+  "output": "image paths + per-image SHA256 + sample count + seed written to calibration_manifest.json"
+}

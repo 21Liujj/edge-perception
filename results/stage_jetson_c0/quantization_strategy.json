@@ -1,0 +1,34 @@
+{
+  "candidates": {
+    "A_TRT_PTQ_implicit_calibration": {
+      "desc": "trtexec --int8 --fp16 --calib=<cache>, legacy IInt8EntropyCalibrator2",
+      "retrain": false,
+      "engineering_cost": "LOW",
+      "trt103_support": "VERIFIED (set_flag INT8 + IInt8EntropyCalibrator2 + trtexec --int8 --calib)",
+      "graph_modification": "none \u2014 calibrator infers activation scales"
+    },
+    "B_explicit_QDQ_onnx": {
+      "desc": "Insert QuantizeLinear/DequantizeLinear into ONNX (e.g. via ONNX Runtime quantize-perceiver / pytorch quantization), build StronglyTyped",
+      "retrain": false,
+      "engineering_cost": "MEDIUM (ONNX graph surgery)",
+      "trt103_support": "VERIFIED (add_quantize/add_dequantize, STRONGLY_TYPED)",
+      "graph_modification": "Q/DQ nodes inserted into ONNX"
+    },
+    "C_QAT": {
+      "desc": "Quantization-aware training, resume from epoch049 with fake-quant",
+      "retrain": true,
+      "engineering_cost": "HIGH",
+      "trt103_support": "supported but OUT OF SCOPE for Module C",
+      "graph_modification": "Q/DQ + trained scales"
+    }
+  },
+  "selected": "A_TRT_PTQ_implicit_calibration",
+  "rationale": [
+    "No retraining \u2014 fits project constraint (STOP_LONG_TRAINING, module COMPLETE)",
+    "Lowest engineering cost; reuses Stage 5B-1/6C-1 trtexec build protocol",
+    "TRT 10.3 implicit-PTQ API verified live on this device",
+    "Graph has no Q/DQ (plain FP32 export) \u2192 implicit calibrator is the natural fit",
+    "QAT (C) is out of scope; explicit Q/DQ (B) is the fallback if A under-delivers (sensitive-op control via explicit per-channel scales)"
+  ],
+  "fallback_if_regression": "B_explicit_QDQ_onnx (per-channel weight quant + keep GELU/ConvTranspose FP16) before considering mixed-precision layer override"
+}

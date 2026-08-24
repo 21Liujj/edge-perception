@@ -1,0 +1,14 @@
+{
+  "must_same_protocol": "FP16 vs INT8 measured with identical script, same session, execute_async_v3 encoder-only, warmup30 measured100",
+  "metrics": [
+    "latency_mean_ms",
+    "P50_ms",
+    "P95_ms",
+    "P99_ms",
+    "engine_size_bytes",
+    "gpu_peak_allocated_bytes",
+    "peak_rss_bytes"
+  ],
+  "optional": "power (NOT modifying power-mode / jetson_clocks \u2014 out of scope)",
+  "deploy_worth": "INT8 justified only if (quality loss acceptable) AND (real perf/size gain exists). On Orin, INT8 conv gain is real but the encoder is already 11ms \u2014 size reduction + throughput may matter more than latency."
+}

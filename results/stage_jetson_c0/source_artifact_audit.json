@@ -1,0 +1,18 @@
+{
+  "onnx": {
+    "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx",
+    "sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+    "expected": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7",
+    "match": true,
+    "size_bytes": 63321641
+  },
+  "fp16_engine": {
+    "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+    "sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "expected": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "match": true,
+    "size_bytes": 38049788
+  },
+  "role": "Module C frozen INT8-source + FP16 quality/perf baseline",
+  "rebuilt": false
+}
