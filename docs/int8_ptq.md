@@ -376,3 +376,63 @@ Once train2017 is available, C1A resumes with:
 ---
 
 **Summary**: C0 proposed val2017, C1A requires train2017 for strict calibration/evaluation isolation.
+
+---
+
+## 10. Stage Jetson-C1A-R — Calibration Cache Generation (COMPLETE)
+
+**Date**: 2026-08-24
+**Status**: PASS
+
+### 10.1 Blocker Resolution
+
+**Prior blocker**: train2017 not present on Jetson device.
+
+**Resolution**:
+1. SSH to AutoDL 5090 (bjb2:33884)
+2. Verified train2017 present: 118,287 images
+3. Deterministic sampling: numpy.random.default_rng(20260824).choice(118287, size=512, replace=False)
+4. Per-image SHA256 verification: 512/512 PASS
+5. Bundle: nanosam_train2017_calib512_seed20260824.tar.gz (80 MB)
+6. Transfer: 5090 -> local -> Jetson
+7. Extract + verify on Jetson: 512/512 SHA256 PASS
+
+### 10.2 Calibration Manifest
+
+**Path**: data/calibration/nanosam_int8_train2017_512.json
+**SHA256**: c32bc4b2d3e977d3fc1b705b39c48e40a09b20b630e8ba1150b567d999242faf
+**Image count**: 512 train2017 images
+**Seed**: 20260824
+
+### 10.3 Calibrator Implementation
+
+**Class**: IInt8EntropyCalibrator2
+**Implementation**: scripts/int8/simple_calibrator.py::SimpleCalibrator
+**Batch size**: 1
+**Preprocessing**: nanosam.utils.predictor.preprocess_image(size=1024)
+
+### 10.4 Calibration Cache (Generated + Verified)
+
+**Path**: models/self_distilled/epoch50/int8/calibration_train2017_512.cache
+**SHA256**: 9689497ac73606952abfc113162907655ce80f79642e77ffd2a33daa22ac1487
+**Size**: 5062 bytes
+
+**Generation**:
+- Batches calibrated: 512/512
+- Calibration duration: 473.883s
+- Post-processing duration: 16.340s
+- Exit code: 0
+
+**Cache reuse verification**:
+- Second run: Zero batches reprocessed
+- Log: "Reading Calibration Cache for calibrator: EntropyCalibration2"
+- Cache SHA256 unchanged
+- Wall clock: ~3s (vs 473.9s)
+
+### 10.5 Evidence
+
+results/stage_jetson_c1a/: c1a_evidence.json, calibration_train2017_512.cache, calibration_run1_generate.log.gz, checksums.txt
+
+### 10.6 Next Stage
+
+Stage Jetson-C1B: Build formal deployment INT8 TensorRT engine.

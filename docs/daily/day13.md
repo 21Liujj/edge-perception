@@ -128,3 +128,53 @@ Awaiting user decision: Execute transfer plan Option A, B, or C. Once train2017 
 ### STOP
 
 C1A cannot proceed without train2017. No commit (no functional work completed).
+
+
+---
+
+## C1A-R CONTINUATION (train2017 transfer complete)
+
+Transfer executed: AutoDL 5090 → local → Jetson (512 images, 80 MB bundle, seed 20260824)
+
+### CALIBRATOR IMPLEMENTATION
+
+scripts/int8/simple_calibrator.py: SimpleCalibrator(trt.IInt8EntropyCalibrator2)
+- Batch size: 1
+- Preprocessing: nanosam.utils.predictor.preprocess_image(size=1024)
+- Device memory: torch CUDA tensor
+
+scripts/int8/run_calibration.py: TensorRT builder with INT8+FP16 flags, calibrator assignment
+
+### CALIBRATION RUN 1 (cache generation)
+
+512 batches calibrated, 473.883s calibration + 16.340s post-processing
+Cache generated: models/self_distilled/epoch50/int8/calibration_train2017_512.cache
+SHA256: 9689497ac73606952abfc113162907655ce80f79642e77ffd2a33daa22ac1487
+Size: 5062 bytes
+Exit code: 0
+
+### CALIBRATION RUN 2 (cache reuse verification)
+
+Log: "Reading Calibration Cache for calibrator: EntropyCalibration2"
+Zero batches reprocessed
+Cache SHA256 unchanged
+Wall clock: ~3s (vs 473.9s for generation)
+Cache reuse: PASS
+
+### EVIDENCE
+
+results/stage_jetson_c1a/:
+- c1a_evidence.json (full provenance + metrics)
+- calibration_train2017_512.cache (copy of generated cache)
+- calibration_run1_generate.log.gz (TensorRT build log)
+- checksums.txt (SHA256 of all artifacts)
+- day13_stage_report.md
+
+### DOCUMENTATION
+
+docs/int8_ptq.md: Added § 10 Stage Jetson-C1A-R (COMPLETE) — blocker resolution, calibration manifest, calibrator implementation, cache generation + reuse verification, evidence
+
+### RESULT
+
+Stage Jetson-C1A-R: PASS
+INT8 calibration cache ready for formal engine build (C1B).

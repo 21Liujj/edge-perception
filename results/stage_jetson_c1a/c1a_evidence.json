@@ -1,0 +1,67 @@
+{
+  "stage": "Jetson-C1A-R",
+  "date": "2026-08-24",
+  "calibration_source": "train2017",
+  "calibration_source_reason": "evaluation isolation: val2017 reserved for eval, train2017 used for calibration to avoid data leakage",
+  "sampling": {
+    "seed": 20260824,
+    "count": 512,
+    "method": "numpy.random.default_rng(20260824).choice(replace=False)",
+    "source_dataset_total_images": 118287
+  },
+  "bundle_transfer": {
+    "bundle_name": "nanosam_train2017_calib512_seed20260824.tar.gz",
+    "bundle_size_mb": 80,
+    "bundle_sha256": "7dc0123a6d3d406b81af5a9ee2869df275e14ff8bb40978f1589383cceec50e5",
+    "route": "5090 -> local -> Jetson (no sshpass on Jetson for pull)"
+  },
+  "manifest": {
+    "path": "data/calibration/nanosam_int8_train2017_512.json",
+    "sha256": "c32bc4b2d3e977d3fc1b705b39c48e40a09b20b630e8ba1150b567d999242faf",
+    "image_count": 512,
+    "verified_sha256_pass": "512/512"
+  },
+  "onnx_model": {
+    "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049.onnx",
+    "sha256": "906d8fd752aa2f4dc28d353adb20a462387c9414c4ddf01c1fca93ddf3f31dd7"
+  },
+  "calibrator": {
+    "type": "IInt8EntropyCalibrator2",
+    "implementation": "scripts/int8/simple_calibrator.py (SimpleCalibrator)",
+    "batch_size": 1,
+    "preprocessing": "nanosam.utils.predictor.preprocess_image(size=1024)"
+  },
+  "calibration_run_1_generate": {
+    "cache_path": "models/self_distilled/epoch50/int8/calibration_train2017_512.cache",
+    "cache_sha256": "9689497ac73606952abfc113162907655ce80f79642e77ffd2a33daa22ac1487",
+    "cache_size_bytes": 5062,
+    "batches_calibrated": 512,
+    "calibration_duration_seconds": 473.883,
+    "post_processing_duration_seconds": 16.3396,
+    "exit_code": 0
+  },
+  "calibration_run_2_reuse": {
+    "log_evidence": "Reading Calibration Cache for calibrator: EntropyCalibration2 / Generated calibration scales using calibration cache",
+    "no_batches_reprocessed": true,
+    "cache_sha256_after_reuse": "9689497ac73606952abfc113162907655ce80f79642e77ffd2a33daa22ac1487",
+    "cache_sha256_unchanged": true,
+    "wall_clock_seconds_approx": 3
+  },
+  "jetson_env": {
+    "device": "Jetson Orin Nano 8GB",
+    "arch": "aarch64, sm_87 Ampere",
+    "tensorrt_version": "10.3.0",
+    "torch_version": "2.5.0a0+872d972e41.nv24.08",
+    "cuda_available": true,
+    "kernel": "5.15.148-tegra",
+    "disk_free_at_time": "179G / 233G total, 21% used"
+  },
+  "excluded_by_design": [
+    "STANDARD500",
+    "FULL COCO eval",
+    "formal FP16 vs INT8 benchmark",
+    "mixed precision",
+    "C++ implementation"
+  ],
+  "result": "PASS"
+}
