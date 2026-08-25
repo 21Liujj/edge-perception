@@ -1,0 +1,78 @@
+{
+  "stage": "D - C++ Runtime & EdgePerception v1 Closure",
+  "result": "CPP_RUNTIME_READY",
+  "timestamp": "2026-08-25",
+  "toolchain": {
+    "compiler": "g++ 11.4.0",
+    "cmake": "3.22.1",
+    "tensorrt": "10.3.0 (enqueueV3 API)",
+    "cuda": "12.6",
+    "opencv": "4.10.0"
+  },
+  "build": {
+    "status": "PASS",
+    "executable": "cpp_runtime/build/nanosam_cpp",
+    "additional_tools": [
+      "preprocessing_test",
+      "encoder_test"
+    ]
+  },
+  "frozen_artifacts": {
+    "fp16_encoder": {
+      "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+      "sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+      "quality_standard500_miou": 0.71565,
+      "quality_full_miou": 0.699183
+    },
+    "int8_encoder": {
+      "path": "models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8.engine",
+      "sha256": "d8dd7a2f61427e072baeaf06bb38e78d2dab79c95f41c3839883d5891497d650",
+      "quality_standard500_miou": 0.700264,
+      "quality_degradation_vs_fp16": -0.0215,
+      "speedup_vs_fp16": 1.845,
+      "status": "quality_gate_FAIL_production_uses_FP16"
+    },
+    "mask_decoder": {
+      "path": "third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+      "sha256": "afb5ac4958e6bab21ed8aa0cc65798f53a71406fe6124cf6b2e008da6fccb4f2"
+    }
+  },
+  "preprocessing_parity": {
+    "max_abs_diff_overall": 0.7494553327560425,
+    "mean_abs_diff_overall": 0.026181971095502375,
+    "mean_relative_l2_overall": 0.05132537342856436,
+    "all_bit_exact": false
+  },
+  "smoke_tests": {
+    "fp16_full_pipeline": "PASS",
+    "int8_backend_deserialize": "PASS",
+    "image_mode": "PASS",
+    "tensor_mode_encoder": "PASS"
+  },
+  "c pp_runtime_latency_observed": {
+    "encoder_mean_ms": 36.3,
+    "decoder_mean_ms": 32.3,
+    "full_inference_mean_ms": 68.5,
+    "note": "From initial smoke test, single run"
+  },
+  "documentation": {
+    "cpp_runtime_readme": "cpp_runtime/README.md",
+    "evidence_directory": "results/stage_cpp_runtime/",
+    "limitations_recorded": true
+  },
+  "project_closure": {
+    "status": "EDGE_PERCEPTION_V1_COMPLETE",
+    "final_architecture": "RTX5090_distillation -> 50ep_checkpoint -> ONNX -> TensorRT_FP16/INT8 -> C++_runtime",
+    "production_backend": "FP16 (default)",
+    "research_backend": "INT8 (latency-critical, quality tradeoff documented)",
+    "out_of_scope_for_v1": [
+      "NanoOWL",
+      "ROS2",
+      "camera_realtime",
+      "100/200_epoch_training",
+      "QAT",
+      "CUDA_custom_kernels",
+      "power_profiling"
+    ]
+  }
+}

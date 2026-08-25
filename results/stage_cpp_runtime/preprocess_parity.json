@@ -1,0 +1,62 @@
+{
+  "description": "C++ (OpenCV INTER_LINEAR) vs Python (PIL default resample) preprocessing parity, 5 fixed images",
+  "known_source_of_delta": "PIL.Image.resize default resample filter differs from cv2.INTER_LINEAR; per project scope (section 8) no custom CUDA resize kernel was implemented to force bit-exact parity",
+  "per_image": [
+    {
+      "index": 0,
+      "image_path": "data/coco/val2017/000000281693.jpg",
+      "orig_width": 640,
+      "orig_height": 481,
+      "max_abs_diff": 0.6827731132507324,
+      "mean_abs_diff": 0.012277099303901196,
+      "relative_l2": 0.034807070227633595,
+      "bit_exact": false
+    },
+    {
+      "index": 1,
+      "image_path": "data/coco/val2017/000000303566.jpg",
+      "orig_width": 640,
+      "orig_height": 426,
+      "max_abs_diff": 0.7494553327560425,
+      "mean_abs_diff": 0.03022141195833683,
+      "relative_l2": 0.05398847361055612,
+      "bit_exact": false
+    },
+    {
+      "index": 2,
+      "image_path": "data/coco/val2017/000000569030.jpg",
+      "orig_width": 500,
+      "orig_height": 375,
+      "max_abs_diff": 0.6127450466156006,
+      "mean_abs_diff": 0.0184127539396286,
+      "relative_l2": 0.03310075863386672,
+      "bit_exact": false
+    },
+    {
+      "index": 3,
+      "image_path": "data/coco/val2017/000000112378.jpg",
+      "orig_width": 640,
+      "orig_height": 480,
+      "max_abs_diff": 0.732026219367981,
+      "mean_abs_diff": 0.042706847190856934,
+      "relative_l2": 0.06706444318351934,
+      "bit_exact": false
+    },
+    {
+      "index": 4,
+      "image_path": "data/coco/val2017/000000089296.jpg",
+      "orig_width": 640,
+      "orig_height": 426,
+      "max_abs_diff": 0.7352942228317261,
+      "mean_abs_diff": 0.027291743084788322,
+      "relative_l2": 0.06766612148724604,
+      "bit_exact": false
+    }
+  ],
+  "aggregate": {
+    "max_abs_diff_overall": 0.7494553327560425,
+    "mean_abs_diff_overall": 0.026181971095502375,
+    "mean_relative_l2_overall": 0.05132537342856436,
+    "all_bit_exact": false
+  }
+}

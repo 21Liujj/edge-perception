@@ -1,0 +1,133 @@
+[
+  {
+    "path": "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine",
+    "num_io_tensors": 2,
+    "tensors": [
+      {
+        "name": "image",
+        "shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "image_embeddings",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "mode": "OUTPUT",
+        "dtype": "DataType.FLOAT"
+      }
+    ]
+  },
+  {
+    "path": "third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+    "num_io_tensors": 7,
+    "tensors": [
+      {
+        "name": "image_embeddings",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "point_coords",
+        "shape": [
+          1,
+          -1,
+          2
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "point_labels",
+        "shape": [
+          1,
+          -1
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "mask_input",
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "has_mask_input",
+        "shape": [
+          1
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "iou_predictions",
+        "shape": [
+          1,
+          4
+        ],
+        "mode": "OUTPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "low_res_masks",
+        "shape": [
+          1,
+          4,
+          256,
+          256
+        ],
+        "mode": "OUTPUT",
+        "dtype": "DataType.FLOAT"
+      }
+    ]
+  },
+  {
+    "path": "models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8.engine",
+    "num_io_tensors": 2,
+    "tensors": [
+      {
+        "name": "image",
+        "shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "mode": "INPUT",
+        "dtype": "DataType.FLOAT"
+      },
+      {
+        "name": "image_embeddings",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "mode": "OUTPUT",
+        "dtype": "DataType.FLOAT"
+      }
+    ]
+  }
+]

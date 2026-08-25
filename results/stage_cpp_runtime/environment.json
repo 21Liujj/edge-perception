@@ -1,0 +1,35 @@
+{
+  "stage": "cpp_runtime",
+  "timestamp": "2026-08-25",
+  "platform": "Jetson AGX Orin",
+  "working_directory": "/home/nvidia/jetson-deploy-lab",
+  "git": {
+    "status": "local_only_no_remote",
+    "untracked_files_count": 63
+  },
+  "toolchain": {
+    "compiler": "g++ 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)",
+    "cmake": "3.22.1",
+    "cuda": {
+      "nvcc": "/usr/local/cuda-12.6/bin/nvcc",
+      "cuda_runtime_h": "/usr/local/cuda-12.6/targets/aarch64-linux/include/cuda_runtime.h"
+    },
+    "tensorrt": {
+      "version": "10.3.0",
+      "headers": {
+        "NvInfer_h": "/usr/include/aarch64-linux-gnu/NvInfer.h",
+        "NvInferRuntime_h": "/usr/include/aarch64-linux-gnu/NvInferRuntime.h"
+      },
+      "libs": {
+        "libnvinfer_so": "/usr/lib/aarch64-linux-gnu/libnvinfer.so.10.3.0",
+        "libnvinfer_plugin_so": "/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.10.3.0"
+      },
+      "api_version": "TensorRT 10.x enqueueV3",
+      "notes": "TensorRT 10.3 supports new enqueueV3 API - will use this instead of deprecated bindings API"
+    },
+    "opencv": {
+      "version": "4.10.0",
+      "pkg_config": "opencv4"
+    }
+  }
+}
