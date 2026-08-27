@@ -1,0 +1,52 @@
+{
+  "platform": {
+    "device": "Jetson AGX Orin Nano Developer Kit Super",
+    "memory": "8GB",
+    "L4T": "R36.4.3",
+    "TensorRT": "10.3.0",
+    "CUDA": "12.6.68",
+    "power_mode": "25W"
+  },
+  "quality": {
+    "nanoowl_full_coco_ap": {
+      "metric": "mAP@IoU=0.50:0.95",
+      "value": 0.258616,
+      "categories": 80,
+      "instances": 3418,
+      "protocol": "FULL COCO val2017 zero-shot detection",
+      "evidence": "results/stage_e2_nanoowl_quality/full_coco_eval.json"
+    },
+    "nanosam_full_coco_miou": {
+      "fp16_50epoch": {
+        "mean_iou": 0.699183,
+        "median": 0.747113,
+        "instances": 36335,
+        "protocol": "FULL COCO val2017 GT-box prompt slot0",
+        "evidence": "docs/nanosam_training_path.md Stage Jetson-6D"
+      },
+      "int8_quality_gate": "FAIL (mIoU 0.700264, delta -2.15%, threshold <0.5%)",
+      "int8_speedup": "1.845x encoder latency",
+      "production_backend": "FP16 50-epoch (quality gate PASS)"
+    },
+    "joint_pipeline_e2e": {
+      "detection_success_rate": 0.84,
+      "box_iou_mean": 0.513,
+      "box_iou_median": 0.685,
+      "mask_iou_e2e_mean": 0.384,
+      "mask_iou_e2e_median": 0.365,
+      "mask_iou_ceiling_mean": 0.752,
+      "mask_iou_ceiling_median": 0.783,
+      "degradation_mean": 0.368,
+      "degradation_median": 0.301,
+      "instances": 50,
+      "protocol": "COCO stratified 3x3 (size x scene), NanoOWL-box to NanoSAM vs GT-box to NanoSAM",
+      "error_buckets": {
+        "OK": 22,
+        "B_localization_propagation": 17,
+        "A_detection_failure": 8,
+        "C_segmentation_failure": 3
+      },
+      "evidence": "results/stage_e4_joint_pipeline/"
+    }
+  }
+}

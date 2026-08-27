@@ -1,0 +1,42 @@
+{
+  "project": "EdgePerception: Lightweight Vision-Language Perception and TensorRT Deployment on Jetson Orin",
+  "status": "EDGE_PERCEPTION_V1_COMPLETE",
+  "commits": [
+    "7383efc: eval: freeze NanoOWL zero-shot COCO quality (Stage E2)",
+    "ea96c9c: perf: profile NanoOWL vision-language runtime (Stage E3)",
+    "a58ff03: pipeline: integrate NanoOWL and NanoSAM VLM perception (Stage E4)"
+  ],
+  "engine_sizes_mb": {
+    "nanoowl_image_encoder": 176,
+    "nanosam_fp16_encoder": 37,
+    "nanosam_int8_encoder": 22,
+    "nanosam_decoder": 19
+  },
+  "cpp_runtime_status": "COMPLETE (encoder+decoder, image-mode + tensor-mode, correctness verified)",
+  "limitations": [
+    "Not a real-time camera system - offline image + box/point prompt inference only",
+    "Not an LLM-based VLM - vision-language via CLIP text embeddings, not generative LLM",
+    "NanoOWL text side remains PyTorch (only image encoder in TensorRT)",
+    "ROS2 integration deferred to future work",
+    "No QAT - INT8 via PTQ only, quality gate FAIL for production",
+    "C++ runtime: NanoSAM only, NanoOWL text encoder not ported"
+  ],
+  "key_docs": [
+    "docs/edgeperception_vlm_pipeline.md",
+    "docs/nanoowl_quality.md",
+    "docs/nanoowl_performance.md",
+    "docs/nanosam_training_path.md",
+    "docs/int8_ptq.md",
+    "cpp_runtime/README.md",
+    "docs/interview_summary.md",
+    "README.md"
+  ],
+  "key_results_dirs": [
+    "results/stage_e2_nanoowl_quality/",
+    "results/stage_e3_nanoowl_benchmark/",
+    "results/stage_e4_joint_pipeline/",
+    "results/stage_e5_final/",
+    "results/joint_benchmark/",
+    "results/stage_cpp_runtime/"
+  ]
+}

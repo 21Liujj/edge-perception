@@ -1,0 +1,70 @@
+{
+  "platform": {
+    "device": "Jetson AGX Orin Nano Developer Kit Super",
+    "memory": "8GB",
+    "L4T": "R36.4.3",
+    "TensorRT": "10.3.0",
+    "CUDA": "12.6.68",
+    "power_mode": "25W"
+  },
+  "latency": {
+    "nanoowl_core_trt_warm": {
+      "mean_ms": 22.1,
+      "protocol": "TRT image encoder only, text embeddings cached, n=300",
+      "evidence": "results/stage_e3_nanoowl_benchmark/core_inference.json"
+    },
+    "nanoowl_core_trt_cold": {
+      "mean_ms": 79.1,
+      "protocol": "TRT image encoder + PyTorch text encoding, no cache, n=300",
+      "evidence": "results/stage_e3_nanoowl_benchmark/core_inference.json"
+    },
+    "nanoowl_vlm_e2e": {
+      "mean_ms": 36.4,
+      "p50_ms": 37.5,
+      "p95_ms": 44.5,
+      "protocol": "PIL load + preprocess + TRT encoder + text cached + postprocess to box, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_fp16_encoder": {
+      "mean_ms": 60.9,
+      "p50_ms": 60.9,
+      "p95_ms": 66.9,
+      "protocol": "image preprocess + TRT FP16 encoder to embedding, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_fp16_decoder": {
+      "mean_ms": 15.9,
+      "p50_ms": 16.3,
+      "p95_ms": 19.4,
+      "protocol": "embedding + box prompt to mask slot0, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_int8_encoder": {
+      "mean_ms": 6.0,
+      "speedup_vs_fp16": 1.845,
+      "protocol": "TRT INT8 PTQ encoder only, n=100",
+      "evidence": "docs/int8_ptq.md Stage C1B"
+    },
+    "joint_pipeline_e2e": {
+      "mean_ms": 113.7,
+      "p50_ms": 114.9,
+      "p95_ms": 125.1,
+      "fps": 8.8,
+      "protocol": "NanoOWL detect to bridge to NanoSAM encode+decode to mask, steady-state n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "joint_pipeline_cached_embedding": {
+      "mean_ms": 33.9,
+      "protocol": "NanoSAM embedding cached (set_image ONCE), per-prompt decode only, n=100",
+      "note": "NOT full pipeline FPS, cached-image scenario",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "cpp_runtime_nanosam": {
+      "encoder_mean_ms": 36,
+      "decoder_mean_ms": 32,
+      "full_inference_ms": 68,
+      "protocol": "C++ TensorRT FP16, 300-iter benchmark after 30-iter warmup",
+      "evidence": "cpp_runtime/README.md"
+    }
+  }
+}

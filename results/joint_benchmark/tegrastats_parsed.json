@@ -1,33 +1,33 @@
 {
   "RAM_used_MB": {
-    "mean": 4139.795,
-    "min": 4133.0,
+    "mean": 3556.164,
+    "min": 2950.0,
     "max": 4154.0,
-    "count": 190
+    "count": 385
   },
   "GR3D_FREQ_pct": {
-    "mean": 51.542,
+    "mean": 52.665,
     "min": 0.0,
     "max": 99.0,
-    "count": 190
+    "count": 385
   },
   "GPU_temp_C": {
-    "mean": 56.204,
+    "mean": 56.838,
     "min": 55.531,
-    "max": 57.031,
-    "count": 190
+    "max": 58.062,
+    "count": 385
   },
   "CPU_temp_C": {
-    "mean": 54.41,
+    "mean": 55.033,
     "min": 53.75,
-    "max": 55.375,
-    "count": 190
+    "max": 56.375,
+    "count": 385
   },
   "VDD_IN_avg_mW": {
-    "mean": 9749.558,
+    "mean": 9804.174,
     "min": 9376.0,
     "max": 13067.0,
-    "count": 190
+    "count": 385
   },
   "EMC_FREQ_pct": {
     "mean": "N/A",

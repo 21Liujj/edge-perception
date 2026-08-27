@@ -1,0 +1,138 @@
+{
+  "project": "EdgePerception: Lightweight Vision-Language Perception and TensorRT Deployment on Jetson Orin",
+  "status": "EDGE_PERCEPTION_V1_COMPLETE",
+  "platform": {
+    "device": "Jetson AGX Orin Nano Developer Kit Super",
+    "memory": "8GB",
+    "L4T": "R36.4.3",
+    "TensorRT": "10.3.0",
+    "CUDA": "12.6.68",
+    "power_mode": "25W"
+  },
+  "quality": {
+    "nanoowl_full_coco_ap": {
+      "metric": "mAP@IoU=0.50:0.95",
+      "value": 0.258616,
+      "categories": 80,
+      "instances": 3418,
+      "protocol": "FULL COCO val2017 zero-shot detection",
+      "evidence": "results/stage_e2_nanoowl_quality/full_coco_eval.json"
+    },
+    "nanosam_full_coco_miou": {
+      "fp16_50epoch": {
+        "mean_iou": 0.699183,
+        "median": 0.747113,
+        "instances": 36335,
+        "protocol": "FULL COCO val2017 GT-box prompt slot0",
+        "evidence": "docs/nanosam_training_path.md Stage Jetson-6D"
+      },
+      "int8_quality_gate": "FAIL (mIoU 0.700264, delta -2.15%, threshold <0.5%)",
+      "int8_speedup": "1.845x encoder latency",
+      "production_backend": "FP16 50-epoch (quality gate PASS)"
+    },
+    "joint_pipeline_e2e": {
+      "detection_success_rate": 0.84,
+      "box_iou_mean": 0.513,
+      "box_iou_median": 0.685,
+      "mask_iou_e2e_mean": 0.384,
+      "mask_iou_e2e_median": 0.365,
+      "mask_iou_ceiling_mean": 0.752,
+      "mask_iou_ceiling_median": 0.783,
+      "degradation_mean": 0.368,
+      "degradation_median": 0.301,
+      "instances": 50,
+      "protocol": "COCO stratified 3x3 (size x scene), NanoOWL-box to NanoSAM vs GT-box to NanoSAM",
+      "error_buckets": {
+        "OK": 22,
+        "B_localization_propagation": 17,
+        "A_detection_failure": 8,
+        "C_segmentation_failure": 3
+      },
+      "evidence": "results/stage_e4_joint_pipeline/"
+    }
+  },
+  "latency": {
+    "nanoowl_core_trt_warm": {
+      "mean_ms": 22.1,
+      "protocol": "TRT image encoder only, text embeddings cached, n=300",
+      "evidence": "results/stage_e3_nanoowl_benchmark/core_inference.json"
+    },
+    "nanoowl_core_trt_cold": {
+      "mean_ms": 79.1,
+      "protocol": "TRT image encoder + PyTorch text encoding, no cache, n=300",
+      "evidence": "results/stage_e3_nanoowl_benchmark/core_inference.json"
+    },
+    "nanoowl_vlm_e2e": {
+      "mean_ms": 36.4,
+      "p50_ms": 37.5,
+      "p95_ms": 44.5,
+      "protocol": "PIL load + preprocess + TRT encoder + text cached + postprocess to box, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_fp16_encoder": {
+      "mean_ms": 60.9,
+      "p50_ms": 60.9,
+      "p95_ms": 66.9,
+      "protocol": "image preprocess + TRT FP16 encoder to embedding, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_fp16_decoder": {
+      "mean_ms": 15.9,
+      "p50_ms": 16.3,
+      "p95_ms": 19.4,
+      "protocol": "embedding + box prompt to mask slot0, n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "nanosam_int8_encoder": {
+      "mean_ms": 6.0,
+      "speedup_vs_fp16": 1.845,
+      "protocol": "TRT INT8 PTQ encoder only, n=100",
+      "evidence": "docs/int8_ptq.md Stage C1B"
+    },
+    "joint_pipeline_e2e": {
+      "mean_ms": 113.7,
+      "p50_ms": 114.9,
+      "p95_ms": 125.1,
+      "fps": 8.8,
+      "protocol": "NanoOWL detect to bridge to NanoSAM encode+decode to mask, steady-state n=300",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "joint_pipeline_cached_embedding": {
+      "mean_ms": 33.9,
+      "protocol": "NanoSAM embedding cached (set_image ONCE), per-prompt decode only, n=100",
+      "note": "NOT full pipeline FPS, cached-image scenario",
+      "evidence": "results/joint_benchmark/benchmark.json"
+    },
+    "cpp_runtime_nanosam": {
+      "encoder_mean_ms": 36,
+      "decoder_mean_ms": 32,
+      "full_inference_ms": 68,
+      "protocol": "C++ TensorRT FP16, 300-iter benchmark after 30-iter warmup",
+      "evidence": "cpp_runtime/README.md"
+    }
+  },
+  "deployment": {
+    "engine_sizes_mb": {
+      "nanoowl_image_encoder": 176,
+      "nanosam_fp16_encoder": 37,
+      "nanosam_int8_encoder": 22,
+      "nanosam_decoder": 19
+    },
+    "cpp_runtime_status": "COMPLETE (encoder+decoder, image-mode + tensor-mode, correctness verified)",
+    "ros2_integration": "OUT_OF_SCOPE (deferred to future work)",
+    "camera_realtime": "OUT_OF_SCOPE (offline inference only, not camera pipeline)"
+  },
+  "limitations": [
+    "Not a real-time camera system - offline image + box/point prompt inference only",
+    "Not an LLM-based VLM - vision-language via CLIP text embeddings, not generative LLM",
+    "NanoOWL text side remains PyTorch (only image encoder in TensorRT)",
+    "ROS2 integration deferred to future work",
+    "No QAT - INT8 via PTQ only, quality gate FAIL for production",
+    "C++ runtime: NanoSAM only, NanoOWL text encoder not ported"
+  ],
+  "commits": [
+    "7383efc: eval: freeze NanoOWL zero-shot COCO quality (Stage E2)",
+    "ea96c9c: perf: profile NanoOWL vision-language runtime (Stage E3)",
+    "a58ff03: pipeline: integrate NanoOWL and NanoSAM VLM perception (Stage E4)"
+  ]
+}

@@ -44,13 +44,13 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(_HERE, ".."))
 sys.path.insert(0, _HERE)
 
-from run_edge_perception import select_detection, clip_box  # noqa: E402 (validated logic)
+from run_edge_perception import select_top_k, clip_box  # noqa: E402 (validated logic)
 from nanoowl.owl_predictor import OwlPredictor  # noqa: E402
 from nanosam.utils.predictor import Predictor as NanosamPredictor  # noqa: E402
 
 DEFAULT_IMAGE = os.path.join(ROOT, "third_party/nanoowl/assets/owl_glove_small.jpg")
 DEFAULT_OWL_ENGINE = os.path.join(ROOT, "third_party/nanoowl/data/owlvit_image_encoder_patch32.engine")
-DEFAULT_NANOSAM_ENC = os.path.join(ROOT, "third_party/nanosam/data/resnet18_image_encoder.engine")
+DEFAULT_NANOSAM_ENC = os.path.join(ROOT, "models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine")
 DEFAULT_NANOSAM_DEC = os.path.join(ROOT, "third_party/nanosam/data/mobile_sam_mask_decoder.engine")
 MODEL = "google/owlvit-base-patch32"
 
@@ -154,7 +154,8 @@ def detect_once(owl, image, text, text_enc, threshold, target_label):
                      "label": text[li] if 0 <= li < len(text) else str(li),
                      "score": float(sc), "box": bx})
     dets.sort(key=lambda d: d["score"], reverse=True)
-    sel, _ = select_detection(dets, target_label)
+    chosen, _ = select_top_k(dets, target_label, 1)
+    sel = chosen[0] if chosen else None
     return sel, len(dets), dets
 
 

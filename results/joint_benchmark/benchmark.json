@@ -1,7 +1,7 @@
 {
-  "model_load_ms": 2220.798,
-  "nanoowl_load_ms": 1594.971,
-  "nanosam_load_ms": 625.831,
+  "model_load_ms": 2298.288,
+  "nanoowl_load_ms": 1668.42,
+  "nanosam_load_ms": 629.873,
   "warmup": 30,
   "iterations": 300,
   "input_image": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/assets/owl_glove_small.jpg",
@@ -16,93 +16,93 @@
   "timing_units": "ms; all GPU timing after torch.cuda.synchronize()",
   "nanoowl": {
     "count": 300,
-    "mean_ms": 38.6133,
-    "min_ms": 23.9427,
-    "max_ms": 47.7285,
-    "P50_ms": 37.7168,
-    "P95_ms": 44.9096,
-    "P99_ms": 45.1861
+    "mean_ms": 36.4022,
+    "min_ms": 25.6008,
+    "max_ms": 45.0062,
+    "P50_ms": 37.5464,
+    "P95_ms": 44.5328,
+    "P99_ms": 44.8078
   },
   "bridge": {
     "count": 300,
-    "mean_ms": 0.1046,
-    "min_ms": 0.0853,
-    "max_ms": 0.1809,
-    "P50_ms": 0.1035,
-    "P95_ms": 0.1148,
-    "P99_ms": 0.1457
+    "mean_ms": 0.1014,
+    "min_ms": 0.0915,
+    "max_ms": 0.1834,
+    "P50_ms": 0.0995,
+    "P95_ms": 0.1193,
+    "P99_ms": 0.1418
   },
   "nanosam_set_image": {
     "count": 300,
-    "mean_ms": 60.7769,
-    "min_ms": 44.9064,
-    "max_ms": 74.3143,
-    "P50_ms": 60.2287,
-    "P95_ms": 70.437,
-    "P99_ms": 72.9323
+    "mean_ms": 60.8995,
+    "min_ms": 52.3607,
+    "max_ms": 72.3254,
+    "P50_ms": 60.8522,
+    "P95_ms": 66.8714,
+    "P99_ms": 69.7716
   },
   "nanosam_decode": {
     "count": 300,
-    "mean_ms": 17.2227,
-    "min_ms": 11.4751,
-    "max_ms": 22.0703,
-    "P50_ms": 16.6307,
-    "P95_ms": 20.0158,
-    "P99_ms": 20.6568
+    "mean_ms": 15.9491,
+    "min_ms": 11.594,
+    "max_ms": 19.8928,
+    "P50_ms": 16.3334,
+    "P95_ms": 19.4291,
+    "P99_ms": 19.8038
   },
   "pipeline_e2e": {
     "count": 300,
-    "mean_ms": 117.0351,
-    "min_ms": 87.8657,
-    "max_ms": 139.8605,
-    "P50_ms": 115.8755,
-    "P95_ms": 132.4133,
-    "P99_ms": 136.7383
+    "mean_ms": 113.6504,
+    "min_ms": 96.9864,
+    "max_ms": 135.5122,
+    "P50_ms": 114.8659,
+    "P95_ms": 125.0567,
+    "P99_ms": 131.3147
   },
-  "steady_state_e2e_fps": 8.54,
-  "module_sum_mean_ms": 116.7175,
-  "unaccounted_overhead_ms": 0.3176,
+  "steady_state_e2e_fps": 8.8,
+  "module_sum_mean_ms": 113.3522,
+  "unaccounted_overhead_ms": 0.2982,
   "cached_embedding_experiment": {
     "note": "cached-image / reused-embedding scenario (set_image ONCE); NOT full pipeline FPS",
     "iterations": 100,
     "count": 100,
-    "mean_ms": 34.0178,
-    "min_ms": 33.3161,
-    "max_ms": 40.7597,
-    "P50_ms": 33.5994,
-    "P95_ms": 36.3087,
-    "P99_ms": 40.0005
+    "mean_ms": 33.8785,
+    "min_ms": 32.9616,
+    "max_ms": 38.6628,
+    "P50_ms": 33.6075,
+    "P95_ms": 36.267,
+    "P99_ms": 36.6775
   },
   "tegrastats": {
     "RAM_used_MB": {
-      "mean": 4139.795,
-      "min": 4133.0,
+      "mean": 3556.164,
+      "min": 2950.0,
       "max": 4154.0,
-      "count": 190
+      "count": 385
     },
     "GR3D_FREQ_pct": {
-      "mean": 51.542,
+      "mean": 52.665,
       "min": 0.0,
       "max": 99.0,
-      "count": 190
+      "count": 385
     },
     "GPU_temp_C": {
-      "mean": 56.204,
+      "mean": 56.838,
       "min": 55.531,
-      "max": 57.031,
-      "count": 190
+      "max": 58.062,
+      "count": 385
     },
     "CPU_temp_C": {
-      "mean": 54.41,
+      "mean": 55.033,
       "min": 53.75,
-      "max": 55.375,
-      "count": 190
+      "max": 56.375,
+      "count": 385
     },
     "VDD_IN_avg_mW": {
-      "mean": 9749.558,
+      "mean": 9804.174,
       "min": 9376.0,
       "max": 13067.0,
-      "count": 190
+      "count": 385
     },
     "EMC_FREQ_pct": {
       "mean": "N/A",
