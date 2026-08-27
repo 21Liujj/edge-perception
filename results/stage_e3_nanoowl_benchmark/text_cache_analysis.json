@@ -1,0 +1,8 @@
+{
+  "cold_prompt_mean_ms": 79.1145576396957,
+  "warm_prompt_mean_ms": 22.097475189802935,
+  "absolute_saving_ms": 57.01708244989277,
+  "relative_saving_pct": 72.06901504721866,
+  "language_branch_ms": 42.01242570125032,
+  "explanation": "A robot repeatedly searching for the same object category (e.g. 'find the cup' every frame while navigating) issues the same text prompt across many frames. Re-tokenizing and re-running the text transformer for an unchanged prompt string is redundant work: the resulting text embedding is deterministic given the same model weights, revision, device and dtype. Caching it once and reusing it removes the language branch from the per-frame critical path, leaving only image-side work (preprocess + vision TRT + matching) in the steady-state loop."
+}

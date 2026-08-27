@@ -1,0 +1,274 @@
+{
+  "mode": "COLD_PROMPT",
+  "description": "Every call re-tokenizes and re-encodes the text prompt (no cache reuse); full tokenize->text_encode->vision->decode chain timed per call on a fixed image.",
+  "prompts": [
+    "a person",
+    "a car",
+    "a chair",
+    "a dog",
+    "a cat"
+  ],
+  "repeats_per_prompt": 10,
+  "image": "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000000139.jpg",
+  "records": [
+    {
+      "prompt": "a person",
+      "rep": 0,
+      "total_ms": 477.7755910035921
+    },
+    {
+      "prompt": "a person",
+      "rep": 1,
+      "total_ms": 100.93352400144795
+    },
+    {
+      "prompt": "a person",
+      "rep": 2,
+      "total_ms": 81.28714199847309
+    },
+    {
+      "prompt": "a person",
+      "rep": 3,
+      "total_ms": 85.97735499643022
+    },
+    {
+      "prompt": "a person",
+      "rep": 4,
+      "total_ms": 93.16258299804758
+    },
+    {
+      "prompt": "a person",
+      "rep": 5,
+      "total_ms": 94.23013299965532
+    },
+    {
+      "prompt": "a person",
+      "rep": 6,
+      "total_ms": 95.70620700105792
+    },
+    {
+      "prompt": "a person",
+      "rep": 7,
+      "total_ms": 99.30816500127548
+    },
+    {
+      "prompt": "a person",
+      "rep": 8,
+      "total_ms": 71.26903299649712
+    },
+    {
+      "prompt": "a person",
+      "rep": 9,
+      "total_ms": 78.55794399802107
+    },
+    {
+      "prompt": "a car",
+      "rep": 0,
+      "total_ms": 76.92791299632518
+    },
+    {
+      "prompt": "a car",
+      "rep": 1,
+      "total_ms": 59.00282799848355
+    },
+    {
+      "prompt": "a car",
+      "rep": 2,
+      "total_ms": 69.16465300309937
+    },
+    {
+      "prompt": "a car",
+      "rep": 3,
+      "total_ms": 73.81828900543042
+    },
+    {
+      "prompt": "a car",
+      "rep": 4,
+      "total_ms": 59.45749700185843
+    },
+    {
+      "prompt": "a car",
+      "rep": 5,
+      "total_ms": 69.38014699699124
+    },
+    {
+      "prompt": "a car",
+      "rep": 6,
+      "total_ms": 69.05092200031504
+    },
+    {
+      "prompt": "a car",
+      "rep": 7,
+      "total_ms": 69.40257899987046
+    },
+    {
+      "prompt": "a car",
+      "rep": 8,
+      "total_ms": 69.51791099709226
+    },
+    {
+      "prompt": "a car",
+      "rep": 9,
+      "total_ms": 69.26897499943152
+    },
+    {
+      "prompt": "a chair",
+      "rep": 0,
+      "total_ms": 69.36225800018292
+    },
+    {
+      "prompt": "a chair",
+      "rep": 1,
+      "total_ms": 57.17375200038077
+    },
+    {
+      "prompt": "a chair",
+      "rep": 2,
+      "total_ms": 64.70302199886646
+    },
+    {
+      "prompt": "a chair",
+      "rep": 3,
+      "total_ms": 69.58082399796695
+    },
+    {
+      "prompt": "a chair",
+      "rep": 4,
+      "total_ms": 69.80207900051028
+    },
+    {
+      "prompt": "a chair",
+      "rep": 5,
+      "total_ms": 57.262394002464134
+    },
+    {
+      "prompt": "a chair",
+      "rep": 6,
+      "total_ms": 64.4623429980129
+    },
+    {
+      "prompt": "a chair",
+      "rep": 7,
+      "total_ms": 69.41416399786249
+    },
+    {
+      "prompt": "a chair",
+      "rep": 8,
+      "total_ms": 57.40966300072614
+    },
+    {
+      "prompt": "a chair",
+      "rep": 9,
+      "total_ms": 65.2295010004309
+    },
+    {
+      "prompt": "a dog",
+      "rep": 0,
+      "total_ms": 69.87718399614096
+    },
+    {
+      "prompt": "a dog",
+      "rep": 1,
+      "total_ms": 69.66761100193253
+    },
+    {
+      "prompt": "a dog",
+      "rep": 2,
+      "total_ms": 69.631610000215
+    },
+    {
+      "prompt": "a dog",
+      "rep": 3,
+      "total_ms": 69.74742099555442
+    },
+    {
+      "prompt": "a dog",
+      "rep": 4,
+      "total_ms": 69.92451300175162
+    },
+    {
+      "prompt": "a dog",
+      "rep": 5,
+      "total_ms": 69.42014699598076
+    },
+    {
+      "prompt": "a dog",
+      "rep": 6,
+      "total_ms": 69.7078360026353
+    },
+    {
+      "prompt": "a dog",
+      "rep": 7,
+      "total_ms": 57.15029500424862
+    },
+    {
+      "prompt": "a dog",
+      "rep": 8,
+      "total_ms": 65.19807500444585
+    },
+    {
+      "prompt": "a dog",
+      "rep": 9,
+      "total_ms": 69.50712599791586
+    },
+    {
+      "prompt": "a cat",
+      "rep": 0,
+      "total_ms": 57.51852899993537
+    },
+    {
+      "prompt": "a cat",
+      "rep": 1,
+      "total_ms": 64.76788700092584
+    },
+    {
+      "prompt": "a cat",
+      "rep": 2,
+      "total_ms": 69.55487099912716
+    },
+    {
+      "prompt": "a cat",
+      "rep": 3,
+      "total_ms": 69.90832099836553
+    },
+    {
+      "prompt": "a cat",
+      "rep": 4,
+      "total_ms": 69.53579899709439
+    },
+    {
+      "prompt": "a cat",
+      "rep": 5,
+      "total_ms": 69.86003200290725
+    },
+    {
+      "prompt": "a cat",
+      "rep": 6,
+      "total_ms": 69.97347499418538
+    },
+    {
+      "prompt": "a cat",
+      "rep": 7,
+      "total_ms": 70.10871099919314
+    },
+    {
+      "prompt": "a cat",
+      "rep": 8,
+      "total_ms": 69.59151200135238
+    },
+    {
+      "prompt": "a cat",
+      "rep": 9,
+      "total_ms": 57.477536000078544
+    }
+  ],
+  "latency_ms": {
+    "mean": 79.1145576396957,
+    "min": 57.15029500424862,
+    "max": 477.7755910035921,
+    "p50": 69.56784749854705,
+    "p95": 97.68728390117758,
+    "p99": 293.1229781725415,
+    "n": 50
+  }
+}

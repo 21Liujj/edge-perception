@@ -1,0 +1,78 @@
+{
+  "note": "matching_and_postprocess is OwlPredictor.decode() as a single call: normalize embeds, einsum cross-modal similarity, logit_shift/scale, sigmoid, per-label threshold, argmax. Box geometry (sigmoid + center-to-corners) is already computed inside the TensorRT/vision step (encode_image), not inside decode(). A separate 'cross-modal matching' vs 'box decode/postprocess' split within decode() itself is NOT_SEPARATELY_VISIBLE without modifying third_party/nanoowl (decode() is one fused function; splitting it would require rewriting upstream code, which is out of scope).",
+  "n_samples": 30,
+  "per_stage_ms": {
+    "image_decode": {
+      "mean": 9.799894133902853,
+      "min": 5.234516000200529,
+      "max": 22.609633997490164,
+      "p50": 9.398330501426244,
+      "p95": 12.937360897558392,
+      "p99": 20.01644993768423,
+      "n": 30
+    },
+    "image_preprocess": {
+      "mean": 2.2788038004364353,
+      "min": 1.526763997389935,
+      "max": 2.738445000431966,
+      "p50": 2.276720497320639,
+      "p95": 2.6906413506367244,
+      "p99": 2.7332389206276275,
+      "n": 30
+    },
+    "text_tokenize": {
+      "mean": 0.9092973341466859,
+      "min": 0.7124679978005588,
+      "max": 1.0635829967213795,
+      "p50": 0.9208744995703455,
+      "p95": 1.0058418050903128,
+      "p99": 1.0483539392589591,
+      "n": 30
+    },
+    "text_encode": {
+      "mean": 41.103128367103636,
+      "min": 35.37812500144355,
+      "max": 46.21196800144389,
+      "p50": 41.292867997981375,
+      "p95": 46.11994750048325,
+      "p99": 46.19296198172378,
+      "n": 30
+    },
+    "roi_extract": {
+      "mean": 2.9865188659944883,
+      "min": 1.9629350063041784,
+      "max": 3.574980997655075,
+      "p50": 3.2081069984997157,
+      "p95": 3.544166152278194,
+      "p99": 3.571603079617489,
+      "n": 30
+    },
+    "vision_trt": {
+      "mean": 33.965379033907084,
+      "min": 25.818939997407142,
+      "max": 37.290881999069825,
+      "p50": 36.23795650128159,
+      "p95": 37.10939700285962,
+      "p99": 37.238272230897564,
+      "n": 30
+    },
+    "matching_and_postprocess": {
+      "mean": 3.341350266661417,
+      "min": 2.9446910048136488,
+      "max": 4.386237000289839,
+      "p50": 3.15628150201519,
+      "p95": 4.196821496589109,
+      "p99": 4.341283229223336,
+      "n": 30
+    },
+    "total": {
+      "mean": 94.3843718021526,
+      "min": 74.65469498856692,
+      "max": 107.2017640035483,
+      "p50": 94.49273099380662,
+      "p95": 104.7159255049337,
+      "p99": 106.7155059237848,
+      "n": 30
+    }
+  }
+}

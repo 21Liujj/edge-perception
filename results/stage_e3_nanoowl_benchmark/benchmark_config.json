@@ -1,0 +1,42 @@
+{
+  "stage": "E3",
+  "model": "google/owlvit-base-patch32",
+  "engine": "/home/nvidia/jetson-deploy-lab/third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+  "threshold": 0.1,
+  "fixed_images": [
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000000139.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000025593.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000057027.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000088040.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000119365.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000147729.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000173091.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000200162.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000229753.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000260261.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000289594.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000318455.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000347544.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000375763.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000405249.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000435206.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000463174.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000491464.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000521601.jpg",
+    "/home/nvidia/jetson-deploy-lab/data/coco/val2017/000000553221.jpg"
+  ],
+  "fixed_prompts": [
+    "a person",
+    "a car",
+    "a chair",
+    "a dog",
+    "a cat"
+  ],
+  "cold_repeats_per_prompt": 10,
+  "warm_warmup_iters": 30,
+  "warm_measured_iters": 300,
+  "model_load_ms": 2535.6815359991742,
+  "power_mode_changed": false,
+  "jetson_clocks_changed": false,
+  "engine_rebuilt": false
+}

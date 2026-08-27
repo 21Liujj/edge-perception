@@ -1,0 +1,18 @@
+{
+  "mode": "WARM_PROMPT",
+  "description": "Text embedding for the fixed prompt computed ONCE up front (project-side dict cache keyed by prompt string; third_party unmodified). Per-frame steady-state loop: image_preprocess -> roi_extract -> vision_trt -> decode(cached text embedding).",
+  "prompt": "a person",
+  "warmup_iters": 30,
+  "measured_iters": 300,
+  "n_images_rotated": 20,
+  "latency_ms": {
+    "mean": 22.097475189802935,
+    "min": 20.3055360034341,
+    "max": 25.411121001525316,
+    "p50": 22.002656503900653,
+    "p95": 22.67113269554102,
+    "p99": 24.043757586478023,
+    "n": 300
+  },
+  "fps": 45.25403881713411
+}

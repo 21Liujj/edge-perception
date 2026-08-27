@@ -1,0 +1,7 @@
+{
+  "process_rss_kb": 1219764,
+  "torch_cuda_memory_allocated_mb": 628.0673828125,
+  "tegrastats_last_line": "08-27-2026 19:28:55 RAM 2678/7620MB (lfb 823x1MB) SWAP 797/3810MB (cached 3MB) CPU [48%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 90% cpu@55.031C soc2@53.906C soc0@54.062C gpu@58.093C tj@58.093C soc1@53.937C VDD_IN 16752mW/16546mW VDD_CPU_GPU_CV 8574mW/8426mW VDD_SOC 3720mW/3737mW",
+  "tegrastats_log": "/home/nvidia/jetson-deploy-lab/results/stage_e3_nanoowl_benchmark/tegrastats.log",
+  "note": "Power mode / jetson_clocks not modified for this benchmark."
+}
