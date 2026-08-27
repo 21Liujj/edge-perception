@@ -1,0 +1,57 @@
+{
+  "source": "results/algorithm_b2_nanoowl/full (reused, verified in place, not rerun)",
+  "protocol": "NanoOWL open-vocabulary detection; COCO category-name text prompts",
+  "iou_type": "bbox",
+  "model": "google/owlvit-base-patch32",
+  "engine": {
+    "path": "third_party/nanoowl/data/owlvit_image_encoder_patch32.engine",
+    "size_bytes": 183507980,
+    "sha256": "d3f723f97d5e466805105f8b25da83d898e215c09598fb2b41c06d5254d09037"
+  },
+  "annotations": {
+    "path": "data/coco/annotations/instances_val2017.json",
+    "size_bytes": 19987840,
+    "sha256": "e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f"
+  },
+  "manifest": null,
+  "prompt_template": "a {category_name}",
+  "image_count": 5000,
+  "gt_instance_count": 36781,
+  "threshold": 0.1,
+  "top_k_per_image": 100,
+  "prediction_count": 44962,
+  "zero_prediction_images": 82,
+  "metrics": {
+    "AP": 0.2586156450729537,
+    "AP50": 0.40788472066816434,
+    "AP75": 0.2729479713625649,
+    "APsmall": 0.09526281492719438,
+    "APmedium": 0.26408925507350295,
+    "APlarge": 0.44218638597002385,
+    "AR1": 0.25519328742165226,
+    "AR10": 0.36505769402959487,
+    "AR100": 0.3723116815290572,
+    "ARsmall": 0.132255211120839,
+    "ARmedium": 0.38441421883841853,
+    "ARlarge": 0.6248057727254248
+  },
+  "timing": {
+    "model_load_seconds": 2.200671211000099,
+    "text_encoding_seconds": 0.49260967700001856,
+    "image_loop_seconds": 165.2552519029996,
+    "image_loop_images_per_second": 30.256224491641973,
+    "per_image_seconds": {
+      "count": 5000,
+      "min": 0.02466853199985053,
+      "mean": 0.026037370221398667,
+      "median": 0.02599577750015669,
+      "p05": 0.025443182799699572,
+      "p10": 0.02554864870030542,
+      "p90": 0.026228021799670386,
+      "p95": 0.026398390049962472,
+      "p99": 0.027732996669942635,
+      "max": 0.17596857499984253
+    },
+    "total_wall_seconds": 349.1715789259997
+  }
+}

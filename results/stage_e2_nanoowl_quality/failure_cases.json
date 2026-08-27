@@ -1,0 +1,354 @@
+{
+  "matcher": "analysis-only greedy class-aware matching at IoU >= 0.50; not COCOeval",
+  "semantic_confusion_pairs_top10": [
+    {
+      "gt_category": "car",
+      "predicted_category": "truck",
+      "count": 74
+    },
+    {
+      "gt_category": "chair",
+      "predicted_category": "couch",
+      "count": 58
+    },
+    {
+      "gt_category": "truck",
+      "predicted_category": "car",
+      "count": 57
+    },
+    {
+      "gt_category": "knife",
+      "predicted_category": "fork",
+      "count": 50
+    },
+    {
+      "gt_category": "snowboard",
+      "predicted_category": "skis",
+      "count": 48
+    },
+    {
+      "gt_category": "bus",
+      "predicted_category": "truck",
+      "count": 44
+    },
+    {
+      "gt_category": "sheep",
+      "predicted_category": "cow",
+      "count": 44
+    },
+    {
+      "gt_category": "knife",
+      "predicted_category": "spoon",
+      "count": 38
+    },
+    {
+      "gt_category": "person",
+      "predicted_category": "chair",
+      "count": 38
+    },
+    {
+      "gt_category": "microwave",
+      "predicted_category": "oven",
+      "count": 35
+    }
+  ],
+  "cases": {
+    "localization_error": [
+      {
+        "image_id": 397681,
+        "prediction_count": 100,
+        "fp_iou50": 86,
+        "tp_iou50": 14,
+        "note": "high fp_iou50 with predictions of correct category but IoU<0.5 or wrong location"
+      },
+      {
+        "image_id": 191845,
+        "prediction_count": 100,
+        "fp_iou50": 78,
+        "tp_iou50": 22,
+        "note": "high fp_iou50 with predictions of correct category but IoU<0.5 or wrong location"
+      },
+      {
+        "image_id": 340697,
+        "prediction_count": 86,
+        "fp_iou50": 73,
+        "tp_iou50": 13,
+        "note": "high fp_iou50 with predictions of correct category but IoU<0.5 or wrong location"
+      }
+    ],
+    "semantic_confusion": [
+      {
+        "image_id": 16249,
+        "semantic_confusion_count": 13,
+        "semantic_confusions": [
+          {
+            "prediction_index": 0,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1394910,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.9064267802891416,
+            "score": 0.400610089302063
+          },
+          {
+            "prediction_index": 1,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1396783,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.7026260327929769,
+            "score": 0.36869385838508606
+          },
+          {
+            "prediction_index": 2,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 573041,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.8132387072774124,
+            "score": 0.36306023597717285
+          },
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 573041,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5251446049777777,
+            "score": 0.36163070797920227
+          },
+          {
+            "prediction_index": 4,
+            "predicted_category_id": 62,
+            "predicted_category_name": "chair",
+            "gt_annotation_id": 1397318,
+            "gt_category_id": 15,
+            "gt_category_name": "bench",
+            "iou": 0.5587633885210405,
+            "score": 0.33858248591423035
+          }
+        ]
+      },
+      {
+        "image_id": 247838,
+        "semantic_confusion_count": 12,
+        "semantic_confusions": [
+          {
+            "prediction_index": 0,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821001,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.752756818157229,
+            "score": 0.3456411361694336
+          },
+          {
+            "prediction_index": 2,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820664,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8244108023537661,
+            "score": 0.2647419273853302
+          },
+          {
+            "prediction_index": 3,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821027,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.894519748688775,
+            "score": 0.25325146317481995
+          },
+          {
+            "prediction_index": 4,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1820717,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.7499018111811121,
+            "score": 0.2440290004014969
+          },
+          {
+            "prediction_index": 5,
+            "predicted_category_id": 20,
+            "predicted_category_name": "sheep",
+            "gt_annotation_id": 1821015,
+            "gt_category_id": 21,
+            "gt_category_name": "cow",
+            "iou": 0.8267631442265194,
+            "score": 0.23173825442790985
+          }
+        ]
+      },
+      {
+        "image_id": 356387,
+        "semantic_confusion_count": 11,
+        "semantic_confusions": [
+          {
+            "prediction_index": 5,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.6320011973223663,
+            "score": 0.2706736922264099
+          },
+          {
+            "prediction_index": 6,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5880228085953163,
+            "score": 0.26412734389305115
+          },
+          {
+            "prediction_index": 9,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5978300163956102,
+            "score": 0.23742687702178955
+          },
+          {
+            "prediction_index": 10,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 147963,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.8673461697345468,
+            "score": 0.23394885659217834
+          },
+          {
+            "prediction_index": 14,
+            "predicted_category_id": 2,
+            "predicted_category_name": "bicycle",
+            "gt_annotation_id": 148429,
+            "gt_category_id": 4,
+            "gt_category_name": "motorcycle",
+            "iou": 0.5496149389231715,
+            "score": 0.20597203075885773
+          }
+        ]
+      }
+    ],
+    "small_object_miss": [
+      {
+        "image_id": 435081,
+        "gt_count": 62,
+        "fn_iou50": 58,
+        "small_fn_iou50": 41
+      },
+      {
+        "image_id": 524850,
+        "gt_count": 40,
+        "fn_iou50": 37,
+        "small_fn_iou50": 35
+      },
+      {
+        "image_id": 316666,
+        "gt_count": 40,
+        "fn_iou50": 34,
+        "small_fn_iou50": 33
+      }
+    ],
+    "crowded_scene": [
+      {
+        "image_id": 435081,
+        "gt_count": 62,
+        "prediction_count": 9,
+        "tp_iou50": 4,
+        "fp_iou50": 5,
+        "fn_iou50": 58,
+        "small_fn_iou50": 41,
+        "note": "crowded_scene: high GT density (>=40) drives most misses"
+      },
+      {
+        "image_id": 470924,
+        "gt_count": 55,
+        "prediction_count": 22,
+        "tp_iou50": 10,
+        "fp_iou50": 12,
+        "fn_iou50": 45,
+        "small_fn_iou50": 27,
+        "note": "crowded_scene: high GT density (>=40) drives most misses"
+      },
+      {
+        "image_id": 303566,
+        "gt_count": 53,
+        "prediction_count": 32,
+        "tp_iou50": 15,
+        "fp_iou50": 17,
+        "fn_iou50": 38,
+        "small_fn_iou50": 29,
+        "note": "crowded_scene: high GT density (>=40) drives most misses"
+      }
+    ],
+    "successful_detections_sample": [
+      {
+        "image_id": 338191,
+        "gt_count": 9,
+        "prediction_count": 9,
+        "tp_iou50": 9,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 60855,
+        "gt_count": 7,
+        "prediction_count": 7,
+        "tp_iou50": 7,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      },
+      {
+        "image_id": 64359,
+        "gt_count": 7,
+        "prediction_count": 7,
+        "tp_iou50": 7,
+        "fp_iou50": 0,
+        "fn_iou50": 0,
+        "small_fn_iou50": 0,
+        "semantic_confusion_count": 0,
+        "semantic_confusions": []
+      }
+    ]
+  },
+  "visualization_evidence": [
+    "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_01_image_000000338191.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_02_image_000000060855.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/successful_detections_03_image_000000064359.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_01_image_000000397681.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_02_image_000000191845.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_positive_heavy_03_image_000000340697.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_01_image_000000435081.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_02_image_000000470924.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/false_negative_heavy_03_image_000000303566.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_01_image_000000435081.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_02_image_000000524850.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/small_object_failure_03_image_000000316666.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_01_image_000000016249.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_02_image_000000247838.jpg",
+    "results/algorithm_b2_nanoowl/full/visualizations/semantic_confusion_03_image_000000356387.jpg"
+  ]
+}
