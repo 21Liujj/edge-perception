@@ -1,0 +1,46 @@
+{
+  "stage": "E4",
+  "name": "NanoOWL -> NanoSAM joint VLM perception pipeline",
+  "script": "scripts/run_edge_perception.py",
+  "process_model": "single process, in-process reuse of NanoOWL OwlPredictor and NanoSAM Predictor; no subprocess of the two CLIs; no third_party modification",
+  "cli_contract": {
+    "required_or_defaulted_args": {
+      "--image": "path to input image (default: NanoOWL sample asset)",
+      "--text": "comma-separated open-vocabulary text prompt(s), e.g. \"cup\"",
+      "--score-threshold": "NanoOWL detection score threshold, default 0.10 (matches E2 primary reporting threshold)",
+      "--top-k": "max NanoOWL detections (desc by score) pushed through NanoSAM; default 1; -1 = all above threshold",
+      "--target-label": "optional: restrict detections to this label before applying top-k",
+      "--nanoowl-engine": "TensorRT image encoder engine path (default: frozen E1/E2 owlvit_image_encoder_patch32.engine)",
+      "--nanosam-image-encoder-engine": "default: models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine (PRODUCTION FP16, quality-gate PASS)",
+      "--nanosam-mask-decoder-engine": "default: third_party/nanosam/data/mobile_sam_mask_decoder.engine",
+      "--output-dir": "output directory"
+    },
+    "example": "python scripts/run_edge_perception.py --image data/test/kitchen.jpg --text \"cup\" --score-threshold 0.10 --output-dir results/demo_cup"
+  },
+  "output_contract": {
+    "detections.json": "full structured result: input/text/threshold/top_k, all NanoOWL detections, selected top-k detections, per-detection bridge + NanoSAM result, status in {OK, NO_DETECTION}",
+    "overlay.jpg": "single image with all selected top-k boxes + masks drawn (one color per detection)",
+    "mask.png": "binary mask (0/255) for the rank-1 (highest score) selected detection; additional detections (top-k>1) saved as mask_k2.png, mask_k3.png, ...",
+    "diagnostic_only_not_contractual": ["input.jpg", "nanoowl_visualization.jpg", "timing.json"]
+  },
+  "production_backend_policy": {
+    "nanosam_default": "FP16 50-epoch self-distilled (models/self_distilled/epoch50/nanosam_resnet18_epoch049_fp16.engine)",
+    "nanosam_default_sha256": "99147caf00f0174b802848c93928232c02ac996e91e6660372bbc8923112baf4",
+    "excluded_defaults": [
+      "third_party/nanosam/data/resnet18_image_encoder.engine (untrained upstream default -- WRONG, was the pre-E4 bug, now only reachable via explicit --nanosam-image-encoder-engine override)",
+      "models/self_distilled/epoch50/int8/nanosam_resnet18_epoch049_int8.engine (INT8 research backend, quality-gate FAIL, -2.15% mIoU vs FP16)"
+    ]
+  },
+  "mask_selection_rule": "fixed slot 0 (hi_res_mask[0,0] > 0), NOT IoU argmax -- same convention as scripts/run_nanosam_infer.py and eval_nanosam_coco.py",
+  "top_k_policy": {
+    "default": 1,
+    "rationale": "matches the common single-object 'find the X' robotics use case; NanoSAM image embedding (set_image) computed once per input image and reused across all top-k detections to avoid redundant vision-encoder calls",
+    "no_detection_path": "if 0 detections survive --score-threshold (and optional --target-label filter), pipeline exits cleanly with status=NO_DETECTION and does NOT call NanoSAM"
+  },
+  "smoke_test": {
+    "image": "third_party/nanoowl/assets/owl_glove_small.jpg",
+    "text": "an owl,a glove,a finger",
+    "top_k": 2,
+    "result": "1 detection found (only 1 above threshold, top-k correctly capped at available count); label=an owl score=0.3419 box=[275.19,82.35,463.64,399.35]; NanoSAM selected_iou=0.7139 nonzero_pixels=34122; has_nan=False has_inf=False; all 3 contract files (detections.json, overlay.jpg, mask.png) produced"
+  }
+}

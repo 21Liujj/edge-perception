@@ -1,0 +1,25 @@
+{
+  "question": "Do NanoOWL's output box convention and NanoSAM's input point convention agree, or does the joint pipeline need an axis swap / normalization step?",
+  "method": "Read from source code directly (not from memory / not from documentation), then confirmed empirically via smoke test and the 50-case COCO eval.",
+  "nanoowl_output_convention": {
+    "source": "third_party/nanosam/nanoowl/owl_predictor.py, OwlPredictor.predict()",
+    "finding": "output.boxes is xyxy, in ORIGINAL image pixel space when pad_square=False (this pipeline always calls with pad_square=False). Internal function _owl_box_roi_to_box_global maps normalized ROI boxes onto the input image's (x0, y0, w, h) in original pixels before returning."
+  },
+  "nanosam_input_convention": {
+    "source": "third_party/nanosam/nanosam/utils/predictor.py, Predictor.predict(points, point_labels)",
+    "finding": "points are expected in ORIGINAL image XY pixel space. preprocess_points() internally rescales them by image_encoder_size / max(image_width, image_height) before feeding the mask decoder -- caller does NOT need to pre-normalize. A box prompt is encoded as two points [[x1,y1],[x2,y2]] with labels=[2,3] (2=box top-left corner, 3=box bottom-right corner); this is the same convention used by the official MobileSAM/NanoSAM examples/basic_usage.py."
+  },
+  "conclusion": {
+    "axis_swap_needed": false,
+    "normalization_needed_by_caller": false,
+    "rule": "NanoOWL box [x1,y1,x2,y2] (original-image xyxy) maps DIRECTLY to NanoSAM point_coords=[[x1,y1],[x2,y2]], point_labels=[2,3]. No coordinate transform, no axis swap, no manual normalization required in the bridge code."
+  },
+  "clip_and_oob_handling": {
+    "why": "NanoOWL boxes are not guaranteed to lie strictly inside [0,W]x[0,H] (model can predict slightly outside image bounds near edges).",
+    "rule": "scripts/run_edge_perception.py clip_box() clamps to [0,W]x[0,H], reorders x1<=x2/y1<=y2, and records both the original (unclipped) box and an out_of_bounds boolean flag in detections.json's bridge object for every detection -- clipping is transparent and auditable, never silent."
+  },
+  "empirical_confirmation": {
+    "smoke_test": "single-detection owl/glove/finger image: NanoOWL box directly passed through to NanoSAM produced a coherent 34122-pixel mask (selected_iou=0.7139, no NaN/Inf) at the correct object location -- confirms no axis-swap bug.",
+    "coco_50_case_eval": "42/50 cases had a matching NanoOWL detection; box_iou (NanoOWL box vs GT box) mean=0.513, median=0.685 -- boxes land in the right place, consistent with a correct (non-swapped) coordinate bridge. Cases with box_iou=0 are attributable to genuine detection/localization misses, not to a systematic coordinate bug (spot-checked in results/stage_e4_joint_pipeline/demo/ -- masks land on plausible-but-wrong image regions, not mirrored/transposed)."
+  }
+}

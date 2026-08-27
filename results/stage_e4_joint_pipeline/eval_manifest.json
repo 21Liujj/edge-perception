@@ -1,0 +1,1108 @@
+{
+  "seed": 2027,
+  "target_total": 50,
+  "per_cell_target": 6,
+  "cell_shortfalls": {},
+  "instances": [
+    {
+      "image_id": 516708,
+      "annotation_id": 1381864,
+      "category_id": 10,
+      "category_name": "traffic light",
+      "bbox_xywh": [
+        167.93,
+        303.14,
+        16.29,
+        21.08
+      ],
+      "bbox_xyxy": [
+        167.93,
+        303.14,
+        184.22,
+        324.21999999999997
+      ],
+      "area": 324.18605000000014,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 168619,
+      "annotation_id": 577443,
+      "category_id": 15,
+      "category_name": "bench",
+      "bbox_xywh": [
+        117.9,
+        267.6,
+        41.35,
+        43.97
+      ],
+      "bbox_xyxy": [
+        117.9,
+        267.6,
+        159.25,
+        311.57000000000005
+      ],
+      "area": 795.0680999999995,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 157847,
+      "annotation_id": 36376,
+      "category_id": 16,
+      "category_name": "bird",
+      "bbox_xywh": [
+        374.13,
+        93.79,
+        28.99,
+        20.76
+      ],
+      "bbox_xyxy": [
+        374.13,
+        93.79,
+        403.12,
+        114.55000000000001
+      ],
+      "area": 187.55639999999994,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 101787,
+      "annotation_id": 157322,
+      "category_id": 5,
+      "category_name": "airplane",
+      "bbox_xywh": [
+        182.12,
+        281.4,
+        39.47,
+        33.31
+      ],
+      "bbox_xyxy": [
+        182.12,
+        281.4,
+        221.59,
+        314.71
+      ],
+      "area": 431.79045,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 404534,
+      "annotation_id": 1352089,
+      "category_id": 3,
+      "category_name": "car",
+      "bbox_xywh": [
+        337.74,
+        312.74,
+        15.94,
+        11.95
+      ],
+      "bbox_xyxy": [
+        337.74,
+        312.74,
+        353.68,
+        324.69
+      ],
+      "area": 109.37684999999978,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 113867,
+      "annotation_id": 338923,
+      "category_id": 85,
+      "category_name": "clock",
+      "bbox_xywh": [
+        327.85,
+        109.49,
+        45.7,
+        23.49
+      ],
+      "bbox_xyxy": [
+        327.85,
+        109.49,
+        373.55,
+        132.98
+      ],
+      "area": 817.1068999999995,
+      "size_bucket": "small",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 118405,
+      "annotation_id": 1899294,
+      "category_id": 51,
+      "category_name": "bowl",
+      "bbox_xywh": [
+        290.14,
+        352.37,
+        21.48,
+        18.54
+      ],
+      "bbox_xyxy": [
+        290.14,
+        352.37,
+        311.62,
+        370.91
+      ],
+      "area": 321.19600000000037,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 2
+    },
+    {
+      "image_id": 500464,
+      "annotation_id": 1997942,
+      "category_id": 90,
+      "category_name": "toothbrush",
+      "bbox_xywh": [
+        168.29,
+        45.66,
+        5.47,
+        18.73
+      ],
+      "bbox_xyxy": [
+        168.29,
+        45.66,
+        173.76,
+        64.39
+      ],
+      "area": 50.480149999999924,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 5
+    },
+    {
+      "image_id": 427160,
+      "annotation_id": 634986,
+      "category_id": 40,
+      "category_name": "baseball glove",
+      "bbox_xywh": [
+        244.17,
+        313.92,
+        33.2,
+        42.32
+      ],
+      "bbox_xyxy": [
+        244.17,
+        313.92,
+        277.37,
+        356.24
+      ],
+      "area": 781.6598499999998,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 336209,
+      "annotation_id": 640671,
+      "category_id": 41,
+      "category_name": "skateboard",
+      "bbox_xywh": [
+        346.87,
+        270.33,
+        54.38,
+        17.53
+      ],
+      "bbox_xyxy": [
+        346.87,
+        270.33,
+        401.25,
+        287.86
+      ],
+      "area": 425.63530000000065,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 3
+    },
+    {
+      "image_id": 29393,
+      "annotation_id": 1556646,
+      "category_id": 55,
+      "category_name": "orange",
+      "bbox_xywh": [
+        344.26,
+        244.93,
+        7.99,
+        9.1
+      ],
+      "bbox_xyxy": [
+        344.26,
+        244.93,
+        352.25,
+        254.03
+      ],
+      "area": 51.765749999999855,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 4
+    },
+    {
+      "image_id": 53994,
+      "annotation_id": 1778306,
+      "category_id": 3,
+      "category_name": "car",
+      "bbox_xywh": [
+        17.75,
+        19.41,
+        45.94,
+        19.59
+      ],
+      "bbox_xyxy": [
+        17.75,
+        19.41,
+        63.69,
+        39.0
+      ],
+      "area": 486.42214999999993,
+      "size_bucket": "small",
+      "scene_type": "multi",
+      "num_valid_in_image": 4
+    },
+    {
+      "image_id": 343561,
+      "annotation_id": 1836141,
+      "category_id": 31,
+      "category_name": "handbag",
+      "bbox_xywh": [
+        62.19,
+        67.27,
+        22.32,
+        32.65
+      ],
+      "bbox_xyxy": [
+        62.19,
+        67.27,
+        84.50999999999999,
+        99.91999999999999
+      ],
+      "area": 474.9283,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 28
+    },
+    {
+      "image_id": 491008,
+      "annotation_id": 1948479,
+      "category_id": 62,
+      "category_name": "chair",
+      "bbox_xywh": [
+        170.06,
+        264.47,
+        28.0,
+        64.2
+      ],
+      "bbox_xyxy": [
+        170.06,
+        264.47,
+        198.06,
+        328.67
+      ],
+      "area": 496.10780000000045,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 25
+    },
+    {
+      "image_id": 98287,
+      "annotation_id": 1188797,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        269.1,
+        253.18,
+        16.07,
+        25.88
+      ],
+      "bbox_xyxy": [
+        269.1,
+        253.18,
+        285.17,
+        279.06
+      ],
+      "area": 215.58804999999978,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 16
+    },
+    {
+      "image_id": 327701,
+      "annotation_id": 2092524,
+      "category_id": 43,
+      "category_name": "tennis racket",
+      "bbox_xywh": [
+        553.27,
+        270.58,
+        5.77,
+        12.62
+      ],
+      "bbox_xyxy": [
+        553.27,
+        270.58,
+        559.04,
+        283.2
+      ],
+      "area": 42.93915000000005,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 8
+    },
+    {
+      "image_id": 213830,
+      "annotation_id": 463769,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        491.82,
+        202.09,
+        20.02,
+        37.55
+      ],
+      "bbox_xyxy": [
+        491.82,
+        202.09,
+        511.84,
+        239.64
+      ],
+      "area": 485.6991999999992,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 10
+    },
+    {
+      "image_id": 315450,
+      "annotation_id": 2049428,
+      "category_id": 6,
+      "category_name": "bus",
+      "bbox_xywh": [
+        119.25,
+        204.99,
+        42.25,
+        27.33
+      ],
+      "bbox_xyxy": [
+        119.25,
+        204.99,
+        161.5,
+        232.32
+      ],
+      "area": 541.8359999999999,
+      "size_bucket": "small",
+      "scene_type": "crowded",
+      "num_valid_in_image": 19
+    },
+    {
+      "image_id": 193884,
+      "annotation_id": 271070,
+      "category_id": 13,
+      "category_name": "stop sign",
+      "bbox_xywh": [
+        376.07,
+        118.57,
+        62.72,
+        60.11
+      ],
+      "bbox_xyxy": [
+        376.07,
+        118.57,
+        438.78999999999996,
+        178.68
+      ],
+      "area": 3066.2251000000015,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 315219,
+      "annotation_id": 2197658,
+      "category_id": 89,
+      "category_name": "hair drier",
+      "bbox_xywh": [
+        132.47,
+        2.6,
+        27.27,
+        102.59
+      ],
+      "bbox_xyxy": [
+        132.47,
+        2.6,
+        159.74,
+        105.19
+      ],
+      "area": 2383.0066000000006,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 336309,
+      "annotation_id": 157910,
+      "category_id": 5,
+      "category_name": "airplane",
+      "bbox_xywh": [
+        122.67,
+        190.02,
+        162.41,
+        47.24
+      ],
+      "bbox_xyxy": [
+        122.67,
+        190.02,
+        285.08,
+        237.26000000000002
+      ],
+      "area": 2898.1276500000013,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 523811,
+      "annotation_id": 40337,
+      "category_id": 16,
+      "category_name": "bird",
+      "bbox_xywh": [
+        106.45,
+        177.55,
+        98.97,
+        129.81
+      ],
+      "bbox_xyxy": [
+        106.45,
+        177.55,
+        205.42000000000002,
+        307.36
+      ],
+      "area": 4291.085150000001,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 468233,
+      "annotation_id": 338212,
+      "category_id": 85,
+      "category_name": "clock",
+      "bbox_xywh": [
+        121.94,
+        186.5,
+        75.32,
+        83.39
+      ],
+      "bbox_xyxy": [
+        121.94,
+        186.5,
+        197.26,
+        269.89
+      ],
+      "area": 4817.518000000001,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 410934,
+      "annotation_id": 1055721,
+      "category_id": 56,
+      "category_name": "broccoli",
+      "bbox_xywh": [
+        189.15,
+        139.39,
+        106.97,
+        107.65
+      ],
+      "bbox_xyxy": [
+        189.15,
+        139.39,
+        296.12,
+        247.04
+      ],
+      "area": 8350.389050000002,
+      "size_bucket": "medium",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 455716,
+      "annotation_id": 1835887,
+      "category_id": 31,
+      "category_name": "handbag",
+      "bbox_xywh": [
+        424.39,
+        166.15,
+        159.17,
+        67.15
+      ],
+      "bbox_xyxy": [
+        424.39,
+        166.15,
+        583.56,
+        233.3
+      ],
+      "area": 6968.409250000001,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 4
+    },
+    {
+      "image_id": 289960,
+      "annotation_id": 1463107,
+      "category_id": 38,
+      "category_name": "kite",
+      "bbox_xywh": [
+        46.4,
+        82.83,
+        188.48,
+        117.08
+      ],
+      "bbox_xyxy": [
+        46.4,
+        82.83,
+        234.88,
+        199.91
+      ],
+      "area": 2424.390250000001,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 2
+    },
+    {
+      "image_id": 213035,
+      "annotation_id": 1496470,
+      "category_id": 46,
+      "category_name": "wine glass",
+      "bbox_xywh": [
+        177.04,
+        0.0,
+        66.69,
+        135.89
+      ],
+      "bbox_xyxy": [
+        177.04,
+        0.0,
+        243.73,
+        135.89
+      ],
+      "area": 2535.2567499999986,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 67310,
+      "annotation_id": 1742434,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        185.14,
+        403.19,
+        60.55,
+        126.33
+      ],
+      "bbox_xyxy": [
+        185.14,
+        403.19,
+        245.69,
+        529.52
+      ],
+      "area": 4524.383899999998,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 67534,
+      "annotation_id": 1595697,
+      "category_id": 62,
+      "category_name": "chair",
+      "bbox_xywh": [
+        269.21,
+        357.66,
+        36.79,
+        143.12
+      ],
+      "bbox_xyxy": [
+        269.21,
+        357.66,
+        306.0,
+        500.78000000000003
+      ],
+      "area": 2586.9242500000005,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 3
+    },
+    {
+      "image_id": 183437,
+      "annotation_id": 536287,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        177.97,
+        180.3,
+        47.87,
+        104.5
+      ],
+      "bbox_xyxy": [
+        177.97,
+        180.3,
+        225.84,
+        284.8
+      ],
+      "area": 2620.9395999999997,
+      "size_bucket": "medium",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 419974,
+      "annotation_id": 2228145,
+      "category_id": 79,
+      "category_name": "oven",
+      "bbox_xywh": [
+        0.0,
+        274.51,
+        98.95,
+        119.7
+      ],
+      "bbox_xyxy": [
+        0.0,
+        274.51,
+        98.95,
+        394.21
+      ],
+      "area": 7801.921499999999,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 25
+    },
+    {
+      "image_id": 227399,
+      "annotation_id": 128815,
+      "category_id": 2,
+      "category_name": "bicycle",
+      "bbox_xywh": [
+        16.4,
+        255.15,
+        68.47,
+        141.52
+      ],
+      "bbox_xyxy": [
+        16.4,
+        255.15,
+        84.87,
+        396.67
+      ],
+      "area": 4460.505850000001,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 23
+    },
+    {
+      "image_id": 98853,
+      "annotation_id": 1261639,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        220.64,
+        204.5,
+        52.15,
+        100.55
+      ],
+      "bbox_xyxy": [
+        220.64,
+        204.5,
+        272.78999999999996,
+        305.05
+      ],
+      "area": 2631.8911000000007,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 24
+    },
+    {
+      "image_id": 275198,
+      "annotation_id": 1038088,
+      "category_id": 51,
+      "category_name": "bowl",
+      "bbox_xywh": [
+        379.7,
+        248.27,
+        56.2,
+        40.46
+      ],
+      "bbox_xyxy": [
+        379.7,
+        248.27,
+        435.9,
+        288.73
+      ],
+      "area": 1165.205050000001,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 40
+    },
+    {
+      "image_id": 61418,
+      "annotation_id": 175470,
+      "category_id": 9,
+      "category_name": "boat",
+      "bbox_xywh": [
+        490.4,
+        38.52,
+        138.52,
+        78.09
+      ],
+      "bbox_xyxy": [
+        490.4,
+        38.52,
+        628.92,
+        116.61000000000001
+      ],
+      "area": 6599.577150000001,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 15
+    },
+    {
+      "image_id": 16958,
+      "annotation_id": 1156571,
+      "category_id": 86,
+      "category_name": "vase",
+      "bbox_xywh": [
+        23.1,
+        73.63,
+        42.03,
+        64.76
+      ],
+      "bbox_xyxy": [
+        23.1,
+        73.63,
+        65.13,
+        138.39
+      ],
+      "area": 1858.8759999999997,
+      "size_bucket": "medium",
+      "scene_type": "crowded",
+      "num_valid_in_image": 8
+    },
+    {
+      "image_id": 166563,
+      "annotation_id": 2069744,
+      "category_id": 22,
+      "category_name": "elephant",
+      "bbox_xywh": [
+        79.69,
+        43.03,
+        443.06,
+        330.44
+      ],
+      "bbox_xyxy": [
+        79.69,
+        43.03,
+        522.75,
+        373.47
+      ],
+      "area": 50216.507149999954,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 335800,
+      "annotation_id": 404758,
+      "category_id": 10,
+      "category_name": "traffic light",
+      "bbox_xywh": [
+        52.66,
+        255.24,
+        210.62,
+        171.76
+      ],
+      "bbox_xyxy": [
+        52.66,
+        255.24,
+        263.28,
+        427.0
+      ],
+      "area": 25122.2553,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 284282,
+      "annotation_id": 2226144,
+      "category_id": 67,
+      "category_name": "dining table",
+      "bbox_xywh": [
+        64.13,
+        91.95,
+        434.96,
+        236.8
+      ],
+      "bbox_xyxy": [
+        64.13,
+        91.95,
+        499.09,
+        328.75
+      ],
+      "area": 46696.019,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 104619,
+      "annotation_id": 597107,
+      "category_id": 25,
+      "category_name": "giraffe",
+      "bbox_xywh": [
+        136.73,
+        72.52,
+        186.08,
+        393.16
+      ],
+      "bbox_xyxy": [
+        136.73,
+        72.52,
+        322.81,
+        465.68
+      ],
+      "area": 24853.339349999987,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 342295,
+      "annotation_id": 1093421,
+      "category_id": 70,
+      "category_name": "toilet",
+      "bbox_xywh": [
+        216.57,
+        253.98,
+        116.43,
+        232.51
+      ],
+      "bbox_xyxy": [
+        216.57,
+        253.98,
+        333.0,
+        486.49
+      ],
+      "area": 16761.3254,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 176634,
+      "annotation_id": 590098,
+      "category_id": 24,
+      "category_name": "zebra",
+      "bbox_xywh": [
+        76.93,
+        2.98,
+        563.07,
+        468.08
+      ],
+      "bbox_xyxy": [
+        76.93,
+        2.98,
+        640.0,
+        471.06
+      ],
+      "area": 158303.6658,
+      "size_bucket": "large",
+      "scene_type": "single",
+      "num_valid_in_image": 1
+    },
+    {
+      "image_id": 150726,
+      "annotation_id": 598471,
+      "category_id": 25,
+      "category_name": "giraffe",
+      "bbox_xywh": [
+        150.04,
+        170.07,
+        257.74,
+        267.93
+      ],
+      "bbox_xyxy": [
+        150.04,
+        170.07,
+        407.78,
+        438.0
+      ],
+      "area": 21577.7522,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 2
+    },
+    {
+      "image_id": 451150,
+      "annotation_id": 1078296,
+      "category_id": 60,
+      "category_name": "donut",
+      "bbox_xywh": [
+        13.55,
+        234.92,
+        228.9,
+        191.24
+      ],
+      "bbox_xyxy": [
+        13.55,
+        234.92,
+        242.45000000000002,
+        426.15999999999997
+      ],
+      "area": 34268.59049999999,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 258883,
+      "annotation_id": 2221879,
+      "category_id": 59,
+      "category_name": "pizza",
+      "bbox_xywh": [
+        318.29,
+        342.44,
+        107.37,
+        122.97
+      ],
+      "bbox_xyxy": [
+        318.29,
+        342.44,
+        425.66,
+        465.40999999999997
+      ],
+      "area": 9812.723650000005,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 560011,
+      "annotation_id": 1106258,
+      "category_id": 74,
+      "category_name": "mouse",
+      "bbox_xywh": [
+        29.21,
+        284.08,
+        298.88,
+        111.24
+      ],
+      "bbox_xyxy": [
+        29.21,
+        284.08,
+        328.09,
+        395.32
+      ],
+      "area": 17469.628099999994,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 4
+    },
+    {
+      "image_id": 475572,
+      "annotation_id": 2173710,
+      "category_id": 15,
+      "category_name": "bench",
+      "bbox_xywh": [
+        0.0,
+        315.69,
+        640.0,
+        115.31
+      ],
+      "bbox_xyxy": [
+        0.0,
+        315.69,
+        640.0,
+        431.0
+      ],
+      "area": 35786.61874999998,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 6
+    },
+    {
+      "image_id": 156372,
+      "annotation_id": 102277,
+      "category_id": 62,
+      "category_name": "chair",
+      "bbox_xywh": [
+        120.86,
+        282.98,
+        146.02,
+        217.02
+      ],
+      "bbox_xyxy": [
+        120.86,
+        282.98,
+        266.88,
+        500.0
+      ],
+      "area": 12863.045549999997,
+      "size_bucket": "large",
+      "scene_type": "multi",
+      "num_valid_in_image": 4
+    },
+    {
+      "image_id": 461009,
+      "annotation_id": 544105,
+      "category_id": 1,
+      "category_name": "person",
+      "bbox_xywh": [
+        536.66,
+        79.42,
+        75.34,
+        265.51
+      ],
+      "bbox_xyxy": [
+        536.66,
+        79.42,
+        612.0,
+        344.93
+      ],
+      "area": 13414.126350000006,
+      "size_bucket": "large",
+      "scene_type": "crowded",
+      "num_valid_in_image": 10
+    },
+    {
+      "image_id": 476810,
+      "annotation_id": 1108265,
+      "category_id": 75,
+      "category_name": "remote",
+      "bbox_xywh": [
+        242.15,
+        250.76,
+        294.89,
+        66.73
+      ],
+      "bbox_xyxy": [
+        242.15,
+        250.76,
+        537.04,
+        317.49
+      ],
+      "area": 16653.3779,
+      "size_bucket": "large",
+      "scene_type": "crowded",
+      "num_valid_in_image": 9
+    }
+  ]
+}

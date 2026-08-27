@@ -1,0 +1,64 @@
+{
+  "total_cases": 50,
+  "error_bucket_counts": {
+    "OK": 22,
+    "B_localization_propagation": 17,
+    "A_detection_failure": 8,
+    "C_segmentation_failure": 3
+  },
+  "detection_success_rate": 0.84,
+  "box_iou_owl_vs_gt": {
+    "n": 42,
+    "mean": 0.5130416001998135,
+    "median": 0.6847370904126313
+  },
+  "mask_iou_owlbox_end_to_end": {
+    "n": 50,
+    "mean": 0.38428302711939016,
+    "median": 0.3647558677198739
+  },
+  "mask_iou_gtbox_ceiling": {
+    "n": 50,
+    "mean": 0.7524851787896606,
+    "median": 0.7826255477876816
+  },
+  "degradation_from_box_imprecision": {
+    "n": 50,
+    "mean": 0.3682021516702705,
+    "median": 0.3009634367919232
+  },
+  "mask_iou_owlbox_by_size_bucket": {
+    "small": {
+      "n": 18,
+      "mean": 0.2719458560045489,
+      "median": 0.0
+    },
+    "medium": {
+      "n": 18,
+      "mean": 0.44030968835263606,
+      "median": 0.6099753879769347
+    },
+    "large": {
+      "n": 14,
+      "mean": 0.45668225411001273,
+      "median": 0.4988096132455808
+    }
+  },
+  "mask_iou_owlbox_by_scene_type": {
+    "single": {
+      "n": 18,
+      "mean": 0.5980369395962449,
+      "median": 0.7268771625214745
+    },
+    "multi": {
+      "n": 18,
+      "mean": 0.24360113111228282,
+      "median": 0.0002180163662875885
+    },
+    "crowded": {
+      "n": 14,
+      "mean": 0.29033329165828636,
+      "median": 0.0
+    }
+  }
+}
