@@ -1,0 +1,143 @@
+{
+  "stage": "G",
+  "purpose": "evaluation subset - 冻结算法(方法A/B公式+阈值)后唯一允许报告最终结果的子集",
+  "source": "results/stage_e4_joint_pipeline/eval_manifest.json (Stage E4 fixed 50-case COCO instance set)",
+  "seed": 20260828,
+  "split_rule": "按 (size_bucket, scene_type) 9-cell 分层，每层前 40%(至少1个，向下取整) 分入 dev，其余分入 eval，shuffle 后取前 N 个（seed=20260828）",
+  "n_eval": 33,
+  "sha256_of_sorted_id_list": "7e236f04adc3426d648445dcf8ae9b26184e221b95d26a3f831edd63f5ac405f",
+  "instance_ids": [
+    {
+      "image_id": 16958,
+      "annotation_id": 1156571
+    },
+    {
+      "image_id": 29393,
+      "annotation_id": 1556646
+    },
+    {
+      "image_id": 67310,
+      "annotation_id": 1742434
+    },
+    {
+      "image_id": 67534,
+      "annotation_id": 1595697
+    },
+    {
+      "image_id": 98287,
+      "annotation_id": 1188797
+    },
+    {
+      "image_id": 98853,
+      "annotation_id": 1261639
+    },
+    {
+      "image_id": 101787,
+      "annotation_id": 157322
+    },
+    {
+      "image_id": 104619,
+      "annotation_id": 597107
+    },
+    {
+      "image_id": 118405,
+      "annotation_id": 1899294
+    },
+    {
+      "image_id": 156372,
+      "annotation_id": 102277
+    },
+    {
+      "image_id": 157847,
+      "annotation_id": 36376
+    },
+    {
+      "image_id": 166563,
+      "annotation_id": 2069744
+    },
+    {
+      "image_id": 176634,
+      "annotation_id": 590098
+    },
+    {
+      "image_id": 213035,
+      "annotation_id": 1496470
+    },
+    {
+      "image_id": 258883,
+      "annotation_id": 2221879
+    },
+    {
+      "image_id": 275198,
+      "annotation_id": 1038088
+    },
+    {
+      "image_id": 284282,
+      "annotation_id": 2226144
+    },
+    {
+      "image_id": 289960,
+      "annotation_id": 1463107
+    },
+    {
+      "image_id": 315450,
+      "annotation_id": 2049428
+    },
+    {
+      "image_id": 336209,
+      "annotation_id": 640671
+    },
+    {
+      "image_id": 336309,
+      "annotation_id": 157910
+    },
+    {
+      "image_id": 343561,
+      "annotation_id": 1836141
+    },
+    {
+      "image_id": 404534,
+      "annotation_id": 1352089
+    },
+    {
+      "image_id": 410934,
+      "annotation_id": 1055721
+    },
+    {
+      "image_id": 419974,
+      "annotation_id": 2228145
+    },
+    {
+      "image_id": 468233,
+      "annotation_id": 338212
+    },
+    {
+      "image_id": 475572,
+      "annotation_id": 2173710
+    },
+    {
+      "image_id": 476810,
+      "annotation_id": 1108265
+    },
+    {
+      "image_id": 491008,
+      "annotation_id": 1948479
+    },
+    {
+      "image_id": 500464,
+      "annotation_id": 1997942
+    },
+    {
+      "image_id": 516708,
+      "annotation_id": 1381864
+    },
+    {
+      "image_id": 523811,
+      "annotation_id": 40337
+    },
+    {
+      "image_id": 560011,
+      "annotation_id": 1106258
+    }
+  ]
+}

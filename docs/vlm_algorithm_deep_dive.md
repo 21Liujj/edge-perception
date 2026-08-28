@@ -545,4 +545,44 @@ Both are "multimodal" (vision + language), but their capabilities and use cases 
 
 ---
 
+## 17. Localization Bottleneck 与 Training-Free Refinement 实验（Stage G，中文）
+
+### 17.1 问题定义
+
+Stage F 已确认 EdgePerception 当前第一算法瓶颈是 **NanoOWL bbox 定位精度**（17/50 例 B_localization_propagation，box_iou 与 mask_iou 的 Pearson r=0.931）。Stage G 针对这一瓶颈设计并验证两个 **training-free**（无需重新训练）的轻量 bbox refinement 方法。
+
+### 17.2 当前 Box Selection 机制（源码审计）
+
+`third_party/nanoowl/nanoowl/owl_predictor.py` 的 `decode()` 对 576 个 patch 只做 `score > threshold` 过滤，**没有 NMS，没有 top-k 排序**。Project-side 代码（`scripts/eval_joint_pipeline_coco.py`）进一步只取通过 threshold 的候选中分数最高的一个（top-1）作为最终框，完全没有利用其他高分 patch 的空间信息。
+
+### 17.3 候选框空间分析的关键发现
+
+对 50 例提取 top-5 候选后发现两个互相矛盾的事实：
+1. **17 例定位失败中，8 例确实存在比 top-1 更准的候选**（GT-IoU 更高）——说明理论上有改进空间
+2. 但这些"更优候选"与 top-1 的 **pairwise IoU 普遍极低**（如 orange 案例 pairwise IoU=0.000，pizza 案例 pairwise IoU=0.017-0.084）——说明它们不是 top-1 的空间邻居微调版本，而是完全不同的图像区域
+
+第二点直接否定了两个后处理方法的算法前提：Score-Weighted Fusion 假设优质候选空间相邻可融合，Spatial Consensus 假设优质候选有邻近候选支持——两者在本数据集上都不成立。
+
+### 17.4 实验结果（33 例冻结 evaluation split）
+
+| 方法 | Mean Box IoU | Joint Mask IoU | 结论 |
+|---|---|---|---|
+| Baseline (top-1) | 0.532 | 0.407 | — |
+| Method A (Score-Weighted Fusion) | 0.479 (↓) | 0.378 (↓) | 净负效应 |
+| Method B (Spatial Consensus) | 0.535 (≈) | 0.407 (≈) | 基本无效 |
+
+Paired 分析：Method A 在 33 例中 6 例 box IoU 退化仅 1 例改善；Method B 31 例完全不变。**两个方法均未修复 eval split 中任何一例 B_localization_propagation 失败。**
+
+### 17.5 为什么两个方法都失败
+
+- **Method A (Fusion) 退化的原因**：融合假设"多个高分候选聚集在正确位置附近"，但实际次高分候选往往是完全错误的区域而非 top-1 的微调版本。加权平均把正确的 top-1 框和错误候选混合，导致框位置被拉偏。
+- **Method B (Consensus) 无效的原因**：Consensus 机制用 mean_pairwise_IoU 作为"空间支持度"，但优质候选恰恰是孤立的（没有邻近候选支持），所以 consensus score 反而惩罚了它们，最终仍选中 top-1 本身。
+- **根本原因**：NanoOWL 的 576 个 patch 是 24×24 的粗粒度空间网格（每 patch 覆盖 32×32 像素），当目标定位错误时，通常是"完全跳到错误区域"而不是"轻微偏移"，缺乏 anchor-based 检测器（如 YOLO）常见的"同一目标多个重叠候选框"的冗余结构，因此 NMS/consensus 类后处理没有可利用的信号。
+
+### 17.6 最终决策
+
+**TRAINING_FREE_LOCALIZATION_REFINEMENT_INSUFFICIENT**——两个 training-free 方法均未展现稳定收益。这是有效的科学结论：证明了问题不在"后处理不够复杂"，而在"候选框冗余度和质量不支持后处理"。真正的改进需要 OWL-ViT box regression head 微调或更强的 grounding 模型（详见 `docs/nanoowl_localization_improvement.md`）。
+
+---
+
 **End of VLM Algorithm Deep Dive**

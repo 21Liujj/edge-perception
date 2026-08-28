@@ -1,0 +1,59 @@
+{
+  "stage": "G",
+  "mechanism": "NanoOWL current box selection",
+  "source_audit": {
+    "primary_file": "third_party/nanoowl/nanoowl/owl_predictor.py",
+    "key_functions": [
+      {
+        "name": "encode_image_torch",
+        "line_range": "~200-230",
+        "purpose": "从 vision encoder 输出 576 个 patch embeddings (image_class_embeds [B,576,512]) + per-patch bbox predictions (pred_boxes [B,576,4]) + per-patch logit_shift 和 logit_scale"
+      },
+      {
+        "name": "decode",
+        "line_range": "~280-330",
+        "purpose": "将 image_class_embeds 与 text_embeds 做 cosine similarity + logit_shift/scale + sigmoid，得到每个 patch 对每个 text query 的 classification score；应用 threshold + label mask 过滤"
+      },
+      {
+        "name": "predict",
+        "line_range": "457-476",
+        "purpose": "高层 API：preprocess image → encode_rois → decode，返回 OwlDecodeOutput(labels, scores, boxes, input_indices)"
+      }
+    ],
+    "algorithm_flow": {
+      "step_1": "Vision encoder (torch or TRT) 处理 image [B,3,768,768] → 576 个 patch tokens (24x24 grid, patch_size=32)",
+      "step_2": "每个 patch token 经过 class_head.dense0 得到 image_class_embeds [B,576,512] (与 text embedding 空间对齐)",
+      "step_3": "每个 patch token 经过 box_head 预测 bbox [B,576,4] (中心坐标+宽高，relative [0,1])，加上空间先验 box_bias (patch 位置先验)，sigmoid 归一化后转为 xyxy corners",
+      "step_4": "每个 patch 计算 logit_shift [B,576,512] 和 logit_scale [B,576,512] (per-patch, per-channel 的动态调制)",
+      "step_5": "decode 时：L2-normalize image_class_embeds 和 text_embeds → einsum cosine similarity → 加 logit_shift → 乘 logit_scale → sigmoid → 每个 patch 取所有 text queries 中最高分的 label 和 score",
+      "step_6": "threshold 过滤：保留 (label==i AND score>threshold[i]) 的 patches (逻辑 OR 所有 labels)",
+      "step_7": "返回所有通过 threshold 的 patches，NO top-k ranking, NO NMS in owl_predictor.decode()"
+    },
+    "tensor_shapes": {
+      "image_class_embeds": "[B, 576, 512]",
+      "text_embeds": "[N, 512]",
+      "logits": "[B, 576, N]",
+      "scores_sigmoid": "[B, 576, N]",
+      "pred_boxes": "[B, 576, 4]",
+      "decode_output_boxes": "[num_detections, 4]",
+      "decode_output_scores": "[num_detections]",
+      "decode_output_labels": "[num_detections]"
+    },
+    "box_regression_head": {
+      "input": "image_embeds [B, 576, 768] (layer_norm 后的 patch embeddings)",
+      "output": "pred_boxes [B, 576, 4] (cx, cy, w, h in [0,1])",
+      "spatial_prior": "box_bias [576, 4] - 每个 patch 的空间位置先验 (24x24 grid normalized coordinates + 1/24 初始宽高)",
+      "final_transform": "sigmoid(box_head(image_embeds) + box_bias) → center_to_corners_xyxy"
+    },
+    "project_level_selection": {
+      "file": "scripts/run_edge_perception.py, scripts/eval_joint_pipeline_coco.py",
+      "rule": "对于单个 text query (COCO category name)，OwlPredictor.decode 返回所有 score>threshold 的 patches 后，project-side 取 scores 降序的 top-1 (highest-score patch) 作为最终检测框，没有 NMS，没有 spatial consensus",
+      "note": "如果 decode 返回空 (无 patch 超过 threshold)，则 DETECTION_FAILURE"
+    }
+  },
+  "current_bottleneck_from_stage_f": {
+    "evidence": "Stage F 确认第一瓶颈是 bbox localization (17/50 B_localization_propagation cases)，而非 prompt engineering 或 NanoSAM segmentation",
+    "box_iou_vs_mask_iou_correlation": "Pearson r=0.931, p<0.001 - bbox 定位误差强烈传递到 mask 质量"
+  },
+  "hypothesis_for_refinement": "当前 project-side 只用 top-1 highest-score patch 的 bbox。如果附近其他高分 patches 的 bbox 包含更准确的空间信息 (spatial consensus / fusion)，则可能改善 box localization 进而提升 joint mask IoU。Stage G 将通过 candidate-level analysis 和 training-free refinement 验证此假设。"
+}

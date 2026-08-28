@@ -1,0 +1,63 @@
+{
+  "stage": "G",
+  "frozen_at": "2026-08-28 before any evaluation",
+  "dev_eval_split_seed": 20260828,
+  "baseline": {
+    "name": "Baseline (E4 top-1)",
+    "description": "当前 project-side 选择规则：对单个 text query 取 OwlPredictor.decode 返回的所有 score>threshold patches 中最高分的一个 (top-1 by language score)，无 NMS，无 spatial consensus",
+    "box_selection": "argmax_{i} score_i, among patches where score_i > threshold"
+  },
+  "method_a": {
+    "name": "Score-Weighted Box Fusion",
+    "description": "对 top-K 候选（按 language_score 降序，K=5 冻结）进行加权融合：weight = softmax(score / temperature)，fused_box = Σ w_i * box_i",
+    "frozen_formula": {
+      "top_k": 5,
+      "temperature": 0.1,
+      "weight_function": "softmax(score / temperature)",
+      "fusion": "weighted_sum_of_boxes_xyxy",
+      "clip_to_image": true
+    },
+    "rationale": "temperature=0.1 是检测领域常用的 softmax temperature（DETR/Transformer 检测器惯例），低温使高分候选权重更集中，避免被低分噪声稀释",
+    "note": "不做动态 spatial clustering（会引入额外超参），直接对 top-K 全体融合"
+  },
+  "method_b": {
+    "name": "Best Spatial Consensus Candidate",
+    "description": "从 top-K 候选中选择 consensus score 最高的一个：consensus_i = score_i * mean_IoU(box_i, box_j for j in top-K)^gamma，gamma=2 惩罚孤立框",
+    "frozen_formula": {
+      "top_k": 5,
+      "gamma": 2.0,
+      "consensus_function": "score_i * (mean_pairwise_iou_i) ^ gamma",
+      "selection": "argmax_i(consensus_i)"
+    },
+    "rationale": "gamma=2 是平方惩罚，使孤立框（mean_iou接近0）的 consensus score 接近0；gamma=1 为线性，gamma=2 为二次惩罚，折中选择",
+    "note": "mean_pairwise_iou_i = mean(IoU(box_i, box_j)) over all j != i in top-K；如果 top-K < 2，fallback 为 top-1"
+  },
+  "evaluation_protocol": {
+    "dataset": "evaluation_split.json (33 instances, stratified from E4 fixed 50 cases)",
+    "nanosam_backend": "FP16 50-epoch production encoder (SHA 99147caf, same as E1-E5)",
+    "metrics": [
+      "detection_success_rate",
+      "mean_box_iou",
+      "median_box_iou",
+      "box_iou_ge_0.5",
+      "box_iou_ge_0.75",
+      "joint_mask_iou_mean",
+      "joint_mask_iou_median",
+      "gt_box_mask_iou_mean (upper bound reference)",
+      "latency_overhead_ms (mean, P50, P95, P99)"
+    ],
+    "paired_analysis": "per-case Δbox_iou, Δmask_iou, improved/degraded/unchanged counts",
+    "failure_category_analysis": "of original 17 B_localization_propagation cases in eval split, count improved/recovered/unchanged/worsened",
+    "size_breakdown": "small/medium/large separate metrics",
+    "decision_gate": {
+      "LOCALIZATION_REFINEMENT_HELPFUL": "(box_iou stable improvement) AND (mask_iou synchronized improvement) AND (no obvious detection collapse)",
+      "LOCALIZATION_REFINEMENT_NO_CLEAR_GAIN": "(box improvement small) OR (mask not synchronized) OR (many cases degraded)",
+      "note": "两种结论都是有效实验结果，不预设必须成功"
+    }
+  },
+  "prohibition": {
+    "no_gt_at_inference": "GT box 只能用于 evaluation，绝对不能参与 box 选择、权重计算、参数选择、threshold 动态调整（会造成 data leakage）",
+    "no_param_tuning_on_eval": "不允许在 evaluation_split 上调整 temperature, gamma, top_k 等参数后再报告同一 eval 集合的最终结果；参数已在此文档冻结，基于通用检测惯例和 dev_split 观察（非调优）选择",
+    "no_method_stacking": "如果方法A和方法B都无明显收益，不继续堆叠第3、4、5个 heuristic，直接得出 TRAINING_FREE_LOCALIZATION_REFINEMENT_INSUFFICIENT 结论"
+  }
+}

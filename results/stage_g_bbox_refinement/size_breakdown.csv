@@ -1,0 +1,4 @@
+size_bucket,n,baseline_mean_box_iou,baseline_mean_mask_iou,method_a_mean_box_iou,method_a_mean_mask_iou,method_b_mean_box_iou,method_b_mean_mask_iou
+small,12,0.292,0.234,0.252,0.225,0.302,0.235
+medium,12,0.582,0.453,0.47,0.381,0.58,0.453
+large,9,0.77,0.575,0.772,0.577,0.77,0.575

@@ -1,0 +1,79 @@
+{
+  "stage": "G",
+  "purpose": "development subset - 仅用于观察候选框空间分布、验证方法A/B公式的实现正确性，不用于任何参数调优或阈值选择（两个方法的公式和阈值已在数据分析前基于通用检测惯例冻结，见 method definitions）",
+  "source": "results/stage_e4_joint_pipeline/eval_manifest.json (Stage E4 fixed 50-case COCO instance set)",
+  "seed": 20260828,
+  "split_rule": "按 (size_bucket, scene_type) 9-cell 分层，每层前 40%(至少1个，向下取整) 分入 dev，其余分入 eval，shuffle 后取前 N 个（seed=20260828）",
+  "n_dev": 17,
+  "sha256_of_sorted_id_list": "5de1fc620f7ee2d0871ec22fc5cd0f162b634148063895984c8f57089f4aad06",
+  "instance_ids": [
+    {
+      "image_id": 53994,
+      "annotation_id": 1778306
+    },
+    {
+      "image_id": 61418,
+      "annotation_id": 175470
+    },
+    {
+      "image_id": 113867,
+      "annotation_id": 338923
+    },
+    {
+      "image_id": 150726,
+      "annotation_id": 598471
+    },
+    {
+      "image_id": 168619,
+      "annotation_id": 577443
+    },
+    {
+      "image_id": 183437,
+      "annotation_id": 536287
+    },
+    {
+      "image_id": 193884,
+      "annotation_id": 271070
+    },
+    {
+      "image_id": 213830,
+      "annotation_id": 463769
+    },
+    {
+      "image_id": 227399,
+      "annotation_id": 128815
+    },
+    {
+      "image_id": 315219,
+      "annotation_id": 2197658
+    },
+    {
+      "image_id": 327701,
+      "annotation_id": 2092524
+    },
+    {
+      "image_id": 335800,
+      "annotation_id": 404758
+    },
+    {
+      "image_id": 342295,
+      "annotation_id": 1093421
+    },
+    {
+      "image_id": 427160,
+      "annotation_id": 634986
+    },
+    {
+      "image_id": 451150,
+      "annotation_id": 1078296
+    },
+    {
+      "image_id": 455716,
+      "annotation_id": 1835887
+    },
+    {
+      "image_id": 461009,
+      "annotation_id": 544105
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+method,image_id,annotation_id,category,size_bucket,delta_box_iou,delta_mask_iou,box_status,mask_status
+method_a,516708,1381864,traffic light,small,-0.422,-0.1117,degraded,degraded
+method_a,157847,36376,bird,small,0.0,0.0,unchanged,unchanged
+method_a,101787,157322,airplane,small,0.0256,0.0,improved,unchanged
+method_a,404534,1352089,car,small,-0.0013,-0.0014,unchanged,unchanged
+method_a,118405,1899294,bowl,small,0.0,0.0,unchanged,unchanged
+method_a,500464,1997942,toothbrush,small,0.0,0.0,unchanged,unchanged
+method_a,336209,640671,skateboard,small,0.0,0.0,unchanged,unchanged
+method_a,29393,1556646,orange,small,0.0,0.0,unchanged,unchanged
+method_a,343561,1836141,handbag,small,0.0,0.0,unchanged,unchanged
+method_a,491008,1948479,chair,small,0.0,0.0,unchanged,unchanged
+method_a,98287,1188797,person,small,0.0,0.0,unchanged,unchanged
+method_a,315450,2049428,bus,small,0.0,0.0,unchanged,unchanged
+method_a,336309,157910,airplane,medium,0.0,0.0,unchanged,unchanged
+method_a,523811,40337,bird,medium,0.0,0.0,unchanged,unchanged
+method_a,468233,338212,clock,medium,0.0,0.0,unchanged,unchanged
+method_a,410934,1055721,broccoli,medium,0.0,0.0,unchanged,unchanged
+method_a,289960,1463107,kite,medium,0.0002,-0.0002,unchanged,unchanged
+method_a,213035,1496470,wine glass,medium,0.0,0.0,unchanged,unchanged
+method_a,67310,1742434,person,medium,-0.0151,-0.0001,degraded,unchanged
+method_a,67534,1595697,chair,medium,-0.1514,-0.0671,degraded,degraded
+method_a,419974,2228145,oven,medium,-0.0594,0.0901,degraded,improved
+method_a,98853,1261639,person,medium,0.0,0.0,unchanged,unchanged
+method_a,275198,1038088,bowl,medium,-0.0243,0.0,degraded,unchanged
+method_a,16958,1156571,vase,medium,-0.8722,-0.8854,degraded,degraded
+method_a,166563,2069744,elephant,large,0.0,0.0,unchanged,unchanged
+method_a,284282,2226144,dining table,large,0.0,0.0,unchanged,unchanged
+method_a,104619,597107,giraffe,large,0.0,0.0,unchanged,unchanged
+method_a,176634,590098,zebra,large,0.0,0.0,unchanged,unchanged
+method_a,258883,2221879,pizza,large,0.0069,0.0,unchanged,unchanged
+method_a,560011,1106258,mouse,large,0.003,0.0179,unchanged,improved
+method_a,475572,2173710,bench,large,0.0,0.0,unchanged,unchanged
+method_a,156372,102277,chair,large,0.0003,-0.0001,unchanged,unchanged
+method_a,476810,1108265,remote,large,0.0049,-0.0001,unchanged,unchanged
+method_b,516708,1381864,traffic light,small,0.0,0.0,unchanged,unchanged
+method_b,157847,36376,bird,small,0.0,0.0,unchanged,unchanged
+method_b,101787,157322,airplane,small,0.0,0.0,unchanged,unchanged
+method_b,404534,1352089,car,small,0.0,0.0,unchanged,unchanged
+method_b,118405,1899294,bowl,small,0.0,0.0,unchanged,unchanged
+method_b,500464,1997942,toothbrush,small,0.1031,0.0095,improved,unchanged
+method_b,336209,640671,skateboard,small,0.0,0.0,unchanged,unchanged
+method_b,29393,1556646,orange,small,0.0,0.0,unchanged,unchanged
+method_b,343561,1836141,handbag,small,0.0,0.0,unchanged,unchanged
+method_b,491008,1948479,chair,small,0.0,0.0,unchanged,unchanged
+method_b,98287,1188797,person,small,0.0,0.0,unchanged,unchanged
+method_b,315450,2049428,bus,small,0.0,0.0,unchanged,unchanged
+method_b,336309,157910,airplane,medium,0.0,0.0,unchanged,unchanged
+method_b,523811,40337,bird,medium,0.0,0.0,unchanged,unchanged
+method_b,468233,338212,clock,medium,0.0,0.0,unchanged,unchanged
+method_b,410934,1055721,broccoli,medium,0.0,0.0,unchanged,unchanged
+method_b,289960,1463107,kite,medium,0.0,0.0,unchanged,unchanged
+method_b,213035,1496470,wine glass,medium,0.0,0.0,unchanged,unchanged
+method_b,67310,1742434,person,medium,0.0,0.0,unchanged,unchanged
+method_b,67534,1595697,chair,medium,0.0,0.0,unchanged,unchanged
+method_b,419974,2228145,oven,medium,0.0,0.0,unchanged,unchanged
+method_b,98853,1261639,person,medium,0.0,0.0,unchanged,unchanged
+method_b,275198,1038088,bowl,medium,-0.0243,0.0,degraded,unchanged
+method_b,16958,1156571,vase,medium,0.0,0.0,unchanged,unchanged
+method_b,166563,2069744,elephant,large,0.0,0.0,unchanged,unchanged
+method_b,284282,2226144,dining table,large,0.0,0.0,unchanged,unchanged
+method_b,104619,597107,giraffe,large,0.0,0.0,unchanged,unchanged
+method_b,176634,590098,zebra,large,0.0,0.0,unchanged,unchanged
+method_b,258883,2221879,pizza,large,0.0,0.0,unchanged,unchanged
+method_b,560011,1106258,mouse,large,0.0,0.0,unchanged,unchanged
+method_b,475572,2173710,bench,large,0.0,0.0,unchanged,unchanged
+method_b,156372,102277,chair,large,0.0,0.0,unchanged,unchanged
+method_b,476810,1108265,remote,large,0.0,0.0,unchanged,unchanged
