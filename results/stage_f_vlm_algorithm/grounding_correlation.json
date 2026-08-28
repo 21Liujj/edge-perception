@@ -1,0 +1,39 @@
+{
+  "n_valid_cases": 42,
+  "n_excluded_detection_failure": 8,
+  "box_iou_vs_mask_iou": {
+    "pearson_r": 0.9306,
+    "pearson_p_value": 0.0,
+    "spearman_rho": 0.8566,
+    "spearman_p_value": 0.0
+  },
+  "box_iou_vs_degradation": {
+    "pearson_r": -0.8712,
+    "pearson_p_value": 0.0,
+    "spearman_rho": -0.7986,
+    "spearman_p_value": 0.0
+  },
+  "bucketed_by_box_iou": {
+    "[0,0.25)": {
+      "count": 14,
+      "mean_mask_iou": 0.0047,
+      "mean_degradation": 0.6853
+    },
+    "[0.25,0.5)": {
+      "count": 3,
+      "mean_mask_iou": 0.1475,
+      "mean_degradation": 0.4767
+    },
+    "[0.5,0.75)": {
+      "count": 5,
+      "mean_mask_iou": 0.6768,
+      "mean_degradation": 0.0956
+    },
+    "[0.75,1.0]": {
+      "count": 20,
+      "mean_mask_iou": 0.7661,
+      "mean_degradation": 0.0438
+    }
+  },
+  "caveat": "Correlation does NOT imply causation. n=42 (50 minus 8 detection failures) is a small-sample controlled study, not a statistically powered claim about the general NanoOWL/NanoSAM population. Sign convention: degradation_cost = mask_iou_gtbox - mask_iou_owlbox; POSITIVE means the imperfect NanoOWL box hurt mask quality relative to the GT-box ceiling. A negative pearson_r for box_iou_vs_degradation is EXPECTED and consistent with 'higher box_iou -> lower degradation cost'."
+}

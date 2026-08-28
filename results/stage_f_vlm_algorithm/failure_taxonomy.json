@@ -1,0 +1,37 @@
+{
+  "source": "Thresholds are UNCHANGED from E4 (scripts/eval_joint_pipeline_coco.py classify_error(), committed at commit a58ff03, BEFORE Stage F began). Stage F did not tune, adjust, or re-derive these thresholds after seeing results -- this file formalizes/documents the pre-existing E4 definitions with explicit algorithmic rationale, per Stage F section 13's requirement.",
+  "taxonomy": {
+    "A_detection_failure": {
+      "definition": "NanoOWL produced zero detections matching the GT category above score_threshold=0.10 (status == 'DETECTION_FAILURE' in E4/decode()). No bounding box exists to hand to NanoSAM at all.",
+      "algorithmic_cause": "In terms of the matching equation (see matching_equation.json), this means for ALL 576 patches p, sigmoid(logit_{b,p,target_class}) <= 0.10 -- the cross-modal similarity signal for the target text prompt never exceeded threshold at any spatial location. This is a pure classification/semantic-grounding failure: the visual appearance of the true object did not align strongly enough with the text embedding of its category name, OR the object's patch-level representation was suppressed (e.g. small object, occluded, unusual viewing angle not well represented in OWL-ViT's CLIP-derived pretraining distribution).",
+      "pre_defined_threshold": "score_threshold = 0.10 (same threshold used throughout E2/E3/E4/Stage F, not changed)",
+      "count_in_e4_50_case_eval": 8
+    },
+    "C_segmentation_failure": {
+      "definition": "NanoSAM given the PERFECT GT box (eliminating any localization error) still produces mask_iou_gtbox < 0.50. This isolates a failure that belongs to NanoSAM itself, independent of NanoOWL's grounding quality.",
+      "algorithmic_cause": "NanoSAM's ResNet18 self-distilled encoder + MobileSAM decoder produced a low-quality mask even with a perfectly localized box prompt -- e.g. ambiguous object boundary, thin structure, or a case within the mIoU distribution's lower tail (FULL COCO fp16_50epoch mean mIoU is 0.699, so cases below ~0.50 are not unexpected outliers, they are the tail of that same distribution).",
+      "pre_defined_threshold": "mask_iou_gtbox < 0.50 (IoU@0.5 convention, same threshold used in all other quality gates across this project, e.g. INT8 quality gate discussion in docs/int8_ptq.md)",
+      "count_in_e4_50_case_eval": 3,
+      "priority_note": "Checked BEFORE B_localization_propagation in the decision order -- a case is only ever a C failure if the GT-box ceiling itself is already bad, regardless of how good/bad the actual NanoOWL box was."
+    },
+    "B_localization_propagation": {
+      "definition": "Detection succeeded (NanoOWL found a matching box) AND the GT-box segmentation ceiling was acceptable (mask_iou_gtbox >= 0.50, i.e. NanoSAM CAN segment this object well), BUT box_iou(owl_box, gt_box) < 0.50 OR degradation (mask_iou_gtbox - mask_iou_owlbox) > 0.15. The box's spatial imprecision demonstrably hurt mask quality relative to what NanoSAM could have achieved with a correct box.",
+      "algorithmic_cause": "The regression head (box_head, per matching_equation.json / algorithm_callgraph.json) produced a box with insufficient spatial overlap with GT, even though the classification signal at that patch correctly fired above threshold. This is a LOCALIZATION problem, not a semantic-grounding problem -- the model correctly identified 'there is a person-like thing around here' but the per-patch box regression (Linear(768->768)+GELU+Linear(768->768)+GELU+Linear(768->4) + box_bias anchor) did not tightly bound the object.",
+      "pre_defined_threshold": "box_iou < 0.50 OR degradation > 0.15 (both thresholds pre-existing from E4, unchanged)",
+      "count_in_e4_50_case_eval": 17,
+      "note": "Stage F's grounding_correlation.json quantifies this bucket's severity: box_iou in [0,0.25) yields mean mask_iou_owlbox of only 0.0047 -- near-total mask collapse, not a mild degradation."
+    },
+    "OK": {
+      "definition": "Detection succeeded, GT-box segmentation ceiling was acceptable, AND box_iou >= 0.50 with degradation <= 0.15. Both the semantic-grounding stage and the localization stage performed well enough that the end-to-end mask is usable.",
+      "count_in_e4_50_case_eval": 22
+    }
+  },
+  "total_cases": 50,
+  "priority_order_for_classification": [
+    "1. status == DETECTION_FAILURE -> A_detection_failure",
+    "2. mask_iou_gtbox < 0.50 -> C_segmentation_failure (regardless of box_iou)",
+    "3. box_iou < 0.50 OR degradation > 0.15 -> B_localization_propagation",
+    "4. else -> OK"
+  ],
+  "no_post_hoc_tuning_statement": "These four thresholds (score=0.10, mask_iou_gtbox=0.50, box_iou=0.50, degradation=0.15) were fixed in E4 (commit a58ff03) before Stage F's grounding_correlation.json analysis was run. Stage F's quantitative correlation results (Pearson r=0.9306 for box_iou vs mask_iou) were computed AFTER these thresholds were already frozen, and are consistent with (not fitted to) the bucket boundaries."
+}

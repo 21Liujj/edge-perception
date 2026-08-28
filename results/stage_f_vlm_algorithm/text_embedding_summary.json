@@ -1,0 +1,67 @@
+{
+  "categories": [
+    "person",
+    "chair",
+    "hair drier",
+    "bird",
+    "car"
+  ],
+  "total_prompts": 20,
+  "embedding_shape": [
+    20,
+    512
+  ],
+  "embedding_dim": 512,
+  "within_category_similarity": {
+    "mean": 0.7340806126594543,
+    "std": 0.16900569200515747,
+    "min": 0.3909839987754822,
+    "max": 0.994692862033844,
+    "count": 30
+  },
+  "cross_category_similarity": {
+    "mean": 0.16307727992534637,
+    "std": 0.11701515316963196,
+    "min": -0.026615947484970093,
+    "max": 0.4681023359298706,
+    "count": 160
+  },
+  "per_category": {
+    "person": {
+      "num_variants": 4,
+      "mean_intra_similarity": 0.7837676405906677,
+      "std_intra_similarity": 0.10999973863363266,
+      "min_intra_similarity": 0.6660327911376953,
+      "max_intra_similarity": 0.994692862033844
+    },
+    "chair": {
+      "num_variants": 4,
+      "mean_intra_similarity": 0.6559678912162781,
+      "std_intra_similarity": 0.2169303596019745,
+      "min_intra_similarity": 0.3909839987754822,
+      "max_intra_similarity": 0.9849980473518372
+    },
+    "hair drier": {
+      "num_variants": 4,
+      "mean_intra_similarity": 0.6794843077659607,
+      "std_intra_similarity": 0.2143956869840622,
+      "min_intra_similarity": 0.4320651888847351,
+      "max_intra_similarity": 0.9493841528892517
+    },
+    "bird": {
+      "num_variants": 4,
+      "mean_intra_similarity": 0.7587823867797852,
+      "std_intra_similarity": 0.11254378408193588,
+      "min_intra_similarity": 0.6411944627761841,
+      "max_intra_similarity": 0.9871494770050049
+    },
+    "car": {
+      "num_variants": 4,
+      "mean_intra_similarity": 0.7924010157585144,
+      "std_intra_similarity": 0.09727118164300919,
+      "min_intra_similarity": 0.7020742297172546,
+      "max_intra_similarity": 0.9919528961181641
+    }
+  },
+  "interpretation": "High within-category similarity (near 1.0) indicates prompt template variations produce nearly identical embeddings, making detection robust to wording. Lower within-category similarity suggests prompt sensitivity. Cross-category similarity should be lower than within-category for good discrimination."
+}

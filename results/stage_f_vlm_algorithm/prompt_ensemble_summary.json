@@ -1,0 +1,31 @@
+{
+  "protocol": "E4 50-instance manifest, ensemble = mean+renormalize of 3 templates (cat, a cat, photo of a cat)",
+  "single_prompt": {
+    "detection_success_rate": 0.84,
+    "box_iou": {
+      "mean": 0.5130416190476191,
+      "median": 0.6847375
+    },
+    "mask_iou": {
+      "mean": 0.45747980952380957,
+      "median": 0.601009
+    }
+  },
+  "ensemble_prompt": {
+    "detection_success_rate": 0.82,
+    "box_iou": {
+      "mean": 0.5040998048780487,
+      "median": 0.622239
+    },
+    "mask_iou": {
+      "mean": 0.4485059268292683,
+      "median": 0.599198
+    }
+  },
+  "delta": {
+    "detection_success_rate": -0.02,
+    "box_iou_mean_delta": -0.008941814169570406,
+    "mask_iou_mean_delta": -0.008973882694541246
+  },
+  "decision": "PROMPT_ENSEMBLE_NO_CLEAR_GAIN"
+}

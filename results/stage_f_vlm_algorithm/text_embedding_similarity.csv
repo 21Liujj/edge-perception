@@ -1,0 +1,401 @@
+prompt_i,category_i,prompt_j,category_j,cosine_similarity
+"person",person,"person",person,1.000000
+"person",person,"a person",person,0.779949
+"person",person,"photo of a person",person,0.790152
+"person",person,"human",person,0.805203
+"person",person,"chair",chair,0.406903
+"person",person,"a chair",chair,0.168898
+"person",person,"photo of a chair",chair,0.187264
+"person",person,"seat",chair,0.272395
+"person",person,"hair drier",hair drier,0.038250
+"person",person,"a hair drier",hair drier,-0.022574
+"person",person,"photo of a hair drier",hair drier,-0.026616
+"person",person,"hairdryer",hair drier,0.116147
+"person",person,"bird",bird,0.438607
+"person",person,"a bird",bird,0.239375
+"person",person,"photo of a bird",bird,0.227415
+"person",person,"flying bird",bird,0.231070
+"person",person,"car",car,0.468102
+"person",person,"a car",car,0.239800
+"person",person,"photo of a car",car,0.217631
+"person",person,"automobile",car,0.305168
+"a person",person,"person",person,0.779949
+"a person",person,"a person",person,1.000000
+"a person",person,"photo of a person",person,0.994693
+"a person",person,"human",person,0.666576
+"a person",person,"chair",chair,0.276281
+"a person",person,"a chair",chair,0.305254
+"a person",person,"photo of a chair",chair,0.286167
+"a person",person,"seat",chair,0.154135
+"a person",person,"hair drier",hair drier,0.018255
+"a person",person,"a hair drier",hair drier,0.091343
+"a person",person,"photo of a hair drier",hair drier,0.037393
+"a person",person,"hairdryer",hair drier,0.069068
+"a person",person,"bird",bird,0.284266
+"a person",person,"a bird",bird,0.364688
+"a person",person,"photo of a bird",bird,0.341455
+"a person",person,"flying bird",bird,0.169637
+"a person",person,"car",car,0.331871
+"a person",person,"a car",car,0.364074
+"a person",person,"photo of a car",car,0.340571
+"a person",person,"automobile",car,0.176828
+"photo of a person",person,"person",person,0.790152
+"photo of a person",person,"a person",person,0.994693
+"photo of a person",person,"photo of a person",person,1.000000
+"photo of a person",person,"human",person,0.666033
+"photo of a person",person,"chair",chair,0.285487
+"photo of a person",person,"a chair",chair,0.294379
+"photo of a person",person,"photo of a chair",chair,0.286874
+"photo of a person",person,"seat",chair,0.156697
+"photo of a person",person,"hair drier",hair drier,0.030224
+"photo of a person",person,"a hair drier",hair drier,0.090624
+"photo of a person",person,"photo of a hair drier",hair drier,0.045639
+"photo of a person",person,"hairdryer",hair drier,0.083039
+"photo of a person",person,"bird",bird,0.288246
+"photo of a person",person,"a bird",bird,0.353496
+"photo of a person",person,"photo of a bird",bird,0.340297
+"photo of a person",person,"flying bird",bird,0.183668
+"photo of a person",person,"car",car,0.342802
+"photo of a person",person,"a car",car,0.357974
+"photo of a person",person,"photo of a car",car,0.341528
+"photo of a person",person,"automobile",car,0.187868
+"human",person,"person",person,0.805203
+"human",person,"a person",person,0.666576
+"human",person,"photo of a person",person,0.666033
+"human",person,"human",person,0.999999
+"human",person,"chair",chair,0.411706
+"human",person,"a chair",chair,0.200972
+"human",person,"photo of a chair",chair,0.206886
+"human",person,"seat",chair,0.246861
+"human",person,"hair drier",hair drier,0.065197
+"human",person,"a hair drier",hair drier,0.001267
+"human",person,"photo of a hair drier",hair drier,-0.009131
+"human",person,"hairdryer",hair drier,0.141528
+"human",person,"bird",bird,0.457477
+"human",person,"a bird",bird,0.262735
+"human",person,"photo of a bird",bird,0.245198
+"human",person,"flying bird",bird,0.254554
+"human",person,"car",car,0.466159
+"human",person,"a car",car,0.239456
+"human",person,"photo of a car",car,0.218028
+"human",person,"automobile",car,0.334190
+"chair",chair,"person",person,0.406903
+"chair",chair,"a person",person,0.276281
+"chair",chair,"photo of a person",person,0.285487
+"chair",chair,"human",person,0.411706
+"chair",chair,"chair",chair,1.000000
+"chair",chair,"a chair",chair,0.769964
+"chair",chair,"photo of a chair",chair,0.810922
+"chair",chair,"seat",chair,0.565054
+"chair",chair,"hair drier",hair drier,0.062609
+"chair",chair,"a hair drier",hair drier,-0.015653
+"chair",chair,"photo of a hair drier",hair drier,-0.005673
+"chair",chair,"hairdryer",hair drier,0.157127
+"chair",chair,"bird",bird,0.261861
+"chair",chair,"a bird",bird,0.078469
+"chair",chair,"photo of a bird",bird,0.073349
+"chair",chair,"flying bird",bird,0.105836
+"chair",chair,"car",car,0.371663
+"chair",chair,"a car",car,0.175358
+"chair",chair,"photo of a car",car,0.171097
+"chair",chair,"automobile",car,0.262746
+"a chair",chair,"person",person,0.168898
+"a chair",chair,"a person",person,0.305254
+"a chair",chair,"photo of a person",person,0.294379
+"a chair",chair,"human",person,0.200972
+"a chair",chair,"chair",chair,0.769964
+"a chair",chair,"a chair",chair,0.999999
+"a chair",chair,"photo of a chair",chair,0.984998
+"a chair",chair,"seat",chair,0.390984
+"a chair",chair,"hair drier",hair drier,-0.002284
+"a chair",chair,"a hair drier",hair drier,0.071500
+"a chair",chair,"photo of a hair drier",hair drier,0.035065
+"a chair",chair,"hairdryer",hair drier,0.046413
+"a chair",chair,"bird",bird,0.063192
+"a chair",chair,"a bird",bird,0.200482
+"a chair",chair,"photo of a bird",bird,0.178275
+"a chair",chair,"flying bird",bird,-0.000823
+"a chair",chair,"car",car,0.157786
+"a chair",chair,"a car",car,0.282473
+"a chair",chair,"photo of a car",car,0.268710
+"a chair",chair,"automobile",car,0.089192
+"photo of a chair",chair,"person",person,0.187264
+"photo of a chair",chair,"a person",person,0.286167
+"photo of a chair",chair,"photo of a person",person,0.286874
+"photo of a chair",chair,"human",person,0.206886
+"photo of a chair",chair,"chair",chair,0.810922
+"photo of a chair",chair,"a chair",chair,0.984998
+"photo of a chair",chair,"photo of a chair",chair,1.000000
+"photo of a chair",chair,"seat",chair,0.413885
+"photo of a chair",chair,"hair drier",hair drier,0.025195
+"photo of a chair",chair,"a hair drier",hair drier,0.068954
+"photo of a chair",chair,"photo of a hair drier",hair drier,0.052935
+"photo of a chair",chair,"hairdryer",hair drier,0.077932
+"photo of a chair",chair,"bird",bird,0.074112
+"photo of a chair",chair,"a bird",bird,0.172112
+"photo of a chair",chair,"photo of a bird",bird,0.166234
+"photo of a chair",chair,"flying bird",bird,0.022659
+"photo of a chair",chair,"car",car,0.187197
+"photo of a chair",chair,"a car",car,0.272602
+"photo of a chair",chair,"photo of a car",car,0.271585
+"photo of a chair",chair,"automobile",car,0.120852
+"seat",chair,"person",person,0.272395
+"seat",chair,"a person",person,0.154135
+"seat",chair,"photo of a person",person,0.156697
+"seat",chair,"human",person,0.246861
+"seat",chair,"chair",chair,0.565054
+"seat",chair,"a chair",chair,0.390984
+"seat",chair,"photo of a chair",chair,0.413885
+"seat",chair,"seat",chair,1.000000
+"seat",chair,"hair drier",hair drier,0.174525
+"seat",chair,"a hair drier",hair drier,0.115987
+"seat",chair,"photo of a hair drier",hair drier,0.120884
+"seat",chair,"hairdryer",hair drier,0.142103
+"seat",chair,"bird",bird,0.140944
+"seat",chair,"a bird",bird,0.009506
+"seat",chair,"photo of a bird",bird,0.000574
+"seat",chair,"flying bird",bird,0.004717
+"seat",chair,"car",car,0.190820
+"seat",chair,"a car",car,0.080240
+"seat",chair,"photo of a car",car,0.076045
+"seat",chair,"automobile",car,0.152563
+"hair drier",hair drier,"person",person,0.038250
+"hair drier",hair drier,"a person",person,0.018255
+"hair drier",hair drier,"photo of a person",person,0.030224
+"hair drier",hair drier,"human",person,0.065197
+"hair drier",hair drier,"chair",chair,0.062609
+"hair drier",hair drier,"a chair",chair,-0.002284
+"hair drier",hair drier,"photo of a chair",chair,0.025195
+"hair drier",hair drier,"seat",chair,0.174525
+"hair drier",hair drier,"hair drier",hair drier,1.000000
+"hair drier",hair drier,"a hair drier",hair drier,0.824159
+"hair drier",hair drier,"photo of a hair drier",hair drier,0.896381
+"hair drier",hair drier,"hairdryer",hair drier,0.485446
+"hair drier",hair drier,"bird",bird,0.145801
+"hair drier",hair drier,"a bird",bird,0.091021
+"hair drier",hair drier,"photo of a bird",bird,0.105244
+"hair drier",hair drier,"flying bird",bird,0.244949
+"hair drier",hair drier,"car",car,0.079179
+"hair drier",hair drier,"a car",car,0.013541
+"hair drier",hair drier,"photo of a car",car,0.024015
+"hair drier",hair drier,"automobile",car,0.087991
+"a hair drier",hair drier,"person",person,-0.022574
+"a hair drier",hair drier,"a person",person,0.091343
+"a hair drier",hair drier,"photo of a person",person,0.090624
+"a hair drier",hair drier,"human",person,0.001267
+"a hair drier",hair drier,"chair",chair,-0.015653
+"a hair drier",hair drier,"a chair",chair,0.071500
+"a hair drier",hair drier,"photo of a chair",chair,0.068954
+"a hair drier",hair drier,"seat",chair,0.115987
+"a hair drier",hair drier,"hair drier",hair drier,0.824159
+"a hair drier",hair drier,"a hair drier",hair drier,1.000000
+"a hair drier",hair drier,"photo of a hair drier",hair drier,0.949384
+"a hair drier",hair drier,"hairdryer",hair drier,0.432065
+"a hair drier",hair drier,"bird",bird,0.053297
+"a hair drier",hair drier,"a bird",bird,0.164756
+"a hair drier",hair drier,"photo of a bird",bird,0.169078
+"a hair drier",hair drier,"flying bird",bird,0.146184
+"a hair drier",hair drier,"car",car,0.021665
+"a hair drier",hair drier,"a car",car,0.101918
+"a hair drier",hair drier,"photo of a car",car,0.102820
+"a hair drier",hair drier,"automobile",car,0.022469
+"photo of a hair drier",hair drier,"person",person,-0.026616
+"photo of a hair drier",hair drier,"a person",person,0.037393
+"photo of a hair drier",hair drier,"photo of a person",person,0.045639
+"photo of a hair drier",hair drier,"human",person,-0.009131
+"photo of a hair drier",hair drier,"chair",chair,-0.005673
+"photo of a hair drier",hair drier,"a chair",chair,0.035065
+"photo of a hair drier",hair drier,"photo of a chair",chair,0.052935
+"photo of a hair drier",hair drier,"seat",chair,0.120884
+"photo of a hair drier",hair drier,"hair drier",hair drier,0.896381
+"photo of a hair drier",hair drier,"a hair drier",hair drier,0.949384
+"photo of a hair drier",hair drier,"photo of a hair drier",hair drier,1.000000
+"photo of a hair drier",hair drier,"hairdryer",hair drier,0.489471
+"photo of a hair drier",hair drier,"bird",bird,0.076265
+"photo of a hair drier",hair drier,"a bird",bird,0.146058
+"photo of a hair drier",hair drier,"photo of a bird",bird,0.164257
+"photo of a hair drier",hair drier,"flying bird",bird,0.188661
+"photo of a hair drier",hair drier,"car",car,0.020808
+"photo of a hair drier",hair drier,"a car",car,0.053073
+"photo of a hair drier",hair drier,"photo of a car",car,0.065130
+"photo of a hair drier",hair drier,"automobile",car,0.017870
+"hairdryer",hair drier,"person",person,0.116147
+"hairdryer",hair drier,"a person",person,0.069068
+"hairdryer",hair drier,"photo of a person",person,0.083039
+"hairdryer",hair drier,"human",person,0.141528
+"hairdryer",hair drier,"chair",chair,0.157127
+"hairdryer",hair drier,"a chair",chair,0.046413
+"hairdryer",hair drier,"photo of a chair",chair,0.077932
+"hairdryer",hair drier,"seat",chair,0.142103
+"hairdryer",hair drier,"hair drier",hair drier,0.485446
+"hairdryer",hair drier,"a hair drier",hair drier,0.432065
+"hairdryer",hair drier,"photo of a hair drier",hair drier,0.489471
+"hairdryer",hair drier,"hairdryer",hair drier,1.000000
+"hairdryer",hair drier,"bird",bird,0.180543
+"hairdryer",hair drier,"a bird",bird,0.105545
+"hairdryer",hair drier,"photo of a bird",bird,0.125691
+"hairdryer",hair drier,"flying bird",bird,0.156599
+"hairdryer",hair drier,"car",car,0.118735
+"hairdryer",hair drier,"a car",car,0.024498
+"hairdryer",hair drier,"photo of a car",car,0.030116
+"hairdryer",hair drier,"automobile",car,0.098664
+"bird",bird,"person",person,0.438607
+"bird",bird,"a person",person,0.284266
+"bird",bird,"photo of a person",person,0.288246
+"bird",bird,"human",person,0.457477
+"bird",bird,"chair",chair,0.261861
+"bird",bird,"a chair",chair,0.063192
+"bird",bird,"photo of a chair",chair,0.074112
+"bird",bird,"seat",chair,0.140944
+"bird",bird,"hair drier",hair drier,0.145801
+"bird",bird,"a hair drier",hair drier,0.053297
+"bird",bird,"photo of a hair drier",hair drier,0.076265
+"bird",bird,"hairdryer",hair drier,0.180543
+"bird",bird,"bird",bird,1.000000
+"bird",bird,"a bird",bird,0.761567
+"bird",bird,"photo of a bird",bird,0.768552
+"bird",bird,"flying bird",bird,0.731098
+"bird",bird,"car",car,0.393427
+"bird",bird,"a car",car,0.146335
+"bird",bird,"photo of a car",car,0.132636
+"bird",bird,"automobile",car,0.270427
+"a bird",bird,"person",person,0.239375
+"a bird",bird,"a person",person,0.364688
+"a bird",bird,"photo of a person",person,0.353496
+"a bird",bird,"human",person,0.262735
+"a bird",bird,"chair",chair,0.078469
+"a bird",bird,"a chair",chair,0.200482
+"a bird",bird,"photo of a chair",chair,0.172112
+"a bird",bird,"seat",chair,0.009506
+"a bird",bird,"hair drier",hair drier,0.091021
+"a bird",bird,"a hair drier",hair drier,0.164756
+"a bird",bird,"photo of a hair drier",hair drier,0.146058
+"a bird",bird,"hairdryer",hair drier,0.105545
+"a bird",bird,"bird",bird,0.761567
+"a bird",bird,"a bird",bird,1.000000
+"a bird",bird,"photo of a bird",bird,0.987149
+"a bird",bird,"flying bird",bird,0.641194
+"a bird",bird,"car",car,0.158721
+"a bird",bird,"a car",car,0.228077
+"a bird",bird,"photo of a car",car,0.209424
+"a bird",bird,"automobile",car,0.057722
+"photo of a bird",bird,"person",person,0.227415
+"photo of a bird",bird,"a person",person,0.341455
+"photo of a bird",bird,"photo of a person",person,0.340297
+"photo of a bird",bird,"human",person,0.245198
+"photo of a bird",bird,"chair",chair,0.073349
+"photo of a bird",bird,"a chair",chair,0.178275
+"photo of a bird",bird,"photo of a chair",chair,0.166234
+"photo of a bird",bird,"seat",chair,0.000574
+"photo of a bird",bird,"hair drier",hair drier,0.105244
+"photo of a bird",bird,"a hair drier",hair drier,0.169078
+"photo of a bird",bird,"photo of a hair drier",hair drier,0.164257
+"photo of a bird",bird,"hairdryer",hair drier,0.125691
+"photo of a bird",bird,"bird",bird,0.768552
+"photo of a bird",bird,"a bird",bird,0.987149
+"photo of a bird",bird,"photo of a bird",bird,1.000000
+"photo of a bird",bird,"flying bird",bird,0.663134
+"photo of a bird",bird,"car",car,0.164572
+"photo of a bird",bird,"a car",car,0.218108
+"photo of a bird",bird,"photo of a car",car,0.213086
+"photo of a bird",bird,"automobile",car,0.070182
+"flying bird",bird,"person",person,0.231070
+"flying bird",bird,"a person",person,0.169637
+"flying bird",bird,"photo of a person",person,0.183668
+"flying bird",bird,"human",person,0.254554
+"flying bird",bird,"chair",chair,0.105836
+"flying bird",bird,"a chair",chair,-0.000823
+"flying bird",bird,"photo of a chair",chair,0.022659
+"flying bird",bird,"seat",chair,0.004717
+"flying bird",bird,"hair drier",hair drier,0.244949
+"flying bird",bird,"a hair drier",hair drier,0.146184
+"flying bird",bird,"photo of a hair drier",hair drier,0.188661
+"flying bird",bird,"hairdryer",hair drier,0.156599
+"flying bird",bird,"bird",bird,0.731098
+"flying bird",bird,"a bird",bird,0.641194
+"flying bird",bird,"photo of a bird",bird,0.663134
+"flying bird",bird,"flying bird",bird,0.999999
+"flying bird",bird,"car",car,0.166384
+"flying bird",bird,"a car",car,0.013838
+"flying bird",bird,"photo of a car",car,0.018147
+"flying bird",bird,"automobile",car,0.143753
+"car",car,"person",person,0.468102
+"car",car,"a person",person,0.331871
+"car",car,"photo of a person",person,0.342802
+"car",car,"human",person,0.466159
+"car",car,"chair",chair,0.371663
+"car",car,"a chair",chair,0.157786
+"car",car,"photo of a chair",chair,0.187197
+"car",car,"seat",chair,0.190820
+"car",car,"hair drier",hair drier,0.079179
+"car",car,"a hair drier",hair drier,0.021665
+"car",car,"photo of a hair drier",hair drier,0.020808
+"car",car,"hairdryer",hair drier,0.118735
+"car",car,"bird",bird,0.393427
+"car",car,"a bird",bird,0.158721
+"car",car,"photo of a bird",bird,0.164572
+"car",car,"flying bird",bird,0.166384
+"car",car,"car",car,1.000000
+"car",car,"a car",car,0.775377
+"car",car,"photo of a car",car,0.771325
+"car",car,"automobile",car,0.809407
+"a car",car,"person",person,0.239800
+"a car",car,"a person",person,0.364074
+"a car",car,"photo of a person",person,0.357974
+"a car",car,"human",person,0.239456
+"a car",car,"chair",chair,0.175358
+"a car",car,"a chair",chair,0.282473
+"a car",car,"photo of a chair",chair,0.272602
+"a car",car,"seat",chair,0.080240
+"a car",car,"hair drier",hair drier,0.013541
+"a car",car,"a hair drier",hair drier,0.101918
+"a car",car,"photo of a hair drier",hair drier,0.053073
+"a car",car,"hairdryer",hair drier,0.024498
+"a car",car,"bird",bird,0.146335
+"a car",car,"a bird",bird,0.228077
+"a car",car,"photo of a bird",bird,0.218108
+"a car",car,"flying bird",bird,0.013838
+"a car",car,"car",car,0.775377
+"a car",car,"a car",car,1.000000
+"a car",car,"photo of a car",car,0.991953
+"a car",car,"automobile",car,0.702074
+"photo of a car",car,"person",person,0.217631
+"photo of a car",car,"a person",person,0.340571
+"photo of a car",car,"photo of a person",person,0.341528
+"photo of a car",car,"human",person,0.218028
+"photo of a car",car,"chair",chair,0.171097
+"photo of a car",car,"a chair",chair,0.268710
+"photo of a car",car,"photo of a chair",chair,0.271585
+"photo of a car",car,"seat",chair,0.076045
+"photo of a car",car,"hair drier",hair drier,0.024015
+"photo of a car",car,"a hair drier",hair drier,0.102820
+"photo of a car",car,"photo of a hair drier",hair drier,0.065130
+"photo of a car",car,"hairdryer",hair drier,0.030116
+"photo of a car",car,"bird",bird,0.132636
+"photo of a car",car,"a bird",bird,0.209424
+"photo of a car",car,"photo of a bird",bird,0.213086
+"photo of a car",car,"flying bird",bird,0.018147
+"photo of a car",car,"car",car,0.771325
+"photo of a car",car,"a car",car,0.991953
+"photo of a car",car,"photo of a car",car,1.000000
+"photo of a car",car,"automobile",car,0.704271
+"automobile",car,"person",person,0.305168
+"automobile",car,"a person",person,0.176828
+"automobile",car,"photo of a person",person,0.187868
+"automobile",car,"human",person,0.334190
+"automobile",car,"chair",chair,0.262746
+"automobile",car,"a chair",chair,0.089192
+"automobile",car,"photo of a chair",chair,0.120852
+"automobile",car,"seat",chair,0.152563
+"automobile",car,"hair drier",hair drier,0.087991
+"automobile",car,"a hair drier",hair drier,0.022469
+"automobile",car,"photo of a hair drier",hair drier,0.017870
+"automobile",car,"hairdryer",hair drier,0.098664
+"automobile",car,"bird",bird,0.270427
+"automobile",car,"a bird",bird,0.057722
+"automobile",car,"photo of a bird",bird,0.070182
+"automobile",car,"flying bird",bird,0.143753
+"automobile",car,"car",car,0.809407
+"automobile",car,"a car",car,0.702074
+"automobile",car,"photo of a car",car,0.704271
+"automobile",car,"automobile",car,1.000000

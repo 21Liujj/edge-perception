@@ -1,0 +1,95 @@
+{
+  "source_of_truth": "third_party/nanoowl/nanoowl/owl_predictor.py (this repo, verified by direct read), transformers.models.owlvit.modeling_owlvit.OwlViTForObjectDetection (installed package, google/owlvit-base-patch32 config read live on-device)",
+  "model_id": "google/owlvit-base-patch32",
+  "verified_config": {
+    "vision_hidden_size": 768,
+    "text_hidden_size": 512,
+    "projection_dim": 512,
+    "image_size": 768,
+    "patch_size": 32,
+    "num_patches_per_side": 24,
+    "num_patches": 576,
+    "note": "num_patches_per_side/num_patches computed in OwlPredictor.__init__ as image_size//patch_size and its square; 24*24=576. Verified via _owl_get_image_size/_owl_get_patch_size in owl_predictor.py plus live model.config read on device."
+  },
+  "image_branch": {
+    "entry_point": "OwlPredictor.encode_image_torch (third_party/nanoowl/nanoowl/owl_predictor.py, lines ~196-224) or encode_image_trt (delegates to TensorRT engine exported from the same torch graph via export_image_encoder_onnx)",
+    "steps": [
+      {
+        "step": 1,
+        "op": "vision_outputs = self.model.owlvit.vision_model(image)",
+        "detail": "OWL-ViT's own CLIP-style ViT-B/32 vision transformer. Input image tensor [B,3,768,768] (already patch-embedded+positional-encoded inside vision_model). Output last_hidden_state shape [B, 577, 768] (576 patch tokens + 1 CLS/class token, hidden_size=768).",
+        "tensor_shape": "[B, 577, 768]"
+      },
+      {
+        "step": 2,
+        "op": "image_embeds = self.model.owlvit.vision_model.post_layernorm(last_hidden_state)",
+        "detail": "LayerNorm applied to all 577 tokens (CLIP post-LN convention).",
+        "tensor_shape": "[B, 577, 768]"
+      },
+      {
+        "step": 3,
+        "op": "class_token_out = image_embeds[:, :1, :]; image_embeds = image_embeds[:, 1:, :] * class_token_out",
+        "detail": "OWL-ViT-SPECIFIC STEP, NOT standard CLIP. The 576 patch tokens are element-wise multiplied by the broadcasted CLS token. This is how OWL-ViT injects a global-context signal into every per-patch (per-location) representation, which is required because detection needs a PER-PATCH embedding, not one whole-image embedding like CLIP classification uses.",
+        "tensor_shape": "[B, 576, 768]"
+      },
+      {
+        "step": 4,
+        "op": "image_embeds = self.model.layer_norm(image_embeds)  # 768 dim",
+        "detail": "Second LayerNorm (owlvit.layer_norm, distinct module from vision_model.post_layernorm), comment in source explicitly says '768 dim' confirming hidden size.",
+        "tensor_shape": "[B, 576, 768]"
+      },
+      {
+        "step": 5,
+        "op": "pred_boxes = self.model.box_head(image_embeds); pred_boxes += self.box_bias; pred_boxes = torch.sigmoid(pred_boxes); pred_boxes = _owl_center_to_corners_format_torch(pred_boxes)",
+        "detail": "box_head is OwlViTBoxPredictionHead: Linear(768->768)+GELU+Linear(768->768)+GELU+Linear(768->4), applied per-patch-token (576 independent box predictions per image, one per patch location). box_bias is a precomputed additive bias per patch (see _owl_compute_box_bias) derived from each patch's normalized grid position -- this anchors each patch's regression to its own spatial location (an anchor-free, per-patch/anchor-point regression, conceptually similar to FCOS-style dense box regression). Output is (cx,cy,w,h) in sigmoid-normalized [0,1] logit-space then converted to xyxy corners.",
+        "tensor_shape": "[B, 576, 4]"
+      },
+      {
+        "step": 6,
+        "op": "image_class_embeds = self.model.class_head.dense0(image_embeds)",
+        "detail": "Linear(768->512, bias=True). Projects each of the 576 per-patch representations into the SAME 512-d space as text_projection's output -- this is the actual cross-modal projection on the image side (there is no separate 'image_projection' module reused from CLIP global embedding; OWL-ViT's class_head.dense0 plays that role per-patch).",
+        "tensor_shape": "[B, 576, 512]"
+      },
+      {
+        "step": 7,
+        "op": "logit_shift = self.model.class_head.logit_shift(image_embeds); logit_scale = self.model.class_head.logit_scale(image_embeds); logit_scale = self.model.class_head.elu(logit_scale) + 1",
+        "detail": "TWO SEPARATE Linear(768->1, bias=True) heads, ALSO per-patch (i.e. every one of the 576 image locations gets its OWN scalar shift and its OWN scalar scale -- these are NOT the single global CLIP temperature scalar). logit_scale is passed through ELU+1 (keeps it positive, similar role to CLIP's exp(logit_scale) but architecturally a learned per-location head, not a single learned scalar logit_scale.exp() parameter as in CLIP).",
+        "tensor_shape": "logit_shift: [B, 576, 1], logit_scale: [B, 576, 1]"
+      }
+    ],
+    "output_dataclass": "OwlEncodeImageOutput(image_embeds[B,576,768], image_class_embeds[B,576,512], logit_shift[B,576,1], logit_scale[B,576,1], pred_boxes[B,576,4])",
+    "engine_boundary": "encode_image_trt runs steps 1-7 as ONE fused TensorRT engine (third_party/nanoowl/data/owlvit_image_encoder_patch32.engine, exported via export_image_encoder_onnx which wraps encode_image_torch verbatim in a TempModule and traces it -- so the TRT engine is provably the same computation graph, not a reimplementation)."
+  },
+  "text_branch": {
+    "entry_point": "OwlPredictor.encode_text (third_party/nanoowl/nanoowl/owl_predictor.py, lines ~186-192)",
+    "steps": [
+      {
+        "step": 1,
+        "op": "text_input = self.processor(text=text, return_tensors='pt')",
+        "detail": "HuggingFace OwlViTProcessor: CLIP-style BPE tokenizer + padding/truncation, produces input_ids and attention_mask.",
+        "tensor_shape": "input_ids: [N, L] where N=number of prompt strings, L=padded sequence length"
+      },
+      {
+        "step": 2,
+        "op": "text_outputs = self.model.owlvit.text_model(input_ids, attention_mask)",
+        "detail": "Standard CLIP-style causal/bidirectional text transformer (OWL-ViT reuses CLIPTextModel architecture as owlvit.text_model). text_outputs[1] is the pooled output (representation at the EOS/last-token position after final LayerNorm), same pooling convention as CLIP.",
+        "tensor_shape": "text_outputs[1]: [N, 512] (text hidden_size=512, verified via model.config.text_config.hidden_size)"
+      },
+      {
+        "step": 3,
+        "op": "text_embeds = self.model.owlvit.text_projection(text_embeds)",
+        "detail": "Linear(512->512, no bias by default in CLIP-style text_projection) into the shared cross-modal space, matching image_class_embeds' 512-d output.",
+        "tensor_shape": "[N, 512]"
+      }
+    ],
+    "output_dataclass": "OwlEncodeTextOutput(text_embeds=[N,512])",
+    "cacheability": "This branch depends ONLY on the prompt strings, not on the image. In-repo evidence: results/stage_e3_nanoowl_benchmark/text_cache_analysis.json shows cold (encode_text every call) vs warm (encode_text once, reused) timing differ by ~57ms/call -- this IS the E3-measured cost of re-running this exact 3-step branch per inference when not cached."
+  },
+  "cross_modal_matching": {
+    "entry_point": "OwlPredictor.decode (third_party/nanoowl/nanoowl/owl_predictor.py, lines ~254-284)",
+    "note": "This is where image_class_embeds [B,576,512] and text_embeds [N,512] are actually compared. Full equation derivation is in matching_equation.json / docs/vlm_algorithm_deep_dive.md section 6; this file records only the call sequence."
+  },
+  "not_verified_from_source": [
+    "The internal layer count / attention head count of vision_model and text_model transformer blocks were NOT independently re-derived from source in this stage (out of scope for Stage F's algorithm-flow focus); these are standard OWL-ViT-base-patch32 = CLIP ViT-B/32 configuration values available via model.config and are treated as HuggingFace-library-level facts, not re-verified operator by operator."
+  ]
+}

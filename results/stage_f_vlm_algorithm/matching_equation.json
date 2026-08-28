@@ -1,0 +1,67 @@
+{
+  "source": "third_party/nanoowl/nanoowl/owl_predictor.py lines 254-284 (OwlPredictor.decode method), actual deployed code read on 2026-08-28",
+  "equation_derivation": {
+    "inputs": {
+      "image_class_embeds": {
+        "shape": "[B, 576, 512]",
+        "description": "Per-patch visual embedding in the shared cross-modal 512-d space (output of class_head.dense0 from image_embeds after vision_model+cls-token-broadcast+layer_norm)",
+        "symbol": "v_{b,p}"
+      },
+      "text_embeds": {
+        "shape": "[N, 512]",
+        "description": "Per-prompt text embedding in the same shared 512-d space (output of owlvit.text_projection from text_model pooled output)",
+        "symbol": "t_n"
+      },
+      "logit_shift": {
+        "shape": "[B, 576, 1]",
+        "description": "Per-patch additive logit bias (output of class_head.logit_shift)",
+        "symbol": "s_{b,p}"
+      },
+      "logit_scale": {
+        "shape": "[B, 576, 1]",
+        "description": "Per-patch multiplicative logit scale (output of class_head.logit_scale, ELU+1 applied, always positive)",
+        "symbol": "\\tau_{b,p}"
+      }
+    },
+    "normalization_step": {
+      "code_line_256_257": "image_class_embeds = image_class_embeds / (torch.linalg.norm(image_class_embeds, dim=-1, keepdim=True) + 1e-6)\nquery_embeds = query_embeds / (torch.linalg.norm(query_embeds, dim=-1, keepdim=True) + 1e-6)",
+      "description": "L2-normalize both image_class_embeds and text_embeds (query_embeds is the local alias for text_embeds in decode()) along the 512-d embedding dimension. The 1e-6 epsilon prevents division by zero. This converts both to unit hypersphere -- making the next step a COSINE similarity (dot product of unit vectors = cosine of angle).",
+      "equation": "\\hat{v}_{b,p} = v_{b,p} / (||v_{b,p}||_2 + 10^{-6}), \\hat{t}_n = t_n / (||t_n||_2 + 10^{-6})"
+    },
+    "similarity_computation": {
+      "code_line_258": "logits = torch.einsum('...pd,...qd->...pq', image_class_embeds, query_embeds)",
+      "description": "Einstein summation: for each (batch b, patch p, text_query n), compute the dot product of the normalized 512-d embeddings. Since both are unit-normalized this is EXACTLY cosine similarity. Output shape [B, 576, N] -- for each of 576 patch locations in each of B images, a raw similarity score against each of N text prompts.",
+      "equation": "raw\\_sim_{b,p,n} = \\hat{v}_{b,p} \\cdot \\hat{t}_n = \\sum_{d=1}^{512} \\hat{v}_{b,p,d} \\cdot \\hat{t}_{n,d}"
+    },
+    "logit_transform": {
+      "code_line_259": "logits = (logits + image_output.logit_shift) * image_output.logit_scale",
+      "description": "Apply the per-patch learned additive shift s_{b,p} and per-patch learned multiplicative scale \\tau_{b,p}. This is NOT a single global temperature like CLIP's exp(logit_scale); every one of 576 locations has its OWN shift and scale, learned end-to-end. The shift can be negative (bias term) and the scale is always >0 (ELU(x)+1). Broadcasting: logit_shift and logit_scale are [B,576,1], the 1 broadcasts across the N text-query dimension.",
+      "equation": "logit_{b,p,n} = (raw\\_sim_{b,p,n} + s_{b,p}) \\cdot \\tau_{b,p}"
+    },
+    "sigmoid_to_score": {
+      "code_line_261": "scores_sigmoid = torch.sigmoid(logits)",
+      "description": "Sigmoid function converts unbounded logits into [0,1] scores. This is NOT a softmax across categories (which would force competition); sigmoid is applied independently per (b,p,n) -- each patch+text-query pair gets a binary-classification-style score in [0,1]. Multi-label, not mutually-exclusive.",
+      "equation": "score_{b,p,n} = \\sigma(logit_{b,p,n}) = 1 / (1 + e^{-logit_{b,p,n}})"
+    },
+    "final_equation_compact": "score_{b,p,n} = \\sigma\\Big(\\big(\\frac{v_{b,p}}{||v_{b,p}||_2 + \\epsilon} \\cdot \\frac{t_n}{||t_n||_2 + \\epsilon} + s_{b,p}\\big) \\cdot \\tau_{b,p}\\Big)",
+    "final_equation_expanded": "score_{b,p,n} = \\frac{1}{1 + \\exp\\Big(-\\tau_{b,p} \\cdot \\big(\\cos(\\theta(v_{b,p}, t_n)) + s_{b,p}\\big)\\Big)}, where \\cos(\\theta) is the cosine similarity of L2-normalized embeddings"
+  },
+  "threshold_and_argmax_decode": {
+    "code_lines_262_268": "scores_max = scores_sigmoid.max(dim=-1); labels = scores_max.indices; scores = scores_max.values; ...",
+    "description": "For each (b,p), take argmax over the N text queries to get the best-matching label index and its score. Then apply threshold masking: only patches where (label==target AND score>threshold) survive. The surviving (b,p) slots emit their corresponding pred_boxes[b,p] (from the box_head branch) as detections. This is how 576 per-patch predictions collapse into a sparse set of actual object detections.",
+    "note": "This argmax+threshold decode is NOT part of the cross-modal similarity equation itself, but is the detection-decoding policy. The equation ends at score_{b,p,n}; the rest is post-processing."
+  },
+  "comparison_to_clip": {
+    "clip_global_image_text": "CLIP: whole-image embedding v_global \\in R^d, text t \\in R^d, both L2-normalized, similarity = v_global \\cdot t, scaled by a SINGLE GLOBAL learned scalar temperature parameter, passed through softmax(categories) for classification.",
+    "owlvit_per_patch": "OWL-ViT: PER-PATCH embedding v_{b,p} \\in R^{512}, text t_n \\in R^{512}, both L2-normalized, similarity = v_{b,p} \\cdot t_n + PER-PATCH shift s_{b,p}, scaled by PER-PATCH scale \\tau_{b,p}, passed through SIGMOID (multi-label, not softmax). 576 independent (patch, text) similarity scores per image. Each patch also emits a bbox prediction from box_head. Detection = high-scoring patch + its box.",
+    "key_difference": "CLIP has ONE image representation (CLS token); OWL-ViT has 576 per-patch representations (via the cls_token * patch_tokens element-wise multiplication that injects global context into every patch, turning the single global representation into 576 local-global-fused representations suitable for DETECTION). OWL-ViT's class_head (dense0 + logit_shift + logit_scale) is the per-patch analog of CLIP's image_projection + single logit_scale temperature, but learned per-location."
+  },
+  "no_background_class_head": {
+    "observation": "There is NO separate 'background' class or explicit background embedding in the text_embeds tensor. The sigmoid(logit) produces a [0,1] score; low scores (<threshold) are implicitly treated as 'not this object here', but there is no trainable background embedding competing with the foreground text prompts. This is different from Faster R-CNN-style two-stage detectors that have an explicit background class in the classifier head."
+  },
+  "bias_in_projections": {
+    "class_head_dense0": "Linear(768->512, bias=True) -- YES, additive bias in the image-side projection.",
+    "text_projection": "Inherited from CLIP CLIPTextProjection, typically Linear(512->512, bias=False by default in transformers CLIP implementation) -- need to check actual loaded model's state_dict to confirm bias presence, but CLIP convention is no-bias in text_projection.",
+    "impact": "If text_projection has no bias, the text embedding is a pure linear projection of the pooled hidden state. If class_head.dense0 has bias, the image embedding has a learned additive offset before normalization. Both are normalized to unit-sphere anyway, so the bias only shifts the PRE-NORMALIZATION distribution -- post-normalization both are on the hypersphere and the bias's main effect is captured in the direction (not magnitude) of the projected vector."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "protocol": "E4 fixed 50-instance manifest (seed=2027), same NanoOWL engine, same NanoSAM FP16 production backend, same threshold=0.10; only text prompt varied.",
+  "by_variant": {
+    "base": {
+      "n": 50,
+      "detection_success_rate": 0.84,
+      "mean_score": 0.41368,
+      "mean_box_iou": 0.513042,
+      "mean_mask_iou": 0.45748
+    },
+    "template_a": {
+      "n": 50,
+      "detection_success_rate": 0.76,
+      "mean_score": 0.392432,
+      "mean_box_iou": 0.507918,
+      "mean_mask_iou": 0.453356
+    },
+    "template_photo": {
+      "n": 50,
+      "detection_success_rate": 0.78,
+      "mean_score": 0.387712,
+      "mean_box_iou": 0.505026,
+      "mean_mask_iou": 0.451178
+    },
+    "synonym": {
+      "n": 11,
+      "detection_success_rate": 0.8182,
+      "mean_score": 0.251037,
+      "mean_box_iou": 0.169857,
+      "mean_mask_iou": 0.150076
+    }
+  },
+  "detection_flip_vs_base": {
+    "template_a": {
+      "gained_detection_vs_base": 1,
+      "lost_detection_vs_base": 5
+    },
+    "template_photo": {
+      "gained_detection_vs_base": 1,
+      "lost_detection_vs_base": 4
+    },
+    "synonym": {
+      "gained_detection_vs_base": 0,
+      "lost_detection_vs_base": 0
+    }
+  },
+  "interpretation": "Compare mean_score across variants (classification-confidence axis) vs mean_box_iou across variants (localization axis, restricted to successful detections) to determine whether prompt wording mainly shifts confidence, localization, or both."
+}
