@@ -1,0 +1,68 @@
+================================================================================
+Stage G: NanoOWL BBox Localization Training-Free Refinement
+================================================================================
+Status: NANOOWL_LOCALIZATION_EXPERIMENT_COMPLETE
+Date: 2026-08-28
+Commit: 7cf4f92
+
+CONCLUSION: TRAINING_FREE_LOCALIZATION_REFINEMENT_INSUFFICIENT
+
+================================================================================
+Key Findings
+================================================================================
+
+1. Current Mechanism (Source Audit)
+   - NanoOWL decode(): threshold filter only, NO NMS, NO top-k
+   - Project-side: selects single highest-score patch (top-1)
+   - Completely ignores spatial information from other high-score candidates
+
+2. Candidate Spatial Analysis
+   - 17 localization failures: 8 cases have better-GT-IoU non-top-1 candidates
+   - BUT: these candidates have near-zero pairwise IoU with top-1 (e.g., 0.000-0.084)
+   - Candidates are spatially isolated, NOT neighborhood refinements
+   - This negates the algorithmic premise of both Fusion and Consensus methods
+
+3. Experimental Results (33-instance frozen eval split)
+   
+   Metric                    Baseline    Method A (Fusion)    Method B (Consensus)
+   ---------------------------------------------------------------------------------
+   Detection success         0.848       0.848                0.848
+   Mean Box IoU              0.532       0.479 (-0.054)       0.535 (+0.003)
+   Joint Mask IoU            0.407       0.378 (-0.029)       0.407 (+0.001)
+   Latency overhead          -           +0.124ms             +0.329ms
+   
+   - Method A: net negative (6 degraded, 1 improved)
+   - Method B: essentially no effect (31 unchanged)
+   - 0 localization-propagation cases recovered by either method
+
+4. Root Cause
+   - NanoOWL's 576 patches = 24×24 coarse spatial grid (32px per patch)
+   - Localization errors are jump to wrong region, NOT slight offset
+   - Lacks redundant overlapping candidates (unlike anchor-based detectors)
+   - Post-processing methods have no usable signal
+
+5. Next Steps (NOT in v1 scope, requires training resources)
+   A. OWL-ViT detection/box head fine-tuning on actual error distribution
+   B. Stronger vision-language grounding model (e.g., Grounding DINO)
+
+================================================================================
+Evidence & Documentation
+================================================================================
+
+Results:     results/stage_g_bbox_refinement/ (11 files)
+Scripts:     scripts/vlm_analysis/inspect_candidate_boxes.py
+             scripts/vlm_analysis/evaluate_box_refinement.py
+Docs:        docs/nanoowl_localization_improvement.md (new)
+             docs/vlm_algorithm_deep_dive.md (updated, Section 17 added)
+
+================================================================================
+Scientific Value
+================================================================================
+
+This is a VALID experimental conclusion demonstrating:
+- The problem is NOT post-processing not sophisticated enough
+- The problem IS candidate box redundancy insufficient for post-processing
+- Honest negative results prevent wasteful further heuristic stacking
+- Points to correct next steps: model-level improvements, not algorithm tricks
+
+================================================================================

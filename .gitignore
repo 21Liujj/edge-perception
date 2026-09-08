@@ -1,86 +1,54 @@
-# Python environments and bytecode
-.venv/
-venv/
-__pycache__/
-*.py[cod]
+# Large model files
+models/*.pth
+models/*.pt
+models/*.onnx
+models/*.engine
 
-# Native and Python build output
+# Large calibration data
+data/calibration/*.tar.gz
+data/calibration/train2017_512/
+data/coco/
+data/downloads/
+
+# Build artifacts
 build/
-dist/
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# TensorRT engines and model weights
-*.engine
-*.plan
-*.pt
-*.pth
-*.safetensors
-
-# Model and dataset download caches
-.cache/
-cache/
-models/cache/
-models/downloads/
-checkpoints/
-huggingface/
-torch/hub/
-
-# Temporary and editor files
-*.tmp
-*.temp
-*.swp
-*.swo
-*~
-.DS_Store
-
-# COCO 2017 raw data (large, not version-controlled)
-data/coco/val2017/
-data/coco/downloads/
-data/coco/annotations/
-# eval manifests ARE version-controlled (kept)
-
-# Stage 6C Nsight Systems: keep nsys-rep (3MB) + summaries; ignore heavy/intermediate
-results/nsight_profile/*.sqlite
-results/nsight_profile/*.sqlite-shm
-results/nsight_profile/*.sqlite-wal
-results/nsight_profile/*.qdstrm
-results/nsight_profile/*.err
-
-# Stage 7B: compiled CUDA extension + artifacts (do not commit)
-*.so
 *.o
-*.nsys-rep
-*.qdrep
-*.[nN]cu
-*.ncu-rep
-nsight_optimized/
-nsight_*/
-*.sqlite
-# Stage A2 isolated toolchain and generated model artifact
+*.a
+*.so
+*.pyc
+__pycache__/
+
+# Logs
+logs/
+*.log
+
+# Results (keep structure and summaries, exclude large runs)
+results/*/raw_*/
+results/*/*.cache
+results/*/*.npy
+results/*/*.log
+results/*/*.out
+results/*/*.exit
+results/*/visualizations/*.png
+results/*/visualizations/*.jpg
+
+# Virtual environments
+.venv/
 .venv-toolchain/
-results/toolchain_export_a2/artifacts/*.onnx
+*.egg-info/
 
-# Stage A3 controlled tensor artifacts
-results/toolchain_parity_a3/*.npy
-# Stage A4 TensorRT runtime artifacts
-results/toolchain_trt_a4/artifacts/*.engine
-results/toolchain_trt_a4/*.npy
+# OS and IDE
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
 
-# Stage B2 NanoOWL: retain compact summaries, not large/redundant run artifacts
-results/algorithm_b2_nanoowl/smoke/
-results/algorithm_b2_nanoowl/quick/
-results/algorithm_b2_nanoowl/standard/
-results/algorithm_b2_nanoowl/full/*.json
-results/algorithm_b2_nanoowl/full/*.txt
-results/algorithm_b2_nanoowl/regressions/
+# Git
+.gitmodules
 
-# Stage B3 NanoSAM: retain compact analyses and selected visualizations
-results/algorithm_b3_nanosam_full/per_instance_primary.csv
-results/algorithm_b3_nanosam_full/run_stdout.txt
-results/algorithm_b3_nanosam_full/run_stderr.txt
-results/algorithm_b3_nanosam_full/standard_gate/
-results/algorithm_b3_nanosam_full/stage_b3_machine_summary.json
-results/algorithm_b3_nanosam_smoke/
+# Keep important summaries and small result files
+!results/**/SUMMARY*.txt
+!results/**/REPORT*.md
+!results/**/*_summary.json
+!results/**/*_metrics.json
